@@ -1,0 +1,65 @@
+#profileBar, #friendsBar {
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 100vh;
+    max-height: 100vh;
+
+    background: #32373d;
+    color: #fff;
+
+    top: 0;
+    position: sticky;
+}
+
+#profile-pic {
+    min-width: 100px;
+    max-width: 100px;
+    min-height: 100px;
+    max-height: 100px;
+
+    background: url("https://www.w3schools.com/howto/img_avatar.png") no-repeat no-repeat center center;
+    background-size: 100%;
+}
+
+ul { list-style: none; }
+.list-element a { color: inherit; }
+.list-element a:hover { text-decoration: inherit; }
+.list-element { border-bottom: 1px solid #3a4147; }
+.profileBar-hidden { margin-left: -300px; }
+
+/**********************************************************************************************************************
+    PROFILE BAR
+***********************************************************************************************************************/
+
+#profileBar-top-section {
+    min-width: 100%;
+    max-width: 100%;
+
+    background: url("https://www.mountaindropoffs.com/ru/wp-content/uploads/sites/5/2017/03/Summer-Airport-transfers-e1494332439540-1600x871.jpg") no-repeat no-repeat;
+    background-size: cover;
+}
+
+.profileBar-element-row:last-child {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.profileBar-element-row:hover { background-color: #315934; }
+.profileBar-element a { font-size: 16px; }
+
+/**********************************************************************************************************************
+    FRIENDS BAR
+***********************************************************************************************************************/
+
+#friendsBar-top-section {
+    min-width: 100%;
+    max-width: 100%;
+
+    padding: 20%;
+
+    background: url("https://images.radio-canada.ca/q_auto,w_1250/v1/ici-premiere/16x9/friends-nbc-pofpol-2.png") no-repeat no-repeat;
+    background-size: cover;
+}
+
+.friendsBar-hidden { margin-right: -300px; }

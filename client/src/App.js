@@ -84,8 +84,8 @@ class App extends React.Component {
 
             <Router>
                 <Switch>
-                    <Route path="/map"> <MapDisplay/> </Route>
-                    <Route path="/"> <Home/> </Route>
+                    <Route path="/map"> <Home map={true}/> </Route>
+                    <Route path="/"> <Home map={false}/> </Route>
                 </Switch>
             </Router>
         );

@@ -14,18 +14,36 @@ import './scripts/home_script';
 import './scripts/sideBars_script';
 
 import '../App.css';
+import MapDisplay from "./content/map/MapDisplay";
 
-const Home = () => {
-	return (
-		<div className="d-flex">
-			<ProfileBar/>
-			<div className="d-flex flex-column w-100">
-				<Header/>
-				<Feed/>
+const Home = ({ map }) => {
+	if ( ! map ) {
+		return (
+			<div className="d-flex">
+				<ProfileBar/>
+				<div className="d-flex flex-column w-100">
+					<Header/>
+					{
+						<Feed/>
+					}
+				</div>
+				<FriendsBar/>
 			</div>
-			<FriendsBar/>
-		</div>
-	);
+		);
+	} else {
+		return (
+			<div className="d-flex">
+				<ProfileBar/>
+				<div className="d-flex flex-column w-100">
+					<Header/>
+					{
+						<MapDisplay/>
+					}
+				</div>
+				<FriendsBar/>
+			</div>
+		);
+	}
 };
 
 export default Home;

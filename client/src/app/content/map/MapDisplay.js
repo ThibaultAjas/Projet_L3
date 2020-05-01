@@ -7,6 +7,7 @@ import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png'
 import '../../stylesheets/mapDisplay.css';
 import L from 'leaflet';
+import MarkerDisplay from "./MarkerDisplay";
 
 let DefaultIcon=L.icon({
     iconUrl:icon,
@@ -21,28 +22,29 @@ const position = [51.505,-0.09];
 const MapDisplay = ()=> {
 
     return(
-        <Map
-            center={[50, 10]}
-            zoom={6}
-            maxZoom={10}
-            attributionControl={true}
-            zoomControl={true}
-            doubleClickZoom={true}
-            scrollWheelZoom={true}
-            dragging={true}
-            animate={true}
-            easeLinearity={0.35}
-        >
-            <TileLayer
-                url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-            />
-            <Marker position={[50, 10]}>
-                <Popup>
-                    Popup for any custom information.
-                </Popup>
-            </Marker>
-        </Map>
+            <Map
+                center={[50, 10]}
+                zoom={6}
+                maxZoom={10}
+                attributionControl={true}
+                zoomControl={true}
+                doubleClickZoom={true}
+                scrollWheelZoom={true}
+                dragging={true}
+                animate={true}
+                easeLinearity={0.35}
+            >
+                <TileLayer
+                    url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                />
+
+                <MarkerDisplay position={[50, 10]} popupMessage="enfin ça marche " >
+                </MarkerDisplay>
+            </Map>
     );
 };
+
+
+
 
 export default MapDisplay;

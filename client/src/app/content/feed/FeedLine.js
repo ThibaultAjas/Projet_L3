@@ -8,9 +8,10 @@ const FeedLine = ({image, title, date, description}) => {
     const mo = new Intl.DateTimeFormat('en', {month: 'long'}).format(date);
     const da = new Intl.DateTimeFormat('en', {day: '2-digit'}).format(date);
     const dt = `${da}-${mo}-${ye}`;
+
     return (
         <div className='card d-flex flex-row bg-secondary text-white'>
-            <img src={image} alt='image not found'/>
+            <img src={image} alt='not found'/>
 
             <div className='p-3 d-flex flex-column justify-content-between w-100'>
                 <h1 className='card-title text-center'>{title}</h1>
@@ -18,7 +19,7 @@ const FeedLine = ({image, title, date, description}) => {
                 {description}
 
                 <div className='d-flex flex-row justify-content-end'>
-                    <a href='' className='btn btn-warning'> Plus.. </a>
+                    <a href='#' className='btn btn-warning'> Plus.. </a>
                 </div>
             </div>
         </div>

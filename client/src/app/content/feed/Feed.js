@@ -19,7 +19,7 @@ class Feed extends React.Component {
             .then((response) => {
                 const data = response.data;
                 this.setState({events: data}); // On update le state
-                console.log('events have been received');
+                console.log('All events have been received');
             })
             .catch((error) => {
                 console.log(`Error: ${error}`);
@@ -32,12 +32,16 @@ class Feed extends React.Component {
                 {
                     this.state.events.map((element, index) =>
                         <FeedLine
+                            key={element._id}
                             image='https://www.opengovguide.com/wp-content/uploads/2019/07/rw-a-tool-for-sustainable-land-use-management-in-rwanda-homepage-780x439.jpg'
                             title={element.title}
                             date={element.date}
+                            dateAjout={element.dateAjout}
                             description={element.description}
                         />
                     )
+                        .sort((a, b) => (new Date(b.props.dateAjout)).getTime() - (new Date(a.props.dateAjout)).getTime())
+                        // On sort les events par date d'ajout la plus récente
                 }
             </div>
         );

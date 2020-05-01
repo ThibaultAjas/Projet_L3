@@ -6,6 +6,7 @@ let eventSchema = new Schema({
     xpos: String,
     ypos: String,
     date: Date,
+    dateAjout: Date,
     title: String,
     description: String,
     comments: Array

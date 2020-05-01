@@ -23,9 +23,7 @@ const Home = ({ map }) => {
 				<ProfileBar/>
 				<div className="d-flex flex-column w-100">
 					<Header/>
-					{
-						<Feed/>
-					}
+					<Feed/>
 				</div>
 				<FriendsBar/>
 			</div>
@@ -36,9 +34,7 @@ const Home = ({ map }) => {
 				<ProfileBar/>
 				<div className="d-flex flex-column w-100">
 					<Header/>
-					{
-						<MapDisplay/>
-					}
+					<MapDisplay/>
 				</div>
 				<FriendsBar/>
 			</div>

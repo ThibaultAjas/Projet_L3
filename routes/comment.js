@@ -8,4 +8,14 @@ const comment = require('../models/comment');
 
 // [...]
 
+router.post('/getAll', (req, res) => {
+    comment.find({})
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((error) => {
+            console.log(`Error: ${error}`);
+        });
+});
+
 module.exports = router;

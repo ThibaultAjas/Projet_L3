@@ -1,12 +1,16 @@
 import React from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import Home from "./app/Home";
+import MapDisplay from "./app/content/map/MapDisplay";
 
 class App extends React.Component {
 
     state = {
         mail: '',
         username: ''
-    }
+    };
 
     handleChange = ({ target }) => {
         const { name, value } = target;
@@ -48,34 +52,42 @@ class App extends React.Component {
         console.log('State: ', this.state);
         // JSX
         return(
-            <div>
-                <h2> Welcome to my App</h2>
-            <form onSubmit={this.submit}>
-                <div className="form-input">
-                    <input
-                        type="text"
-                        name="mail"
-                        value={this.state.mail}
-                        placeholder="Enter your mail"
-                        onChange={this.handleChange}
-                    />
-                </div>
-                <div className="form-input">
-                    <textarea
-                        name="username"
-                        cols="30"
-                        rows="10"
-                        value={this.state.username}
-                        placeholder="Enter your name"
-                        onChange={this.handleChange}
-                    >
+            // <div>
+            //     <h2> Welcome to my App</h2>
+            // <form onSubmit={this.submit}>
+            //     <div className="form-input">
+            //         <input
+            //             type="text"
+            //             name="mail"
+            //             value={this.state.mail}
+            //             placeholder="Enter your mail"
+            //             onChange={this.handleChange}
+            //         />
+            //     </div>
+            //     <div className="form-input">
+            //         <textarea
+            //             name="username"
+            //             cols="30"
+            //             rows="10"
+            //             value={this.state.username}
+            //             placeholder="Enter your name"
+            //             onChange={this.handleChange}
+            //         >
+            //
+            //         </textarea>
+            //     </div>
+            //
+            //
+            //     <button>Submit</button>
+            // </form>
+            // </div>
 
-                    </textarea>
-                </div>
-
-                <button>Submit</button>
-            </form>
-            </div>
+            <Router>
+                <Switch>
+                    <Route path="/map"> <MapDisplay/> </Route>
+                    <Route path="/"> <Home/> </Route>
+                </Switch>
+            </Router>
         );
     }
 }

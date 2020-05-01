@@ -6,7 +6,7 @@ class App extends React.Component {
     state = {
         mail: '',
         username: ''
-    }
+    };
 
     handleChange = ({ target }) => {
         const { name, value } = target;
@@ -72,6 +72,7 @@ class App extends React.Component {
 
                     </textarea>
                 </div>
+
 
                 <button>Submit</button>
             </form>

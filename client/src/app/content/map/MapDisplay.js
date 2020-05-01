@@ -1,21 +1,44 @@
 import React from "react";
 
-import 'leaflet/dist/leaflet.css';
-
 import {Map,TileLayer,Marker,Popup} from "react-leaflet";
 
+import 'leaflet/dist/leaflet.css';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png'
+import '../../stylesheets/mapDisplay.css';
+import L from 'leaflet';
+
+let DefaultIcon=L.icon({
+    iconUrl:icon,
+    shadownUrl:iconShadow,
+});
+L.Marker.prototype.options.icon=DefaultIcon;
+
+
 const position = [51.505,-0.09];
+
 
 const MapDisplay = ()=> {
 
     return(
-        <Map center={position} zoom={13} style={{"height":"200px;"}}>
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                       attribution="&copy; <a href=&quot;http://osm.org/copyrigth&quot;>OpenStreetMap</a> contributors"/>
-
-            <Marker position={position}>
+        <Map
+            center={[50, 10]}
+            zoom={6}
+            maxZoom={10}
+            attributionControl={true}
+            zoomControl={true}
+            doubleClickZoom={true}
+            scrollWheelZoom={true}
+            dragging={true}
+            animate={true}
+            easeLinearity={0.35}
+        >
+            <TileLayer
+                url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+            />
+            <Marker position={[50, 10]}>
                 <Popup>
-                    bonjour
+                    Popup for any custom information.
                 </Popup>
             </Marker>
         </Map>

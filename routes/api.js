@@ -7,16 +7,6 @@ const event = require('../models/event');
 const comment = require('../models/comment');
 
 // Routes
-router.get('/', (req, res) => {
-    event.find({})
-        .then((data) => {
-            res.json(data);
-        })
-        .catch((error) => {
-            console.log(`Error: ${error}`);
-        });
-});
-
 router.post('/save', (req, res) => {
     console.log('body: ', req.body);
     const data = req.body;

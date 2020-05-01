@@ -2,7 +2,7 @@ import React from "react";
 import FeedLine from "./FeedLine";
 import axios from 'axios';
 
-import '../../../stylesheets/feed.css';
+import '../../stylesheets/feed.css';
 
 class Feed extends React.Component {
 
@@ -15,7 +15,7 @@ class Feed extends React.Component {
     };
 
     getEvents = () => {
-        axios.get('/event/getAll')
+        axios.post('/event/getAll')
             .then((response) => {
                 const data = response.data;
                 this.setState({events: data}); // On update le state
@@ -35,8 +35,9 @@ class Feed extends React.Component {
                             image='https://www.opengovguide.com/wp-content/uploads/2019/07/rw-a-tool-for-sustainable-land-use-management-in-rwanda-homepage-780x439.jpg'
                             title={element.title}
                             date={element.date}
-                            descr={element.description}
-                        />)
+                            description={element.description}
+                        />
+                    )
                 }
             </div>
         );

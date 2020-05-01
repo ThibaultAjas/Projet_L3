@@ -1,23 +1,27 @@
 import $ from 'jquery';
 
-$(document).ready( () => {
-	$('#swap-feed-button-map').hover( () => {
-		let tooltip = $('#tooltip-map');
-		swap(tooltip);
-	} );
+let timer;
 
-	$('#swap-feed-button-feed').hover( () => {
-		let tooltip = $('#tooltip-feed');
-		swap(tooltip);
+$(document).ready( () => {
+
+	const FEED_TOOLTIP = $('#tooltip-feed');
+	const MAP_TOOLTIP = $('#tooltip-map');
+
+	$('#swap-feed-button-map').mouseenter( () => {
+		swap(MAP_TOOLTIP);
+	}).mouseleave( () => {
+		clearTimeout(timer);
+		MAP_TOOLTIP.css('visibility', 'hidden');
 	});
 
-	let swap = (tooltip) => {
-		let visibility = tooltip.css('visibility');
+	$('#swap-feed-button-feed').mouseenter( () => {
+		swap(FEED_TOOLTIP);
+	}).mouseleave( () => {
+		clearTimeout(timer);
+		FEED_TOOLTIP.css('visibility', 'hidden');
+	} );
 
-			if (visibility === 'hidden' ) {
-				setTimeout( () => tooltip.css('visibility', 'visible'), 1_000);
-			} else {
-				tooltip.css('visibility', 'hidden');
-			}
+	let swap = (tooltip) => {
+		timer = setTimeout( () => tooltip.css('visibility', 'visible'), 1_000);
 	};
 });

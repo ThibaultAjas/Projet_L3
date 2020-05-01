@@ -4,7 +4,7 @@ import FriendsBarContent from "./FriendsBarContent";
 
 const FriendsBar = () => {
 	return (
-		<nav id='friendsBar' className='d-flex flex-column friendsBar_hidden'>
+		<nav id='friendsBar' className='d-flex flex-column friendsBar-hidden'>
 			<FriendsBarTopSection/>
 			<FriendsBarContent/>
 		</nav>

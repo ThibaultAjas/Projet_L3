@@ -2,7 +2,7 @@ import React from "react";
 
 const FriendsBarTopSection = () => {
 	return (
-		<div id='friendBarTopSection'></>
+		<div id='friendBar-topSection'></>
 	)
 };
 

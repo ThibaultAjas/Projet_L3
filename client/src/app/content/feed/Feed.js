@@ -2,7 +2,7 @@ import React from "react";
 import FeedLine from "./FeedLine";
 import axios from 'axios';
 
-import '../../../stylesheets/feed.css';
+import '../../stylesheets/feed.css';
 
 class Feed extends React.Component {
 

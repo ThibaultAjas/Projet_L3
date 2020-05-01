@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 let PROFILE_BAR;
 let H_SHOW_PROFILE_BAR;
 let H_HIDE_PROFILE_BAR;

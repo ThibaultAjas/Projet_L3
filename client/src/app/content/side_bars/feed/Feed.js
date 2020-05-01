@@ -33,9 +33,9 @@ class Feed extends React.Component {
 					[...Array(10)].map( (element, index) =>
 						<FeedLine
 						image='https://www.opengovguide.com/wp-content/uploads/2019/07/rw-a-tool-for-sustainable-land-use-management-in-rwanda-homepage-780x439.jpg'
-						title={element.title}
-						date={element.date}
-						descr={element.description}
+						// title={element.title}
+						// date={element.date}
+						// descr={element.description}
 						/> )
 				}
 			</div>

@@ -19,7 +19,6 @@ class Feed extends React.Component {
             .then((response) => {
                 const data = response.data;
                 this.setState({events: data}); // On update le state
-                console.log('All events have been received');
             })
             .catch((error) => {
                 console.log(`Error: ${error}`);
@@ -32,7 +31,7 @@ class Feed extends React.Component {
                 {
                     this.state.events.map((element, index) =>
                         <FeedLine
-                            key={element._id}
+                            key={index}
                             image='https://www.opengovguide.com/wp-content/uploads/2019/07/rw-a-tool-for-sustainable-land-use-management-in-rwanda-homepage-780x439.jpg'
                             title={element.title}
                             date={element.date}

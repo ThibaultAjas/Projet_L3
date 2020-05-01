@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import Home from "./app/Home";
+import MapDisplay from "./app/content/map/MapDisplay";
 
 class App extends React.Component {
 
@@ -79,7 +82,12 @@ class App extends React.Component {
             // </form>
             // </div>
 
-            <Home/>
+            <Router>
+                <Switch>
+                    <Route path="/map"> <MapDisplay/> </Route>
+                    <Route path="/"> <Home/> </Route>
+                </Switch>
+            </Router>
         );
     }
 }

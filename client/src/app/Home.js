@@ -11,6 +11,7 @@ import FriendsBar from "./content/side_bars/friends_bar/FriendsBar";
 import Feed from "./content/side_bars/feed/Feed";
 
 import './scripts/home_script';
+import './scripts/sideBars_script';
 
 import '../App.css';
 

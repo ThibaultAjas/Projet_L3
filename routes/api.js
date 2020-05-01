@@ -8,7 +8,7 @@ const comment = require('../models/comment');
 
 // Routes
 router.get('/', (req, res) => {
-    user.find({})
+    event.find({})
         .then((data) => {
             res.json(data);
         })

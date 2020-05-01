@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+header {
+    min-height: 50px;
+    max-height: 50px;
+
+    top: 0;
+    position: sticky;
+
+    z-index: 100;
+}
+
+#header_show_profileBar {
+    background: url("https://www.w3schools.com/howto/img_avatar.png") no-repeat no-repeat center center;
+    background-size: 100%;
+}
+
+.element {
+    min-width: 30px;
+    max-width: 30px;
+    min-height: 30px;
+    max-height: 30px;
+
+    background-size: 100%;
+    cursor: pointer;
+}
+
+.fa-angle-double-left, .fa-angle-double-right, .fa-users {
+    color: white;
+}
+
+#h_title {
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+
+    font-family: 'Titan One', cursive;
+}
+
+#h_title:hover { text-decoration: inherit; }

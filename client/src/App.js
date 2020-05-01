@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Home from "./app/Home";
 
 class App extends React.Component {
 
@@ -78,9 +79,7 @@ class App extends React.Component {
             // </form>
             // </div>
 
-            <div>
-                <h1> cocou</h1>
-            </div>
+            <Home/>
         );
     }
 }

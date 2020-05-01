@@ -10,7 +10,7 @@ header {
     z-index: 100;
 }
 
-#header_show_profileBar {
+#header-show-profileBar-icon {
     background: url("https://www.w3schools.com/howto/img_avatar.png") no-repeat no-repeat center center;
     background-size: 100%;
 }

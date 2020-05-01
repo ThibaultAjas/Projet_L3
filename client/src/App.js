@@ -48,34 +48,38 @@ class App extends React.Component {
         console.log('State: ', this.state);
         // JSX
         return(
+            // <div>
+            //     <h2> Welcome to my App</h2>
+            // <form onSubmit={this.submit}>
+            //     <div className="form-input">
+            //         <input
+            //             type="text"
+            //             name="mail"
+            //             value={this.state.mail}
+            //             placeholder="Enter your mail"
+            //             onChange={this.handleChange}
+            //         />
+            //     </div>
+            //     <div className="form-input">
+            //         <textarea
+            //             name="username"
+            //             cols="30"
+            //             rows="10"
+            //             value={this.state.username}
+            //             placeholder="Enter your name"
+            //             onChange={this.handleChange}
+            //         >
+            //
+            //         </textarea>
+            //     </div>
+            //
+            //
+            //     <button>Submit</button>
+            // </form>
+            // </div>
+
             <div>
-                <h2> Welcome to my App</h2>
-            <form onSubmit={this.submit}>
-                <div className="form-input">
-                    <input
-                        type="text"
-                        name="mail"
-                        value={this.state.mail}
-                        placeholder="Enter your mail"
-                        onChange={this.handleChange}
-                    />
-                </div>
-                <div className="form-input">
-                    <textarea
-                        name="username"
-                        cols="30"
-                        rows="10"
-                        value={this.state.username}
-                        placeholder="Enter your name"
-                        onChange={this.handleChange}
-                    >
-
-                    </textarea>
-                </div>
-
-
-                <button>Submit</button>
-            </form>
+                <h1> cocou</h1>
             </div>
         );
     }

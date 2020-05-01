@@ -15,7 +15,7 @@ class Feed extends React.Component {
     };
 
     getEvents = () => {
-        axios.get('/event/getAll')
+        axios.post('/event/getAll')
             .then((response) => {
                 const data = response.data;
                 this.setState({events: data}); // On update le state

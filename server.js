@@ -1,4 +1,6 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const path = require('path');
@@ -23,9 +25,12 @@ mongoose.connection.on('connected', () => {
     console.log('Mongoose is connected');
 });
 
-
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+// Sessions
+app.use(cookieParser());
+app.use(session({cookie: { path: '/', httpOnly: true, maxAge: null}, resave: true, saveUninitialized: true, secret:'secret'})); // TODO: Changer le 'secret'
 
 // HTTP request logger
 app.use(morgan('tiny'));

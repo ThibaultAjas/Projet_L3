@@ -2,6 +2,9 @@
   <dictionary name="Dalfrak">
     <words>
       <w>axios</w>
+      <w>resave</w>
+      <w>xpos</w>
+      <w>ypos</w>
     </words>
   </dictionary>
 </component>

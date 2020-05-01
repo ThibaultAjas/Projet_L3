@@ -18,4 +18,6 @@ router.post('/getAll', (req, res) => {
         });
 });
 
+// TODO: CRUD comment
+
 module.exports = router;

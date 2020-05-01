@@ -48,4 +48,6 @@ router.post('/getOne', (req, res) => {
         });
 });
 
+// TODO: CRUD event
+
 module.exports = router;

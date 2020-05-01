@@ -3,10 +3,14 @@ const mongoose = require('mongoose');
 // Define Event schema
 const Schema = mongoose.Schema;
 let eventSchema = new Schema({
-    xpos: String,
-    ypos: String,
+    location: [{
+        xpos: Number,
+        ypos: Number
+    }],
+    country: String,
+    city: String,
     date: Date,
-    dateAjout: Date,
+    dateAdded: Date,
     title: String,
     description: String,
     comments: Array

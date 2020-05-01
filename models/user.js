@@ -7,10 +7,21 @@ let userSchema = new Schema({
     mail: {type: String, unique: true, required: true},
     firstName: String,
     lastName: String,
+    pseudonym: String,
     password: {type: String, required: true},
     config: Array,
-    friends: Array,
-    events: Array
+    followers: [{
+        mail: String,
+        pseudo: String
+    }],
+    events: [{
+        location: [{
+            xpos: Number,
+            ypos: Number
+        }],
+        date: Date,
+        title: String
+    }]
 });
 
 // Export Mongoose model

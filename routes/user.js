@@ -8,4 +8,6 @@ const comment = require('../models/comment');
 
 // [...]
 
+// TODO: CRUD user
+
 module.exports = router;

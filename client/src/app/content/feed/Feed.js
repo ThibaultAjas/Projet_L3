@@ -7,11 +7,15 @@ import '../../stylesheets/feed.css';
 class Feed extends React.Component {
 
     state = {
+        logged: false,
         events: []
     };
 
     componentDidMount = () => {
-        this.getEvents()
+        // Implémentation dégueulasse (et certainement mal localisée) d'une vérification de session
+        // TODO: l'implémenter aux bonnes places, partout dans l'appli
+        this.isLogged();
+        this.getEvents();
     };
 
     getEvents = () => {
@@ -25,7 +29,20 @@ class Feed extends React.Component {
             });
     };
 
+    isLogged = () => {
+        axios.post('/api/login')
+            .then((response) => {
+                const data = response.data;
+                this.state.logged = data.logged;
+                console.log(`isLogged: ${this.state.logged}`);
+            })
+            .catch((error) => {
+                console.log(`Error: ${error}`);
+            });
+    };
+
     render() {
+        if (this.state.logged)
         return (
             <div className='p-5 mx-lg-5 mx-md-2 mx-sm-2 feed'>
                 {
@@ -44,7 +61,13 @@ class Feed extends React.Component {
                 }
             </div>
         );
+        else
+            return (
+                <div className='p-5 mx-lg-5 mx-md-2 mx-sm-2 feed'>
+                    You are not logged in, please log in or register
+                </div>
+            );
     }
-};
+}
 
 export default Feed;

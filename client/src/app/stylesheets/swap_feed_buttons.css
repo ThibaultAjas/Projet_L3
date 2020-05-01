@@ -1,0 +1,46 @@
+#buttons-container {
+    min-width: 70px;
+    max-width: 70px;
+    margin: 10px;
+
+    top: 60px;
+    position: sticky;
+
+    z-index: 8;
+}
+
+.button-tooltip {
+    background-color: black;
+    border-radius: 0 10px 10px 10px;
+    padding: 0 5px 5px 5px;
+    color: antiquewhite;
+    margin-top: 20px;
+    opacity: 50%;
+
+    visibility: hidden;
+}
+
+.swap-feed-button {
+    min-width: 30px;
+    max-width: 30px;
+    min-height: 30px;
+    max-height: 30px;
+
+    background: #315934;
+    cursor: pointer;
+
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+.swap-feed-button:hover { filter: drop-shadow(0 0 0.2rem green); }
+
+#swap-feed-button-map {
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Simpleicons_Places_map-marker-variant-tool.svg/485px-Simpleicons_Places_map-marker-variant-tool.svg.png") no-repeat no-repeat;
+    background-size: cover;
+}
+
+#swap-feed-button-feed {
+    background: url("https://pngimage.net/wp-content/uploads/2018/06/news-feed-icon-png-2.png") no-repeat no-repeat;
+    background-size: cover;
+}

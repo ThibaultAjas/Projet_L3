@@ -2,6 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import '@fortawesome/fontawesome-free/css/all.css';
+import '@fortawesome/fontawesome-free/js/all';
+
+import './App.css';
+
+
 import Home from "./app/Home";
 import MapDisplay from "./app/content/map/MapDisplay";
 

@@ -1,8 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-import '@fortawesome/fontawesome-free/css/all.css';
-import '@fortawesome/fontawesome-free/js/all';
-
 import React from "react";
 
 import Header from "./content/header/Header";
@@ -13,33 +8,21 @@ import Feed from "./content/feed/Feed";
 import './scripts/home_script';
 import './scripts/sideBars_script';
 
-import '../App.css';
 import MapDisplay from "./content/map/MapDisplay";
+import SwapFeedButtons from "./content/swap_feed_buttons/SwapFeedButtons";
 
 const Home = ({ map }) => {
-	if ( ! map ) {
 		return (
 			<div className="d-flex">
 				<ProfileBar/>
 				<div className="d-flex flex-column w-100">
 					<Header/>
-					<Feed/>
+					<SwapFeedButtons/>
+					{(map) ? <MapDisplay/> : <Feed/>}
 				</div>
 				<FriendsBar/>
 			</div>
 		);
-	} else {
-		return (
-			<div className="d-flex">
-				<ProfileBar/>
-				<div className="d-flex flex-column w-100">
-					<Header/>
-					<MapDisplay/>
-				</div>
-				<FriendsBar/>
-			</div>
-		);
-	}
 };
 
 export default Home;

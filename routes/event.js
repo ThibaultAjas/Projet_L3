@@ -6,48 +6,86 @@ const user = require('../models/user');
 const event = require('../models/event');
 const comment = require('../models/comment');
 
-// [...]
+// TODO: improve methods, but we have the base
 
-router.post('/getAll', (req, res) => {
-    event.find({})
-        .then((data) => {
-            res.json(data);
-        })
-        .catch((error) => {
-            console.log(`Error: ${error}`);
-        });
-});
+// CRUD: Create
+{
+    router.post('/addOne', (req, res) => {
+        const data = req.body;
+        const newEvent = new event(data);
 
-router.post('/addOne', (req, res) => {
-    const data = req.body;
-    const newEvent = new event(data);
+        //.save
+        newEvent.save((error) => {
+            if (error) {
+                res.status(500).json({msg: 'Sorry, internal server error'});
+                return
+            }
 
-    //.save
-    newEvent.save((error) => {
-        if (error) {
-            res.status(500).json({msg: 'Sorry, internal server error'});
-            return
-        }
-
-        // user
-        return res.json({ // status 200
-            msg: 'Your data has been saved !'
+            // user
+            return res.json({ // status 200
+                msg: 'Your data has been saved !'
+            });
         });
     });
-});
+}
 
-router.post('/getOne', (req, res) => {
-    const data = event.body;
+// CRUD: Read
+{
+    router.post('/getAll', (req, res) => {
+        event.find({})
+            .then((data) => {
+                return res.json({ msg: 'All events successfully gathered', data: data });
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
+            });
+    });
 
-    event.find(data)
-        .then((data) => {
-            res.json(data);
-        })
-        .catch((error) => {
-            console.log(`Error: ${error}`);
+    router.post('/getOne', (req, res) => {
+        const data = event.body;
+
+        event.find(data)
+            .then((data) => {
+                return res.json(data);
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
+            });
+    });
+}
+
+// CRUD: Update
+{
+    router.post('/updateOne', (req, res) => {
+        const data = req.body;
+
+        const filter = data.filter;
+        const upd = data.upd;
+
+        const evt = new event(filter);
+
+        evt.findOneAndUpdate(filter, upd, { new: true }, (err, doc) => {
+            if (err) return res.status(500).send(err);
+            else return res.json(doc);
         });
-});
+    });
+}
 
-// TODO: CRUD event
+// CRUD: Delete
+{
+    router.post('/delete', (req, res) => {
+       const data = req.body;
+
+        const filter = data.filter;
+        const del = data.del;
+
+        const evt = new event(filter);
+
+        evt.findOneAndDelete(filter, del, (err, docId) => {
+            if (err) return res.status(500).send(err);
+            else return res.json({ msg: 'Event successfully deleted', id: docId._id });
+        });
+    });
+}
 
 module.exports = router;

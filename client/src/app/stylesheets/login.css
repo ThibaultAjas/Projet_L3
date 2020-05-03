@@ -1,10 +1,16 @@
-input[type="email"]{
-    border-bottom-right-radius:0;
-    border-bottom-left-radius:0;
+
+.inputreg{
+border-radius: 0;
 }
-input[type="password"]{
-    border-top-right-radius:0;
-    border-top-left-radius:0;
+.inputreg:first-of-type{
+    border-top-left-radius: .25rem ;
+    border-top-right-radius: .25rem ;
+
+}
+
+.inputreg:last-of-type{
+    border-bottom-left-radius: .25rem ;
+    border-bottom-right-radius: .25rem ;
 }
 
 .form-login{
@@ -29,3 +35,4 @@ a{
 a:hover{
     color : #3e8249;
 }
+

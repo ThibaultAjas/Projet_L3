@@ -39,6 +39,13 @@ router.post('/verify', (req, res) => {
     res.json({logged: false, msg: 'Authorized'});
 });
 
+router.post('/login', (req, res) => {
+    const sess = req.session;
+    const data = req.body;
+
+    return sess.mail = data.mail;
+});
+
 router.post('/logout', (req, res) => {
     req.session.destroy((err) => {
         if (err) {
@@ -46,7 +53,6 @@ router.post('/logout', (req, res) => {
         }
         res.redirect('/');
     });
-
 });
 
 router.post('/stats', (req, res) => {

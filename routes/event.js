@@ -2,9 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
-const user = require('../models/user');
+// const user = require('../models/user');
 const event = require('../models/event');
-const comment = require('../models/comment');
+// const comment = require('../models/comment');
 
 // TODO: improve methods, but we have the base
 
@@ -14,14 +14,10 @@ const comment = require('../models/comment');
         const data = req.body;
         const newEvent = new event(data);
 
-        //.save
         newEvent.save((error) => {
             if (error) return res.status(500).json({msg: 'Sorry, internal server error'});
 
-            // user
-            return res.json({ // status 200
-                msg: 'Your data has been saved !'
-            });
+            return res.json({ msg: 'Your data has been saved !' }); // status 200
         });
     });
 }

@@ -8,20 +8,19 @@ import iconShadow from 'leaflet/dist/images/marker-shadow.png'
 import '../../stylesheets/mapDisplay.css';
 import L from 'leaflet';
 import MarkerDisplay from "./MarkerDisplay";
+import LoginScreen from "../login/LoginScreen";
 
 let DefaultIcon=L.icon({
     iconUrl:icon,
-    shadownUrl:iconShadow,
+    shadowUrl:iconShadow,
 });
 L.Marker.prototype.options.icon=DefaultIcon;
 
 
-const position = [51.505,-0.09];
+const MapDisplay = ({ logged })=> {
 
-
-const MapDisplay = ()=> {
-
-    return(
+    if (logged) {
+        return(
             <Map
                 center={[50, 10]}
                 zoom={6}
@@ -38,9 +37,12 @@ const MapDisplay = ()=> {
                     url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                 />
 
-                <MarkerDisplay position={[50, 10]} popupMessage="enfin ça marche " ></MarkerDisplay>
+                <MarkerDisplay position={ [ 50, 10 ] } popupMessage="enfin ça marche " />
             </Map>
-    );
+        );
+    } else {
+        return ( <LoginScreen/> );
+    }
 };
 
 

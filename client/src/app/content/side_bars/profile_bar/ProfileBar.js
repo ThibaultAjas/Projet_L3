@@ -23,7 +23,7 @@ const log_content = [
 	},
 	{ 	'name' : 'Se déconnecter',
 		'icon' : 'fa fa-sign-out-alt mr-3',
-		'href' : '/logout'
+		'href' : '/'
 	}
 ];
 

@@ -14,7 +14,7 @@ const RegisterForm = () => {
             <input type="text" className="form-control inputreg" placeholder="first name" name="prenom" required  />
             <input type="text" className="form-control inputreg" placeholder="last name" name="nom_de_famille" required  />
             <input type="text" className="form-control inputreg" placeholder="username" name="username" />
-            <input type="number" className="form-control inputreg" placeholder="0675488456" name="numero-de_telephone" required  />
+            <input type="digit" className="form-control inputreg" placeholder="0675488456" name="numero-de_telephone" required  />
             <input type="text" className="form-control inputreg" placeholder="addresse" name="addresse" required />
 
             <div className="checkbox mb-3">

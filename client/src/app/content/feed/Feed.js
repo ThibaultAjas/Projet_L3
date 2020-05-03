@@ -3,13 +3,13 @@ import FeedLine from "./FeedLine";
 import axios from 'axios';
 
 import '../../stylesheets/feed.css';
+import LoginScreen from "../login/LoginScreen";
 
 // import LoginScreen from "../login/LoginScreen";
 
 class Feed extends React.Component {
-
     state = {
-        events: []
+        events: [],
     };
 
     componentDidMount = () => {

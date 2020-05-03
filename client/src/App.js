@@ -89,12 +89,17 @@ class App extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <Route path="/register"><RegisterScreen/> </Route>
-                    <Route path="/login"> <LoginScreen/> </Route>
-                    <Route path="/profile"> <Home content={<Profile/>} logged={this.state.logged}/> </Route>
-                    <Route path="/map"> <Home content={<MapDisplay logged={this.state.logged}/>}
-                                              logged={this.state.logged}/> </Route>
-                    <Route path="/"> <Home content={<Feed/>} logged={this.state.logged}/> </Route>
+                    <Route path="/register" > <RegisterScreen />                                                    </Route>
+                    <Route path="/login"    > <LoginScreen />                                                       </Route>
+                    <Route path="/profile"  > <Home
+                                                    content = { <Profile /> }
+                                                    logged  = { this.state.logged } />                              </Route>
+                    <Route path="/map"      > <Home
+                                                    content = { <MapDisplay logged = { this.state.logged } /> }
+                                                    logged  = { this.state.logged } />                              </Route>
+                    <Route path="/"         > <Home
+                                                    content = { (this.state.logged) ? <Feed /> : <LoginScreen /> }
+                                                    logged  = { this.state.logged } />                              </Route>
                 </Switch>
             </Router>
         );

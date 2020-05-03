@@ -1,4 +1,4 @@
-import React from 'react';
+import react from 'react';
 
 const Login = ()=> {
     return(
@@ -9,6 +9,7 @@ const Login = ()=> {
             </label>
             <input type="submit" value="Envoyer"/>
         </form>
+
     );
 };
 

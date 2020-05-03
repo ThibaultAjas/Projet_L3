@@ -20,3 +20,12 @@ input[type="password"]{
     position: fixed;
     color:white;
 }
+
+a{
+    color:inherit;
+
+}
+
+a:hover{
+    color : #3e8249;
+}

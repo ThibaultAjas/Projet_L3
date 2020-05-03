@@ -16,8 +16,7 @@ const LoginForm = ()=> {
            <button className="btn btn-lg btn-primary btn-block" type="submit">
                Sign in
            </button>
-
-
+            <a href="/register" >Don't have an account? Create one</a>
         </form>
 
     );

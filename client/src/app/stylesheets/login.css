@@ -1,0 +1,22 @@
+input[type="email"]{
+    border-bottom-right-radius:0;
+    border-bottom-left-radius:0;
+}
+input[type="password"]{
+    border-top-right-radius:0;
+    border-top-left-radius:0;
+}
+
+.form-login{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+
+}
+
+.checkbox, .form-login{ font-weight: 400; }
+
+#login-screen{
+    position: fixed;
+    color:white;
+}

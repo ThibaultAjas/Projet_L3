@@ -15,6 +15,7 @@ import MapDisplay from "./app/content/map/MapDisplay";
 import Profile from "./app/content/profile/Profile";
 import Feed from "./app/content/feed/Feed";
 import Login from "./app/content/login/LoginForm";
+import LoginScreen from "./app/content/login/LoginScreen";
 
 class App extends React.Component {
 
@@ -67,10 +68,10 @@ class App extends React.Component {
         return(
             <Router>
                 <Switch>
-                    <Route path="/login">   <Login/>                                                </Route>
-                    <Route path="/profile"> <Home content = { <Profile/> }      logged={logged}/>   </Route>
-                    <Route path="/map">     <Home content = { <MapDisplay/> }   logged={logged}/>   </Route>
-                    <Route path="/">        <Home content = { <Feed/> }         logged={logged} />  </Route>
+                    <Route path="/login">   <LoginScreen/>                                           </Route>
+                    <Route path="/profile"> <Home content = { <Profile/> }      logged={logged} />   </Route>
+                    <Route path="/map">     <Home content = { <MapDisplay/> }   logged={logged} />   </Route>
+                    <Route path="/">        <Home content = { <Feed/> }         logged={logged} />   </Route>
                 </Switch>
             </Router>
             // <div>

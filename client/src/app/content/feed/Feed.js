@@ -15,7 +15,7 @@ class Feed extends React.Component {
     componentDidMount = () => {
         // Implémentation dégueulasse (et certainement mal localisée) d'une vérification de session
         // TODO: l'implémenter aux bonnes places, partout dans l'appli
-        this.isLogged();
+        // this.isLogged();
         this.getEvents();
     };
 

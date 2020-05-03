@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { activateSideBar, initSideBarsComponents } from './sideBars_script';
+import initSideBarsComponents from './sideBars_script';
 
 $(document).ready( () => {
 	const PROFILE_BAR = $('#profileBar');
@@ -22,8 +22,4 @@ $(document).ready( () => {
 		H_HIDE_FRIENDS_BAR,
 		H_SHOW_FRIENDS_BAR
 	);
-
-	//	listeners
-	H_PROFILE_BAR_ACTIVATOR.click( () => activateSideBar(PROFILE_BAR) );
-	H_FRIENDS_BAR_ACTIVATOR.click( () => activateSideBar(FRIENDS_BAR) );
 });

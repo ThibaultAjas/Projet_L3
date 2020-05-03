@@ -15,6 +15,7 @@ import MapDisplay from "./app/content/map/MapDisplay";
 import Profile from "./app/content/profile/Profile";
 import Feed from "./app/content/feed/Feed";
 import LoginScreen from "./app/content/login/LoginScreen";
+import RegisterScreen from "./app/content/register/RegisterScreen";
 
 class App extends React.Component {
 
@@ -67,6 +68,7 @@ class App extends React.Component {
         return(
             <Router>
                 <Switch>
+                    <Route path="/register"><RegisterScreen/>                                        </Route>
                     <Route path="/login">   <LoginScreen/>                                           </Route>
                     <Route path="/profile"> <Home content = { <Profile/> }      logged={logged} />   </Route>
                     <Route path="/map">     <Home content = { <MapDisplay/> }   logged={logged} />   </Route>

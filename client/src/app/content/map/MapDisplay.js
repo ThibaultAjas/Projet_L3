@@ -25,7 +25,7 @@ const MapDisplay = ()=> {
             <Map
                 center={[50, 10]}
                 zoom={6}
-                maxZoom={10}
+                maxZoom={18}
                 attributionControl={true}
                 zoomControl={true}
                 doubleClickZoom={true}
@@ -38,8 +38,7 @@ const MapDisplay = ()=> {
                     url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                 />
 
-                <MarkerDisplay position={[50, 10]} popupMessage="enfin ça marche " >
-                </MarkerDisplay>
+                <MarkerDisplay position={[50, 10]} popupMessage="enfin ça marche " ></MarkerDisplay>
             </Map>
     );
 };

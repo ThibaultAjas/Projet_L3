@@ -1,0 +1,12 @@
+.profile-card {
+    background-color: lightgray;
+    min-width: 20%;
+
+    cursor: pointer;
+    color: inherit;
+}
+
+.profile-card:hover {
+    text-decoration: inherit;
+    color: inherit;
+}

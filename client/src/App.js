@@ -12,6 +12,8 @@ import './App.css';
 
 import Home from "./app/Home";
 import MapDisplay from "./app/content/map/MapDisplay";
+import Profile from "./app/content/profile/Profile";
+import Feed from "./app/content/feed/Feed";
 
 class App extends React.Component {
 
@@ -58,8 +60,17 @@ class App extends React.Component {
     render() {
 
         console.log('State: ', this.state);
+
+        let logged = false;
         // JSX
         return(
+            <Router>
+                <Switch>
+                    <Route path="/profile"> <Home content = { <Profile/> }      logged={logged}/> </Route>
+                    <Route path="/map">     <Home content = { <MapDisplay/> }   logged={logged}/> </Route>
+                    <Route path="/">        <Home content = { <Feed/> }         logged={logged} /></Route>
+                </Switch>
+            </Router>
             // <div>
             //     <h2> Welcome to my App</h2>
             // <form onSubmit={this.submit}>
@@ -89,13 +100,6 @@ class App extends React.Component {
             //     <button>Submit</button>
             // </form>
             // </div>
-
-            <Router>
-                <Switch>
-                    <Route path="/map"> <Home map={true}/> </Route>
-                    <Route path="/"> <Home map={false}/> </Route>
-                </Switch>
-            </Router>
         );
     }
 }

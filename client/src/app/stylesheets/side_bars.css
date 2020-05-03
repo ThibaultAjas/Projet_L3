@@ -48,6 +48,8 @@ ul { list-style: none; }
 .profileBar-element-row:hover { background-color: #315934; }
 .profileBar-element a { font-size: 16px; }
 
+#profileBar-top-section-title { cursor: default; }
+
 /**********************************************************************************************************************
     FRIENDS BAR
 ***********************************************************************************************************************/

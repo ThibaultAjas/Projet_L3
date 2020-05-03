@@ -3,19 +3,16 @@ import FeedLine from "./FeedLine";
 import axios from 'axios';
 
 import '../../stylesheets/feed.css';
-import LoginScreen from "../login/LoginScreen";
+
+// import LoginScreen from "../login/LoginScreen";
 
 class Feed extends React.Component {
 
     state = {
-        logged: false,
         events: []
     };
 
     componentDidMount = () => {
-        // Implémentation dégueulasse (et certainement mal localisée) d'une vérification de session
-        // TODO: l'implémenter aux bonnes places, partout dans l'appli
-        // this.isLogged();
         this.getEvents();
     };
 
@@ -23,19 +20,7 @@ class Feed extends React.Component {
         axios.post('/event/getAll')
             .then((response) => {
                 const data = response.data;
-                this.setState({events: data}); // On update le state
-            })
-            .catch((error) => {
-                console.log(`Error: ${error}`);
-            });
-    };
-
-    isLogged = () => {
-        axios.post('/api/login')
-            .then((response) => {
-                const data = response.data;
-                this.state.logged = data.logged;
-                console.log(`isLogged: ${this.state.logged}`);
+                this.setState({events: data.data});
             })
             .catch((error) => {
                 console.log(`Error: ${error}`);
@@ -43,7 +28,6 @@ class Feed extends React.Component {
     };
 
     render() {
-        if (this.state.logged)
         return (
             <div className='p-5 mx-lg-5 mx-md-2 mx-sm-2 feed'>
                 {
@@ -56,16 +40,10 @@ class Feed extends React.Component {
                             dateAjout={element.dateAjout}
                             description={element.description}
                         />
-                    )
-                        .sort((a, b) => (new Date(b.props.dateAjout)).getTime() - (new Date(a.props.dateAjout)).getTime())
-                        // On sort les events par date d'ajout la plus récente
+                    ).sort((a, b) => (new Date(b.props.dateAjout)).getTime() - (new Date(a.props.dateAjout)).getTime())
                 }
             </div>
         );
-        else
-            return (
-                <LoginScreen/>
-            );
     }
 }
 

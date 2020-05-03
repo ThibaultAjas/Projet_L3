@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -24,9 +24,9 @@ class App extends React.Component {
         logged: false
     };
 
-    componentDidMount = () => {
+    componentDidMount() {
         this.verifyIsLogged();
-    };
+    }
 
     /*
     handleChange = ({ target }) => {
@@ -67,7 +67,6 @@ class App extends React.Component {
 
     verifyIsLogged = () => {
         const payload = {mail: this.state.mail};
-
         axios({
             url: '/api/verify',
             method: 'POST',
@@ -76,55 +75,28 @@ class App extends React.Component {
             .then((response) => {
                 const data = response.data;
 
-                this.setState({logged: data.logged});
+                this.setState({mail: data.mail, logged: data.logged});
+                console.log('State: ', this.state);
+                this.forceUpdate();
             })
             .catch((error) => {
                 console.log('Internal server error');
             });
     };
 
+    // TODO: Pour l'instant, si on est pas connecté il nous redirige vers le Feed, faire en sorte qu'il nous redirige plutot vers la page de login
     render() {
-        return(
+        return (
             <Router>
                 <Switch>
-                    <Route path="/register"><RegisterScreen/>                                                                               </Route>
-                    <Route path="/login">   <LoginScreen/>                                                                                  </Route>
-                    <Route path="/profile"> <Home content = { <Profile/> }                                  logged={this.state.logged} />   </Route>
-                    <Route path="/map">     <Home content = { <MapDisplay logged={this.state.logged}/> }    logged={this.state.logged} />   </Route>
-                    <Route path="/">        <Home content = { <Feed/> }                                     logged={this.state.logged} />   </Route>
+                    <Route path="/register"><RegisterScreen/> </Route>
+                    <Route path="/login"> <LoginScreen/> </Route>
+                    <Route path="/profile"> <Home content={<Profile/>} logged={this.state.logged}/> </Route>
+                    <Route path="/map"> <Home content={<MapDisplay logged={this.state.logged}/>}
+                                              logged={this.state.logged}/> </Route>
+                    <Route path="/"> <Home content={<Feed/>} logged={this.state.logged}/> </Route>
                 </Switch>
             </Router>
-            /*
-            <div>
-                <h2> Welcome to my App</h2>
-            <form onSubmit={this.submit}>
-                <div className="form-input">
-                    <input
-                        type="text"
-                        name="mail"
-                        value={this.state.mail}
-                        placeholder="Enter your mail"
-                        onChange={this.handleChange}
-                    />
-                </div>
-                <div className="form-input">
-                    <textarea
-                        name="username"
-                        cols="30"
-                        rows="10"
-                        value={this.state.username}
-                        placeholder="Enter your name"
-                        onChange={this.handleChange}
-                    >
-
-                    </textarea>
-                </div>
-
-
-                <button>Submit</button>
-            </form>
-            </div>
-             */
         );
     }
 }

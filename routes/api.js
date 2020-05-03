@@ -35,8 +35,8 @@ const comment = require('../models/comment');
 router.post('/verify', (req, res) => {
     const sess = req.session;
 
-    if (sess.mail) return res.json({logged: true, msg: 'Unauthorized'}); // TODO: à changer
-    res.json({logged: false, msg: 'Authorized'});
+    if (sess.mail) return res.json({mail: sess.mail, logged: true, msg: 'Authorized'});
+    res.json({mail: undefined, logged: false, msg: 'Unauthorized'});
 });
 
 router.post('/login', (req, res) => {

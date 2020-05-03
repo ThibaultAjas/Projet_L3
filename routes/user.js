@@ -1,4 +1,6 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 const router = express.Router();
 
@@ -19,7 +21,7 @@ const user = require('../models/user');
         usr.save((error) => {
             if (error) return res.status(500).json({msg: 'Sorry, internal server error'});
 
-            return res.json({ msg: 'User successfully registered' });
+            return res.json({msg: 'User successfully registered'});
         });
 
     });
@@ -32,7 +34,10 @@ const user = require('../models/user');
 
         user.find(data)
             .then((data) => {
-                return res.json(data);
+                const sess = req.session;
+                sess.mail = data[0].mail;
+
+                return res.json({msg: 'User logged in'});
             })
             .catch((error) => {
                 return res.status(500).send(error);

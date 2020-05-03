@@ -19,7 +19,7 @@ const FeedLine = ({image, title, date, description}) => {
                 {description}
 
                 <div className='d-flex flex-row justify-content-end'>
-                    <a href='#' className='btn btn-warning'> Plus.. </a>
+                    <button className='btn btn-warning'> Plus..</button>
                 </div>
             </div>
         </div>

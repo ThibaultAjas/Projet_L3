@@ -16,10 +16,7 @@ const comment = require('../models/comment');
 
         //.save
         newEvent.save((error) => {
-            if (error) {
-                res.status(500).json({msg: 'Sorry, internal server error'});
-                return
-            }
+            if (error) return res.status(500).json({msg: 'Sorry, internal server error'});
 
             // user
             return res.json({ // status 200

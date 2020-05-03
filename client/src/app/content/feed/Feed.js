@@ -3,6 +3,7 @@ import FeedLine from "./FeedLine";
 import axios from 'axios';
 
 import '../../stylesheets/feed.css';
+import LoginScreen from "../login/LoginScreen";
 
 class Feed extends React.Component {
 
@@ -63,9 +64,7 @@ class Feed extends React.Component {
         );
         else
             return (
-                <div className='p-5 mx-lg-5 mx-md-2 mx-sm-2 feed'>
-                    You are not logged in, please log in or register
-                </div>
+                <LoginScreen/>
             );
     }
 }

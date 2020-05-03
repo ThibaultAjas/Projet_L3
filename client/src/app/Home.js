@@ -11,14 +11,16 @@ import SwapFeedButtons from "./content/swap_feed_buttons/SwapFeedButtons";
 const Home = ({ content, logged }) => {
 		return (
 			<div className="d-flex">
-				<ProfileBar logged={logged}/>
+				{ (logged) ? <ProfileBar/> : <></> }
+
 				<div className="d-flex flex-column w-100">
-					<Header/>
-					<SwapFeedButtons/>
+					<Header logged={logged} />
+					{ (logged) ? <SwapFeedButtons/> : <> </> }
 
 					{content}
 				</div>
-				<FriendsBar/>
+
+				{ (logged) ? <FriendsBar /> : <></> }
 			</div>
 		);
 };

@@ -14,7 +14,6 @@ import Home from "./app/Home";
 import MapDisplay from "./app/content/map/MapDisplay";
 import Profile from "./app/content/profile/Profile";
 import Feed from "./app/content/feed/Feed";
-import Login from "./app/content/login/LoginForm";
 import LoginScreen from "./app/content/login/LoginScreen";
 
 class App extends React.Component {

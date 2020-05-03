@@ -27,34 +27,12 @@ const log_content = [
 	}
 ];
 
-const not_log_content =
-	[
-		{ 	'name' : 'Créer un compte',
-			'icon' : 'fas fa-hand-point-right mr-3',
-			'href' : '/register'
-		}
-	];
-
-const ProfileBar = ({ logged }) => {
-	let content;
-
-	if (logged) {
-		content = log_content;
-	} else {
-		content = not_log_content;
-	}
+const ProfileBar = () => {
 
 	return (
 			<nav id='profileBar' className='d-flex flex-column profileBar-hidden'>
-				{
-					(logged)	? 	<>
-										<ProfileBarTopSection/>
-									</>
-								:	<>
-										{/*login*/}
-									</>
-				}
-				<ProfileBarContent content={content}/>
+				<ProfileBarTopSection/>
+				<ProfileBarContent content={log_content}/>
 			</nav>
 	);
 };

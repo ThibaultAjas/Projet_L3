@@ -24,6 +24,10 @@ class App extends React.Component {
         logged: false
     };
 
+    componentDidMount = () => {
+        this.verifyIsLogged();
+    };
+
     /*
     handleChange = ({ target }) => {
         const { name, value } = target;
@@ -80,11 +84,6 @@ class App extends React.Component {
     };
 
     render() {
-
-        console.log('State: ', this.state);
-
-        let logged = false;
-        // JSX
         return(
             <Router>
                 <Switch>

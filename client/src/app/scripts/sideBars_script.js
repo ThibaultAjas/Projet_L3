@@ -75,9 +75,6 @@ let initSideBarsComponents = (
 	H_FRIENDS_BAR_ACTIVATOR = friendsBarActivators;
 	H_HIDE_FRIENDS_BAR = friendsBarHideIcon;
 	H_SHOW_FRIENDS_BAR = friendsBarShowIcon;
-
-	H_PROFILE_BAR_ACTIVATOR.click( () => activateSideBar(PROFILE_BAR) );
-	H_FRIENDS_BAR_ACTIVATOR.click( () => activateSideBar(FRIENDS_BAR) );
 };
 
-export default initSideBarsComponents ;
+export  {initSideBarsComponents, activateSideBar} ;

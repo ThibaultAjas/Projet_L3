@@ -14,6 +14,8 @@ $(document).ready( () => {
 	let isProfileBarOpened = false;
 	let isFriendsBarOpened = false;
 
+	console.log(H_HIDE_PROFILE_BAR.attr('id'));
+
 	let moveSideBar = ( bar ) => {
 		let marginSide = ( bar === PROFILE_BAR ) ? "margin-left" : "margin-right";
 		let currentMargin = parseInt(bar.css(marginSide), 10);
@@ -24,9 +26,6 @@ $(document).ready( () => {
 			if ( marginSide === "margin-right" ) bar.animate({"margin-right" : (currentMargin === 0) ? '-300px' : '0'});
 		}
 	};
-
-
-	/*codobze*/
 
 	/* toggle icons visibility */
 	let toggleIcons = ( iconToHide, iconToShow ) => {

@@ -12,6 +12,13 @@ class LoginForm extends React.Component {
         password: ''
     };
 
+    componentDidMount() {
+        this.setState({
+            mail: cookies.get('mail'),
+            password: cookies.get('password')
+        });
+    }
+
     handleChange = ({target}) => {
         const {name, value} = target;
         this.setState({[name]: value});
@@ -62,10 +69,10 @@ class LoginForm extends React.Component {
                 <h1 className="h3 mb-3 font-weight-normal "> Please sign in</h1>
 
                 <input type="email" className="form-control inputreg" placeholder="Email address" name="mail" required
-                       autoFocus value = { cookies.get('mail') } onChange = { this.handleChange } />
+                       autoFocus value = { this.state.mail } onChange = { this.handleChange } />
 
                 <input type="password" className="form-control mb-1 inputreg" placeholder="Password" name="password"
-                       required value = { cookies.get('password') } onChange = { this.handleChange }/>
+                       required value = { this.state.password } onChange = { this.handleChange }/>
 
                 <div className="checkbox mb-3">
                     <input type="checkbox" value="remember-me" onClick={ this.rememberMe }/>

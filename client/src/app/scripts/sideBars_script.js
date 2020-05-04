@@ -25,6 +25,9 @@ $(document).ready( () => {
 		}
 	};
 
+
+	/*codobze*/
+
 	/* toggle icons visibility */
 	let toggleIcons = ( iconToHide, iconToShow ) => {
 		/* hide element */
@@ -69,7 +72,6 @@ $(document).ready( () => {
 	let toggleElementVisibility = ( element, toShow ) => {
 		if (toShow) element.fadeIn(0);
 		else 		element.fadeOut();
-
 	};
 
 	IsAvailable();

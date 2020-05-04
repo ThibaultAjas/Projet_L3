@@ -8,30 +8,6 @@ const user = require('../models/user');
 const event = require('../models/event');
 const comment = require('../models/comment');
 
-// Routes
-/*router.post('/save', (req, res) => {
-    console.log('body: ', req.body);
-    const data = req.body;
-
-    data.password = 'test';
-    console.log('Data: ', data);
-
-    const newUser = new user(data);
-
-    //.save
-    newUser.save((error) => {
-        if (error) {
-            res.status(500).json({msg: 'Sorry, internal server error'});
-            return
-        }
-
-        // user
-        return res.json({ // status 200
-            msg: 'Your data has been saved !'
-        });
-    });
-});*/
-
 router.post('/verify', (req, res) => {
     const sess = req.session;
 
@@ -51,6 +27,7 @@ router.post('/logout', (req, res) => {
         if (err) {
             return console.log(err);
         }
+        console.log('Session destroyed');
         res.redirect('/');
     });
 });

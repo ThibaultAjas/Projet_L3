@@ -49,4 +49,19 @@ const user = require('../models/user');
     });
 }
 
+{
+    router.post('/getFollowers', (req, res) => {
+       const data = req.body;
+       const sess = req.session;
+
+       user.find({mail: sess.mail})
+           .then((data) => {
+               return res.json(data[0].followers);
+           })
+           .catch((error) => {
+               return res.status(500).send(error);
+           });
+    });
+}
+
 module.exports = router;

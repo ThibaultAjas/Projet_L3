@@ -13,10 +13,12 @@ class LoginForm extends React.Component {
     };
 
     componentDidMount() {
-        this.setState({
-            mail: cookies.get('mail'),
-            password: cookies.get('password')
-        });
+        if (cookies.get('mail')) {
+            this.setState({
+                mail: cookies.get('mail'),
+                password: cookies.get('password')
+            });
+        }
     }
 
     handleChange = ({target}) => {

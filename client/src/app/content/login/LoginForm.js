@@ -1,5 +1,9 @@
 import React from "react";
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
+let doRemember = false;
 
 class LoginForm extends React.Component {
 
@@ -31,6 +35,12 @@ class LoginForm extends React.Component {
                 const pl = response.data[0];
                 console.log('response: ', pl);
                 console.log('redirection en cours');
+
+                if (doRemember) {
+                    cookies.set('mail', this.state.mail);
+                    cookies.set('password', this.state.password);
+                }
+
                 window.location.href = '/';
                 this.resetUserInputs();
             })
@@ -47,6 +57,11 @@ class LoginForm extends React.Component {
         });
     };
 
+    rememberMe = () => {
+        doRemember = true;
+    };
+
+
     render() {
         return (
             <form className="form-login text-center" onSubmit={this.submit}>
@@ -54,12 +69,13 @@ class LoginForm extends React.Component {
                 <h1 className="h3 mb-3 font-weight-normal "> Please sign in</h1>
 
                 <input type="email" className="form-control inputreg" placeholder="Email address" name="mail" required
-                       autoFocus value={this.state.mail} onChange={this.handleChange}/>
+                       autoFocus value = { this.state.mail } onChange = { this.handleChange } />
+
                 <input type="password" className="form-control mb-1 inputreg" placeholder="Password" name="password"
-                       required value={this.state.password} onChange={this.handleChange}/>
+                       required value = { this.state.password } onChange = { this.handleChange }/>
 
                 <div className="checkbox mb-3">
-                    <input type="checkbox" value="remember-me"/>
+                    <input type="checkbox" value="remember-me" onClick={ this.rememberMe }/>
                     Remember me
                 </div>
                 <button className="btn btn-lg btn-primary btn-block" type="submit">

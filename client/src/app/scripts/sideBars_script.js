@@ -1,5 +1,6 @@
 import $ from "jquery";
 import IsAvailable from "../content/geolocation/IsAvailable";
+import GetCurrentLocation from "../content/geolocation/GetCurrentLoc";
 
 $(document).ready( () => {
 	const PROFILE_BAR = $('#profileBar');
@@ -73,7 +74,9 @@ $(document).ready( () => {
 		else 		element.fadeOut();
 	};
 
+	console.log(H_HIDE_PROFILE_BAR.attr('id'));
 	IsAvailable();
-	H_PROFILE_BAR_ACTIVATOR.click( () => activateProfileBar(PROFILE_BAR) );
-	H_FRIENDS_BAR_ACTIVATOR.click( () => activateSideBar(FRIENDS_BAR) );
+	GetCurrentLocation();
+	$(H_PROFILE_BAR_ACTIVATOR).click( () => activateProfileBar(PROFILE_BAR) );
+	$(H_FRIENDS_BAR_ACTIVATOR).click( () => activateSideBar(FRIENDS_BAR) );
 });

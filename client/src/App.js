@@ -74,6 +74,7 @@ class App extends React.Component {
     //     );
     // }
 
+    //TODO: penser à aller supprimer le passage de paramètres, et à juste faire un appel au cookie
     render() {
         return (
                 <Router>

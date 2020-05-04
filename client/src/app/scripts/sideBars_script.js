@@ -24,8 +24,12 @@ $(document).ready( () => {
 		}
 	};
 
-	let hide_hideIcon = ( iconToHide, iconToShow ) => {
+	/* toggle icons visibility */
+	let toggleIcons = ( iconToHide, iconToShow ) => {
+		/* hide element */
 		toggleElementVisibility( iconToHide, false );
+
+		/* after 400 ms, show another one */
 		setTimeout( () => {
 			toggleElementVisibility( iconToShow, true );
 		}, 400);
@@ -36,8 +40,8 @@ $(document).ready( () => {
 			isProfileBarOpened = ! isProfileBarOpened;
 			moveSideBar( PROFILE_BAR );
 
-			if (H_SHOW_PROFILE_BAR.is(':visible')) hide_hideIcon( H_SHOW_PROFILE_BAR, H_HIDE_PROFILE_BAR );
-			else hide_hideIcon( H_HIDE_PROFILE_BAR, H_SHOW_PROFILE_BAR  );
+			if (H_SHOW_PROFILE_BAR.is(':visible')) toggleIcons( H_SHOW_PROFILE_BAR, H_HIDE_PROFILE_BAR );
+			else toggleIcons( H_HIDE_PROFILE_BAR, H_SHOW_PROFILE_BAR  );
 		}
 
 		console.log(H_HIDE_PROFILE_BAR);
@@ -48,8 +52,8 @@ $(document).ready( () => {
 			isFriendsBarOpened = ! isFriendsBarOpened;
 			moveSideBar( FRIENDS_BAR );
 
-			if (H_SHOW_FRIENDS_BAR.is(':visible')) hide_hideIcon( H_SHOW_FRIENDS_BAR, H_HIDE_FRIENDS_BAR );
-			else hide_hideIcon( H_HIDE_FRIENDS_BAR, H_SHOW_FRIENDS_BAR );
+			if (H_SHOW_FRIENDS_BAR.is(':visible')) toggleIcons( H_SHOW_FRIENDS_BAR, H_HIDE_FRIENDS_BAR );
+			else toggleIcons( H_HIDE_FRIENDS_BAR, H_SHOW_FRIENDS_BAR );
 		}
 	};
 
@@ -61,10 +65,10 @@ $(document).ready( () => {
 		}
 	};
 
-//	fade(Out/In) a list of elements
 	let toggleElementVisibility = ( element, toShow ) => {
 		if (toShow) element.fadeIn(0);
 		else 		element.fadeOut();
+
 	};
 
 	H_PROFILE_BAR_ACTIVATOR.click( () => activateSideBar(PROFILE_BAR) );

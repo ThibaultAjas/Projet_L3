@@ -1,6 +1,8 @@
 .card {
-    margin-top: 150px;
+    margin-top: 20px;
     max-height: 400px;
+
+    border-radius: 10px;
 }
 
 .card img {
@@ -9,4 +11,29 @@
     object-fit: fill;
 }
 
-.feed { margin-top: 100px; }
+#feed-interactions-div {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.feed-interactions-icons { cursor: pointer; }
+
+#dislike-icon:hover { color: red; }
+#like-icon:hover  { color: dodgerblue; }
+#comment-icon:hover { color: orange; }
+#share-icon:hover { color: green; }
+#favorite-icon:hover { color: goldenrod; }
+
+#separator { border-right: 1px solid grey; }
+
+#dots-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+#event-pic, #description-div {
+    max-height: 10em;
+}

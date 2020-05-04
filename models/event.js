@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let eventSchema = new Schema({
     location: [{
-        xpos: Number,
-        ypos: Number
+        latitude: Number,
+        longitude: Number
     }],
     country: String,
     city: String,

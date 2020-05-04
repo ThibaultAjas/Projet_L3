@@ -9,6 +9,7 @@ let userSchema = new Schema({
     lastName: String,
     pseudonym: String,
     password: {type: String, required: true},
+    address: String,
     config: Array,
     followers: [{
         mail: String,

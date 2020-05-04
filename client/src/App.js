@@ -28,43 +28,6 @@ class App extends React.Component {
         this.verifyIsLogged();
     }
 
-    /*
-    handleChange = ({ target }) => {
-        const { name, value } = target;
-
-        this.setState({ [name]: value });
-    };
-
-    submit = (event) => {
-        event.preventDefault();
-
-        const payload = {
-            mail: this.state.mail,
-            firstName: this.state.username
-        };
-
-        axios({
-            url: '/api/save',
-            method: 'POST',
-            data: payload
-        })
-            .then(() => {
-                console.log('Data has been sent to the server');
-                this.resetUserInputs();
-            })
-            .catch(() => {
-                console.log('Internal server error');
-            });
-    };
-
-    resetUserInputs = () => {
-      this.setState({
-          mail: '',
-          username: ''
-      });
-    };
-    */
-
     verifyIsLogged = () => {
         const payload = {mail: this.state.mail};
         axios({

@@ -17,6 +17,10 @@ import Feed from "./app/content/feed/Feed";
 import LoginScreen from "./app/content/login/LoginScreen";
 import RegisterScreen from "./app/content/register/RegisterScreen";
 
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
+
 class App extends React.Component {
 
     state = {

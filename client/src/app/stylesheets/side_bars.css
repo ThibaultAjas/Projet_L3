@@ -23,7 +23,7 @@
 
 ul { list-style: none; }
 .list-element a { color: inherit; }
-.list-element a:hover { text-decoration: inherit; }
+.list-element a:hover { text-decoration: inherit; color: white;}
 .list-element { border-bottom: 1px solid #3a4147; }
 .profileBar-hidden { margin-left: -300px; }
 
@@ -45,10 +45,7 @@ ul { list-style: none; }
     width: 100%;
 }
 
-.profileBar-element-row a:hover {
-    background-color: #315934;
-    color: white;
-}
+.profileBar-element-row a:hover { background-color: #315934; }
 .profileBar-element-row a { font-size: 16px; }
 
 #profileBar-top-section-title { cursor: default; }

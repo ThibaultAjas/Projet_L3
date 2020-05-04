@@ -14,17 +14,12 @@ class LoginForm extends React.Component {
 
     handleChange = ({target}) => {
         const {name, value} = target;
-
         this.setState({[name]: value});
-        console.log(this.state);
     };
 
     submit = (event) => {
         event.preventDefault();
-
         const payload = {mail: this.state.mail, password: this.state.password};
-
-        console.log('yolo');
 
         axios({
             url: '/user/login',
@@ -33,8 +28,6 @@ class LoginForm extends React.Component {
         })
             .then((response) => {
                 const pl = response.data[0];
-                console.log('response: ', pl);
-                console.log('redirection en cours');
 
                 if (doRemember) {
                     cookies.set('mail', this.state.mail);

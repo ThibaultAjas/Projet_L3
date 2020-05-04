@@ -15,7 +15,6 @@ $(document).ready( () => {
 	let isProfileBarOpened = false;
 	let isFriendsBarOpened = false;
 
-	console.log(H_HIDE_PROFILE_BAR.attr('id'));
 
 	let moveSideBar = ( bar ) => {
 		let marginSide = ( bar === PROFILE_BAR ) ? "margin-left" : "margin-right";
@@ -74,9 +73,6 @@ $(document).ready( () => {
 		else 		element.fadeOut();
 	};
 
-	console.log(H_HIDE_PROFILE_BAR.attr('id'));
-	IsAvailable();
-	GetCurrentLocation();
 	$(H_PROFILE_BAR_ACTIVATOR).click( () => activateProfileBar(PROFILE_BAR) );
 	$(H_FRIENDS_BAR_ACTIVATOR).click( () => activateSideBar(FRIENDS_BAR) );
 });

@@ -9,6 +9,8 @@ import '../../stylesheets/mapDisplay.css';
 import L from 'leaflet';
 import MarkerDisplay from "./MarkerDisplay";
 import LoginScreen from "../login/LoginScreen";
+import GetCurrentLoc from "../geolocation/GetCurrentLoc";
+import Cookies from "universal-cookie";
 
 let DefaultIcon=L.icon({
     iconUrl:icon,
@@ -16,33 +18,54 @@ let DefaultIcon=L.icon({
 });
 L.Marker.prototype.options.icon=DefaultIcon;
 
+const appCookies = new Cookies();
 
-const MapDisplay = ({ logged })=> {
 
-    if (logged) {
-        return(
-            <Map
-                center={[50, 10]}
-                zoom={6}
-                maxZoom={18}
-                attributionControl={true}
-                zoomControl={true}
-                doubleClickZoom={true}
-                scrollWheelZoom={true}
-                dragging={true}
-                animate={true}
-                easeLinearity={0.35}
-            >
-                <TileLayer
-                    url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                />
+class MapDisplay extends React.Component{
 
-                <MarkerDisplay position={ [ 50, 10 ] } popupMessage="enfin ça marche " />
-            </Map>
-        );
-    } else {
-        return ( <LoginScreen/> );
-    }
+    state={
+        lat:0,
+        long:0
+    };
+
+
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition((position) => {
+            this.state.lat=position.coords.latitude;
+            this.state.long=position.coords.longitude;
+            this.forceUpdate();
+        });
+    };
+
+    render() {
+        if (appCookies.get('isLogged')==='true') {
+
+            let lat, long = GetCurrentLoc();
+            let tmp = [lat, long];
+            return (
+                <Map
+                    center={[50, 10]}
+                    zoom={6}
+                    maxZoom={18}
+                    attributionControl={true}
+                    zoomControl={true}
+                    doubleClickZoom={true}
+                    scrollWheelZoom={true}
+                    dragging={true}
+                    animate={true}
+                    easeLinearity={0.35}
+                >
+                    <TileLayer
+                        url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                    />
+
+                    <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici"/>
+                </Map>
+            );
+        } else {
+            return (<LoginScreen/>);
+        }
+    };
 };
 
 

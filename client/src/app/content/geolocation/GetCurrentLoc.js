@@ -1,10 +1,19 @@
-import React from "react";
+import {getPosition} from "leaflet/src/dom/DomUtil";
 
-const  GetCurrentLocation = () => {
+const  GetCurrentLoc = () => {
+    let lat=0;
+    let long=0;
+
     navigator.geolocation.getCurrentPosition(function(position) {
-        console.log(position.coords.latitude);
-        console.log(position.coords.longitude);
-    })
+        lat=(position.coords.latitude);
+        long=(position.coords.longitude);
+
+
+    });
+
+
+
+    return(lat,long);
 };
 
-export default GetCurrentLocation;
+export default GetCurrentLoc;

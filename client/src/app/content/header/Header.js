@@ -14,6 +14,8 @@ const Header = ({ logged }) => {
 							: <> </>
 			}
 
+			{/* conso*/}
+
 			<a id='h-title' href='/'><h1> GREENSTAGRAM </h1></a>
 
 			{

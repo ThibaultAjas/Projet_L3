@@ -76,7 +76,6 @@ class App extends React.Component {
                 const data = response.data;
 
                 this.setState({mail: data.mail, logged: data.logged});
-                console.log('State: ', this.state);
                 this.forceUpdate();
             })
             .catch((error) => {

@@ -1,4 +1,5 @@
 import $ from "jquery";
+import IsAvailable from "../content/geolocation/IsAvailable";
 
 $(document).ready( () => {
 	const PROFILE_BAR = $('#profileBar');
@@ -71,6 +72,7 @@ $(document).ready( () => {
 
 	};
 
-	H_PROFILE_BAR_ACTIVATOR.click( () => activateSideBar(PROFILE_BAR) );
+	IsAvailable();
+	H_PROFILE_BAR_ACTIVATOR.click( () => activateProfileBar(PROFILE_BAR) );
 	H_FRIENDS_BAR_ACTIVATOR.click( () => activateSideBar(FRIENDS_BAR) );
 });

@@ -45,8 +45,11 @@ ul { list-style: none; }
     width: 100%;
 }
 
-.profileBar-element-row:hover { background-color: #315934; }
-.profileBar-element a { font-size: 16px; }
+.profileBar-element-row a:hover {
+    background-color: #315934;
+    color: white;
+}
+.profileBar-element-row a { font-size: 16px; }
 
 #profileBar-top-section-title { cursor: default; }
 

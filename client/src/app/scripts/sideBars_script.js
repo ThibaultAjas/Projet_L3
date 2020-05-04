@@ -1,6 +1,4 @@
 import $ from "jquery";
-import IsAvailable from "../content/geolocation/IsAvailable";
-import GetCurrentLocation from "../content/geolocation/GetCurrentLoc";
 
 $(document).ready( () => {
 	const PROFILE_BAR = $('#profileBar');

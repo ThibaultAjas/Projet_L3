@@ -6,6 +6,8 @@ import FriendsBar from "./content/side_bars/friends_bar/FriendsBar";
 import SwapFeedButtons from "./content/swap_feed_buttons/SwapFeedButtons";
 
 import './scripts/sideBars_script';
+import './scripts/feed_script';
+
 const Home = ({ content, logged }) => {
 		return (
 			<div className="d-flex">

@@ -3,9 +3,6 @@ import FeedLine from "./FeedLine";
 import axios from 'axios';
 
 import '../../stylesheets/feed.css';
-import LoginScreen from "../login/LoginScreen";
-
-// import LoginScreen from "../login/LoginScreen";
 
 class Feed extends React.Component {
     state = {
@@ -34,7 +31,8 @@ class Feed extends React.Component {
                     this.state.events.map((element, index) =>
                         <FeedLine
                             key={index}
-                            image='https://www.opengovguide.com/wp-content/uploads/2019/07/rw-a-tool-for-sustainable-land-use-management-in-rwanda-homepage-780x439.jpg'
+                            id={index}
+                            imageURL='https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
                             title={element.title}
                             date={element.date}
                             dateAjout={element.dateAjout}

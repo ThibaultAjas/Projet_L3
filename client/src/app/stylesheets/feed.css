@@ -1,14 +1,22 @@
-.card {
+.feedLine {
     margin-top: 20px;
     max-height: 400px;
 
     border-radius: 10px;
 }
 
-.card img {
+.feedLine img {
     max-width: 50%;
     height: auto;
     object-fit: fill;
+}
+
+.dotsPopup {
+    position: absolute;
+    right: 1em;
+    top: -4.5em;
+
+    z-index: 2;
 }
 
 #feed-interactions-div {
@@ -27,7 +35,7 @@
 
 #separator { border-right: 1px solid grey; }
 
-#dots-icon {
+.dots-icon {
     position: absolute;
     top: 0;
     right: 0;

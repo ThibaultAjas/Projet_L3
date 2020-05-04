@@ -2,7 +2,7 @@ import React from "react";
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 
-const cookies = new Cookies();
+const cookies = new Cookies("appCookies");
 let doRemember = false;
 
 class LoginForm extends React.Component {
@@ -43,6 +43,7 @@ class LoginForm extends React.Component {
                     cookies.set('password', this.state.password);
                 }
 
+                cookies.set("isLogged", true);
                 window.location.href = '/';
                 this.resetUserInputs();
             })

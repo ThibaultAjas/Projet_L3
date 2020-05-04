@@ -1,6 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -18,8 +17,9 @@ import LoginScreen from "./app/content/login/LoginScreen";
 import RegisterScreen from "./app/content/register/RegisterScreen";
 
 import Cookies from 'universal-cookie';
+import Logout from "./app/content/Logout";
 
-const cookies = new Cookies();
+const appCookies = new Cookies();
 
 class App extends React.Component {
 
@@ -29,46 +29,70 @@ class App extends React.Component {
     };
 
     componentDidMount() {
+        if (! appCookies.get('isLogged')) appCookies.set('isLogged', false, { path: '/' });
+        console.log(appCookies.get('isLogged'));
         this.verifyIsLogged();
     }
 
     verifyIsLogged = () => {
-        const payload = {mail: this.state.mail};
-        axios({
-            url: '/api/verify',
-            method: 'POST',
-            data: payload
-        })
-            .then((response) => {
-                const data = response.data;
-
-                this.setState({mail: data.mail, logged: data.logged});
-                this.forceUpdate();
-            })
-            .catch((error) => {
-                console.log('Internal server error');
-            });
+        return ( appCookies.get( 'isLogged' ) === 'true' );
+        // const payload = {mail: this.state.mail};
+        // axios({
+        //     url: '/api/verify',
+        //     method: 'POST',
+        //     data: payload
+        // })
+        //     .then((response) => {
+        //         const data = response.data;
+        //
+        //         this.setState({mail: data.mail, logged: data.logged});
+        //         this.forceUpdate();
+        //     })
+        //     .catch((error) => {
+        //         console.log('Internal server error');
+        //     });
     };
 
     // TODO: Pour l'instant, si on est pas connecté il nous redirige vers le Feed, faire en sorte qu'il nous redirige plutot vers la page de login
+    // render() {
+    //     return (
+    //         <Router>
+    //             <Switch>
+    //                 <Route path="/register" > <RegisterScreen />                                                    </Route>
+    //                 <Route path="/login"    > <LoginScreen />                                                       </Route>
+    //                 <Route path="/profile"  > <Home
+    //                                                 content = { <Profile /> }
+    //                                                 logged  = { this.state.logged } />                              </Route>
+    //                 <Route path="/map"      > <Home
+    //                                                 content = { <MapDisplay logged = { this.state.logged } /> }
+    //                                                 logged  = { this.state.logged } />                              </Route>
+    //                 <Route path="/"         > <Home
+    //                                                 content = { (this.state.logged) ? <Feed /> : <LoginScreen /> }
+    //                                                 logged  = { this.state.logged } />                              </Route>
+    //             </Switch>
+    //         </Router>
+    //     );
+    // }
+
     render() {
         return (
-            <Router>
-                <Switch>
-                    <Route path="/register" > <RegisterScreen />                                                    </Route>
-                    <Route path="/login"    > <LoginScreen />                                                       </Route>
-                    <Route path="/profile"  > <Home
-                                                    content = { <Profile /> }
-                                                    logged  = { this.state.logged } />                              </Route>
-                    <Route path="/map"      > <Home
-                                                    content = { <MapDisplay logged = { this.state.logged } /> }
-                                                    logged  = { this.state.logged } />                              </Route>
-                    <Route path="/"         > <Home
-                                                    content = { (this.state.logged) ? <Feed /> : <LoginScreen /> }
-                                                    logged  = { this.state.logged } />                              </Route>
-                </Switch>
-            </Router>
-        );
+                <Router>
+                    <Switch>
+                        <Route path='/logout'   > <Logout />                                                                </Route>
+                        <Route path="/register" > <RegisterScreen />                                                        </Route>
+                        <Route path="/login"    > <LoginScreen />                                                           </Route>
+                        <Route path="/profile"  > <Home
+                                                        content = { <Profile /> }
+                                                        logged  = { this.verifyIsLogged() } />                              </Route>
+                        <Route path="/map"      > <Home
+                                                        content = { <MapDisplay logged = { this.verifyIsLogged() } /> }
+                                                        logged  = { this.verifyIsLogged() } />                              </Route>
+                        <Route path="/"         > <Home
+                                                        content = { (this.verifyIsLogged()) ? <Feed /> : <LoginScreen /> }
+                                                        logged  = { this.verifyIsLogged()} />                               </Route>
+                    </Switch>
+                </Router>
+            );
     }
 }
 

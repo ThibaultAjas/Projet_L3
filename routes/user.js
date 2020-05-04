@@ -15,15 +15,19 @@ const user = require('../models/user');
 // CRUD: Create
 {
     router.post('/register', (req, res) => {
+        console.log('yolo');
         const data = req.body;
         const usr = new user(data);
 
         usr.save((error) => {
-            if (error) return res.status(500).json({msg: 'Sorry, internal server error'});
+
+            if (error) {
+                if (error.code = 11000) return res.status(500).json({msg: 'Sorry, internal server error', error: 'Mail already registered'});
+                return res.status(500).json({msg: 'Sorry, internal server error', error: 'Unknown'});
+            }
 
             return res.json({msg: 'User successfully registered'});
         });
-
     });
 }
 

@@ -53,7 +53,6 @@ class App extends React.Component {
         //     });
     };
 
-    // TODO: Pour l'instant, si on est pas connecté il nous redirige vers le Feed, faire en sorte qu'il nous redirige plutot vers la page de login
     // render() {
     //     return (
     //         <Router>

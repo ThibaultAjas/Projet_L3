@@ -56,7 +56,7 @@ class LoginForm extends React.Component {
                 <input type="email" className="form-control inputreg" placeholder="Email address" name="mail" required
                        autoFocus value={this.state.mail} onChange={this.handleChange}/>
                 <input type="password" className="form-control mb-1 inputreg" placeholder="Password" name="password"
-                       required autoFocus value={this.state.password} onChange={this.handleChange}/>
+                       required value={this.state.password} onChange={this.handleChange}/>
 
                 <div className="checkbox mb-3">
                     <input type="checkbox" value="remember-me"/>

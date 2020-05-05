@@ -18,6 +18,7 @@ import Logout from "./app/content/Logout";
 
 import { isLogged, setLogged } from "./app/content/cookies/app_cookies";
 import AddEventScreen from "./app/content/map/AddEventScreen";
+import MyActions from "./app/content/profile/actions/MyActions";
 
 class App extends React.Component {
 
@@ -32,13 +33,14 @@ class App extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <route path='/AddEvent'>  <AddEventScreen/>                                                 </route>
-                    <Route path='/logout'   > <Logout />                                                        </Route>
-                    <Route path="/register" > <RegisterScreen />                                                </Route>
-                    <Route path="/login"    > <LoginScreen />                                                   </Route>
-                    <Route path="/profile"  > <Home content = { <Profile /> } />                                </Route>
-                    <Route path="/map"      > <Home content = { <MapDisplay /> }/>                              </Route>
-                    <Route path="/"         > <Home content = { (isLogged()) ? <Feed /> : <LoginScreen /> }/>   </Route>
+                    <route path='/profile/actions'   > <MyActions/>                                                      </route>
+                    <route path='/AddEvent'         > <AddEventScreen/>                                                 </route>
+                    <Route path='/logout'           > <Logout />                                                        </Route>
+                    <Route path="/register"         > <RegisterScreen />                                                </Route>
+                    <Route path="/login"            > <LoginScreen />                                                   </Route>
+                    <Route path="/profile"          > <Home content = { <Profile /> } />                                </Route>
+                    <Route path="/map"              > <Home content = { <MapDisplay /> }/>                              </Route>
+                    <Route path="/"                 > <Home content = { (isLogged()) ? <Feed /> : <LoginScreen /> }/>   </Route>
                 </Switch>
             </Router>
         );

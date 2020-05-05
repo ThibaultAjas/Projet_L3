@@ -13,8 +13,6 @@ const Home = ({ content, logged }) => {
 			<div className="d-flex">
 				{ (logged) ? <ProfileBar/> : <></> }	{/* if not logged in, doens't show side bars*/}
 
-				{/*dspvinpvn*/}
-
 				<div className="d-flex flex-column w-100">
 					<Header logged = { logged } />
 

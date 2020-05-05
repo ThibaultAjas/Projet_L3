@@ -1,5 +1,6 @@
 import $ from 'jquery';
 
 $(document).ready( () => {
-	$('#like-icon').click( () => console.log('coucou') );
+	console.log(document);
+	$('#dots-icon').click( () => console.log('coucou') );
 });

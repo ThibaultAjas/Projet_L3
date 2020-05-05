@@ -21,10 +21,6 @@ const fillDB = async () => {
     const event = require('./models/event');
     const comment = require('./models/comment');
 
-    // await user.drop();
-    // await event.drop();
-    // await comment.drop();
-
     await mongoose.connection.collection('users').drop((err) => console.log('User collection dropped'));
     await mongoose.connection.collection('events').drop((err) => console.log('User event dropped'));
     await mongoose.connection.collection('comments').drop((err) => console.log('User comment dropped'));

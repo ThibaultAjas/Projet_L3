@@ -8,20 +8,15 @@ import '@fortawesome/fontawesome-free/js/all';
 
 import './App.css';
 
-
 import Home from "./app/Home";
 import MapDisplay from "./app/content/map/MapDisplay";
 import Profile from "./app/content/profile/Profile";
 import Feed from "./app/content/feed/Feed";
 import LoginScreen from "./app/content/login/LoginScreen";
 import RegisterScreen from "./app/content/register/RegisterScreen";
-
-// import Cookies from 'universal-cookie';
 import Logout from "./app/content/Logout";
 
 import { isLogged, setLogged } from "./app/content/cookies/app_cookies";
-
-// const appCookies = new Cookies();
 
 class App extends React.Component {
 
@@ -30,15 +25,24 @@ class App extends React.Component {
         logged: false
     };
 
-    componentDidMount() {
-        // if (! appCookies.get('isLogged')) appCookies.set('isLogged', false, { path: '/' });
-        // console.log(appCookies.get('isLogged'));
+    componentDidMount() { if (! isLogged()) setLogged( false ); }
 
-        if (! isLogged()) setLogged( false );
-        // this.verifyIsLogged();
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    <Route path='/logout'   > <Logout />                                                        </Route>
+                    <Route path="/register" > <RegisterScreen />                                                </Route>
+                    <Route path="/login"    > <LoginScreen />                                                   </Route>
+                    <Route path="/profile"  > <Home content = { <Profile /> } />                                </Route>
+                    <Route path="/map"      > <Home content = { <MapDisplay /> }/>                              </Route>
+                    <Route path="/"         > <Home content = { (isLogged()) ? <Feed /> : <LoginScreen /> }/>   </Route>
+                </Switch>
+            </Router>
+        );
     }
 
-    verifyIsLogged = () => {
+    // verifyIsLogged = () => {
         // return ( appCookies.get( 'isLogged' ) === 'true' );
         // const payload = {mail: this.state.mail};
         // axios({
@@ -55,7 +59,7 @@ class App extends React.Component {
         //     .catch((error) => {
         //         console.log('Internal server error');
         //     });
-    };
+    // };
 
     // render() {
     //     return (
@@ -76,22 +80,6 @@ class App extends React.Component {
     //         </Router>
     //     );
     // }
-
-    //TODO: penser à aller supprimer le passage de paramètres, et à juste faire un appel au cookie
-    render() {
-        return (
-                <Router>
-                    <Switch>
-                        <Route path='/logout'   > <Logout />                                                        </Route>
-                        <Route path="/register" > <RegisterScreen />                                                </Route>
-                        <Route path="/login"    > <LoginScreen />                                                   </Route>
-                        <Route path="/profile"  > <Home content = { <Profile /> } />                                </Route>
-                        <Route path="/map"      > <Home content = { <MapDisplay /> }/>                              </Route>
-                        <Route path="/"         > <Home content = { (isLogged()) ? <Feed /> : <LoginScreen /> }/>   </Route>
-                    </Switch>
-                </Router>
-            );
-    }
 }
 
 export default App;

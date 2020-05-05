@@ -7,7 +7,16 @@ import FeedDotsPopup from "./FeedDotsPopup";
 import { toggleOptionsPopupDisplay } from "../../scripts/feed_script";
 import getDateFrom from "../util/dataConverter";
 
-const FeedLine = ({ id, imageURL, title, postDate, description, city, country }) => {
+const FeedLine = ({ element }) => {
+    let id = element._id;
+    let imageURL = 'https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500';
+    let title = element.title;
+    let postDate = element.dateAdded;
+    let description = element.description;
+    let city = element.city;
+    let country = element.country;
+
+
 
     postDate = new Date( postDate );
     let date = getDateFrom('fr', postDate);
@@ -28,7 +37,7 @@ const FeedLine = ({ id, imageURL, title, postDate, description, city, country })
                 </div>
 
                 <FeedLinePost description = { description } imageURL = { imageURL } postDate={postDate}/>
-                <FeedInteractionsIcons id={id}/>
+                <FeedInteractionsIcons id={id} likes={element.likes} dislikes={element.dislikes}/>
             </div>
         </div>
     )

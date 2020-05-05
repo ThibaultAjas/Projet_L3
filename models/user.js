@@ -11,7 +11,7 @@ let userSchema = new Schema({
     password: {type: String, required: true},
     address: String,
     config: Array,
-    following: [this],
+    following: [{type: mongoose.Schema.Types.ObjectID, ref: 'user'}],
     events: [{
         event: {type: mongoose.Schema.Types.ObjectID, ref: 'event'},
         liked: false,

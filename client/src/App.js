@@ -33,7 +33,7 @@ class App extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <route path='/profile/actions'   > <MyActions/>                                                      </route>
+                    <route path='/profile/actions'  > <Home content={ <MyActions/> }/>                                  </route>
                     <route path='/AddEvent'         > <AddEventScreen/>                                                 </route>
                     <Route path='/logout'           > <Logout />                                                        </Route>
                     <Route path="/register"         > <RegisterScreen />                                                </Route>

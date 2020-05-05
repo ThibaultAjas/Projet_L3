@@ -12,6 +12,7 @@ import LoginScreen from "../login/LoginScreen";
 import GetCurrentLoc from "../geolocation/GetCurrentLoc";
 
 import { isLogged } from "../cookies/app_cookies";
+import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
 
 let DefaultIcon=L.icon({
     iconUrl:icon,
@@ -43,31 +44,34 @@ class MapDisplay extends React.Component{
             return (
 
                 <>
-                <div>
-                    <i className="fas fa-filter buttonmap"></i>
-                    <i className="fas fa-plus buttonmap"></i>
-                </div>
+
+                    <SwapFeedButtons />
+
+                    <div>
+                        <i className="fas fa-filter buttonmap"></i>
+                        <i className="fas fa-plus buttonmap"></i>
+                    </div>
+
                     <Map
-                    center={[50, 10]}
-                    zoom={6}
-                    maxZoom={18}
-                    minZoom={3}
-                    attributionControl={true}
-                    zoomControl={true}
-                    doubleClickZoom={true}
-                    scrollWheelZoom={true}
-                    dragging={true}
-                    animate={true}
-                    easeLinearity={0.35}
-                >
+                        center={[50, 10]}
+                        zoom={6}
+                        maxZoom={18}
+                        minZoom={3}
+                        attributionControl={true}
+                        zoomControl={true}
+                        doubleClickZoom={true}
+                        scrollWheelZoom={true}
+                        dragging={true}
+                        animate={true}
+                        easeLinearity={0.35}
+                    >
                     <TileLayer
                         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                         // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
 
                     <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici"/>
-                </Map>
-
+                    </Map>
                 </>
 
             );

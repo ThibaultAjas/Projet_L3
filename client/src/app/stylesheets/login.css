@@ -1,38 +1,27 @@
-
-.inputreg{
-border-radius: 0;
-}
-.inputreg:first-of-type{
+.inputreg { border-radius: 0; }
+.inputreg:first-of-type {
     border-top-left-radius: .25rem ;
     border-top-right-radius: .25rem ;
-
 }
 
-.inputreg:last-of-type{
+.inputreg:last-of-type {
     border-bottom-left-radius: .25rem ;
     border-bottom-right-radius: .25rem ;
 }
 
-.form-login{
+.form-login {
     width: 100%;
     max-width: 330px;
     padding: 15px;
-
 }
 
-.checkbox, .form-login{ font-weight: 400; }
+.checkbox, .form-login { font-weight: 400; }
 
-#login-screen{
+#login-screen {
     position: fixed;
     color:white;
 }
 
-a{
-    color:inherit;
-
-}
-
-a:hover{
-    color : #3e8249;
-}
+a { color:inherit; }
+a:hover { color : #3e8249; }
 

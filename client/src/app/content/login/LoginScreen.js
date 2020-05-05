@@ -1,5 +1,7 @@
 import React from "react";
+
 import LoginForm from "./LoginForm";
+
 import '../../stylesheets/login.css';
 
 
@@ -11,6 +13,6 @@ class LoginScreen extends React.Component {
             </div>
         );
     }
-};
+}
 
 export default LoginScreen;

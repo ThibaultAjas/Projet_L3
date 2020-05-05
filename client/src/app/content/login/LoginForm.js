@@ -7,9 +7,8 @@ import {
     setLogged, setUser
 } from "../cookies/app_cookies";
 
-let doRemember = false;
-
 class LoginForm extends React.Component {
+    doRemember = false;
 
     state = {
         mail: '',
@@ -42,11 +41,14 @@ class LoginForm extends React.Component {
             .then((response) => {
                 const user = response.data.user;
 
-                if (doRemember) {
-
-                }
-
                 setUser(user);
+
+                // TODO: check if this does work
+                // note that if you logout, it won't connect you back on new window
+                if (this.doRemember) {
+                    setSessionMail(this.state.mail);
+                    setSessionPassword(this.state.password);
+                }
 
                 setLogged( true );
                 window.location.href = '/';
@@ -66,7 +68,7 @@ class LoginForm extends React.Component {
     };
 
     rememberMe = () => {
-        doRemember = true;
+        this.doRemember = true;
     };
 
     render() {

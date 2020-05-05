@@ -1,24 +1,20 @@
 import React from "react";
 
-import { like, bigIcon } from "../../scripts/feed_script";
 import FeedInteractionIcon from "./FeedInteractionIcon";
+import { like, dislike, comment, share } from "../../scripts/feed_script";
 
-const FeedInteractionsIcons = () => {
+const FeedInteractionsIcons = ({ id }) => {
 	return (
 		<div className='d-flex flex-row align-items-baseline'>
 
 			<div id='feed-interactions-div'>
-				<FeedInteractionIcon name='like-icon' icon='far fa-thumbs-up'/>
-				<FeedInteractionIcon name='dislike-icon' icon='far fa-thumbs-down' />
-				<FeedInteractionIcon name='comment-icon' icon='far fa-comments' />
+				<FeedInteractionIcon name={'like-icon-' + id} icon='far fa-thumbs-up' call={ like }/>
+				<FeedInteractionIcon name={'dislike-icon-' + id} icon='far fa-thumbs-down' call={ dislike }/>
+				<FeedInteractionIcon name={'comment-icon-' + id} icon='far fa-comments' call={ comment }/>
 
-				<span id = 'separator'/>
+				<span id = 'separator' className='mr-1'/>
 
-				<FeedInteractionIcon name='favorite-icon' />
-				<FeedInteractionIcon name='share-icon' />
-
-				<button className='transparent-button p-0'> <i id='favorite-icon' 	className="feed-interactions-icons far fa-star mx-1"/> </button>
-				<button className='transparent-button p-0'> <i id='share-icon' 		className="feed-interactions-icons fas fa-share mr-1"/> </button>
+				<FeedInteractionIcon name={'share-icon-' + id} icon='fas fa-share' call={ share }/>
 			</div>
 
 			<button className='btn btn-warning'> Plus..</button>

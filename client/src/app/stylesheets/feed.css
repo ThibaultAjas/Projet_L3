@@ -32,12 +32,6 @@
     visibility: visible;
 }
 
-#dislike-icon:hover { color: red; }
-#like-icon:hover  { color: dodgerblue; }
-#comment-icon:hover { color: orange; }
-#share-icon:hover { color: green; }
-#favorite-icon:hover { color: goldenrod; }
-
 #separator { border-right: 1px solid grey; }
 
 .dots-icon, .transparent-button-popup {

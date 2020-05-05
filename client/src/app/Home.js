@@ -8,6 +8,7 @@ import { isLogged } from "./content/cookies/app_cookies";
 
 import './scripts/sideBars_script';
 import './scripts/feed_script';
+import SwapFeedButton from "./content/swap_feed_buttons/SwapFeedButton";
 
 
 const Home = ({ content }) => {
@@ -17,8 +18,6 @@ const Home = ({ content }) => {
 
 				<div className="d-flex flex-column w-100">
 					<Header />
-
-					{ (isLogged()) ? <SwapFeedButtons/> : <> </> }
 
 					{ content }
 				</div>

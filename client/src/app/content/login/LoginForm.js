@@ -43,8 +43,10 @@ class LoginForm extends React.Component {
                 const user = response.data.user;
 
                 if (doRemember) {
-                    setUser(user);
+
                 }
+
+                setUser(user);
 
                 setLogged( true );
                 window.location.href = '/';

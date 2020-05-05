@@ -1,5 +1,3 @@
-import {getPosition} from "leaflet/src/dom/DomUtil";
-
 const  GetCurrentLoc = () => {
     let lat=0;
     let long=0;
@@ -7,13 +5,9 @@ const  GetCurrentLoc = () => {
     navigator.geolocation.getCurrentPosition(function(position) {
         lat=(position.coords.latitude);
         long=(position.coords.longitude);
-
-
     });
 
-
-
-    return(lat,long);
+    return(lat, long);
 };
 
 export default GetCurrentLoc;

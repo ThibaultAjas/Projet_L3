@@ -4,7 +4,8 @@ import axios from 'axios';
 import {
     setSessionMail, getSessionMail,
     setSessionPassword, getSessionPassword,
-    setLogged } from "../cookies/app_cookies";
+    setLogged, setUser
+} from "../cookies/app_cookies";
 
 let doRemember = false;
 
@@ -39,19 +40,18 @@ class LoginForm extends React.Component {
             data: payload
         })
             .then((response) => {
-                const pl = response.data[0];
+                const user = response.data.user;
 
                 if (doRemember) {
-                    setSessionMail( this.state.mail );
-                    setSessionPassword( this.state.password );
+                    setUser(user);
                 }
 
                 setLogged( true );
                 window.location.href = '/';
                 this.resetUserInputs();
             })
-            .catch(() => {
-                console.log('Internal server error');
+            .catch((error) => {
+                console.log('Internal server error, ', error);
                 this.resetUserInputs();
             });
     };

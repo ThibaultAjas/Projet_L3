@@ -10,9 +10,16 @@ mongoose.connect(MONGODB_URI, {useUnifiedTopology: true});
 
 mongoose.connection.on('connected', () => {
     console.log('Mongoose is connected');
-    fillDB();
+    fillDB().then(() => Console);
 });
 
-const fillDB = () => {
+const fillDB = async () => {
+    const user = require('../models/user');
+    const event = require('../models/event');
+    const comment = require('../models/comment');
+
+    await user.remove();
+    await event.remove();
+    await comment.remove();
 
 }

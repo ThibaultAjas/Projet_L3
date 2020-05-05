@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const event = require('event');
 
 // Define User schema
 const Schema = mongoose.Schema;
@@ -14,10 +13,11 @@ let userSchema = new Schema({
     config: Array,
     following: [this],
     events: [{
-        event: event,
+        event: {type: mongoose.Schema.Types.ObjectID, ref: 'event'},
         liked: false,
         disliked: false
     }]
 });
+
 // Export Mongoose model
 module.exports = mongoose.model('user', userSchema);;

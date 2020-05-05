@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const comment = require('comment');
 
 // Define Event schema
 const Schema = mongoose.Schema;
@@ -14,7 +13,7 @@ let eventSchema = new Schema({
     dateAdded: Date,
     title: String,
     description: String,
-    comments: [comment],
+    comments: [{type: mongoose.Schema.Types.ObjectID, ref: 'comment'}],
     likes: Number,
     dislikes: Number
 });

@@ -51,6 +51,7 @@ class MapDisplay extends React.Component{
                     center={[50, 10]}
                     zoom={6}
                     maxZoom={18}
+                    minZoom={3}
                     attributionControl={true}
                     zoomControl={true}
                     doubleClickZoom={true}
@@ -61,6 +62,7 @@ class MapDisplay extends React.Component{
                 >
                     <TileLayer
                         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                        // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
 
                     <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici"/>

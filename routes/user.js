@@ -41,7 +41,7 @@ const user = require('../models/user');
                 const sess = req.session;
                 sess.mail = data[0].mail;
 
-                return res.json({msg: 'User logged in'});
+                return res.json({msg: 'User logged in', user: data[0]});
             })
             .catch((error) => {
                 return res.status(500).send(error);
@@ -51,7 +51,6 @@ const user = require('../models/user');
 
 {
     router.post('/getFollowers', (req, res) => {
-       const data = req.body;
        const sess = req.session;
 
        user.find({mail: sess.mail})

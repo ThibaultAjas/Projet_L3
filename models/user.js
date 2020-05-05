@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const event = require('event');
 
 // Define User schema
 const Schema = mongoose.Schema;
@@ -11,19 +12,14 @@ let userSchema = new Schema({
     password: {type: String, required: true},
     address: String,
     config: Array,
-    followers: [{
-        mail: String,
-        pseudo: String
-    }],
+    following: [user],
     events: [{
-        location: [{
-            xpos: Number,
-            ypos: Number
-        }],
-        date: Date,
-        title: String
+        event: event,
+        liked: false,
+        disliked: false
     }]
 });
+const user = mongoose.model('user', userSchema);
 
 // Export Mongoose model
-module.exports = mongoose.model('user', userSchema);
+module.exports = user;

@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-// const user = require('../models/user');
+const user = require('../models/user');
 const event = require('../models/event');
 // const comment = require('../models/comment');
 
@@ -43,6 +43,48 @@ const event = require('../models/event');
             })
             .catch((error) => {
                 return res.status(500).send(error);
+            });
+    });
+
+    router.post('/getAllForUser', (req, res) => {
+       const data = req.body;
+       const userMail = data.mail;
+
+       event.find({mail: userMail})
+           .then((data) => {
+               return res.json(data);
+           })
+           .catch((error) => {
+               return res.status(500).send(error);
+           });
+    });
+
+    router.post('/getAllFromFollowing', (req, res) => {
+        const data = req.body;
+        const userToFind = new user({mail: data.mail});
+
+        event.find({})
+            .then((events) => {
+                user.find(userToFind)
+                    .then((data) => {
+                        const following = data[0].following;
+
+                        let evtsFromFollowing = [];
+
+                        following.forEach((elemUser) => {
+                            let evtsFromElem = [];
+                            events.forEach((elemEvt) => {
+                                if (elemUser.events.id === elemEvt._id) {
+
+                                }
+                            });
+                            evtsFromFollowing = [...evtsFromFollowing, ...evtsFromElem];
+                        });
+
+                    })
+                    .catch((error) => {
+                        return res.status(500).send(error);
+                    });
             });
     });
 }

@@ -1,12 +1,13 @@
 import React from "react";
-import friends from "./TempFriendsFike";
 import FriendsBarFriendRow from "./FriendBarFriendRow";
+import { getUser } from "../../cookies/app_cookies";
+
 
 const FriendsBarContent = () => {
 	return (
 		<ul id='friendsBar-content' className='list-group overflow-auto'>
 			{
-				friends.map( (friend) => <FriendsBarFriendRow key = {friends.id} name={friend.name} profilePic = {friend.profilePic} />)
+				getUser().following.map( (follower) => <FriendsBarFriendRow key = {follower} name={follower} id={follower} />)
 			}
 		</ul>
 	);

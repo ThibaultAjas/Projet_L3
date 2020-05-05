@@ -10,7 +10,7 @@ import './App.css';
 
 import Home from "./app/Home";
 import MapDisplay from "./app/content/map/MapDisplay";
-import Profile from "./app/content/profile/Profile";
+import UserProfile from "./app/content/profile/UserProfile";
 import Feed from "./app/content/feed/Feed";
 import LoginScreen from "./app/content/login/LoginScreen";
 import RegisterScreen from "./app/content/register/RegisterScreen";
@@ -33,12 +33,13 @@ class App extends React.Component {
         return (
             <Router>
                 <Switch>
+                    <route path='/profile/:id'      > <Home content={ <h1> Bouh !</h1> }/>                                  </route>
                     <route path='/profile/actions'  > <Home content={ <MyActions/> }/>                                  </route>
                     <route path='/AddEvent'         > <AddEventScreen/>                                                 </route>
                     <Route path='/logout'           > <Logout />                                                        </Route>
                     <Route path="/register"         > <RegisterScreen />                                                </Route>
                     <Route path="/login"            > <LoginScreen />                                                   </Route>
-                    <Route path="/profile"          > <Home content = { <Profile /> } />                                </Route>
+                    <Route path="/profile"          > <Home content = { <UserProfile /> } />                                </Route>
                     <Route path="/map"              > <Home content = { <MapDisplay /> }/>                              </Route>
                     <Route path="/"                 > <Home content = { (isLogged()) ? <Feed /> : <LoginScreen /> }/>   </Route>
                 </Switch>

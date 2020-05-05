@@ -24,7 +24,7 @@ const CARDS = [
 ];
 
 
-const Profile = () => {
+const UserProfile = () => {
 	return (
 		<div className='w-75 mx-auto d-flex flex-wrap justify-content-start'>
 			{  CARDS.map( (card) => <ProfileCard title={card.title} descr={card.descr} href={card.href}/> ) }
@@ -32,4 +32,4 @@ const Profile = () => {
 	);
 };
 
-export default Profile;
+export default UserProfile;

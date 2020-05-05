@@ -45,3 +45,11 @@
 #event-pic, #description-div {
     max-height: 10em;
 }
+
+.dots-option { display: block; }
+.dots-option:hover {
+    text-decoration: inherit;
+    color: inherit;
+
+    background-color: antiquewhite;
+}

@@ -26,7 +26,7 @@ class Feed extends React.Component {
 
     render() {
         return (
-            <div className='p-5 mx-lg-5 mx-md-2 mx-sm-2 feed'>
+            <div id='bonjour' className='p-5 mx-lg-5 mx-md-2 mx-sm-2 feed'>
                 {
                     this.state.events.map((element, index) =>
                         <FeedLine

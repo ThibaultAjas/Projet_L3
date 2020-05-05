@@ -1,10 +1,8 @@
-// import $ from 'jquery';
-//
-// $(document).ready( () => {
-// 	console.log(document);
-// 	$('#dots-icon').on('click', () => console.log('coucou'));
-// });
+import $ from 'jquery';
 
-const syaHello = (word) => console.log(word);
+$(document).ready( () => {
+	console.log($("#like-icon").length);
 
-export default syaHello;
+	const like = $("#like-icon");
+	$(like).click( () => console.log("non"));
+});

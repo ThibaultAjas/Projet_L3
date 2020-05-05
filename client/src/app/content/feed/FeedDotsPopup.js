@@ -11,7 +11,7 @@ const FeedDotsPopup = () => {
 	return (
 		<div className='dotsPopup card align-items-end d-inline-block'>
 		{
-			options.map( option => <div className='dotsOption text-right p-1'> { option } </div> )
+			options.map( option => <a href='/' className='dots-option text-right p-1'> { option } </a> )
 		}
 		</div>
 	);

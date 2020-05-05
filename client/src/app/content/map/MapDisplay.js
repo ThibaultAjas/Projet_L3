@@ -10,16 +10,14 @@ import L from 'leaflet';
 import MarkerDisplay from "./MarkerDisplay";
 import LoginScreen from "../login/LoginScreen";
 import GetCurrentLoc from "../geolocation/GetCurrentLoc";
-import Cookies from "universal-cookie";
+
+import { isLogged } from "../cookies/app_cookies";
 
 let DefaultIcon=L.icon({
     iconUrl:icon,
     shadowUrl:iconShadow,
 });
 L.Marker.prototype.options.icon=DefaultIcon;
-
-const appCookies = new Cookies();
-
 
 class MapDisplay extends React.Component{
 
@@ -38,7 +36,7 @@ class MapDisplay extends React.Component{
     };
 
     render() {
-        if (appCookies.get('isLogged')==='true') {
+        if (isLogged()) {
 
             let lat, long = GetCurrentLoc();
             let tmp = [lat, long];

@@ -16,10 +16,12 @@ import Feed from "./app/content/feed/Feed";
 import LoginScreen from "./app/content/login/LoginScreen";
 import RegisterScreen from "./app/content/register/RegisterScreen";
 
-import Cookies from 'universal-cookie';
+// import Cookies from 'universal-cookie';
 import Logout from "./app/content/Logout";
 
-const appCookies = new Cookies();
+import { isLogged, setLogged } from "./app/content/cookies/app_cookies";
+
+// const appCookies = new Cookies();
 
 class App extends React.Component {
 
@@ -29,13 +31,15 @@ class App extends React.Component {
     };
 
     componentDidMount() {
-        if (! appCookies.get('isLogged')) appCookies.set('isLogged', false, { path: '/' });
-        console.log(appCookies.get('isLogged'));
-        this.verifyIsLogged();
+        // if (! appCookies.get('isLogged')) appCookies.set('isLogged', false, { path: '/' });
+        // console.log(appCookies.get('isLogged'));
+
+        if (! isLogged()) setLogged( false );
+        // this.verifyIsLogged();
     }
 
     verifyIsLogged = () => {
-        return ( appCookies.get( 'isLogged' ) === 'true' );
+        // return ( appCookies.get( 'isLogged' ) === 'true' );
         // const payload = {mail: this.state.mail};
         // axios({
         //     url: '/api/verify',
@@ -78,18 +82,12 @@ class App extends React.Component {
         return (
                 <Router>
                     <Switch>
-                        <Route path='/logout'   > <Logout />                                                                </Route>
-                        <Route path="/register" > <RegisterScreen />                                                        </Route>
-                        <Route path="/login"    > <LoginScreen />                                                           </Route>
-                        <Route path="/profile"  > <Home
-                                                        content = { <Profile /> }
-                                                        logged  = { this.verifyIsLogged() } />                              </Route>
-                        <Route path="/map"      > <Home
-                                                        content = { <MapDisplay logged = { this.verifyIsLogged() } /> }
-                                                        logged  = { this.verifyIsLogged() } />                              </Route>
-                        <Route path="/"         > <Home
-                                                        content = { (this.verifyIsLogged()) ? <Feed /> : <LoginScreen /> }
-                                                        logged  = { this.verifyIsLogged()} />                               </Route>
+                        <Route path='/logout'   > <Logout />                                                        </Route>
+                        <Route path="/register" > <RegisterScreen />                                                </Route>
+                        <Route path="/login"    > <LoginScreen />                                                   </Route>
+                        <Route path="/profile"  > <Home content = { <Profile /> } />                                </Route>
+                        <Route path="/map"      > <Home content = { <MapDisplay /> }/>                              </Route>
+                        <Route path="/"         > <Home content = { (isLogged()) ? <Feed /> : <LoginScreen /> }/>   </Route>
                     </Switch>
                 </Router>
             );

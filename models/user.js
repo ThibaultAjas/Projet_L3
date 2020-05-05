@@ -12,14 +12,12 @@ let userSchema = new Schema({
     password: {type: String, required: true},
     address: String,
     config: Array,
-    following: [user],
+    following: [this],
     events: [{
         event: event,
         liked: false,
         disliked: false
     }]
 });
-const user = mongoose.model('user', userSchema);
-
 // Export Mongoose model
-module.exports = user;
+module.exports = mongoose.model('user', userSchema);;

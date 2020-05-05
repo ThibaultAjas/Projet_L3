@@ -1,8 +1,11 @@
 import React from "react";
 import axios from 'axios';
-import Cookies from 'universal-cookie';
 
-const cookies = new Cookies("appCookies");
+import {
+    setSessionMail, getSessionMail,
+    setSessionPassword, getSessionPassword,
+    setLogged } from "../cookies/app_cookies";
+
 let doRemember = false;
 
 class LoginForm extends React.Component {
@@ -13,10 +16,10 @@ class LoginForm extends React.Component {
     };
 
     componentDidMount() {
-        if (cookies.get('mail')) {
+        if (getSessionMail()) {
             this.setState({
-                mail: cookies.get('mail'),
-                password: cookies.get('password')
+                mail: getSessionMail(),
+                password: getSessionPassword()
             });
         }
     }
@@ -39,11 +42,11 @@ class LoginForm extends React.Component {
                 const pl = response.data[0];
 
                 if (doRemember) {
-                    cookies.set('mail', this.state.mail);
-                    cookies.set('password', this.state.password);
+                    setSessionMail( this.state.mail );
+                    setSessionPassword( this.state.password );
                 }
 
-                cookies.set("isLogged", true);
+                setLogged( true );
                 window.location.href = '/';
                 this.resetUserInputs();
             })

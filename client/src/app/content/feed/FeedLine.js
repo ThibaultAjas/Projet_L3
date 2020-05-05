@@ -4,8 +4,9 @@ import FeedInteractionsIcons from "./FeedInteractionsIcons";
 import FeedLinePost from "./FeedLinePost";
 import FeedDotsPopup from "./FeedDotsPopup";
 
+import { toggleOptionsPopupDisplay } from "../../scripts/feed_script";
 
-const FeedLine = ({ imageURL, title, date, description }) => {
+const FeedLine = ({ id, imageURL, title, date, description }) => {
 
     date = new Date( date );
 
@@ -16,13 +17,13 @@ const FeedLine = ({ imageURL, title, date, description }) => {
 
     return (
         <div className='feedLine'>
-            <div id='popup'> <FeedDotsPopup /> </div>
+            <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup /> </div>
 
             <div className='card p-2'>
                 <div className='card-title d-flex flex-row align-items-baseline justify-content-between border-bottom'>
                     <h1> { title } </h1>
                     <div className='font-italic'> { dt } </div>
-                    <i id='dots-icon' className="dots-icon fas fa-ellipsis-v m-2"/>
+                    <button className="transparent-button-popup" onClick={ () => toggleOptionsPopupDisplay( id )}> <i id='dots-icon' className="dots-icon fas fa-ellipsis-v m-2"/> </button>
                 </div>
 
                 <FeedLinePost description = { description } imageURL = { imageURL }/>

@@ -14,10 +14,11 @@
 
 .dotsPopup {
     position: absolute;
-    right: 1em;
-    top: -4.5em;
+    right: 0.5em;
+    top: -4.4em;
 
     z-index: 2;
+    filter: drop-shadow(0 0 0.3rem grey);
 }
 
 #feed-interactions-div {
@@ -26,7 +27,10 @@
     bottom: 0;
 }
 
-.feed-interactions-icons { cursor: pointer; }
+.feed-interactions-icons {
+    cursor: pointer;
+    visibility: visible;
+}
 
 #dislike-icon:hover { color: red; }
 #like-icon:hover  { color: dodgerblue; }
@@ -36,21 +40,27 @@
 
 #separator { border-right: 1px solid grey; }
 
-.dots-icon {
+.dots-icon, .transparent-button-popup {
     position: absolute;
     top: 0;
     right: 0;
     cursor: pointer;
+    visibility: visible;
 }
+
+.transparent-button-popup { visibility: hidden; }
 
 #event-pic, #description-div {
     max-height: 10em;
 }
 
 .dots-option { display: block; }
+
 .dots-option:hover {
     text-decoration: inherit;
     color: inherit;
 
     background-color: antiquewhite;
 }
+
+.transparent-button { visibility: hidden; }

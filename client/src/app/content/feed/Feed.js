@@ -4,9 +4,10 @@ import axios from 'axios';
 import FeedLine from "./FeedLine";
 
 import '../../stylesheets/feed.css';
-import { isLogged } from "../cookies/app_cookies";
+import { getUser, isLogged } from "../util/app_cookies";
 import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
 
+console.log(getUser());
 
 class Feed extends React.Component {
     state = { events: [] };
@@ -18,6 +19,8 @@ class Feed extends React.Component {
             .then((response) => {
                 const data = response.data;
                 this.setState({events: data.data});
+                console.log(this.state.events);
+
             })
             .catch((error) => {
                 console.log(`Error: ${error}`);
@@ -33,13 +36,14 @@ class Feed extends React.Component {
                     {
                         this.state.events.map((element, index) =>
                             <FeedLine
-                                key={ index }
-                                id={ index }
+                                key={ element._id }
+                                id={ element._id }
                                 imageURL='https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
                                 title={ element.title }
-                                date={ element.date }
                                 dateAjout={ element.dateAjout }
                                 description={ element.description }
+                                city={ element.city } country={ element.country }
+                                eventDate={element.date} postDate={element.dateAdded}
                             />
                         ).sort((a, b) => (new Date(b.props.dateAjout)).getTime() - (new Date(a.props.dateAjout)).getTime())
                     }

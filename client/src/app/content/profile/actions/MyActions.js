@@ -1,6 +1,6 @@
 import React from "react";
 
-import { getUser, isLogged } from "../../cookies/app_cookies";
+import { getUser, isLogged } from "../../util/app_cookies";
 import LoginScreen from "../../login/LoginScreen";
 
 const MyActions = () => {

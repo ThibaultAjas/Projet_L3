@@ -1,6 +1,6 @@
 import React from "react";
 import FriendsBarFriendRow from "./FriendBarFriendRow";
-import { getUser } from "../../cookies/app_cookies";
+import { getUser } from "../../util/app_cookies";
 
 
 const FriendsBarContent = () => {

@@ -5,15 +5,12 @@ import FeedLinePost from "./FeedLinePost";
 import FeedDotsPopup from "./FeedDotsPopup";
 
 import { toggleOptionsPopupDisplay } from "../../scripts/feed_script";
+import getDateFrom from "../util/dataConverter";
 
-const FeedLine = ({ id, imageURL, title, date, description }) => {
+const FeedLine = ({ id, imageURL, title, postDate, description, city, country }) => {
 
-    date = new Date( date );
-
-    const ye = new Intl.DateTimeFormat('fr', { year: 'numeric' }).format( date );
-    const mo = new Intl.DateTimeFormat('fr', { month: 'long' }).format( date );
-    const da = new Intl.DateTimeFormat('fr', { day: '2-digit' }).format( date );
-    const dt = `${ da } ${ mo } ${ ye }`;
+    postDate = new Date( postDate );
+    let date = getDateFrom('fr', postDate);
 
     return (
         <div className='feedLine'>
@@ -21,12 +18,16 @@ const FeedLine = ({ id, imageURL, title, date, description }) => {
 
             <div className='card p-2'>
                 <div className='card-title d-flex flex-row align-items-baseline justify-content-between border-bottom'>
-                    <h1> { title } </h1>
-                    <div className='font-italic'> { dt } </div>
+                    <div className='d-inline-flex align-items-baseline'>
+                        <h1> { title }</h1>
+                        <i className="fas fa-map-marker-alt ml-3 mr-1" style={{color: 'indianred'}}/>
+                        <blockquote className='blockquote font-italic' style={{'font-size':'.8em'}}> { city }, { country } </blockquote>
+                    </div>
+                    <div className='font-italic'> posté le { date } </div>
                     <button className="transparent-button-popup" onClick={ () => toggleOptionsPopupDisplay( id )}> <i id='dots-icon' className="dots-icon fas fa-ellipsis-v m-2"/> </button>
                 </div>
 
-                <FeedLinePost description = { description } imageURL = { imageURL }/>
+                <FeedLinePost description = { description } imageURL = { imageURL } postDate={postDate}/>
                 <FeedInteractionsIcons id={id}/>
             </div>
         </div>

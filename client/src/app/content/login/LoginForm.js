@@ -5,7 +5,7 @@ import {
     setSessionMail, getSessionMail,
     setSessionPassword, getSessionPassword,
     setLogged, setUser
-} from "../cookies/app_cookies";
+} from "../util/app_cookies";
 
 class LoginForm extends React.Component {
     doRemember = false;

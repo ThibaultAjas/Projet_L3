@@ -1,5 +1,5 @@
 import React from "react";
-import { getUser } from "../../cookies/app_cookies";
+import { getUser } from "../../util/app_cookies";
 
 const ProfileBarTopSection = () => {
 

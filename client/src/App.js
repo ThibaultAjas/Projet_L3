@@ -16,7 +16,7 @@ import LoginScreen from "./app/content/login/LoginScreen";
 import RegisterScreen from "./app/content/register/RegisterScreen";
 import Logout from "./app/content/Logout";
 
-import { isLogged, setLogged } from "./app/content/cookies/app_cookies";
+import { isLogged, setLogged } from "./app/content/util/app_cookies";
 import AddEventScreen from "./app/content/map/AddEventScreen";
 import MyActions from "./app/content/profile/actions/MyActions";
 

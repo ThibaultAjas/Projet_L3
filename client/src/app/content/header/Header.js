@@ -1,6 +1,6 @@
 import React from "react";
 
-import { isLogged } from "../cookies/app_cookies";
+import { isLogged } from "../util/app_cookies";
 
 import '../../stylesheets/header.css';
 

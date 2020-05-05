@@ -11,7 +11,7 @@ import MarkerDisplay from "./MarkerDisplay";
 import LoginScreen from "../login/LoginScreen";
 import GetCurrentLoc from "../geolocation/GetCurrentLoc";
 
-import { isLogged } from "../cookies/app_cookies";
+import { isLogged } from "../util/app_cookies";
 import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
 
 let DefaultIcon=L.icon({

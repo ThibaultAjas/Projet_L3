@@ -27,7 +27,7 @@ const FeedLine = ({ id, imageURL, title, date, description }) => {
                 </div>
 
                 <FeedLinePost description = { description } imageURL = { imageURL }/>
-                <FeedInteractionsIcons/>
+                <FeedInteractionsIcons id={id}/>
             </div>
         </div>
     )

@@ -1,6 +1,8 @@
 import $ from 'jquery';
 
 const POPUP = '#popup-';
+const LIKE = 'rgb(30, 144, 255)';
+const DISLIKE = 'rgb(255, 0, 0)';
 
 let currentId = null;
 
@@ -17,12 +19,24 @@ const toggleOptionsPopupDisplay = ( id ) => {
 	$(POPUP + id).toggle();
 };
 
-const bigIcon = ( icon_id ) => {
-	console.log($('#' + icon_id));
+const like = ( icon, id ) => {
+	let queryIcon = $('#' + icon);
+	let isColored = queryIcon.css('color') === LIKE;
+
+	queryIcon.css('color', (isColored) ? 'black' : LIKE);
 };
 
-const like = () => {
-	console.log('coude');
+const dislike = ( icon, id ) => {
+	let queryIcon = $('#' + icon);
+	let isColored = queryIcon.css('color') === DISLIKE;
+
+	queryIcon.css('color', (isColored) ? 'black' : DISLIKE);
 };
 
-export { toggleOptionsPopupDisplay, bigIcon, like };
+const comment = ( id ) => {
+};
+
+const share = ( id ) => {
+} ;
+
+export { toggleOptionsPopupDisplay, like, dislike, comment, share };

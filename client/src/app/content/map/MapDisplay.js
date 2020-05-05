@@ -41,7 +41,13 @@ class MapDisplay extends React.Component{
             let lat, long = GetCurrentLoc();
             let tmp = [lat, long];
             return (
-                <Map
+
+                <>
+                <div>
+                    <i className="fas fa-filter buttonmap"></i>
+                    <i className="fas fa-plus buttonmap"></i>
+                </div>
+                    <Map
                     center={[50, 10]}
                     zoom={6}
                     maxZoom={18}
@@ -59,6 +65,9 @@ class MapDisplay extends React.Component{
 
                     <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici"/>
                 </Map>
+
+                </>
+
             );
         } else {
             return (<LoginScreen/>);

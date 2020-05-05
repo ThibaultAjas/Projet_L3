@@ -17,6 +17,7 @@ import RegisterScreen from "./app/content/register/RegisterScreen";
 import Logout from "./app/content/Logout";
 
 import { isLogged, setLogged } from "./app/content/cookies/app_cookies";
+import AddEventScreen from "./app/content/map/AddEventScreen";
 
 class App extends React.Component {
 
@@ -31,6 +32,7 @@ class App extends React.Component {
         return (
             <Router>
                 <Switch>
+                    <route path='/AddEvent'>  <AddEventScreen/>                                                 </route>
                     <Route path='/logout'   > <Logout />                                                        </Route>
                     <Route path="/register" > <RegisterScreen />                                                </Route>
                     <Route path="/login"    > <LoginScreen />                                                   </Route>
@@ -60,26 +62,6 @@ class App extends React.Component {
         //         console.log('Internal server error');
         //     });
     // };
-
-    // render() {
-    //     return (
-    //         <Router>
-    //             <Switch>
-    //                 <Route path="/register" > <RegisterScreen />                                                    </Route>
-    //                 <Route path="/login"    > <LoginScreen />                                                       </Route>
-    //                 <Route path="/profile"  > <Home
-    //                                                 content = { <Profile /> }
-    //                                                 logged  = { this.state.logged } />                              </Route>
-    //                 <Route path="/map"      > <Home
-    //                                                 content = { <MapDisplay logged = { this.state.logged } /> }
-    //                                                 logged  = { this.state.logged } />                              </Route>
-    //                 <Route path="/"         > <Home
-    //                                                 content = { (this.state.logged) ? <Feed /> : <LoginScreen /> }
-    //                                                 logged  = { this.state.logged } />                              </Route>
-    //             </Switch>
-    //         </Router>
-    //     );
-    // }
 }
 
 export default App;

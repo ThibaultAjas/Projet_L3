@@ -3,6 +3,7 @@ import React from "react";
 import FeedInteractionsIcons from "./FeedInteractionsIcons";
 import FeedLinePost from "./FeedLinePost";
 import FeedDotsPopup from "./FeedDotsPopup";
+import syaHello from "../../scripts/feed_script";
 
 const FeedLine = ({imageURL, title, date, description}) => {
 
@@ -21,7 +22,7 @@ const FeedLine = ({imageURL, title, date, description}) => {
                 <div className='card-title d-flex flex-row align-items-baseline justify-content-between border-bottom'>
                     <h1>{ title }</h1>
                     <div className='font-italic'> { dt } </div>
-                    <div id='dots-icon' className="dots-icon fas fa-ellipsis-v m-2"/>
+                    <i id='dots-icon' className="dots-icon fas fa-ellipsis-v m-2" onClick={console.log }/>
                 </div>
 
                 <FeedLinePost description = { description } imageURL = { imageURL }/>

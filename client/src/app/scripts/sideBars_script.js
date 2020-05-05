@@ -44,8 +44,6 @@ $(document).ready( () => {
 			if (H_SHOW_PROFILE_BAR.is(':visible')) toggleIcons( H_SHOW_PROFILE_BAR, H_HIDE_PROFILE_BAR );
 			else toggleIcons( H_HIDE_PROFILE_BAR, H_SHOW_PROFILE_BAR  );
 		}
-
-		console.log(H_HIDE_PROFILE_BAR);
 	};
 
 	let activateFriendsBar = () => {

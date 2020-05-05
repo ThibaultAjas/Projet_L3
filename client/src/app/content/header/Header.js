@@ -9,7 +9,7 @@ const Header = ({ logged }) => {
 								<div id='profileBar-activators' className='pt-2 pb-activator'>
 									<div id="header-show-profileBar-icon" className='rounded-circle element'/>
 									<i id="header-hide-profileBar-icon" className='rounded-circle element fas fa-angle-double-left'
-									   style={ { 'display': 'none' } }/>
+									   style={ { 'display': 'none' } } />
 								</div>
 							: <> </>
 			}

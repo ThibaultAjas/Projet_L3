@@ -1,0 +1,28 @@
+#random-user-header {
+    min-height: 250px;
+    max-height: 250px;
+
+    border-radius: 0;
+
+    position: relative;
+}
+
+#action-bar {
+    min-height: 30px;
+    max-height: 30px;
+
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+}
+
+.action-button {
+    border-radius: 10px;
+    border: none;
+}
+
+.action-button:hover {
+    background-color: #32373d;
+    color: white;
+}

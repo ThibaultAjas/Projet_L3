@@ -34,8 +34,8 @@ class App extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <route path='/actions'  > <Home content={ <MyActions/> }/>                                          </route>
-                    <route path='/profile/:id'      > <Home content={ <RandomProfile /> }/>                              </route>
+                    <route path='/actions'          > <Home content={ <MyActions/> }/>                                  </route>
+                    <route path='/profile/:id'      > <Home content={ <RandomProfile /> }/>                             </route>
                     <route path='/addevent'         > <AddEventScreen/>                                                 </route>
                     <Route path='/logout'           > <Logout />                                                        </Route>
                     <Route path="/register"         > <RegisterScreen />                                                </Route>

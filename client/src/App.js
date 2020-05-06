@@ -19,6 +19,7 @@ import Logout from "./app/content/Logout";
 import { isLogged, setLogged } from "./app/content/util/app_cookies";
 import AddEventScreen from "./app/content/map/AddEventScreen";
 import MyActions from "./app/content/profile/actions/MyActions";
+import RandomProfile from "./app/content/profile/randomProfile/RandomProfile";
 
 class App extends React.Component {
 
@@ -34,8 +35,8 @@ class App extends React.Component {
             <Router>
                 <Switch>
                     <route path='/actions'  > <Home content={ <MyActions/> }/>                                          </route>
-                    <route path='/profile/:id'      > <Home content={ <h1> Bouh !</h1> }/>                              </route>
-                    <route path='/addEvent'         > <AddEventScreen/>                                                 </route>
+                    <route path='/profile/:id'      > <Home content={ <RandomProfile /> }/>                              </route>
+                    <route path='/addevent'         > <AddEventScreen/>                                                 </route>
                     <Route path='/logout'           > <Logout />                                                        </Route>
                     <Route path="/register"         > <RegisterScreen />                                                </Route>
                     <Route path="/login"            > <LoginScreen />                                                   </Route>

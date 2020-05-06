@@ -55,12 +55,9 @@ class MapDisplay extends React.Component{
 
             let lat, long = GetCurrentLoc();
             let tmp = [lat, long];
-            console.log("events",this.state.events);
 
             return (
-
                 <>
-
                     <SwapFeedButtons />
 
                     <div>

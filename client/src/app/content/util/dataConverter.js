@@ -1,3 +1,6 @@
+import axios from "axios";
+import { setLogged, setSessionMail, setSessionPassword, setUser } from "./app_cookies";
+
 const getDateFrom = ( country, date) => {
 
 	const ye = new Intl.DateTimeFormat(country, { year: 'numeric' }).format( date );
@@ -7,4 +10,39 @@ const getDateFrom = ( country, date) => {
 	return `${ da } ${ mo } ${ ye }`;
 };
 
-export default getDateFrom;
+// TODO: change for getAllFromFollowing
+const getUserEvents = async () => {
+	let tmp = [];
+	await axios.post( '/event/getAll' )
+		.then( ( response ) => {
+			const data = response.data;
+			tmp = data.data;
+
+		} )
+		.catch( ( error ) => {
+			console.log( `Error: ${ error }` );
+		} );
+	return(tmp);
+};
+
+const getFriendsById = async ( idsList ) => {
+	let friends = [];
+
+	await axios({
+		url: '/user/getAllByIds',
+		method: 'POST',
+		data: idsList
+	})
+		.then((response) => {
+			friends = response.data.users;
+		})
+		.catch((error) => {
+			console.log(`Error: ${ error }`)
+		});
+
+	return friends;
+};
+
+export {
+	getDateFrom, getUserEvents, getFriendsById
+};

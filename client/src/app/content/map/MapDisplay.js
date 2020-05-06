@@ -13,6 +13,9 @@ import GetCurrentLoc from "../geolocation/GetCurrentLoc";
 
 import { isLogged } from "../util/app_cookies";
 import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
+import Feed from "../feed/Feed";
+import axios from "axios";
+import {getUserEvents} from "../util/dataConverter";
 
 let DefaultIcon=L.icon({
     iconUrl:icon,
@@ -24,16 +27,27 @@ class MapDisplay extends React.Component{
 
     state={
         lat:0,
-        long:0
+        long:0,
+        events:[]
     };
+
 
 
     componentDidMount() {
         navigator.geolocation.getCurrentPosition((position) => {
             this.state.lat=position.coords.latitude;
             this.state.long=position.coords.longitude;
+            this.generateMarkerList();
+        });
+    };
+
+    generateMarkerList (){
+
+        getUserEvents().then((data )=> {
+            this.state.events=data;
             this.forceUpdate();
         });
+
     };
 
     render() {
@@ -41,6 +55,8 @@ class MapDisplay extends React.Component{
 
             let lat, long = GetCurrentLoc();
             let tmp = [lat, long];
+            console.log("events",this.state.events);
+
             return (
 
                 <>
@@ -71,6 +87,11 @@ class MapDisplay extends React.Component{
                     />
 
                     <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici"/>
+                    {
+                        this.state.events.map( (event,index) =>
+                            <MarkerDisplay position={[event.location.latitude,event.location.longitude]} popupMessage={index}    />
+                        )
+                    }
                     </Map>
                 </>
 

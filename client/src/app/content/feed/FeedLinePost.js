@@ -1,5 +1,5 @@
 import React from "react";
-import getDateFrom from "../util/dataConverter";
+import { getDateFrom } from "../util/dataConverter";
 
 const FeedLinePost = ({ imageURL, description, postDate }) => {
 

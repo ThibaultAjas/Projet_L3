@@ -15,7 +15,7 @@ class UserProfile extends React.Component {
 		newPassword: '',
 		confirmPassword: '',
 		phone: '',
-		pseudonym: ''
+		userName: ''
 	};
 
 	componentDidMount() {
@@ -25,7 +25,7 @@ class UserProfile extends React.Component {
 			mail: this.USER.mail,
 			address: this.USER.address,
 			phone: this.USER.phone,
-			pseudonym: this.USER.pseudonym,
+			userName: this.USER.userName,
 			newPassword: '',
 			confirmPassword: '',
 		});
@@ -56,8 +56,8 @@ class UserProfile extends React.Component {
 					</label>
 
 					<label>
-						<span><p> Pseudonym: </p></span>
-						<input type='text' className='form-control' name='pseudonym' value={this.state.pseudonym} onChange={this.handleChange}/>
+						<span><p> UserName: </p></span>
+						<input type='text' className='form-control' name='userName' value={this.state.userName} onChange={this.handleChange}/>
 					</label>
 
 					<label>

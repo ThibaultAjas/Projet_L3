@@ -9,6 +9,7 @@ import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
 
 console.log(getUser());
 
+
 class Feed extends React.Component {
     state = { events: [] };
 

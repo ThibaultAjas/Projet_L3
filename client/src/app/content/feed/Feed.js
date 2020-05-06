@@ -14,10 +14,16 @@ class Feed extends React.Component {
     componentDidMount = () => { this.getEvents(); };
 
     getEvents = () => {
-        axios.post('/event/getAll')
+        // axios.post('/event/getAll')
+        axios({
+            url: '/event/getAllFromFollowing',
+            method: 'POST',
+            data: getUser()
+        })
             .then((response) => {
                 const data = response.data;
-                this.setState({events: data.data});
+                console.log(data);
+                this.setState({events: data.events});
                 console.log(this.state.events);
 
             })

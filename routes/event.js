@@ -61,30 +61,28 @@ const event = require('../models/event');
 
     router.post('/getAllFromFollowing', (req, res) => {
         const data = req.body;
-        const userToFind = new user({mail: data.mail});
 
         event.find({})
             .then((events) => {
-                user.find(userToFind)
+                user.find({mail: data.mail})
                     .then((data) => {
-                        const following = data[0].following;
-
-                        let evtsFromFollowing = [];
-
-                        following.forEach((elemUser) => {
-                            let evtsFromElem = [];
-                            events.forEach((elemEvt) => {
-                                if (elemUser.events.id === elemEvt._id) {
-
-                                }
+                        user.find({ $or: [{_id: data[0].following}]})
+                            .then((following) => {
+                                let evtsFromFollowing = [];
+                                following.forEach((elemUser) => {
+                                    if (elemUser.events.length !== 0) {
+                                        elemUser.events.forEach((evt) => {
+                                            evtsFromFollowing.push(events.find(e => e._id = evt._id));
+                                        });
+                                    }
+                                });
+                                return res.json({msg: 'Got events', events: evtsFromFollowing});
                             });
-                            evtsFromFollowing = [...evtsFromFollowing, ...evtsFromElem];
-                        });
 
-                    })
-                    .catch((error) => {
-                        return res.status(500).send(error);
                     });
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
             });
     });
 }

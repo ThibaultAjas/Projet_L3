@@ -124,7 +124,6 @@ const fillDB = async () => {
             address: "12 allée des champs"
         })
     ];
-
     const eventList = [
         new event({
             location: {
@@ -266,7 +265,7 @@ const fillDB = async () => {
             likes: 0,
             dislikes: 0
         })
-    ]
+    ];
 
     for (const usr of userList) await usr.save();
     console.log('Collection users filled');

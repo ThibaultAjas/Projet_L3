@@ -56,6 +56,11 @@ class UserProfile extends React.Component {
 					</label>
 
 					<label>
+						<span><p> Pseudonym: </p></span>
+						<input type='text' className='form-control' name='pseudonym' value={this.state.pseudonym} onChange={this.handleChange}/>
+					</label>
+
+					<label>
 						<span><p> Address: </p></span>
 						<input type='text' className='form-control' name='address' value={this.state.address} onChange={this.handleChange}/>
 					</label>
@@ -63,6 +68,12 @@ class UserProfile extends React.Component {
 					<label>
 						<span><p> Mail: </p></span>
 						<input type='email' className='form-control' name='mail' value={this.state.mail} onChange={this.handleChange}/>
+					</label>
+
+					<label>
+						<span><p> Phone number </p></span>
+						<input type='tel' className='form-control' name='phone' value={this.state.phone} onChange={this.handleChange}
+								pattern="[0-9]{10}"/>
 					</label>
 
 					<label>

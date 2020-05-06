@@ -17,6 +17,10 @@ const log_content = [
 		'icon' : 'fa fa-users mr-3',
 		'href' : '/friends'
 	},
+	{ 	'name' : 'Accueil',
+		'icon' : 'fa fa-home mr-3',
+		'href' : '/'
+	},
 	{ 	'name' : 'Paramètres',
 		'icon' : 'fa fa-cog mr-3',
 		'href' : '/settings'

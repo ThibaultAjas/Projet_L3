@@ -11,17 +11,17 @@ const getDateFrom = ( country, date) => {
 
 // TODO: change for getAllFromFollowing
 const getUserEvents = async () => {
+	let tmp = [];
 	await axios.post( '/event/getAll' )
 		.then( ( response ) => {
 			const data = response.data;
-			// console.log( "pd", data.data[ 0 ] );
-			return data.data;
+			tmp = data.data;
 
 		} )
 		.catch( ( error ) => {
 			console.log( `Error: ${ error }` );
-			return null;
 		} );
+	return(tmp);
 };
 
 export {

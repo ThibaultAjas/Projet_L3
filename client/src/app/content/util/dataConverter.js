@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setLogged, setSessionMail, setSessionPassword, setUser } from "./app_cookies";
 
 const getDateFrom = ( country, date) => {
 
@@ -24,6 +25,24 @@ const getUserEvents = async () => {
 	return(tmp);
 };
 
+const getFriendsById = async ( idsList ) => {
+	let friendsList = [];
+
+	await axios({
+		url: '/user/getAllByIds',
+		method: 'POST',
+		data: idsList
+	})
+		.then((response) => {
+			console.log("kuku: ", response);
+		})
+		.catch((error) => {
+			console.log(`Error: ${ error }`)
+		});
+
+	return friendsList;
+};
+
 export {
- getDateFrom, getUserEvents
+	getDateFrom, getUserEvents, getFriendsById
 };

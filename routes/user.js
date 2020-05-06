@@ -55,9 +55,9 @@ const user = require('../models/user');
         const data = req.body;
         const params = [];
 
-        for (const id in data) params.push({_id: id});
-
-        console.log('Params: ', params);
+        for (let i = 0; i < data.length; i++) {
+            params.push({ _id: data[i] })
+        }
 
         user.find({$or: params})
             .then((data) => {

@@ -11,15 +11,15 @@ const log_content = [
 	},
 	{ 	'name' : 'Mes actions',
 		'icon' : 'fa fa-thumbs-up mr-3',
-		'href' : '/profile/actions'
+		'href' : '/actions'
 	},
 	{ 	'name' : 'Mes amis',
 		'icon' : 'fa fa-users mr-3',
-		'href' : '/profile/friends'
+		'href' : '/friends'
 	},
 	{ 	'name' : 'Paramètres',
 		'icon' : 'fa fa-cog mr-3',
-		'href' : '/profile/settings'
+		'href' : '/settings'
 	},
 	{ 	'name' : 'Se déconnecter',
 		'icon' : 'fa fa-sign-out-alt mr-3',

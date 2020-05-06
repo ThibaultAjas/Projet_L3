@@ -33,13 +33,13 @@ class App extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <route path='/profile/:id'      > <Home content={ <h1> Bouh !</h1> }/>                                  </route>
                     <route path='/profile/actions'  > <Home content={ <MyActions/> }/>                                  </route>
+                    <route path='/profile/:id'      > <Home content={ <h1> Bouh !</h1> }/>                              </route>
                     <route path='/AddEvent'         > <AddEventScreen/>                                                 </route>
                     <Route path='/logout'           > <Logout />                                                        </Route>
                     <Route path="/register"         > <RegisterScreen />                                                </Route>
                     <Route path="/login"            > <LoginScreen />                                                   </Route>
-                    <Route path="/profile"          > <Home content = { <UserProfile /> } />                                </Route>
+                    <Route path="/profile"          > <Home content = { <UserProfile /> } />                            </Route>
                     <Route path="/map"              > <Home content = { <MapDisplay /> }/>                              </Route>
                     <Route path="/"                 > <Home content = { (isLogged()) ? <Feed /> : <LoginScreen /> }/>   </Route>
                 </Switch>

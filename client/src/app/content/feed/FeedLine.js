@@ -37,7 +37,7 @@ const FeedLine = ({ element }) => {
                 </div>
 
                 <FeedLinePost description = { description } imageURL = { imageURL } postDate={postDate}/>
-                <FeedInteractionsIcons id={id} likes={element.likes} dislikes={element.dislikes}/>
+                <FeedInteractionsIcons id={ id } likes={ element.likes } dislikes={ element.dislikes } />
             </div>
         </div>
     )

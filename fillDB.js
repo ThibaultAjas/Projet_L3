@@ -17,9 +17,9 @@ mongoose.connection.on('connected', () => {
 });
 
 const fillDB = async () => {
-    const user = require('./models/user');
-    const event = require('./models/event');
-    const comment = require('./models/comment');
+    const user = require('./models/userModel');
+    const event = require('./models/eventModel');
+    const comment = require('./models/commentModel');
 
     await mongoose.connection.collection('users').drop((err) => console.log('User collection dropped'));
     await mongoose.connection.collection('events').drop((err) => console.log('User event dropped'));
@@ -34,7 +34,8 @@ const fillDB = async () => {
             lastName: 'TEST',
             country: 'france',
             city: 'Toulouse',
-            pseudonym: 'Agnubushklufu'
+            phone:'0669696969',
+            userName: 'Agnubushklufu'
         }),
         new user({
             mail: 'test1@gmail.com',
@@ -44,7 +45,8 @@ const fillDB = async () => {
             lastName: 'TEST',
             country: 'france',
             city: 'Toulouse',
-            pseudonym: 'Agnubushklufu_1'
+            phone:'0669696969',
+            userName: 'Agnubushklufu_1'
         }),
         new user({
             mail: 'test2@gmail.com',
@@ -54,7 +56,8 @@ const fillDB = async () => {
             lastName: 'TEST',
             country: 'france',
             city: 'Toulouse',
-            pseudonym: 'Agnubushklufu_2'
+            phone:'0669696969',
+            userName: 'Agnubushklufu_2'
         }),
         new user({
             mail: 'test3@gmail.com',
@@ -64,7 +67,8 @@ const fillDB = async () => {
             lastName: 'TEST',
             country: 'france',
             city: 'Toulouse',
-            pseudonym: 'Agnubushklufu_3'
+            phone:'0669696969',
+            userName: 'Agnubushklufu_3'
         }),
         new user({
             mail: 'test4@gmail.com',
@@ -74,7 +78,8 @@ const fillDB = async () => {
             lastName: 'TEST',
             country: 'france',
             city: 'Toulouse',
-            pseudonym: 'Agnubushklufu_4'
+            phone:'0669696969',
+            userName: 'Agnubushklufu_4'
         }),
         new user({
             mail: 'test5@gmail.com',
@@ -84,7 +89,8 @@ const fillDB = async () => {
             lastName: 'TEST',
             country: 'france',
             city: 'Toulouse',
-            pseudonym: 'Agnubushklufu_5'
+            phone:'0669696969',
+            userName: 'Agnubushklufu_5'
         }),
         new user({
             mail: 'test6@gmail.com',
@@ -94,7 +100,8 @@ const fillDB = async () => {
             lastName: 'TEST',
             country: 'france',
             city: 'Toulouse',
-            pseudonym: 'Agnubushklufu_6'
+            phone:'0669696969',
+            userName: 'Agnubushklufu_6'
         }),
         new user({
             mail: 'test7@gmail.com',
@@ -104,7 +111,8 @@ const fillDB = async () => {
             lastName: 'TEST',
             country: 'france',
             city: 'Toulouse',
-            pseudonym: 'Agnubushklufu_7'
+            phone:'0669696969',
+            userName: 'Agnubushklufu_7'
         }),
         new user({
             mail: 'test8@gmail.com',
@@ -114,14 +122,17 @@ const fillDB = async () => {
             lastName: 'TEST',
             country: 'france',
             city: 'Toulouse',
-            pseudonym: 'Agnubushklufu_8'
+            phone:'0669696969',
+            userName: 'Agnubushklufu_8'
         }),
         new user({
-            mail: "ribeyrolles.matthieu@gmail.com",
-            password: "t{{^]$D/y6tEvxIs",
-            firstName: "Matthieu",
-            lastName: "Ribeyrolles",
-            address: "12 allée des champs"
+            mail: 'ribeyrolles.matthieu@gmail.com',
+            password: 't{{^]$D/y6tEvxIs',
+            firstName: 'Matthieu',
+            lastName: 'Ribeyrolles',
+            userName: 'LePtitMatthieu',
+            phone: '0642424242',
+            address: '12 allée des champs'
         })
     ];
     const eventList = [

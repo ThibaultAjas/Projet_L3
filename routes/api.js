@@ -4,9 +4,9 @@ const session = require('express-session');
 
 const router = express.Router();
 
-const user = require('../models/user');
-const event = require('../models/event');
-const comment = require('../models/comment');
+const user = require('../models/userModel');
+const event = require('../models/eventModel');
+const comment = require('../models/commentModel');
 
 router.post('/verify', (req, res) => {
     const sess = req.session;

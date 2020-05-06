@@ -21,6 +21,7 @@ class FriendsBarContent extends React.Component {
 				<div id='friendsBar-top-section' className='w-100 d-inline-flex align-items-center justify-content-center'>
 					<h3 className='mr-2'>Sort by</h3>
 
+					//TODO: implement the sorting
 					<select name='friends-sort-picker' id='friends-sort-picker' className='my-3'>
 						<option value=''> -- </option>
 						<option value='firstName'> Firstname </option>

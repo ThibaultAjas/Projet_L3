@@ -78,7 +78,7 @@ class RegisterForm extends React.Component {
                 <input type="text" className="form-control inputreg" placeholder="last name" name="lastName" onChange = { this.handleChange }
                        required/>
                 <input type="text" className="form-control inputreg" placeholder="username" name="userName" onChange = { this.handleChange } />
-                <input type="digit" className="form-control inputreg" placeholder="0675488456"
+                <input type="tel" className="form-control inputreg" placeholder="0675488456"
                        name="tel" onChange = { this.handleChange }  required/>
                 <input type="text" className="form-control inputreg" placeholder="addresse" name="address" onChange = { this.handleChange }  required/>
 

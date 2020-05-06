@@ -10,6 +10,7 @@ let userSchema = new Schema({
     pseudonym: String,
     password: {type: String, required: true},
     address: String,
+    phone: String,
     config: Array,
     following: [{type: mongoose.Schema.Types.ObjectID, ref: 'user'}],
     events: [{

@@ -27,7 +27,7 @@ const fillDB = async () => {
 
     const userList = [
         new user({
-            mail: 'test@mail.com',
+            mail: 'test@gmail.com',
             password: 'test',
             isAdmin: true,
             firstName: 'Test',
@@ -37,7 +37,7 @@ const fillDB = async () => {
             pseudonym: 'Agnubushklufu'
         }),
         new user({
-            mail: 'test1@mail.com',
+            mail: 'test1@gmail.com',
             password: 'test1',
             isAdmin: false,
             firstName: 'Test1',
@@ -47,7 +47,7 @@ const fillDB = async () => {
             pseudonym: 'Agnubushklufu_1'
         }),
         new user({
-            mail: 'test2@mail.com',
+            mail: 'test2@gmail.com',
             password: 'test2',
             isAdmin: false,
             firstName: 'Test2',
@@ -57,7 +57,7 @@ const fillDB = async () => {
             pseudonym: 'Agnubushklufu_2'
         }),
         new user({
-            mail: 'test3@mail.com',
+            mail: 'test3@gmail.com',
             password: 'test3',
             isAdmin: false,
             firstName: 'Test3',
@@ -67,7 +67,7 @@ const fillDB = async () => {
             pseudonym: 'Agnubushklufu_3'
         }),
         new user({
-            mail: 'test4@mail.com',
+            mail: 'test4@gmail.com',
             password: 'test4',
             isAdmin: false,
             firstName: 'Test4',
@@ -77,7 +77,7 @@ const fillDB = async () => {
             pseudonym: 'Agnubushklufu_4'
         }),
         new user({
-            mail: 'test5@mail.com',
+            mail: 'test5@gmail.com',
             password: 'test5',
             isAdmin: false,
             firstName: 'Test5',
@@ -87,7 +87,7 @@ const fillDB = async () => {
             pseudonym: 'Agnubushklufu_5'
         }),
         new user({
-            mail: 'test6@mail.com',
+            mail: 'test6@gmail.com',
             password: 'test6',
             isAdmin: false,
             firstName: 'Test6',
@@ -97,7 +97,7 @@ const fillDB = async () => {
             pseudonym: 'Agnubushklufu_6'
         }),
         new user({
-            mail: 'test7@mail.com',
+            mail: 'test7@gmail.com',
             password: 'test7',
             isAdmin: false,
             firstName: 'Test7',
@@ -107,7 +107,7 @@ const fillDB = async () => {
             pseudonym: 'Agnubushklufu_7'
         }),
         new user({
-            mail: 'test8@mail.com',
+            mail: 'test8@gmail.com',
             password: 'test8',
             isAdmin: false,
             firstName: 'Test8',

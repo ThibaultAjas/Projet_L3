@@ -39,14 +39,18 @@ const user = require('../models/user');
     router.post('/login', (req, res) => {
         const data = req.body;
 
+        console.log('Data: ', data);
+
         user.find(data)
             .then((data) => {
                 const sess = req.session;
-                sess.mail = data[0].mail;
-
+                console.log(data)
+                // sess.mail = data[0].mail;
+                console.log('Data 2: ', data)
                 return res.json({msg: 'User logged in', user: data[0]});
             })
             .catch((error) => {
+                console.log(error);
                 return res.status(500).send(error);
             });
     });

@@ -9,7 +9,7 @@ const getDateFrom = ( country, date) => {
 	return `${ da } ${ mo } ${ ye }`;
 };
 
-
+// TODO: change for getAllFromFollowing
 const getUserEvents = async () => {
 	await axios.post( '/event/getAll' )
 		.then( ( response ) => {
@@ -20,6 +20,7 @@ const getUserEvents = async () => {
 		} )
 		.catch( ( error ) => {
 			console.log( `Error: ${ error }` );
+			return null;
 		} );
 };
 

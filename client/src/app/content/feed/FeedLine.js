@@ -30,7 +30,7 @@ const FeedLine = ({ element }) => {
                     <div className='d-inline-flex align-items-baseline'>
                         <h1> { title }</h1>
                         <i className="fas fa-map-marker-alt ml-3 mr-1" style={{color: 'indianred'}}/>
-                        <blockquote className='blockquote font-italic' style={{'font-size':'.8em'}}> { city }, { country } </blockquote>
+                        <blockquote className='blockquote font-italic' style={{'fontSize':'.8em'}}> { city }, { country } </blockquote>
                     </div>
                     <div className='font-italic'> posté le { date } </div>
                     <button className="transparent-button-popup" onClick={ () => toggleOptionsPopupDisplay( id )}> <i id='dots-icon' className="dots-icon fas fa-ellipsis-v m-2"/> </button>

@@ -1,11 +1,11 @@
 import React from "react";
 
-const FriendsBarFriendRow = ({ profilePic, name, id }) => {
+const FriendsBarFriendRow = ({ user }) => {
 	return (
 		<li className='list-element'>
-			<a href={'/profile/'+ id} className='d-block px-3 py-1'>
-				<span className={profilePic}/>
-				{name}
+			<a href={'/profile/'+ user._id} className='d-block px-3 py-1'>
+				<span/>
+				{ user.firstName } { user.lastName }
 			</a>
 		</li>
 	);

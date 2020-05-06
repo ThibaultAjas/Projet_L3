@@ -26,7 +26,7 @@ const getUserEvents = async () => {
 };
 
 const getFriendsById = async ( idsList ) => {
-	let friendsList = [];
+	let friends = [];
 
 	await axios({
 		url: '/user/getAllByIds',
@@ -34,13 +34,13 @@ const getFriendsById = async ( idsList ) => {
 		data: idsList
 	})
 		.then((response) => {
-			console.log("kuku: ", response);
+			friends = response.data.users;
 		})
 		.catch((error) => {
 			console.log(`Error: ${ error }`)
 		});
 
-	return friendsList;
+	return friends;
 };
 
 export {

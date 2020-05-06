@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setLogged, setSessionMail, setSessionPassword, setUser } from "./app_cookies";
+// import { setLogged, setSessionMail, setSessionPassword, setUser } from "./app_cookies";
 
 const getDateFrom = ( country, date) => {
 
@@ -34,7 +34,7 @@ const getFriendsById = async ( idsList ) => {
 		data: idsList
 	})
 		.then((response) => {
-			friends = response.data.users;
+			friends = response.data.data;
 		})
 		.catch((error) => {
 			console.log(`Error: ${ error }`)

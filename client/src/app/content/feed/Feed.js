@@ -9,9 +9,13 @@ import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
 
 
 class Feed extends React.Component {
-    state = { events: [] };
+    state = {
+        events: []
+    };
 
-    componentDidMount = () => { this.getEvents(); };
+    componentDidMount = () => {
+        this.getEvents();
+    };
 
     getEvents = () => {
         // axios.post('/event/getAll')
@@ -22,9 +26,7 @@ class Feed extends React.Component {
         })
             .then((response) => {
                 const data = response.data;
-                console.log(data);
-                this.setState({events: data.events});
-                console.log(this.state.events);
+                this.setState({events: data.data});
 
             })
             .catch((error) => {

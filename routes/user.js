@@ -39,15 +39,10 @@ const user = require('../models/userModel');
     router.post('/login', (req, res) => {
         const data = req.body;
 
-        console.log('Data: ', data);
-
         user.find(data)
-            .then((data) => {
+            .then((user) => {
                 const sess = req.session;
-                console.log(data)
-                // sess.mail = data[0].mail;
-                console.log('Data 2: ', data)
-                return res.json({msg: 'User logged in', user: data[0]});
+                return res.json({msg: 'User logged in', data: user[0]});
             })
             .catch((error) => {
                 console.log(error);
@@ -65,7 +60,7 @@ const user = require('../models/userModel');
 
         user.find({$or: params})
             .then((data) => {
-                return res.json({msg: 'Got users', users: data});
+                return res.json({msg: 'Got users', data: data});
             })
             .catch((error) => {
                 return res.status(500).send(error);
@@ -78,7 +73,7 @@ const user = require('../models/userModel');
 
         user.find({mail: sess.mail})
             .then((data) => {
-                return res.json(data[0].followers);
+                return res.json({msg: 'Got all user you\'re following', data: data[0].following});
             })
             .catch((error) => {
                 return res.status(500).send(error);
@@ -86,7 +81,20 @@ const user = require('../models/userModel');
     });
 }
 
+// CRUD: User
 {
+    router.post('/updateById', (req, res) => {
+        const data = req.body;
+
+        user.findByIdAndUpdate(data._id, { $set: data.toUpdate })
+            .then((data) => {
+                console.log('updateById - Data received', data);
+                return res.json({msg: 'User updated', data: data});
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
+            });
+    })
 }
 
 module.exports = router;

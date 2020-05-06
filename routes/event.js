@@ -14,11 +14,13 @@ const event = require('../models/eventModel');
         const data = req.body;
         const newEvent = new event(data);
 
-        newEvent.save((error) => {
-            if (error) return res.status(500).json({msg: 'Sorry, internal server error'});
-
-            return res.json({ msg: 'Your data has been saved !' }); // status 200
-        });
+        newEvent.save()
+            .then((data) => {
+                return res.json({ msg: 'Your data has been saved !', data: data }); // status 200
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
+            });
     });
 }
 
@@ -39,7 +41,7 @@ const event = require('../models/eventModel');
 
         event.find(data)
             .then((data) => {
-                return res.json(data);
+                return res.json({msg: 'Got event', data: data});
             })
             .catch((error) => {
                 return res.status(500).send(error);
@@ -52,7 +54,7 @@ const event = require('../models/eventModel');
 
        event.find({mail: userMail})
            .then((data) => {
-               return res.json(data);
+               return res.json({msg: 'Got all events for this user', data: data});
            })
            .catch((error) => {
                return res.status(500).send(error);
@@ -61,24 +63,27 @@ const event = require('../models/eventModel');
 
     router.post('/getAllFromFollowing', (req, res) => {
         const data = req.body;
+        console.log('Data: ' , data);
 
         event.find({})
             .then((events) => {
                 user.find({mail: data.mail})
                     .then((data) => {
-                        user.find({ $or: [{_id: data[0].following}]})
-                            .then((following) => {
-                                let evtsFromFollowing = [];
-                                following.forEach((elemUser) => {
-                                    if (elemUser.events.length !== 0) {
-                                        elemUser.events.forEach((evt) => {
-                                            evtsFromFollowing.push(events.find(e => e._id = evt._id));
-                                        });
-                                    }
+                        console.log('data', data)
+                        if (data.length !== 0) {
+                            user.find({ $or: [{_id: data[0].following}]})
+                                .then((following) => {
+                                    let evtsFromFollowing = [];
+                                    following.forEach((elemUser) => {
+                                        if (elemUser.events.length !== 0) {
+                                            elemUser.events.forEach((evt) => {
+                                                evtsFromFollowing.push(events.find(e => e._id = evt._id));
+                                            });
+                                        }
+                                    });
+                                    return res.json({msg: 'Got events', data: evtsFromFollowing});
                                 });
-                                return res.json({msg: 'Got events', events: evtsFromFollowing});
-                            });
-
+                        }
                     });
             })
             .catch((error) => {
@@ -97,11 +102,14 @@ const event = require('../models/eventModel');
 
         const evt = new event(filter);
 
-        evt.findOneAndUpdate(filter, upd, { new: true }, (err, doc) => {
-            if (err) return res.status(500).send(err);
-            else return res.json(doc);
+        evt.findOneAndUpdate(filter, upd, { new: true })
+            .then((data) => {
+                return res.json({msg: 'Event updated', data: data});
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
+            });
         });
-    });
 }
 
 // CRUD: Delete

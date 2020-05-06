@@ -61,8 +61,8 @@ class MapDisplay extends React.Component{
                     <SwapFeedButtons />
 
                     <div>
-                        <i className="fas fa-filter buttonmap"></i>
-                        <i className="fas fa-plus buttonmap"></i>
+                        <i className="fas fa-filter buttonmap"/>
+                        <i className="fas fa-plus buttonmap"/>
                     </div>
 
                     <Map
@@ -86,7 +86,7 @@ class MapDisplay extends React.Component{
                     <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici"/>
                     {
                         this.state.events.map( (event,index) =>
-                            <MarkerDisplay position={[event.location.latitude,event.location.longitude]} popupMessage={index}    />
+                            <MarkerDisplay key={index} position={[event.location.latitude,event.location.longitude]} popupMessage={index}    />
                         )
                     }
                     </Map>

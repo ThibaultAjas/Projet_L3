@@ -4,14 +4,14 @@ import { getUser } from "../../util/app_cookies";
 import { getFriendsById } from "../../util/dataConverter";
 
 class FriendsBarContent extends React.Component {
-	state = { following: [] };
+	state = {
+		following: []
+	};
 
 	componentDidMount() {
 		getFriendsById( getUser().following )
 			.then( (data) => {
-				console.log(data);
 				this.setState({ following: data} );
-				this.forceUpdate();
 			});
 	}
 

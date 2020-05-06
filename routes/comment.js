@@ -11,7 +11,7 @@ const comment = require('../models/commentModel');
 router.post('/getAll', (req, res) => {
     comment.find({})
         .then((data) => {
-            res.json(data);
+            res.json({msg: 'Got all comments', data: data});
         })
         .catch((error) => {
             console.log(`Error: ${error}`);

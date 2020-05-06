@@ -94,7 +94,7 @@ router.post('/stats', (req, res) => {
 
     // TODO: Plus de stats
 
-    res.json(dataOut);
+    return res.json({msg: 'Got some stats', data: dataOut});
 });
 
 module.exports = router;

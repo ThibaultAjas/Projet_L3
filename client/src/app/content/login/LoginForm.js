@@ -39,7 +39,7 @@ class LoginForm extends React.Component {
             data: payload
         })
             .then((response) => {
-                const user = response.data.user;
+                const user = response.data.data;
 
                 setUser(user);
 

@@ -17,11 +17,26 @@ class FriendsBarContent extends React.Component {
 
 	render() {
 		return (
-			<ul id='friendsBar-content' className='list-group overflow-auto'>
-				{
-					this.state.following.map( (follower) => <FriendsBarFriendRow key = {follower._id} user={follower}/>)
-				}
-			</ul>
+			<>
+				<div id='friendsBar-top-section' className='w-100 d-inline-flex align-items-center justify-content-center'>
+					<h3 className='mr-2'>Sort by</h3>
+
+					<select name='friends-sort-picker' id='friends-sort-picker' className='my-3'>
+						<option value=''> -- </option>
+						<option value='firstName'> Firstname </option>
+						<option value='lastName'> Lastname </option>
+						<option value='userName'> Username </option>
+					</select>
+				</div>
+
+				<ul id='friendsBar-content' className='list-group'>
+					{
+						this.state.following.map(
+							(follower) => <FriendsBarFriendRow key = {follower._id} user={follower}/>
+						)
+					}
+				</ul>
+			</>
 		);
 	}
 }

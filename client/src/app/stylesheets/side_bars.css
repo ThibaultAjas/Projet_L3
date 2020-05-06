@@ -11,14 +11,9 @@
     position: sticky;
 }
 
-#profile-pic {
-    min-width: 100px;
-    max-width: 100px;
-    min-height: 100px;
-    max-height: 100px;
-
-    background: url("https://lh3.googleusercontent.com/proxy/-zGpWwwRCgsUUDbFdzAmDWFR3e6CsPAZsbpQGlrBnskM-fNwCCDH4Vt8OxN4mH7bspz1LdrMjT04Kp6qe9NQrnu7rfj7mrCRl_eTychLSAScsFHBJm4EhYJhKD2H-M9GBuQ") no-repeat no-repeat center center;
-    background-size: 100%;
+#profile-bar-pic {
+    font-size: 2em;
+    cursor: default;
 }
 
 ul { list-style: none; }
@@ -39,6 +34,9 @@ ul { list-style: none; }
     background-size: cover;
 }
 
+.profileBar-element-row { border-top: 1px solid #3a4147; }
+.profileBar-element-row:first-child { margin-bottom: 3em; }
+
 .profileBar-element-row:last-child {
     position: absolute;
     bottom: 0;
@@ -55,13 +53,10 @@ ul { list-style: none; }
 ***********************************************************************************************************************/
 
 #friendsBar-top-section {
-    min-width: 100%;
-    max-width: 100%;
-
-    padding: 20%;
-
-    background: url("https://images.radio-canada.ca/q_auto,w_1250/v1/ici-premiere/16x9/friends-nbc-pofpol-2.png") no-repeat no-repeat;
-    background-size: cover;
+    position: sticky;
+    top: 0;
 }
 
-.friendsBar-hidden {margin-right: -300px;}
+#friendsBar-top-section { cursor: default; }
+
+.friendsBar-hidden { margin-right: -300px; }

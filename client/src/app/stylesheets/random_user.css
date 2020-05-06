@@ -1,10 +1,12 @@
 #random-user-header {
-    min-height: 250px;
-    max-height: 250px;
+    min-height: 150px;
+    max-height: 150px;
 
     border-radius: 0;
 
     position: relative;
+
+    background-color: #889c7c;
 }
 
 #action-bar {
@@ -26,3 +28,5 @@
     background-color: #32373d;
     color: white;
 }
+
+#random-user-pic { font-size: 2em; }

@@ -5,6 +5,10 @@ import ProfileBarContent from "./ProfileBarContent";
 import '../../../stylesheets/side_bars.css';
 
 const log_content = [
+	{ 	'name' : 'Accueil',
+		'icon' : 'fa fa-home mr-3',
+		'href' : '/'
+	},
 	{ 	'name' : 'Profil',
 		'icon' : 'fa fa-user mr-3',
 		'href' : '/profile'
@@ -16,10 +20,6 @@ const log_content = [
 	{ 	'name' : 'Mes amis',
 		'icon' : 'fa fa-users mr-3',
 		'href' : '/friends'
-	},
-	{ 	'name' : 'Accueil',
-		'icon' : 'fa fa-home mr-3',
-		'href' : '/'
 	},
 	{ 	'name' : 'Paramètres',
 		'icon' : 'fa fa-cog mr-3',

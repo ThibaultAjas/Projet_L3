@@ -1,8 +1,9 @@
 import React from "react";
 
-import { isLogged } from "../util/app_cookies";
+import { getUser, isLogged } from "../util/app_cookies";
 
 import '../../stylesheets/header.css';
+import ProfilePic from "../profile/ProfilePic";
 
 
 const Header = () => {
@@ -11,7 +12,7 @@ const Header = () => {
 			{
 				(isLogged())	?
 									<div id='profileBar-activators' className='pt-2 pb-activator'>
-										<div id="header-show-profileBar-icon" className='rounded-circle element'/>
+										<span id="header-show-profileBar-icon" ><ProfilePic userName={getUser().userName} bgColor='#4b69ab' size='35px' textColor='#c49235'/></span>
 										<i id="header-hide-profileBar-icon" className='rounded-circle element fas fa-angle-double-left' style={ { 'display': 'none' } } />
 									</div>
 								: <> </>

@@ -5,7 +5,7 @@ import FeedLinePost from "./FeedLinePost";
 import FeedDotsPopup from "./FeedDotsPopup";
 
 import { toggleOptionsPopupDisplay } from "../../scripts/feed_script";
-import getDateFrom from "../util/dataConverter";
+import { getDateFrom } from "../util/dataConverter";
 
 const FeedLine = ({ element }) => {
     let id = element._id;

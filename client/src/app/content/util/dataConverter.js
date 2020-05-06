@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const getDateFrom = ( country, date) => {
 
 	const ye = new Intl.DateTimeFormat(country, { year: 'numeric' }).format( date );
@@ -7,4 +9,26 @@ const getDateFrom = ( country, date) => {
 	return `${ da } ${ mo } ${ ye }`;
 };
 
-export default getDateFrom;
+
+const getUserEvents = () => {
+	let tmp = [];
+
+	axios.post('/event/getAll')
+		.then((response) => {
+			const data = response.data;
+			console.log("pd",data.data[0]);
+			tmp=(data.data);
+
+		})
+		.catch((error) => {
+			console.log(`Error: ${error}`);
+		});
+	console.log("merde",tmp[0]);
+	return(tmp);
+
+};
+
+
+export {
+ getDateFrom, getUserEvents
+};

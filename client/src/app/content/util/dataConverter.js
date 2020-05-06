@@ -10,24 +10,18 @@ const getDateFrom = ( country, date) => {
 };
 
 
-const getUserEvents = () => {
-	let tmp = [];
-
-	axios.post('/event/getAll')
-		.then((response) => {
+const getUserEvents = async () => {
+	await axios.post( '/event/getAll' )
+		.then( ( response ) => {
 			const data = response.data;
-			console.log("pd",data.data[0]);
-			tmp=(data.data);
+			// console.log( "pd", data.data[ 0 ] );
+			return data.data;
 
-		})
-		.catch((error) => {
-			console.log(`Error: ${error}`);
-		});
-	console.log("merde",tmp[0]);
-	return(tmp);
-
+		} )
+		.catch( ( error ) => {
+			console.log( `Error: ${ error }` );
+		} );
 };
-
 
 export {
  getDateFrom, getUserEvents

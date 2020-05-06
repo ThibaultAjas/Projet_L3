@@ -22,7 +22,10 @@ const user = require('../models/user');
         usr.save((error) => {
 
             if (error) {
-                if (error.code = 11000) return res.status(500).json({msg: 'Sorry, internal server error', error: 'Mail already registered'});
+                if (error.code = 11000) return res.status(500).json({
+                    msg: 'Sorry, internal server error',
+                    error: 'Mail already registered'
+                });
                 return res.status(500).json({msg: 'Sorry, internal server error', error: 'Unknown'});
             }
 
@@ -47,20 +50,39 @@ const user = require('../models/user');
                 return res.status(500).send(error);
             });
     });
+
+    router.post('/getAllByIds', (req, res) => {
+        const data = req.body;
+        const params = [];
+
+        for (const id in data) params.push({_id: id});
+
+        console.log('Params: ', params);
+
+        user.find({$or: params})
+            .then((data) => {
+                return res.json({msg: 'Got users', users: data});
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
+            });
+
+    });
+
+    router.post('/getFollowers', (req, res) => {
+        const sess = req.session;
+
+        user.find({mail: sess.mail})
+            .then((data) => {
+                return res.json(data[0].followers);
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
+            });
+    });
 }
 
 {
-    router.post('/getFollowers', (req, res) => {
-       const sess = req.session;
-
-       user.find({mail: sess.mail})
-           .then((data) => {
-               return res.json(data[0].followers);
-           })
-           .catch((error) => {
-               return res.status(500).send(error);
-           });
-    });
 }
 
 module.exports = router;

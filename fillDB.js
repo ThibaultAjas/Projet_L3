@@ -32,7 +32,7 @@ const fillDB = async () => {
             isAdmin: true,
             firstName: 'Test',
             lastName: 'TEST',
-            country: 'france',
+            country: 'France',
             city: 'Toulouse',
             phone:'0669696969',
             userName: 'Agnubushklufu'
@@ -43,10 +43,10 @@ const fillDB = async () => {
             isAdmin: false,
             firstName: 'Test1',
             lastName: 'TEST',
-            country: 'france',
+            country: 'France',
             city: 'Toulouse',
             phone:'0669696969',
-            userName: 'Agnubushklufu_1'
+            userName: 'Agnubushklufu1'
         }),
         new user({
             mail: 'test2@gmail.com',
@@ -54,10 +54,10 @@ const fillDB = async () => {
             isAdmin: false,
             firstName: 'Test2',
             lastName: 'TEST',
-            country: 'france',
+            country: 'France',
             city: 'Toulouse',
             phone:'0669696969',
-            userName: 'Agnubushklufu_2'
+            userName: 'Agnubushklufu2'
         }),
         new user({
             mail: 'test3@gmail.com',
@@ -65,10 +65,10 @@ const fillDB = async () => {
             isAdmin: false,
             firstName: 'Test3',
             lastName: 'TEST',
-            country: 'france',
+            country: 'France',
             city: 'Toulouse',
             phone:'0669696969',
-            userName: 'Agnubushklufu_3'
+            userName: 'Agnubushklufu3'
         }),
         new user({
             mail: 'test4@gmail.com',
@@ -76,10 +76,10 @@ const fillDB = async () => {
             isAdmin: false,
             firstName: 'Test4',
             lastName: 'TEST',
-            country: 'france',
+            country: 'France',
             city: 'Toulouse',
             phone:'0669696969',
-            userName: 'Agnubushklufu_4'
+            userName: 'Agnubushklufu4'
         }),
         new user({
             mail: 'test5@gmail.com',
@@ -87,10 +87,10 @@ const fillDB = async () => {
             isAdmin: false,
             firstName: 'Test5',
             lastName: 'TEST',
-            country: 'france',
+            country: 'France',
             city: 'Toulouse',
             phone:'0669696969',
-            userName: 'Agnubushklufu_5'
+            userName: 'Agnubushklufu5'
         }),
         new user({
             mail: 'test6@gmail.com',
@@ -98,10 +98,10 @@ const fillDB = async () => {
             isAdmin: false,
             firstName: 'Test6',
             lastName: 'TEST',
-            country: 'france',
+            country: 'France',
             city: 'Toulouse',
             phone:'0669696969',
-            userName: 'Agnubushklufu_6'
+            userName: 'Agnubushklufu6'
         }),
         new user({
             mail: 'test7@gmail.com',
@@ -109,10 +109,10 @@ const fillDB = async () => {
             isAdmin: false,
             firstName: 'Test7',
             lastName: 'TEST',
-            country: 'france',
+            country: 'France',
             city: 'Toulouse',
             phone:'0669696969',
-            userName: 'Agnubushklufu_7'
+            userName: 'Agnubushklufu7'
         }),
         new user({
             mail: 'test8@gmail.com',
@@ -120,10 +120,10 @@ const fillDB = async () => {
             isAdmin: false,
             firstName: 'Test8',
             lastName: 'TEST',
-            country: 'france',
+            country: 'France',
             city: 'Toulouse',
             phone:'0669696969',
-            userName: 'Agnubushklufu_8'
+            userName: 'Agnubushklufu8'
         }),
         new user({
             mail: 'ribeyrolles.matthieu@gmail.com',
@@ -288,12 +288,12 @@ const fillDB = async () => {
     const eventListFromBd = await event.find({});
     console.log('Got collection events');
 
-    await user.findByIdAndUpdate(userListFromBd[9]._id, {$set: {following: [userListFromBd[0]._id, userListFromBd[1]._id, userListFromBd[2]._id, userListFromBd[3]._id, userListFromBd[4]._id, userListFromBd[5]._id, userListFromBd[6]._id, userListFromBd[7]._id, userListFromBd[8]._id]}});
+    await user.findByIdAndUpdate(userListFromBd[9]._id, {$set: {following: [userListFromBd[0], userListFromBd[1], userListFromBd[2], userListFromBd[3], userListFromBd[4], userListFromBd[5], userListFromBd[6], userListFromBd[7], userListFromBd[8]]}});
     console.log('Friends of Matthieu added');
-    await user.findByIdAndUpdate(userListFromBd[0]._id, {$set: {following: [userListFromBd[9]._id, userListFromBd[1]._id, userListFromBd[2]._id, userListFromBd[3]._id, userListFromBd[4]._id, userListFromBd[5]._id, userListFromBd[6]._id, userListFromBd[7]._id, userListFromBd[8]._id]}});
+    await user.findByIdAndUpdate(userListFromBd[0]._id, {$set: {following: [userListFromBd[9], userListFromBd[1], userListFromBd[2], userListFromBd[3], userListFromBd[4], userListFromBd[5], userListFromBd[6], userListFromBd[7], userListFromBd[8]]}});
     console.log('Friends of Test added');
 
-    await user.findByIdAndUpdate(userListFromBd[0]._id, {$set: {events: [eventListFromBd[0]._id, eventListFromBd[1]._id, eventListFromBd[2]._id, eventListFromBd[3]._id, eventListFromBd[4]._id, eventListFromBd[5]._id, eventListFromBd[6]._id, eventListFromBd[7]._id, eventListFromBd[8]._id, eventListFromBd[9]._id]}});
+    await user.findByIdAndUpdate(userListFromBd[0]._id, {$set: {events: [eventListFromBd[0], eventListFromBd[1], eventListFromBd[2], eventListFromBd[3], eventListFromBd[4], eventListFromBd[5], eventListFromBd[6], eventListFromBd[7], eventListFromBd[8], eventListFromBd[9]]}});
     console.log('Events of Test added');
 
     console.log('Database successfully filled !');

@@ -41,7 +41,6 @@ const user = require('../models/userModel');
 
         user.find(data)
             .then((user) => {
-                const sess = req.session;
                 return res.json({msg: 'User logged in', data: user[0]});
             })
             .catch((error) => {

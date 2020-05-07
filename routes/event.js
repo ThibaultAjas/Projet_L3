@@ -50,21 +50,33 @@ const event = require('../models/eventModel');
 
     router.post('/getAllForUser', (req, res) => {
        const data = req.body;
-       const userMail = data.mail;
 
-       event.find({mail: userMail})
-           .then((data) => {
-               return res.json({msg: 'Got all events for this user', data: data});
-           })
-           .catch((error) => {
-               return res.status(500).send(error);
-           });
+       // event.find({mail: userMail})
+       //     .then((data) => {
+       //         return res.json({msg: 'Got all events for this user', data: data});
+       //     })
+       //     .catch((error) => {
+       //         return res.status(500).send(error);
+       //     });
+
+        user.findById(data.id)
+            .then((usr) => {
+                const evts = usr.events;
+                event.find({ $or: evts })
+                    .then((evtList) => {
+                        return res.json({msg: 'Got all events from user', data: evtList});
+                    })
+                    .catch((error) => {
+                        return res.status(500).send(error);
+                    });
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
+            });
     });
 
     router.post('/getAllFromFollowing', (req, res) => {
         const data = req.body;
-        console.log('Data: ' , data);
-
         event.find({})
             .then((events) => {
                 user.find({mail: data.mail})
@@ -77,13 +89,29 @@ const event = require('../models/eventModel');
                                     following.forEach((elemUser) => {
                                         if (elemUser.events.length !== 0) {
                                             elemUser.events.forEach((evt) => {
-                                                evtsFromFollowing.push(events.find(e => e._id = evt._id));
+
+                                                console.log('Evt: ', evt);
+
+                                                // evtsFromFollowing.push(events.find(e => {
+                                                //     console.log('ID Event: ', evt._id);
+                                                //     console.log('ID Temp : ', e._id);
+                                                //     console.log('\t', e._id === evt._id)
+                                                //     return e._id === evt._id
+                                                // }));
+                                                // console.log('ID Event: ', evt._id);
                                             });
                                         }
                                     });
+                                    // console.log('Events: ', evtsFromFollowing);
                                     return res.json({msg: 'Got events', data: evtsFromFollowing});
+                                })
+                                .catch((error) => {
+                                    return res.status(500).send(error);
                                 });
                         }
+                    })
+                    .catch((error) => {
+                        return res.status(500).send(error);
                     });
             })
             .catch((error) => {

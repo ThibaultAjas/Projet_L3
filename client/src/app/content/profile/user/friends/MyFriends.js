@@ -20,7 +20,7 @@ class MyFriends extends React.Component {
 			<>
 				{
 					this.state.following.map(
-						(follower) => <MyFriendsCard key = {follower._id} user={follower}/>
+						(follower) => <MyFriendsCard key = {follower._id} friend={follower}/>
 					)
 				}
 			</>

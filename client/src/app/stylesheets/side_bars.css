@@ -60,3 +60,5 @@ ul { list-style: none; }
 #friendsBar-top-section { cursor: default; }
 
 .friendsBar-hidden { margin-right: -300px; }
+#friends-bar-profile-pic { font-size: .7em;}
+#friends-bar-profile-pic * { padding-top: 3px;}

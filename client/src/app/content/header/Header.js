@@ -12,7 +12,7 @@ const Header = () => {
 			{
 				(isLogged())	?
 									<div id='profileBar-activators' className='pt-2 pb-activator'>
-										<span id="header-show-profileBar-icon" ><ProfilePic userName={getUser().userName} bgColor='#4b69ab' size='35px' textColor='#c49235'/></span>
+										<span id="header-show-profileBar-icon" ><ProfilePic userName={getUser().firstName} bgColor='#4b69ab' size='35px' textColor='#c49235'/></span>
 										<i id="header-hide-profileBar-icon" className='rounded-circle element fas fa-angle-double-left' style={ { 'display': 'none' } } />
 									</div>
 								: <> </>

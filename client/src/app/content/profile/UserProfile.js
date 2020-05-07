@@ -42,7 +42,7 @@ class UserProfile extends React.Component {
 		return (
 			<div className='m-auto w-75 card text-center p-5'>
 
-				<h1 className='text-center font-weight-bold'> Mon profile </h1>
+				<h1 className='text-center font-weight-bold'> Mon profil </h1>
 
 				<div id='user-profile-form' className='form-group mt-5 align-items-start d-flex flex-column align-items-center'>
 					<label>

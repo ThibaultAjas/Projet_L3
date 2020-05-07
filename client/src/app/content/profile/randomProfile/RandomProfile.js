@@ -1,6 +1,7 @@
 import React from "react";
 import RandomProfileHeader from "./RandomProfileHeader";
 import { getFriendsById } from "../../util/dataConverter";
+import Feed from "../../feed/Feed";
 
 class RandomProfile extends React.Component {
 	state = { user: {} };
@@ -23,7 +24,11 @@ class RandomProfile extends React.Component {
 
 	render() {
 		return (
-			<div> <RandomProfileHeader firstName={ this.firstName } userName={ this.userName } lastName={ this.lastName } id={ this.id }/> </div>
+			<div>
+				<RandomProfileHeader firstName={ this.firstName } userName={ this.userName } lastName={ this.lastName } id={ this.id }/>
+				<Feed />
+			</div>
+
 		);
 	}
 }

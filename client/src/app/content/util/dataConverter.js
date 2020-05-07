@@ -38,7 +38,7 @@ let getUserEventList = async ( id ) => {
 			events = response.data.data;
 		})
 		.catch((error) => {
-			console.log(`Error: ${ error }`)
+			console.log(`Error: ${ error }`);
 		});
 
 	console.log("on test",events);

@@ -3,7 +3,7 @@ import React from "react";
 import { getUser, isLogged } from "../../../util/app_cookies";
 import LoginScreen from "../../../login/LoginScreen";
 import Feed from "../../../feed/Feed";
-import { getFriendsById, getUserEventList } from "../../../util/dataConverter";
+import { getUserEventList } from "../../../util/dataConverter";
 
 class MyActions extends React.Component {
 	state = { events: [] };

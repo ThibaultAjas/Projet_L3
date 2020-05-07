@@ -62,7 +62,7 @@ class MapDisplay extends React.Component{
 
                     <div>
                         <i className="fas fa-filter buttonmap"/>
-                        <i className="fas fa-plus buttonmap"/>
+                        <a href="/addevent" ><i className="fas fa-plus buttonmap"/></a>
                     </div>
 
                     <Map

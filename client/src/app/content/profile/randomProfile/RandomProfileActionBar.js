@@ -1,16 +1,24 @@
 import React from "react";
+import { getUser } from "../../util/app_cookies";
+import { follow, unfollow } from "../../util/dataBaseModifications";
 
-class RandomProfileActionBar extends React.Component {
-	render() {
-		return (
-			<div id='action-bar' className='text-white'>
+const RandomProfileActionBar = ({ id }) => {
 
-				<button className='action-button mr-2'> Follow </button>
-				<button className='action-button mr-2'> Report </button>
+	return (
+		<div id='action-bar' className='text-white'>
 
-			</div>
-		);
-	}
-}
+			{
+				(getUser().following.includes( id ))
+					? <button id='random-unfollow-button' className='action-button mr-2' onClick={ () =>  unfollow(id) }> Unfollow </button>
+
+
+					: <button id='random-follow-button' className='action-button mr-2' onClick={ () => follow(id) }> Follow </button>
+			}
+
+			<button className='action-button mr-2'> Report </button>
+
+		</div>
+	);
+};
 
 export default RandomProfileActionBar;

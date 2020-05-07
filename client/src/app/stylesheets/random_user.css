@@ -4,9 +4,12 @@
 
     border-radius: 0;
 
-    position: relative;
+    /*position: relative;*/
+    position: sticky;
+    top: 0;
 
-    background-color: #889c7c;
+    /*background-color: #889c7c;*/
+    background-color: white;
 }
 
 #action-bar {
@@ -30,3 +33,6 @@
 }
 
 #random-user-pic { font-size: 2em; }
+
+#random-unfollow-button:hover { background-color: indianred; }
+#random-follow-button:hover { background-color: cadetblue; }

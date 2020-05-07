@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getUser } from "./app_cookies";
 // import { setLogged, setSessionMail, setSessionPassword, setUser } from "./app_cookies";
 
 const getDateFrom = ( country, date) => {
@@ -24,6 +25,24 @@ const getUserEvents = async () => {
 		} );
 	return(tmp);
 };
+
+//TODO: fix it
+
+// const getFollowersEvents = () => {
+// 	axios({
+// 		url: '/event/getAllFromFollowing',
+// 		method: 'POST',
+// 		data: getUser()
+// 	})
+// 		.then((response) => {
+// 			const data = response.data;
+// 			return data.data;
+//
+// 		})
+// 		.catch((error) => {
+// 			console.log(`Error: ${error}`);
+// 		});
+// };
 
 const getFriendsById = async ( idsList ) => {
 	let friends = [];

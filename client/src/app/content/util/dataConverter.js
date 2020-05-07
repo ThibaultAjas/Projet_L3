@@ -41,6 +41,7 @@ let getUserEventList = async ( id ) => {
 			console.log(`Error: ${ error }`)
 		});
 
+	console.log("on test",events);
 	return events;
 };
 

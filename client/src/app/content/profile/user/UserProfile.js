@@ -1,7 +1,7 @@
 import React from "react";
 
-import { getUser } from "../util/app_cookies";
-import '../../stylesheets/userProfile.css';
+import { getUser } from "../../util/app_cookies";
+import '../../../stylesheets/userProfile.css';
 
 
 class UserProfile extends React.Component {

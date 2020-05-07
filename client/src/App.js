@@ -10,7 +10,7 @@ import './App.css';
 
 import Home from "./app/Home";
 import MapDisplay from "./app/content/map/MapDisplay";
-import UserProfile from "./app/content/profile/UserProfile";
+import UserProfile from "./app/content/profile/user/UserProfile";
 import Feed from "./app/content/feed/Feed";
 import LoginScreen from "./app/content/login/LoginScreen";
 import RegisterScreen from "./app/content/register/RegisterScreen";
@@ -18,8 +18,9 @@ import Logout from "./app/content/Logout";
 
 import { isLogged, setLogged } from "./app/content/util/app_cookies";
 import AddEventScreen from "./app/content/map/AddEventScreen";
-import MyActions from "./app/content/profile/actions/MyActions";
+import MyActions from "./app/content/profile/user/actions/MyActions";
 import RandomProfile from "./app/content/profile/randomProfile/RandomProfile";
+import MyFriends from "./app/content/profile/user/friends/MyFriends";
 
 class App extends React.Component {
 
@@ -34,6 +35,7 @@ class App extends React.Component {
         return (
             <Router>
                 <Switch>
+                    <route path='/friends'          > <Home content={ <MyFriends/> } />                                 </route>
                     <route path='/actions'          > <Home content={ <MyActions/> }/>                                  </route>
                     <route path='/profile/:id'      > <Home content={ <RandomProfile /> }/>                             </route>
                     <route path='/addevent'         > <AddEventScreen/>                                                 </route>

@@ -1,6 +1,7 @@
 import React from "react";
 import '../../stylesheets/login.css';
 import axios from "axios";
+import {getUser} from "../util/app_cookies";
 
 class AddEventScreen extends React.Component {
 
@@ -14,6 +15,8 @@ class AddEventScreen extends React.Component {
 
 
     handleChange = ({target}) => {
+        console.log(getUser());
+
         const {name, value} = target;
         this.setState({[name]: value});
         console.log("mon obj",this.state);

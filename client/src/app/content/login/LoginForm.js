@@ -30,6 +30,7 @@ class LoginForm extends React.Component {
     };
 
     submit = ( event ) => {
+
         event.preventDefault();
         const payload = { mail: this.state.mail, password: this.state.password };
 
@@ -40,19 +41,21 @@ class LoginForm extends React.Component {
         })
             .then((response) => {
                 const user = response.data.data;
+                if (user!==undefined) {
+                    setUser(user);
 
-                setUser(user);
+                    // TODO: check if this does work
+                    // note that if you logout, it won't connect you back on new window
+                    if (this.doRemember) {
+                        setSessionMail(this.state.mail);
+                        setSessionPassword(this.state.password);
+                    }
 
-                // TODO: check if this does work
-                // note that if you logout, it won't connect you back on new window
-                if (this.doRemember) {
-                    setSessionMail(this.state.mail);
-                    setSessionPassword(this.state.password);
+                    setLogged(true);
+                    window.location.href = '/';
                 }
+                 this.resetUserInputs();
 
-                setLogged( true );
-                window.location.href = '/';
-                this.resetUserInputs();
             })
             .catch((error) => {
                 console.log('Internal server error, ', error);

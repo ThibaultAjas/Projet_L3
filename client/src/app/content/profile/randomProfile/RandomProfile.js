@@ -4,7 +4,10 @@ import { getFriendsById, getUserEventList } from "../../util/dataConverter";
 import Feed from "../../feed/Feed";
 
 class RandomProfile extends React.Component {
-	state = { user: {} };
+	state = {
+		user: {},
+		events: []
+	};
 	userName = '';
 	firstName = '';
 	lastName = '';
@@ -22,10 +25,9 @@ class RandomProfile extends React.Component {
 			});
 
 		getUserEventList( this.id ).then( (data) => {
-			this.events = data;
-			console.log("id: " , this.id, data);
+			this.setState({ events: data });
+			this.events = this.state.events;
 			this.forceUpdate();
-
 		});
 	}
 
@@ -33,7 +35,7 @@ class RandomProfile extends React.Component {
 		return (
 			<div>
 				<RandomProfileHeader firstName={ this.firstName } userName={ this.userName } lastName={ this.lastName } id={ this.id }/>
-				<Feed content={ this.events }/>
+				<Feed />
 			</div>
 
 		);

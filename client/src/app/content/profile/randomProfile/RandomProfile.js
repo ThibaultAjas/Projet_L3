@@ -1,6 +1,6 @@
 import React from "react";
 import RandomProfileHeader from "./RandomProfileHeader";
-import { getFriendsById } from "../../util/dataConverter";
+import { getFriendsById, getUserEventList } from "../../util/dataConverter";
 import Feed from "../../feed/Feed";
 
 class RandomProfile extends React.Component {
@@ -9,6 +9,7 @@ class RandomProfile extends React.Component {
 	firstName = '';
 	lastName = '';
 	id = '';
+	events = [];
 
 	componentDidMount() {
 		getFriendsById( [ new URL(window.location.href).pathname.substring(9) ] )
@@ -18,15 +19,21 @@ class RandomProfile extends React.Component {
 				this.firstName = this.state.user.firstName;
 				this.lastName = this.state.user.lastName;
 				this.id = this.state.user._id;
-				this.forceUpdate();
 			});
+
+		getUserEventList( this.id ).then( (data) => {
+			this.events = data;
+			console.log("id: " , this.id, data);
+			this.forceUpdate();
+
+		});
 	}
 
 	render() {
 		return (
 			<div>
 				<RandomProfileHeader firstName={ this.firstName } userName={ this.userName } lastName={ this.lastName } id={ this.id }/>
-				<Feed />
+				<Feed content={ this.events }/>
 			</div>
 
 		);

@@ -14,7 +14,11 @@ class Feed extends React.Component {
     };
 
     componentDidMount = () => {
-        this.getEvents();
+        if (this.props.content) {
+            this.setState({ events: this.props.content });
+        } else {
+            this.getEvents();
+        }
     };
 
     //TODO: verifier la méthode, ici on a le même event 10 fois (meme id)
@@ -40,13 +44,15 @@ class Feed extends React.Component {
             <>
                 { (isLogged) ? <SwapFeedButtons /> : <></> }
 
-                <div className='p-5 mx-lg-5 mx-md-2 mx-sm-2 feed'>
-                    {
-                        this.state.events.map((element, index) =>
-                            <FeedLine key={index} element={element} />
-                        ).sort((a, b) => (new Date(b.props.dateAjout)).getTime() - (new Date(a.props.dateAjout)).getTime())
-                    }
-                </div>
+                {
+                     <div className='p-5 mx-lg-5 mx-md-2 mx-sm-2 feed'>
+                        {
+                           this.state.events.map((element, index) =>
+                              <FeedLine key={index} element={element} />
+                            ).sort((a, b) => (new Date(b.props.dateAjout)).getTime() - (new Date(a.props.dateAjout)).getTime())
+                        }
+                    </div>
+                }
             </>
         );
     }

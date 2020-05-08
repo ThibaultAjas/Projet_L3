@@ -10,7 +10,9 @@ class AddEventScreen extends React.Component {
         longitude: '',
         date: '',
         title: '',
-        description: ''
+        description: '',
+        city : '',
+        country : ''
     };
 
 
@@ -30,19 +32,17 @@ class AddEventScreen extends React.Component {
                 latitude: this.state.latitude,
                 longitude: this.state.longitude
             },
-            date: new Date('December 17, 1995 03:24:00'),
+            date: this.state.date,
             title: this.state.title,
             description: this.state.description,
 
 
-            country: "tmp",
-            city: "tmp",
-            dateAdded: new Date('December 17, 1995 03:24:00'),
+            country: this.state.country,
+            city: this.state.city,
+            dateAdded: new Date(),
             comments: [],
             likes: 0,
             dislikes: 0
-
-
         };
 
         console.log("mon event",tmp);
@@ -68,7 +68,9 @@ class AddEventScreen extends React.Component {
             longitude: '',
             date: '',
             title: '',
-            description: ''
+            description: '',
+            city: '',
+            country: ''
         });
     };
 
@@ -77,9 +79,11 @@ class AddEventScreen extends React.Component {
             <form className="form-login text-center" onSubmit={this.submit}>
                 <input className="form-control inputreg" type="digit" placeholder="51" name="latitude" onChange={this.handleChange} required/>
                 <input className="form-control inputreg" type="digit" placeholder="51" name="longitude" onChange={this.handleChange} required/>
-                <input className="form-control inputreg" type="text" placeholder="06/05/2020" name="date" onChange={this.handleChange} required/>
+                <input className="form-control inputreg" type="date"  name="date" onChange={this.handleChange} required/>
                 <input className="form-control inputreg" type="text" placeholder="je ramasse des chèvres" name="title" onChange={this.handleChange} required/>
                 <input className="form-control inputreg" type="text" placeholder="votre description" name="description" onChange={this.handleChange} required/>
+                <input className="form-control inputreg" type="text" placeholder="city" name="city" onChange={this.handleChange} required/>
+                <input className="form-control inputreg" type="text" placeholder="country" name="country" onChange={this.handleChange} required/>
 
                 <button className="btn btn-lg btn-primary btn-block" type="submit">
                     AddEvent

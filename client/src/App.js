@@ -22,6 +22,7 @@ import MyActions from "./app/content/profile/user/actions/MyActions";
 import RandomProfile from "./app/content/profile/randomProfile/RandomProfile";
 import MyFriends from "./app/content/profile/user/friends/MyFriends";
 import SearchScreen from "./app/content/search/SearchScreen";
+import StatsDisplay from "./app/content/stats/StatsDisplay";
 
 class App extends React.Component {
 
@@ -34,8 +35,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <Router>
+                <Router>
                 <Switch>
+                    <route path='/stats'            > <Home content={ <StatsDisplay/> } />                              </route>
                     <route path='/friends/search'   > <Home content={ <SearchScreen/> } />                              </route>
                     <route path='/friends'          > <Home content={ <MyFriends/> } />                                 </route>
                     <route path='/actions'          > <Home content={ <MyActions/> }/>                                  </route>

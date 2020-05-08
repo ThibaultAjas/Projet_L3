@@ -68,19 +68,19 @@ class RegisterForm extends React.Component {
 
                 <h1 className="h3 mb-3 font-weight-normal "> Please sign in</h1>
 
-                <input type="email" className="form-control inputreg" placeholder="Email address" name="mail" required onChange = { this.handleChange }
-                       autoFocus/>
-                <input type="password" className="form-control inputreg" placeholder="Password" name="password" required onChange = { this.handleChange }
-                       autoFocus/>
-                <input type="password" className="form-control inputreg" placeholder="confirm password"
-                       name="password_conf" onChange = { this.handleChange }  required/>
+                <input type="email" className="form-control inputreg" placeholder="Email address" name="mail" required onChange = { this.handleChange } autoFocus/>
+                <input type="password" className="form-control inputreg" placeholder="Password" name="password" required onChange = { this.handleChange } autoFocus/>
+                <input type="password" className="form-control inputreg" placeholder="confirm password" name="password_conf" onChange = { this.handleChange }  required/>
                 <input type="text" className="form-control inputreg" placeholder="first name" name="firstName" onChange = { this.handleChange }  required/>
-                <input type="text" className="form-control inputreg" placeholder="last name" name="lastName" onChange = { this.handleChange }
-                       required/>
+                <input type="text" className="form-control inputreg" placeholder="last name" name="lastName" onChange = { this.handleChange } required/>
                 <input type="text" className="form-control inputreg" placeholder="username" name="userName" onChange = { this.handleChange } />
-                <input type="tel" className="form-control inputreg" placeholder="0675488456"
-                       name="tel" onChange = { this.handleChange }  required/>
+                <input type="tel" className="form-control inputreg" placeholder="0675488456" name="tel" onChange = { this.handleChange }  required/>
                 <input type="text" className="form-control inputreg" placeholder="addresse" name="address" onChange = { this.handleChange }  required/>
+                /* faut les implémenter dans la bdd parceque la c'est que de l'affichage*/
+                <input type="text" className="form-control inputreg" placeholder="code postal" name="code_postal" onChange = { this.handleChange }  required/>
+                <input type="text" className="form-control inputreg" placeholder="ville" name="ville" onChange = { this.handleChange }  required/>
+                <input type="text" className="form-control inputreg" placeholder="country" name="country" onChange = { this.handleChange }  required/>
+                /**/
 
                 <div className="checkbox mb-3">
                     <input type="checkbox" value="remember-me"/>

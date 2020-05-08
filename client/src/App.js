@@ -21,6 +21,7 @@ import AddEventScreen from "./app/content/map/AddEventScreen";
 import MyActions from "./app/content/profile/user/actions/MyActions";
 import RandomProfile from "./app/content/profile/randomProfile/RandomProfile";
 import MyFriends from "./app/content/profile/user/friends/MyFriends";
+import SearchScreen from "./app/content/search/SearchScreen";
 
 class App extends React.Component {
 
@@ -35,6 +36,7 @@ class App extends React.Component {
         return (
             <Router>
                 <Switch>
+                    <route path='/friends/search'   > <Home content={ <SearchScreen/> } />                              </route>
                     <route path='/friends'          > <Home content={ <MyFriends/> } />                                 </route>
                     <route path='/actions'          > <Home content={ <MyActions/> }/>                                  </route>
                     <route path='/profile/:id'      > <Home content={ <RandomProfile /> }/>                             </route>

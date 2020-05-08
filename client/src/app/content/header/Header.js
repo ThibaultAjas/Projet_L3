@@ -4,6 +4,7 @@ import { getUser, isLogged } from "../util/app_cookies";
 
 import '../../stylesheets/header.css';
 import ProfilePic from "../profile/ProfilePic";
+import SearchIcon from "../search/SearchIcon";
 
 
 const Header = () => {
@@ -22,10 +23,15 @@ const Header = () => {
 
 			{
 				(isLogged())	?
-									<div id='friendsBar-activators' className='pt-2 fb-activator'>
-										<i id="header-show-friendsBar-icon" className='rounded-circle element fa fa-users'/>
-										<i id="header-hide-friendsBar-icon" className='rounded-circle element fas fa-angle-double-right' style={ { 'display': 'none' } }/>
-									</div>
+									<span className='d-inline-flex'>
+										<a href='/friends/search' className='p-2 d-inline-flex align-items-center justify-content-center mr-2'>
+											<span id='header-search-icon'> <SearchIcon/> </span>
+										</a>
+										<div id='friendsBar-activators' className='pt-2 fb-activator'>
+											<i id="header-show-friendsBar-icon" className='rounded-circle element fa fa-users'/>
+											<i id="header-hide-friendsBar-icon" className='rounded-circle element fas fa-angle-double-right' style={ { 'display': 'none' } }/>
+										</div>
+									</span>
 								: <> </>
 			}
 		</header>

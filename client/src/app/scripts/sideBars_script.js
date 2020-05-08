@@ -10,6 +10,8 @@ $(document).ready( () => {
 	const H_HIDE_FRIENDS_BAR = $("#header-hide-friendsBar-icon");
 	const H_SHOW_FRIENDS_BAR = $("#header-show-friendsBar-icon");
 
+	const SEARCH_ICON = $('#header-search-icon');
+
 	let isProfileBarOpened = false;
 	let isFriendsBarOpened = false;
 
@@ -51,8 +53,14 @@ $(document).ready( () => {
 			isFriendsBarOpened = ! isFriendsBarOpened;
 			moveSideBar( FRIENDS_BAR );
 
-			if (H_SHOW_FRIENDS_BAR.is(':visible')) toggleIcons( H_SHOW_FRIENDS_BAR, H_HIDE_FRIENDS_BAR );
-			else toggleIcons( H_HIDE_FRIENDS_BAR, H_SHOW_FRIENDS_BAR );
+			if (H_SHOW_FRIENDS_BAR.is(':visible')) {
+				toggleIcons( H_SHOW_FRIENDS_BAR, H_HIDE_FRIENDS_BAR );
+				SEARCH_ICON.fadeIn(500);
+			}
+			else {
+				toggleIcons( H_HIDE_FRIENDS_BAR, H_SHOW_FRIENDS_BAR );
+				toggleElementVisibility(SEARCH_ICON, false);
+			}
 		}
 	};
 

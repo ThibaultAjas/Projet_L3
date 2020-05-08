@@ -36,3 +36,8 @@ header {
 }
 
 #h-title:hover { text-decoration: inherit; }
+
+#header-search-icon  {
+    display: none;
+    cursor: pointer;
+}

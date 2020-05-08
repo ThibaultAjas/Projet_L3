@@ -2,6 +2,7 @@ import React from "react";
 import FriendsBarFriendRow from "./FriendBarFriendRow";
 import { getUser } from "../../util/app_cookies";
 import { getFriendsById } from "../../util/dataConverter";
+import SearchIcon from "../../search/SearchIcon";
 
 class FriendsBarContent extends React.Component {
 	state = {
@@ -18,8 +19,8 @@ class FriendsBarContent extends React.Component {
 	//TODO: implement the sorting
 	render() {
 		return (
-			<>
-				<div id='friendsBar-top-section' className='w-100 d-inline-flex align-items-center justify-content-center'>
+			<div>
+				<div id='friendsBar-top-section' className='w-100 d-inline-flex align-items-center justify-content-center bg-secondary'>
 					<h3 className='mr-2'>Sort by</h3>
 
 					<select name='friends-sort-picker' id='friends-sort-picker' className='my-3'>
@@ -37,7 +38,7 @@ class FriendsBarContent extends React.Component {
 						)
 					}
 				</ul>
-			</>
+			</div>
 		);
 	}
 }

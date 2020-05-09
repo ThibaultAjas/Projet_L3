@@ -1,6 +1,6 @@
 import React from "react";
 import { getUser } from "../../util/app_cookies";
-import { follow, unfollow } from "../../util/dataBaseModifications";
+import { follow } from "../../util/dataBaseModifications";
 
 const RandomProfileActionBar = ({ id }) => {
 
@@ -9,7 +9,7 @@ const RandomProfileActionBar = ({ id }) => {
 
 			{
 				(getUser().following.includes( id ))
-					? <button id='random-unfollow-button' className='action-button mr-2' onClick={ () =>  unfollow(id) }> Unfollow </button>
+					? <button id='random-unfollow-button' className='action-button mr-2'> Unfollow </button>
 
 
 					: <button id='random-follow-button' className='action-button mr-2' onClick={ () => follow(id) }> Follow </button>

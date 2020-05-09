@@ -47,13 +47,13 @@ const getUserEvents = async () => {
 	return(tmp);
 };
 
-let getUserEventList = async ( id ) => {
+let getUserEventList = async ( user ) => {
 	let events = [];
 
 	await axios({
 		url: '/event/getAllForUser',
 		method: 'POST',
-		data: id
+		data: user
 	})
 		.then( (response) => {
 			events = response.data.data;

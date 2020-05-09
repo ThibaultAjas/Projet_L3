@@ -29,8 +29,6 @@ class UserProfile extends React.Component {
 			newPassword: '',
 			confirmPassword: '',
 		});
-
-		console.log(this.USER);
 	}
 
 	handleChange = ({ target }) => {

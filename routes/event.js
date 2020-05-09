@@ -78,43 +78,42 @@ const event = require('../models/eventModel');
         event.find({})
             .then((events) => {
                 user.find({mail: data.mail})
-                    .then((data) => {
-                        console.log('data', data)
-                        if (data.length !== 0) {
-                            user.find({ $or: [{_id: data[0].following}]})
+                    .then((users) => {
+                        if (users.length !== 0) {
+                            user.find({ $or: [{_id: users[0].following}]})
                                 .then((following) => {
                                     let evtsFromFollowing = [];
+                                    let evtIDsFromFollowing = [];
+                                    // console.log(events);
                                     following.forEach((elemUser) => {
                                         if (elemUser.events.length !== 0) {
                                             elemUser.events.forEach((evt) => {
-
-                                                console.log('Evt: ', evt);
-
-
-
-                                                // evtsFromFollowing.push(events.find(e => {
-                                                //     console.log('ID Event: ', evt._id);
-                                                //     console.log('ID Temp : ', e._id);
-                                                //     console.log('\t', e._id === evt._id)
-                                                //     return e._id === evt._id
-                                                // }));
-                                                // console.log('ID Event: ', evt._id);
+                                                evtIDsFromFollowing.push(evt);
                                             });
                                         }
                                     });
-                                    // console.log('Events: ', evtsFromFollowing);
+                                    events.forEach((evt) => {
+                                        const tmp = evtIDsFromFollowing.find((elem) => {
+                                            return elem._id.toString() === evt._id.toString();
+                                        });
+                                        if (tmp) evtsFromFollowing.push(evt);
+                                    })
+                                    console.log('Events: ', evtsFromFollowing);
                                     return res.json({msg: 'Got events', data: evtsFromFollowing});
                                 })
                                 .catch((error) => {
+                                    console.log('1: ', error);
                                     return res.status(500).send(error);
                                 });
                         }
                     })
                     .catch((error) => {
+                        console.log('2: ', error);
                         return res.status(500).send(error);
                     });
             })
             .catch((error) => {
+                console.log('3: ', error);
                 return res.status(500).send(error);
             });
     });

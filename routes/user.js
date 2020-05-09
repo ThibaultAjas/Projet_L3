@@ -80,7 +80,7 @@ const user = require('../models/userModel');
     });
 }
 
-// CRUD: User
+// CRUD: Update
 {
     router.post('/updateById', (req, res) => {
         const data = req.body;
@@ -89,6 +89,18 @@ const user = require('../models/userModel');
             .then((data) => {
                 console.log('updateById - Data received', data);
                 return res.json({msg: 'User updated', data: data});
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
+            });
+    })
+
+    router.post('/addFollow', (req, res) => {
+        const data = req.body;
+
+        user.findOneAndUpdate({mail: data.user.mail}, { $push: {following: data.addFollow } })
+            .then((usr) => {
+                return res.json({msg: 'User follows updated', data: usr});
             })
             .catch((error) => {
                 return res.status(500).send(error);

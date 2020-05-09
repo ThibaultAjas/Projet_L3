@@ -57,14 +57,6 @@ const event = require('../models/eventModel');
     router.post('/getAllForUser', (req, res) => {
        const data = req.body;
 
-       // event.find({mail: userMail})
-       //     .then((data) => {
-       //         return res.json({msg: 'Got all events for this user', data: data});
-       //     })
-       //     .catch((error) => {
-       //         return res.status(500).send(error);
-       //     });
-
         user.findById(data.id)
             .then((usr) => {
                 const evts = usr.events;
@@ -97,6 +89,8 @@ const event = require('../models/eventModel');
                                             elemUser.events.forEach((evt) => {
 
                                                 console.log('Evt: ', evt);
+
+
 
                                                 // evtsFromFollowing.push(events.find(e => {
                                                 //     console.log('ID Event: ', evt._id);

@@ -15,7 +15,7 @@ import { isLogged } from "../util/app_cookies";
 import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
 import Feed from "../feed/Feed";
 import axios from "axios";
-import {getUserEvents} from "../util/dataConverter";
+import {getFollowersEvents, getUserEvents} from "../util/dataConverter";
 
 let DefaultIcon=L.icon({
     iconUrl:icon,
@@ -43,7 +43,7 @@ class MapDisplay extends React.Component{
 
     generateMarkerList (){
 
-        getUserEvents().then((data )=> {
+        getFollowersEvents().then((data )=> {
             this.state.events=data;
             this.forceUpdate();
         });

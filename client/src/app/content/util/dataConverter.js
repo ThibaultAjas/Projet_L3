@@ -11,6 +11,27 @@ const getDateFrom = ( country, date) => {
 	return `${ da } ${ mo } ${ ye }`;
 };
 
+//TODO: verifier la méthode, ici on a le même event 10 fois (meme id)
+const getFollowersEvents = () => {
+	// axios.post('/event/getAll')
+	let tmp = [];
+	axios({
+		url: '/event/getAllFromFollowing',
+		method: 'POST',
+		data: getUser()
+	})
+		.then((response) => {
+			const data = response.data;
+			this.setState({events: data.data});
+			tmp=data.data;
+		})
+		.catch((error) => {
+			console.log(`Error: ${error}`);
+			tmp=[0];
+		});
+	return(tmp);
+};
+
 // TODO: change for getAllFromFollowing
 const getUserEvents = async () => {
 	let tmp = [];
@@ -64,5 +85,5 @@ const getFriendsById = async ( idsList ) => {
 };
 
 export {
-	getDateFrom, getUserEvents, getFriendsById, getUserEventList
+	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents
 };

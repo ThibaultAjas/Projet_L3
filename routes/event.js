@@ -84,7 +84,6 @@ const event = require('../models/eventModel');
                                 .then((following) => {
                                     let evtsFromFollowing = [];
                                     let evtIDsFromFollowing = [];
-                                    // console.log(events);
                                     following.forEach((elemUser) => {
                                         if (elemUser.events.length !== 0) {
                                             elemUser.events.forEach((evt) => {
@@ -98,22 +97,18 @@ const event = require('../models/eventModel');
                                         });
                                         if (tmp) evtsFromFollowing.push(evt);
                                     })
-                                    console.log('Events: ', evtsFromFollowing);
                                     return res.json({msg: 'Got events', data: evtsFromFollowing});
                                 })
                                 .catch((error) => {
-                                    console.log('1: ', error);
                                     return res.status(500).send(error);
                                 });
                         }
                     })
                     .catch((error) => {
-                        console.log('2: ', error);
                         return res.status(500).send(error);
                     });
             })
             .catch((error) => {
-                console.log('3: ', error);
                 return res.status(500).send(error);
             });
     });

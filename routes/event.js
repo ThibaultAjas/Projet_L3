@@ -12,11 +12,17 @@ const event = require('../models/eventModel');
 {
     router.post('/addOne', (req, res) => {
         const data = req.body;
-        const newEvent = new event(data);
+        const newEvent = new event(data.event);
 
         newEvent.save()
-            .then((data) => {
-                return res.json({ msg: 'Your data has been saved !', data: data }); // status 200
+            .then((evt) => {
+                user.findOneAndUpdate({mail: data.user.mail}, { $push: { events: {evt}}}, {new: true})
+                    .then((oui) => {
+                        return res.json({ msg: 'Your data has been saved !', data: oui}); // status 200
+                    })
+                    .catch((error) => {
+                        return res.status(500).send(error);
+                    });
             })
             .catch((error) => {
                 return res.status(500).send(error);

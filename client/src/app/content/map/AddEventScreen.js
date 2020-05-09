@@ -17,16 +17,15 @@ class AddEventScreen extends React.Component {
 
 
     handleChange = ({target}) => {
-        console.log(getUser());
+        // console.log(getUser());
 
         const {name, value} = target;
         this.setState({[name]: value});
-        console.log("mon obj",this.state);
-
+        // console.log("mon obj",this.state);
     };
 
     submit = (event) => {
-
+        event.preventDefault();
         const tmp = {
             location: {
                 latitude: this.state.latitude,
@@ -45,16 +44,16 @@ class AddEventScreen extends React.Component {
             dislikes: 0
         };
 
-        console.log("mon event",tmp);
+        // console.log("mon event",tmp);
 
         axios({
             url: '/event/addOne',
             method: 'POST',
-            data: tmp
+            data: {user: getUser(), event: tmp}
         })
             .then((response) => {
                 window.location.href = '/map';
-                // this.resetUserInputs();
+                this.resetUserInputs();
             })
             .catch((err) => {
                 console.log('Internal server error: ', err);

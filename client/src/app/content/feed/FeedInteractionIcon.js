@@ -15,11 +15,12 @@ class FeedInteractionIcon extends React.Component {
 
 	componentDidMount() {
 		console.log(getUser())
-		this.setState({
-			eventId: this.props.name.split("-")[2],
-			liked: getUser().events.find((evt) => evt.event = this.props.name.split("-")[2]).liked,
-			disliked: getUser().events.find((evt) => evt.event = this.props.name.split("-")[2]).disliked
-		});
+		if (getUser().events.length > 0)
+			this.setState({
+				eventId: this.props.name.split("-")[2],
+				liked: getUser().events.find((evt) => evt.event = this.props.name.split("-")[2]).liked,
+				disliked: getUser().events.find((evt) => evt.event = this.props.name.split("-")[2]).disliked
+			});
 	};
 
 	makeAction = () => {

@@ -100,6 +100,7 @@ const getEventFromId = async ( id ) => {
 	return event;
 };
 
+
 export {
 	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents, getEventFromId
 };

@@ -5,6 +5,7 @@ import RandomProfileActionBar from "./RandomProfileActionBar";
 import ProfilePic from "../ProfilePic";
 
 class RandomProfileHeader extends React.Component {
+
 	render() {
 		return (
 			<div id='random-user-header' className='w-100 d-flex align-items-center pl-3'>

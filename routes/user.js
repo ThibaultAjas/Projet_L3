@@ -98,7 +98,7 @@ const user = require('../models/userModel');
     router.post('/addFollow', (req, res) => {
         const data = req.body;
 
-        user.findOneAndUpdate({mail: data.user.mail}, { $push: {following: data.addFollow } })
+        user.findOneAndUpdate({mail: data.mail}, { $push: {following: data.addFollow } })
             .then((usr) => {
                 return res.json({msg: 'User follows updated', data: usr});
             })

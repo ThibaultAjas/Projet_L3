@@ -12,18 +12,18 @@ const getDateFrom = ( country, date) => {
 };
 
 //TODO: verifier la méthode, ici on a le même event 10 fois (meme id)
-const getFollowersEvents = () => {
+const getFollowersEvents = async () => {
 	// axios.post('/event/getAll')
 	let tmp = [];
-	axios({
+	await axios({
 		url: '/event/getAllFromFollowing',
 		method: 'POST',
 		data: getUser()
 	})
 		.then((response) => {
 			const data = response.data;
-			this.setState({events: data.data});
 			tmp=data.data;
+			console.log("ntm",data);
 		})
 		.catch((error) => {
 			console.log(`Error: ${error}`);

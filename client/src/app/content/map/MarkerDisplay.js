@@ -1,9 +1,9 @@
 import React from "react";
 import {Marker, Popup} from "react-leaflet";
 
-const MarkerDisplay = ({position,popupMessage}) => {
+const MarkerDisplay = ({position,popupMessage,col}) => {
   return(
-      <Marker position={position}>
+      <Marker position={position} color={col}>
           <Popup>
               {popupMessage}
           </Popup>

@@ -11,7 +11,7 @@ import MarkerDisplay from "./MarkerDisplay";
 import LoginScreen from "../login/LoginScreen";
 import GetCurrentLoc from "../geolocation/GetCurrentLoc";
 
-import { isLogged } from "../util/app_cookies";
+import {getUser, isLogged} from "../util/app_cookies";
 import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
 import Feed from "../feed/Feed";
 import axios from "axios";
@@ -31,7 +31,7 @@ class MapDisplay extends React.Component{
         events:[]
     };
 
-
+    events = [];
 
     componentDidMount() {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -43,8 +43,13 @@ class MapDisplay extends React.Component{
 
     generateMarkerList (){
 
+
+        console.log(getUser());
         getFollowersEvents().then((data )=> {
+            console.log(data);
             this.state.events=data;
+            this.events=this.state.events;
+
             this.forceUpdate();
         });
 
@@ -83,10 +88,10 @@ class MapDisplay extends React.Component{
                         // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
 
-                    <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici"/>
+                    <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici" col="#FF0000"/>
                     {
-                        this.state.events.map( (event,index) =>
-                            <MarkerDisplay key={index} position={[event.location.latitude,event.location.longitude]} popupMessage={index}    />
+                        this.events.map( (event,index) =>
+                            <MarkerDisplay key={index} position={[event.location.latitude,event.location.longitude]} popupMessage={index} col="#0000FF"   />
                         )
                     }
                     </Map>

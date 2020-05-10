@@ -40,8 +40,6 @@ if (getUser().isAdmin) {
 	})
 }
 
-console.log(log_content);
-
 const ProfileBar = () => {
 
 	return (

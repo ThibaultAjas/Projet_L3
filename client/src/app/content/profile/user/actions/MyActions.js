@@ -3,7 +3,7 @@ import React from "react";
 import { getUser, isLogged } from "../../../util/app_cookies";
 import LoginScreen from "../../../login/LoginScreen";
 import Feed from "../../../feed/Feed";
-import { getUserEventList } from "../../../util/dataConverter";
+import { getFollowersEvents, getUserEventList } from "../../../util/dataConverter";
 
 class MyActions extends React.Component {
 	state = { events: [] };
@@ -14,12 +14,18 @@ class MyActions extends React.Component {
 			.then( (data) => {
 				this.setState({ events: data });
 				this.events = this.state.events;
-				this.forceUpdate();
+
+				getFollowersEvents().then((data) => {
+					this.events = data;
+					this.forceUpdate();
+				});
 			});
 	}
 
 	render() {
 		if (! isLogged()) return ( <LoginScreen/> );
+
+		console.log(this.events);
 
 		return (
 			<Feed content={ this.events }/>

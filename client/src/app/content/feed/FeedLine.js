@@ -20,14 +20,31 @@ const FeedLine = ({ element }) => {
     // TODO: change when it will be implemented
     let userId = getUser()._id;
 
-
+    console.log(new URL(window.location.href).pathname);
 
     postDate = new Date( postDate );
     let date = getDateFrom('fr', postDate);
 
+    const feedOptions =
+        [
+            { text: "Report", href: '/report/' + userId },
+            // { text: "Delete event", href: '/' },
+            { text: "See profile", href: '/profile/' + userId }
+        ];
+
+    const actionsOptions =
+        [
+            { text: ""}
+        ];
+
     return (
         <div className='feedLine'>
-            <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup userId={userId}/> </div>
+            {
+                (new URL(window.location.href).pathname === '/actions')
+                ? <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup userId={userId} options={options}/> </div>
+                : <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup userId={userId} options={options}/> </div>
+
+            }
 
             <div className='card p-2'>
                 <div className='card-title d-flex flex-row align-items-baseline justify-content-between border-bottom'>

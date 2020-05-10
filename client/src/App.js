@@ -38,13 +38,13 @@ class App extends React.Component {
         return (
                 <Router>
                 <Switch>
-                    <route path='/event/:id'        > <Home content={<EventDisplay />} />                               </route>
-                    <route path='/stats'            > <Home content={ <StatsDisplay/> } />                              </route>
-                    <route path='/friends/search'   > <Home content={ <SearchScreen/> } />                              </route>
-                    <route path='/friends'          > <Home content={ <MyFriends/> } />                                 </route>
-                    <route path='/actions'          > <Home content={ <MyActions/> }/>                                  </route>
-                    <route path='/profile/:id'      > <Home content={ <RandomProfile /> }/>                             </route>
-                    <route path='/addevent'         > <AddEventScreen/>                                                 </route>
+                    <Route path='/event/:id'        > <Home content={<EventDisplay />} />                               </Route>
+                    <Route path='/stats'            > <Home content={ <StatsDisplay/> } />                              </Route>
+                    <Route path='/friends/search'   > <Home content={ <SearchScreen/> } />                              </Route>
+                    <Route path='/friends'          > <Home content={ <MyFriends/> } />                                 </Route>
+                    <Route path='/actions'          > <Home content={ <MyActions/> }/>                                  </Route>
+                    <Route path='/profile/:id'      > <Home content={ <RandomProfile /> }/>                             </Route>
+                    <Route path='/addevent'         > <AddEventScreen/>                                                 </Route>
                     <Route path='/logout'           > <Logout />                                                        </Route>
                     <Route path="/register"         > <RegisterScreen />                                                </Route>
                     <Route path="/login"            > <LoginScreen />                                                   </Route>

@@ -14,6 +14,9 @@ class FeedInteractionIcon extends React.Component {
 
 	componentDidMount() {
 		let prop = '';
+		const event = getUser().events.find((evt) => evt.event === this.props.name.split("-")[2]);
+		// console.log(this.props.name, ' => ', this.props.name.split("-")[2])
+		// console.log(getUser().events)
 		switch (this.state.action) {
 			case 'like':
 				prop = 'liked';
@@ -25,7 +28,8 @@ class FeedInteractionIcon extends React.Component {
 				prop = 'comment';
 				break;
 		}
-		const actioned = getUser().events.find((evt) => evt.event === this.props.name.split("-")[2])[prop];
+		console.log('evt: ', event)
+		const actioned = (event) ? event[prop] : false;
 		if (actioned) this.props.call(this.props.name);
 	};
 
@@ -66,19 +70,6 @@ class FeedInteractionIcon extends React.Component {
 	};
 
 	render() {
-		// TODO: change it depending if the user liked it or nah, not with pure boolean
-		// let [alreadyPressed, setPressed] = useState(false);
-		// let [currentValue, setCurrentValue] = useState(this.props.value);
-		//
-		// let updateValue = () => {
-		// 	this.likeEvt()
-		// 	if (alreadyPressed) {
-		// 		setCurrentValue(currentValue - 1);
-		// 	} else setCurrentValue(currentValue + 1);
-		//
-		// 	setPressed(!alreadyPressed);
-		// };
-
 		return (
 			<span className='d-inline-flex align-items-baseline'>
 			<p className='ml-1'> {} </p>
@@ -86,7 +77,6 @@ class FeedInteractionIcon extends React.Component {
 			<button className='transparent-button p-0' onClick={() => {
 				this.makeAction()
 				this.props.call(this.props.name);
-				// updateValue();
 			}}>
 				<i id={this.props.name} className={'feed-interactions-icons mr-1 ' + this.props.icon}/>
 			</button>

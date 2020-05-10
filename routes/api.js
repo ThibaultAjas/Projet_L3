@@ -106,7 +106,7 @@ router.post('/stats', asyncMiddleware(async (req, res, next) => {
 
     users.forEach(usr => {
         let index;
-        if ((index = dataOut.userCountries.findIndex((e) => e === usr.country)) === -1) { // On a pas trouvé$
+        if ((index = dataOut.userCountries.findIndex((e) => e === usr.country)) === -1) { // On a pas trouvé
             dataOut.userCountries.push(usr.country);
             dataOut.numberOfEventsByCountry.push(1);
         } else {

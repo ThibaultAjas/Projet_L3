@@ -15,7 +15,7 @@ const ProfilePic = ({ userName, textColor, bgColor, size }) => {
 
 	return (
 		<div className='rounded-circle text-center d-flex align-items-center justify-content-center pt-1' style={style}>
-			<h1 className='font-weight-bold' style={letterStyle}>{ userName.charAt(0) }</h1>
+			<h1 className='font-weight-bold' style={letterStyle}>{ (userName) ? userName.charAt(0) : '' }</h1>
 		</div>
 	);
 };

@@ -17,7 +17,7 @@ const FeedInteractionsIcons = ({ id, dislikes, likes, comments }) => {
 				<FeedInteractionIcon name={'share-icon-' + id} icon='fas fa-share' call={ share }/>
 			</div>
 
-			<button className='btn btn-warning'> Plus..</button>
+			<a className='btn btn-warning' href={'/event/' + id}> Plus..</a>
 		</div>
 	);
 };

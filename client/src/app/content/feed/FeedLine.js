@@ -16,6 +16,7 @@ const FeedLine = ({ element }) => {
     let description = element.description;
     let city = element.city;
     let country = element.country;
+    let eventDate = element.date;
     // TODO: change when it will be implemented
     let userId = getUser()._id;
 
@@ -39,7 +40,7 @@ const FeedLine = ({ element }) => {
                     <button className="transparent-button-popup" onClick={ () => toggleOptionsPopupDisplay( id )}> <i id='dots-icon' className="dots-icon fas fa-ellipsis-v m-2"/> </button>
                 </div>
 
-                <FeedLinePost description = { description } imageURL = { imageURL } postDate={postDate}/>
+                <FeedLinePost description = { description } imageURL = { imageURL } postDate={eventDate}/>
                 <FeedInteractionsIcons id={ id } likes={ element.likes } dislikes={ element.dislikes } />
             </div>
         </div>

@@ -38,7 +38,7 @@ class App extends React.Component {
         return (
                 <Router>
                 <Switch>
-                    <route path='/event/:id'        > <EventDisplay />                                                  </route>
+                    <route path='/event/:id'        > <Home content={<EventDisplay />} />                               </route>
                     <route path='/stats'            > <Home content={ <StatsDisplay/> } />                              </route>
                     <route path='/friends/search'   > <Home content={ <SearchScreen/> } />                              </route>
                     <route path='/friends'          > <Home content={ <MyFriends/> } />                                 </route>

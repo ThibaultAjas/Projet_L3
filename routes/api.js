@@ -78,36 +78,46 @@ router.post('/stats', asyncMiddleware(async (req, res, next) => {
 
     dataOut.numberOfUsers = users.length;
 
-    dataOut.countries = [];
-    dataOut.cities = [];
+    dataOut.eventCountries = [];
+    dataOut.eventCities = [];
     dataOut.numberOfEventsByCountry = [];
     dataOut.numberOfEventsByCity = [];
 
     events.forEach(evt => {
         let index;
-        if ((index = dataOut.countries.findIndex((e) => e === evt.country)) === -1) { // On a pas trouvé$
-            dataOut.countries.push(evt.country);
+        if ((index = dataOut.eventCountries.findIndex((e) => e === evt.country)) === -1) { // On a pas trouvé$
+            dataOut.eventCountries.push(evt.country);
             dataOut.numberOfEventsByCountry.push(1);
         } else {
             dataOut.numberOfEventsByCountry[index]++;
         }
-        if ((index = dataOut.cities.findIndex((e) => e === evt.city)) === -1) { // On a pas trouvé
-            dataOut.cities.push(evt.city);
+        if ((index = dataOut.eventCities.findIndex((e) => e === evt.city)) === -1) { // On a pas trouvé
+            dataOut.eventCities.push(evt.city);
             dataOut.numberOfEventsByCity.push(1);
         } else {
             dataOut.numberOfEventsByCity[index]++;
         }
     });
 
-
-    // TODO: somme des likes par comment d'un user
-
-    // TODO: Plus de stats
-
-    // TODO: user by countries and user by cities
+    dataOut.userCountries = [];
+    dataOut.userCities = [];
+    dataOut.numberOfUsersByCountry = [];
+    dataOut.numberOfUsersByCity = [];
 
     users.forEach(usr => {
-
+        let index;
+        if ((index = dataOut.userCountries.findIndex((e) => e === usr.country)) === -1) { // On a pas trouvé$
+            dataOut.userCountries.push(usr.country);
+            dataOut.numberOfEventsByCountry.push(1);
+        } else {
+            dataOut.numberOfEventsByCountry[index]++;
+        }
+        if ((index = dataOut.userCities.findIndex((e) => e === usr.city)) === -1) { // On a pas trouvé
+            dataOut.userCities.push(usr.city);
+            dataOut.numberOfEventsByCity.push(1);
+        } else {
+            dataOut.numberOfEventsByCity[index]++;
+        }
     });
 
 

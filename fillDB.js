@@ -275,6 +275,20 @@ const fillDB = async () => {
             description: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer sed lacus rutrum, volutpat magna ut, maximus sem. Vestibulum dignissim, lacus et tincidunt lobortis, quam odio pharetra arcu, id aliquam lacus libero sed velit. Nam quis leo sit amet risus faucibus tristique vel vel libero. Ut faucibus quam et porttitor placerat. Etiam ac augue lacinia, venenatis nisl vitae, consectetur dolor. Phasellus ut tincidunt orci. Proin quis felis vel felis lobortis lacinia tincidunt volutpat erat. Proin non nulla et tortor rutrum semper ut ac mi. Nulla fringilla eu tortor quis aliquet. Nulla sapien est, pulvinar et lobortis a, sagittis volutpat ex. Aenean id lectus et massa pulvinar gravida. Nunc magna mauris, pretium eu eros ut, mattis vestibulum augue.',
             likes: 0,
             dislikes: 0
+        }),
+        new event({
+            location: {
+                latitude: 48.006110,
+                longitude: 0.199556
+            },
+            country: 'France',
+            city: 'Le Mans',
+            date: new Date(),
+            dateAdded: new Date(),
+            title: 'Je suis né',
+            description: '',
+            likes: 0,
+            dislikes: 0
         })
     ];
 
@@ -336,6 +350,14 @@ const fillDB = async () => {
                 }]
     }});
     console.log('Events of Test added');
+
+    await user.findByIdAndUpdate(userListFromBd[9]._id, {$set: { events: [
+                {
+                    event: eventListFromBd[10],
+                    own: true
+                }]
+    }});
+    console.log('Events of Matthieu added');
 
     console.log('Database successfully filled !');
 }

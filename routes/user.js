@@ -98,7 +98,6 @@ const user = require('../models/userModel');
 
         user.findByIdAndUpdate(data._id, { $set: data.toUpdate })
             .then((data) => {
-                console.log('updateById - Data received', data);
                 return res.json({msg: 'User updated', data: data});
             })
             .catch((error) => {
@@ -108,17 +107,18 @@ const user = require('../models/userModel');
 
     router.post('/likeEvent', (req, res) => {
        const data = req.body;
-       // const user = data.user;
        const event = data.event;
 
        let liked = false;
-       data.user.events.some((evt) => {
-           if (evt.event === event._id) {
+       if (data.user.events.length > 0) {
+           data.user.events.some((evt) => {
+               if (evt.event === event._id) {
+                   liked = evt.liked;
+               }
+           })
+       }
 
-           }
-       })
-
-       user.findOneAndUpdate({_id: data.user._id, 'events.event': event._id}, {$set: { 'events.$.like': !liked }})
+       user.findOneAndUpdate({_id: data.user._id, 'events.event': event._id}, {$set: { 'events.$.liked': !liked }})
            .then((usr) => {
                if (usr) {
                    return res.json({msg: 'User updated', data: usr});
@@ -126,7 +126,6 @@ const user = require('../models/userModel');
 
                user.findOneAndUpdate({_id: data.user._id}, {$push: { events: {event: data.event, own: false, liked: true, disliked: false} }})
                    .then((usr) => {
-                       console.log('là: ', usr)
                        return res.json({msg: 'User updated', data: usr});
                    })
                    .catch((error) => {
@@ -136,6 +135,38 @@ const user = require('../models/userModel');
            .catch((error) => {
                return res.status(500).send(error);
            });
+    });
+
+    router.post('/dislikeEvent', (req, res) => {
+        const data = req.body;
+        const event = data.event;
+
+        let disliked = false;
+        if (data.user.events.length > 0) {
+            data.user.events.some((evt) => {
+                if (evt.event === event._id) {
+                    disliked = evt.disliked;
+                }
+            })
+        }
+
+        user.findOneAndUpdate({_id: data.user._id, 'events.event': event._id}, {$set: { 'events.$.disliked': !disliked }})
+            .then((usr) => {
+                if (usr) {
+                    return res.json({msg: 'User updated', data: usr});
+                }
+
+                user.findOneAndUpdate({_id: data.user._id}, {$push: { events: {event: data.event, own: false, liked: false, disliked: true} }})
+                    .then((usr) => {
+                        return res.json({msg: 'User updated', data: usr});
+                    })
+                    .catch((error) => {
+                        return res.status(500).send(error);
+                    });
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
+            });
     });
 
 

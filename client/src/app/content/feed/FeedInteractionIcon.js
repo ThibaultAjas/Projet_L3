@@ -2,29 +2,34 @@ import React, { useState } from "react";
 import axios from 'axios';
 
 import {like} from "../../scripts/feed_script";
-import {getUser} from "../util/app_cookies";
+import {getUser, setUser} from "../util/app_cookies";
 
 
 class FeedInteractionIcon extends React.Component {
 
 	state = {
-		eventId: '',
-		liked: false,
-		disliked: false
+		eventId: this.props.name.split("-")[2],
+		action: this.props.name.split("-")[0]
 	};
 
 	componentDidMount() {
-		if (getUser().events.length > 0)
-			this.setState({
-				eventId: this.props.name.split("-")[2],
-				liked: getUser().events.find((evt) => evt.event = this.props.name.split("-")[2]).liked,
-				disliked: getUser().events.find((evt) => evt.event = this.props.name.split("-")[2]).disliked
-			});
-		this.forceUpdate();
+		let prop = '';
+		switch (this.state.action) {
+			case 'like':
+				prop = 'liked';
+				break;
+			case 'dislike':
+				prop = 'disliked';
+				break;
+			case 'comment':
+				prop = 'comment';
+				break;
+		}
+		const actioned = getUser().events.find((evt) => evt.event === this.props.name.split("-")[2])[prop];
+		if (actioned) this.props.call(this.props.name);
 	};
 
 	makeAction = () => {
-		const action = this.props.name.split("-")[0];
 		
 		const payload = {
 			user: getUser(),
@@ -32,7 +37,7 @@ class FeedInteractionIcon extends React.Component {
 		};
 
 		let url = '';
-		switch (action) {
+		switch (this.state.action) {
 			case 'like':
 				url = '/user/likeEvent';
 				break;
@@ -50,7 +55,10 @@ class FeedInteractionIcon extends React.Component {
 			data: payload
 		})
 			.then((response) => {
-				console.log(response)
+				setUser(response.data.data)
+
+				console.log(getUser().events[getUser().events.length - 1])
+				this.forceUpdate();
 			})
 			.catch((error) => {
 				console.log('Error: ', error);
@@ -76,9 +84,9 @@ class FeedInteractionIcon extends React.Component {
 			<p className='ml-1'> {} </p>
 
 			<button className='transparent-button p-0' onClick={() => {
+				this.makeAction()
 				this.props.call(this.props.name);
 				// updateValue();
-				this.makeAction()
 			}}>
 				<i id={this.props.name} className={'feed-interactions-icons mr-1 ' + this.props.icon}/>
 			</button>

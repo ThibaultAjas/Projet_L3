@@ -29,12 +29,10 @@ const event = require('../models/eventModel');
                         return res.json({ msg: 'Your data has been saved !', data: oui}); // status 200
                     })
                     .catch((error) => {
-                        console.log('ici', error)
                         return res.status(500).send(error);
                     });
             })
             .catch((error) => {
-                console.log('là')
                 return res.status(500).send(error);
             });
     });
@@ -68,7 +66,6 @@ const event = require('../models/eventModel');
        const data = req.body;
 
         const evts = data.events;
-        console.log('current events ids: ', evts);
 
         let idEvtList = [];
         evts.forEach((e) => {
@@ -76,15 +73,11 @@ const event = require('../models/eventModel');
             idEvtList.push({_id: e.event});
         })
 
-        console.log('idEvtList: ', idEvtList)
-
         event.find({ $or: idEvtList })
             .then((evtList) => {
-                console.log('current list of events: ', evtList);
                 return res.json({msg: 'Got all events from user', data: evtList});
             })
             .catch((error) => {
-                console.log('ici', error)
                 return res.status(500).send(error);
             });
     });

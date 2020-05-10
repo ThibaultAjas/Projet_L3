@@ -36,6 +36,17 @@ const user = require('../models/userModel');
 
 // CRUD: Read
 {
+
+    router.post('/getAll', (req, res) => {
+        user.find({})
+            .then((data) => {
+                return res.json({ msg: 'All users successfully gathered', data: data });
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
+            });
+    });
+
     router.post('/login', (req, res) => {
         const data = req.body;
 
@@ -100,10 +111,16 @@ const user = require('../models/userModel');
        // const user = data.user;
        const event = data.event;
 
-       user.findOneAndUpdate({_id: data.user._id, 'events.event': event._id}, {$set: { 'events.$.like': true }})
+       let liked = false;
+       data.user.events.some((evt) => {
+           if (evt.event === event._id) {
+
+           }
+       })
+
+       user.findOneAndUpdate({_id: data.user._id, 'events.event': event._id}, {$set: { 'events.$.like': !liked }})
            .then((usr) => {
                if (usr) {
-                   console.log('ici')
                    return res.json({msg: 'User updated', data: usr});
                }
 

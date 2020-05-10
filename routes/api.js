@@ -98,7 +98,6 @@ router.post('/stats', asyncMiddleware(async (req, res, next) => {
         }
     });
 
-    dataOut.usersByFollowers = users.sort((a, b) => a.followers.length - b.followers.length);
 
     // TODO: somme des likes par comment d'un user
 

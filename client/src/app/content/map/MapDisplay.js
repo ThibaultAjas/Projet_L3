@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Map,TileLayer,Marker,Popup} from "react-leaflet";
+import {Map, TileLayer} from "react-leaflet";
 
 import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -13,9 +13,9 @@ import MarkerDisplay from "./MarkerDisplay";
 import LoginScreen from "../login/LoginScreen";
 import GetCurrentLoc from "../geolocation/GetCurrentLoc";
 
-import {getUser, isLogged} from "../util/app_cookies";
+import { isLogged} from "../util/app_cookies";
 import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
-import {getFollowersEvents, getUserEvents} from "../util/dataConverter";
+import {getFollowersEvents} from "../util/dataConverter";
 
 let DefaultIcon=L.icon({
     iconUrl:icon,
@@ -28,7 +28,7 @@ class MapDisplay extends React.Component{
     state={
         lat:0,
         long:0,
-        events:[]
+        events:[],
     };
 
     events = [];
@@ -44,12 +44,9 @@ class MapDisplay extends React.Component{
     generateMarkerList (){
 
 
-        console.log(getUser());
         getFollowersEvents().then((data )=> {
-            console.log(data);
             this.state.events=data;
             this.events=this.state.events;
-
             this.forceUpdate();
         });
 
@@ -57,31 +54,40 @@ class MapDisplay extends React.Component{
 
     render() {
         if (isLogged()) {
-            let LeafIcon = L.Icon.extend({
+            let IconRouge = L.Icon.extend({
                 options: {
                     shadowUrl: 'leaf-shadow.png',
-                    iconSize:     [30, 40],
+                    iconSize:     [40, 40],
                     shadowSize:   [30, 40],
-                    iconAnchor:   [15, 40],
+                    iconAnchor:   [20, 40],
                     shadowAnchor: [4, 62],
                     popupAnchor:  [-3, -76]
                 }
             });
 
-            let redIcon = new LeafIcon({iconUrl : 'https://ukauto.fr/wp-content/uploads/2017/11/map-marker-icon.png'});
-            let blueIcon = new LeafIcon({iconUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/1200px-Map_marker.svg.png'});
+            let IncoBlue = L.Icon.extend({
+                options: {
+                    shadowUrl: 'leaf-shadow.png',
+                    iconSize:     [25, 40],
+                    shadowSize:   [30, 40],
+                    iconAnchor:   [12.5, 40],
+                    shadowAnchor: [4, 62],
+                    popupAnchor:  [-3, -76]
+                }
+            });
+
+            let redIcon = new IconRouge({iconUrl : 'https://ukauto.fr/wp-content/uploads/2017/11/map-marker-icon.png'});
+            let blueIcon = new IncoBlue({iconUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/1200px-Map_marker.svg.png'});
             let lat, long = GetCurrentLoc();
             let tmp = [lat, long];
 
             return (
                 <>
                     <SwapFeedButtons />
-
-                    <div>
+                    <div id="button_bar" className="mx-auto mt-5">
                         <i className="fas fa-filter buttonmap"/>
                         <a href="/addevent" ><i className="fas fa-plus buttonmap"/></a>
                     </div>
-
                     <Map
                         center={[50, 10]}
                         zoom={6}
@@ -95,11 +101,9 @@ class MapDisplay extends React.Component{
                         animate={true}
                         easeLinearity={0.35}
                     >
-                    <TileLayer
+                        <TileLayer
                         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                        // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-
                     <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici" icon={redIcon}/>
                     {
                         this.events.map( (event,index) =>

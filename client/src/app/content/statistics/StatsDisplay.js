@@ -1,5 +1,7 @@
 import React from "react";
 import {Bar} from "react-chartjs-2";
+import axios from "axios";
+import {getStats} from "../util/dataConverter";
 
 const state = {
   labels:[ 'janvier','fevrier','mars','avril','mais'],
@@ -18,7 +20,21 @@ const state = {
 
 
 export default class StatsDisplay extends React.Component{
+
+
+    componentDidMount() {
+        getStats().then((data)=> {
+            console.log(data);
+        })
+    }
+
+
     render() {
+
+
+
+
+
         return(
           <div>
               <Bar

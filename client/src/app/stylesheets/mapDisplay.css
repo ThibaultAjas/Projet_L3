@@ -3,6 +3,13 @@
     height: 70%;
     margin:auto;
 
+
     filter: drop-shadow(0 0 0.75rem black);
 }
 
+#button_bar{
+    width: 70%;
+    margin:auto;
+
+
+}

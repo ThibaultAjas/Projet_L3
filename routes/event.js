@@ -67,26 +67,24 @@ const event = require('../models/eventModel');
     router.post('/getAllForUser', (req, res) => {
        const data = req.body;
 
-        user.findById(data._id)
-            .then((usr) => {
-                const evts = usr.events;
-                console.log('current events ids: ', evts);
+        const evts = data.events;
+        console.log('current events ids: ', evts);
 
-                let idEvtList = [];
-                evts.forEach((e) => {
-                    idEvtList.push({_id: evts.event});
-                })
+        let idEvtList = [];
+        evts.forEach((e) => {
+            console.log(e)
+            idEvtList.push({_id: e.event});
+        })
 
-                event.find({ $or: idEvtList })
-                    .then((evtList) => {
-                        console.log('current list of events: ', evtList);
-                        return res.json({msg: 'Got all events from user', data: evtList});
-                    })
-                    .catch((error) => {
-                        return res.status(500).send(error);
-                    });
+        console.log('idEvtList: ', idEvtList)
+
+        event.find({ $or: idEvtList })
+            .then((evtList) => {
+                console.log('current list of events: ', evtList);
+                return res.json({msg: 'Got all events from user', data: evtList});
             })
             .catch((error) => {
+                console.log('ici', error)
                 return res.status(500).send(error);
             });
     });

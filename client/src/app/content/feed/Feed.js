@@ -16,6 +16,7 @@ class Feed extends React.Component {
     componentDidMount = () => {
         if (this.props.content) {
             this.setState({ events: this.props.content });
+            console.log('feed content: ', this.props.content);
         } else {
             this.getEvents();
         }
@@ -40,6 +41,26 @@ class Feed extends React.Component {
     };
 
     render() {
+        console.log(getUser());
+
+        if (this.props.content) {
+            return (
+                <>
+                    { (isLogged) ? <SwapFeedButtons /> : <></> }
+
+                    {
+                        <div className='p-5 mx-lg-5 mx-md-2 mx-sm-2 feed'>
+                            {
+                                this.props.content.map((element, index) =>
+                                    <FeedLine key={index} element={element} />
+                                ).sort((a, b) => (new Date(b.props.dateAjout)).getTime() - (new Date(a.props.dateAjout)).getTime())
+                            }
+                        </div>
+                    }
+                </>
+            );
+        }
+
         return (
             <>
                 { (isLogged) ? <SwapFeedButtons /> : <></> }

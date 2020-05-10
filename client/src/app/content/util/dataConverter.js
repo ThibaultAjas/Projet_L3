@@ -56,13 +56,13 @@ let getUserEventList = async ( user ) => {
 		data: user
 	})
 		.then( (response) => {
+			console.log('teub: ', response);
 			events = response.data.data;
 		})
 		.catch((error) => {
 			console.log(`Error: ${ error }`);
 		});
 
-	console.log("on test",events);
 	return events;
 };
 

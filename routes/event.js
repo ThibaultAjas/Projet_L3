@@ -57,11 +57,15 @@ const event = require('../models/eventModel');
     router.post('/getAllForUser', (req, res) => {
        const data = req.body;
 
-        user.findById(data.id)
+        user.findById(data._id)
             .then((usr) => {
                 const evts = usr.events;
+                console.log('current events ids: ', evts);
+
                 event.find({ $or: evts })
                     .then((evtList) => {
+                        //TODO chepas ce que tu as branlé mais ça renvoies pas les events ça
+                        console.log('current list of events: ', evtList);
                         return res.json({msg: 'Got all events from user', data: evtList});
                     })
                     .catch((error) => {

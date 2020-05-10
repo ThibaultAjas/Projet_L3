@@ -42,6 +42,7 @@ router.post('/logout', (req, res) => {
     });
 });
 
+
 router.post('/stats', asyncMiddleware(async (req, res, next) => {
     const dataIn = req.body;
 
@@ -103,6 +104,7 @@ router.post('/stats', asyncMiddleware(async (req, res, next) => {
 
     // TODO: Plus de stats
 
+    // TODO: user by countries and user by cities
     console.log(dataOut);
     return res.json({msg: 'Got some stats', data: dataOut});
 }));

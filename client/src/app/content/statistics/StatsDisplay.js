@@ -1,71 +1,122 @@
 import React from "react";
 import {Bar} from "react-chartjs-2";
-import axios from "axios";
 import {getStats} from "../util/dataConverter";
 
 
 
-
-const state = {
-  labels:[ 'janvier','fevrier','mars','avril','mais'],
-  datasets : [
-      {
-          label:'Rainfall',
-          backgroundColor: 'rgba(75, 192, 192, 1)',
-          borderColor:'rgba(0,0,0,1)',
-          borderWidth:2,
-          data:[65,59,80,81,56]
-      }
-  ]
-
-};
-
-
-
 export default class StatsDisplay extends React.Component{
-
-    state =  {
-        numberOfUsers : 0,
-        countries : [],
-        cities : [],
-        numberOfEventsByCountry : [],
-        numberOfEventsByCity : []
-    }
+    tmp = {}
+    state =  {data:{}}
 
     componentDidMount() {
 
         getStats().then((data)=> {
-            this.state=data.data;
-            console.log("pendant",this.state);
+            this.tmp=data;
+            this.setState({data : this.tmp});
+            console.log("merzrze",this.state);
+            this.forceUpdate();
         })
-        console.log("après",this.state);
-
     }
 
 
     render() {
+        let eventByCities =  {
+            labels:this.state.data.cities,
+            datasets : [
+                {
+                    label:'cities',
+                    backgroundColor: 'rgba(75, 192, 192, 1)',
+                    borderColor:'rgba(0,0,0,1)',
+                    borderWidth:2,
+                    data:this.state.data.numberOfEventsByCity
+                }
+            ]
+        };
 
-
-
-
+        let eventByCountry =  {
+            labels:this.state.data.countries,
+            datasets : [
+                {
+                    label:'country',
+                    backgroundColor: 'rgba(75, 192, 192, 1)',
+                    borderColor:'rgba(0,0,0,1)',
+                    borderWidth:2,
+                    data:this.state.data.numberOfEventsByCountry
+                }
+            ]
+        };
 
         return(
-          <div className="w-75 mx-auto">
-              <Bar
-                  data={state}
-                  options={{
-                      title:{
-                          display : true,
-                          text:'average rainfall per month',
-                          fontSize:20
-                      },
-                      legend:{
-                          display:true,
-                          position:'right'
-                      }
-                  }}
-              />
-          </div>
+            <>
+                <div className="w-75 mx-auto">
+                    <Bar
+                        data={eventByCities}
+                        options={{
+                            title:{
+                                display : true,
+                                text:'event by cities',
+                                fontSize:20
+                            },
+                            legend:{
+                                display:true,
+                                position:'right'
+                            },
+                            scales: {
+                                yAxes: [
+                                    {
+                                        ticks: {
+                                            min: 0
+                                        }
+                                    }
+                                ]
+                            }
+                        }}
+                    />
+                </div>
+
+                <div className="w-75 mx-auto">
+                    <Bar
+                        data={eventByCountry}
+                        options={{
+                            title:{
+                                display : true,
+                                text:'event by country',
+                                fontSize:20
+                            },
+                            legend:{
+                                display:true,
+                                position:'right'
+                            },
+                            scales: {
+                                yAxes: [
+                                    {
+                                        ticks: {
+                                            min: 0
+                                        }
+                                    }
+                                ]
+                            }
+                        }}
+                    />
+                </div>
+
+                {/*<div className="w-75 mx-auto">*/}
+                {/*    <Bar*/}
+                {/*        data={eventByCities}*/}
+                {/*        options={{*/}
+                {/*            title:{*/}
+                {/*                display : true,*/}
+                {/*                text:'average rainfall per month',*/}
+                {/*                fontSize:20*/}
+                {/*            },*/}
+                {/*            legend:{*/}
+                {/*                display:true,*/}
+                {/*                position:'right'*/}
+                {/*            }*/}
+                {/*        }}*/}
+                {/*    />*/}
+                {/*</div>*/}
+            </>
         );
     }
 }

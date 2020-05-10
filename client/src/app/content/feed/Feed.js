@@ -16,13 +16,11 @@ class Feed extends React.Component {
     componentDidMount = () => {
         if (this.props.content) {
             this.setState({ events: this.props.content });
-            console.log('feed content: ', this.props.content);
         } else {
             this.getEvents();
         }
     };
 
-    //TODO: verifier la méthode, ici on a le même event 10 fois (meme id)
     getEvents = () => {
         // axios.post('/event/getAll')
         axios({
@@ -33,7 +31,6 @@ class Feed extends React.Component {
             .then((response) => {
                 const data = response.data;
                 this.setState({events: data.data});
-
             })
             .catch((error) => {
                 console.log(`Error: ${error}`);
@@ -41,8 +38,6 @@ class Feed extends React.Component {
     };
 
     render() {
-        console.log(getUser());
-
         if (this.props.content) {
             return (
                 <>

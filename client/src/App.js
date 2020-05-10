@@ -23,6 +23,7 @@ import RandomProfile from "./app/content/profile/randomProfile/RandomProfile";
 import MyFriends from "./app/content/profile/user/friends/MyFriends";
 import SearchScreen from "./app/content/search/SearchScreen";
 import StatsDisplay from "./app/content/statistics/StatsDisplay";
+import EventDisplay from "./app/content/event/EventDisplay";
 
 class App extends React.Component {
 
@@ -37,6 +38,7 @@ class App extends React.Component {
         return (
                 <Router>
                 <Switch>
+                    <route path='/event/:id'        > <EventDisplay />                                                  </route>
                     <route path='/stats'            > <Home content={ <StatsDisplay/> } />                              </route>
                     <route path='/friends/search'   > <Home content={ <SearchScreen/> } />                              </route>
                     <route path='/friends'          > <Home content={ <MyFriends/> } />                                 </route>

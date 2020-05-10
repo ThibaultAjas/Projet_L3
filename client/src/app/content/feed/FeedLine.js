@@ -6,6 +6,7 @@ import FeedDotsPopup from "./FeedDotsPopup";
 
 import { toggleOptionsPopupDisplay } from "../../scripts/feed_script";
 import { getDateFrom } from "../util/dataConverter";
+import { getUser } from "../util/app_cookies";
 
 const FeedLine = ({ element }) => {
     let id = element._id;
@@ -15,6 +16,8 @@ const FeedLine = ({ element }) => {
     let description = element.description;
     let city = element.city;
     let country = element.country;
+    // TODO: change when it will be implemented
+    let userId = getUser()._id;
 
 
 
@@ -23,7 +26,7 @@ const FeedLine = ({ element }) => {
 
     return (
         <div className='feedLine'>
-            <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup /> </div>
+            <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup userId={userId}/> </div>
 
             <div className='card p-2'>
                 <div className='card-title d-flex flex-row align-items-baseline justify-content-between border-bottom'>

@@ -72,9 +72,13 @@ const event = require('../models/eventModel');
                 const evts = usr.events;
                 console.log('current events ids: ', evts);
 
-                event.find({ $or: evts })
+                let idEvtList = [];
+                evts.forEach((e) => {
+                    idEvtList.push({_id: evts.event});
+                })
+
+                event.find({ $or: idEvtList })
                     .then((evtList) => {
-                        //TODO chepas ce que tu as branlé mais ça renvoies pas les events ça
                         console.log('current list of events: ', evtList);
                         return res.json({msg: 'Got all events from user', data: evtList});
                     })

@@ -95,6 +95,33 @@ const user = require('../models/userModel');
             });
     })
 
+    router.post('/likeEvent', (req, res) => {
+       const data = req.body;
+       // const user = data.user;
+       const event = data.event;
+
+       user.findOneAndUpdate({_id: data.user._id, 'events.event': event._id}, {$set: { 'events.$.like': true }})
+           .then((usr) => {
+               if (usr) {
+                   console.log('ici')
+                   return res.json({msg: 'User updated', data: usr});
+               }
+
+               user.findOneAndUpdate({_id: data.user._id}, {$push: { events: {event: data.event, own: false, liked: true, disliked: false} }})
+                   .then((usr) => {
+                       console.log('là: ', usr)
+                       return res.json({msg: 'User updated', data: usr});
+                   })
+                   .catch((error) => {
+                       return res.status(500).send(error);
+                   });
+           })
+           .catch((error) => {
+               return res.status(500).send(error);
+           });
+    });
+
+
     router.post('/addFollow', (req, res) => {
         const data = req.body;
 

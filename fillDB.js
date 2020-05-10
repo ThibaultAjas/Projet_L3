@@ -295,34 +295,44 @@ const fillDB = async () => {
 
     await user.findByIdAndUpdate(userListFromBd[0]._id, {$set:{events: [
                 {
-                    event: eventListFromBd[0]
+                    event: eventListFromBd[0],
+                    own: true
                 },
                 {
-                    event: eventListFromBd[1]
+                    event: eventListFromBd[1],
+                    own: true
                 },
                 {
-                    event: eventListFromBd[2]
+                    event: eventListFromBd[2],
+                    own: true
                 },
                 {
-                    event: eventListFromBd[3]
+                    event: eventListFromBd[3],
+                    own: true
                 },
                 {
-                    event: eventListFromBd[4]
+                    event: eventListFromBd[4],
+                    own: true
                 },
                 {
-                    event: eventListFromBd[5]
+                    event: eventListFromBd[5],
+                    own: true
                 },
                 {
-                    event: eventListFromBd[6]
+                    event: eventListFromBd[6],
+                    own: true
                 },
                 {
-                    event: eventListFromBd[7]
+                    event: eventListFromBd[7],
+                    own: true
                 },
                 {
-                    event: eventListFromBd[8]
+                    event: eventListFromBd[8],
+                    own: true
                 },
                 {
-                    event: eventListFromBd[9]
+                    event: eventListFromBd[9],
+                    own: true
                 }]
     }});
     console.log('Events of Test added');

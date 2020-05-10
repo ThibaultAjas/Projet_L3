@@ -33,7 +33,7 @@ class Feed extends React.Component {
                 this.setState({events: data.data});
             })
             .catch((error) => {
-                console.log(`Error: ${error}`);
+                console.log('Error: ', error);
             });
     };
 

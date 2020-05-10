@@ -10,7 +10,7 @@ const MyFriendsCard = ({ friend }) => {
 			 </span>
 
 			<div className='d-flex justify-content-center flex-wrap'>
-				<button className='btn btn-warning mr-2'> See profile </button>
+				<a className='btn btn-warning mr-2' href={'/profile/' + friend._id}> See profile </a>
 				<button className='btn btn-danger'> Unfollow </button>
  			</div>
 		</div>

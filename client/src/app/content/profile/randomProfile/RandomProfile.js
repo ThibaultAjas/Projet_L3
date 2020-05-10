@@ -27,6 +27,7 @@ class RandomProfile extends React.Component {
 		getUserEventList( this.id ).then( (data) => {
 			this.setState({ events: data });
 			this.events = this.state.events;
+
 			this.forceUpdate();
 		});
 	}

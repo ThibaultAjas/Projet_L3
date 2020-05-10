@@ -14,18 +14,11 @@ class MyActions extends React.Component {
 			.then( (data) => {
 				this.setState({ events: data });
 				this.events = this.state.events;
-
-				getFollowersEvents().then((data) => {
-					this.events = data;
-					this.forceUpdate();
-				});
 			});
 	}
 
 	render() {
 		if (! isLogged()) return ( <LoginScreen/> );
-
-		console.log(this.events);
 
 		return (
 			<Feed content={ this.events }/>

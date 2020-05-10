@@ -20,7 +20,6 @@ const FeedLine = ({ element }) => {
     // TODO: change when it will be implemented
     let userId = getUser()._id;
 
-    console.log(new URL(window.location.href).pathname);
 
     postDate = new Date( postDate );
     let date = getDateFrom('fr', postDate);
@@ -34,16 +33,16 @@ const FeedLine = ({ element }) => {
 
     const actionsOptions =
         [
-            { text: ""}
+            { text: 'modify', href: '/'},
+            { text: "Delete", href: '/'}
         ];
 
     return (
         <div className='feedLine'>
             {
                 (new URL(window.location.href).pathname === '/actions')
-                ? <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup userId={userId} options={options}/> </div>
-                : <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup userId={userId} options={options}/> </div>
-
+                ? <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup userId={userId} options={actionsOptions}/> </div>
+                : <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup userId={userId} options={feedOptions}/> </div>
             }
 
             <div className='card p-2'>
@@ -54,7 +53,13 @@ const FeedLine = ({ element }) => {
                         <blockquote className='blockquote font-italic' style={{'fontSize':'.8em'}}> { city }, { country } </blockquote>
                     </div>
                     <div className='font-italic'> posté le { date } </div>
-                    <button className="transparent-button-popup" onClick={ () => toggleOptionsPopupDisplay( id )}> <i id='dots-icon' className="dots-icon fas fa-ellipsis-v m-2"/> </button>
+
+                    {
+                        (new URL(window.location.href).pathname === '/actions')
+                        ? <> </>
+                        // ? <button className="transparent-button-popup" onClick={ () => toggleOptionsPopupDisplay( id )}> <i id='dots-icon' className="dots-icon fas fa-ellipsis-v m-2"/> </button>
+                        : <button className="transparent-button-popup" onClick={ () => toggleOptionsPopupDisplay( id )}> <i id='dots-icon' className="dots-icon fas fa-ellipsis-v m-2"/> </button>
+                    }
                 </div>
 
                 <FeedLinePost description = { description } imageURL = { imageURL } postDate={eventDate}/>

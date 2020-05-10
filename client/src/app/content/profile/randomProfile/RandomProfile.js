@@ -22,21 +22,23 @@ class RandomProfile extends React.Component {
 				this.firstName = this.state.user.firstName;
 				this.lastName = this.state.user.lastName;
 				this.id = this.state.user._id;
+
+				getUserEventList( this.state.user ).then( (data) => {
+					this.setState({ events: data });
+					this.events = this.state.events;
+
+					console.log('in profile events: ', this.state.events);
+
+					this.forceUpdate();
+				});
 			});
-
-		getUserEventList( this.id ).then( (data) => {
-			this.setState({ events: data });
-			this.events = this.state.events;
-
-			this.forceUpdate();
-		});
 	}
 
 	render() {
 		return (
 			<div>
 				<RandomProfileHeader firstName={ this.firstName } userName={ this.userName } lastName={ this.lastName } id={ this.id }/>
-				<Feed />
+				<Feed content={this.events}/>
 			</div>
 
 		);

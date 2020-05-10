@@ -3,7 +3,7 @@ import {Marker, Popup} from "react-leaflet";
 
 const MarkerDisplay = ({position,popupMessage,icon}) => {
 
-    if (icon!==undefined){
+    if (icon===undefined){
         return(
         <Marker position={position}>
             <Popup>

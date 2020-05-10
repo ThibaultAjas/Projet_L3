@@ -69,7 +69,7 @@ class MapDisplay extends React.Component{
             });
 
             let redIcon = new LeafIcon({iconUrl : 'https://ukauto.fr/wp-content/uploads/2017/11/map-marker-icon.png'});
-
+            let blueIcon = new LeafIcon({iconUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/1200px-Map_marker.svg.png'});
             let lat, long = GetCurrentLoc();
             let tmp = [lat, long];
 
@@ -103,7 +103,7 @@ class MapDisplay extends React.Component{
                     <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici" icon={redIcon}/>
                     {
                         this.events.map( (event,index) =>
-                            <MarkerDisplay key={index} position={[event.location.latitude,event.location.longitude]} popupMessage={index} icon={redIcon}   />
+                            <MarkerDisplay key={index} position={[event.location.latitude,event.location.longitude]} popupMessage={index} icon={blueIcon}   />
                         )
                     }
                     </Map>

@@ -4,17 +4,17 @@ import {Map,TileLayer,Marker,Popup} from "react-leaflet";
 
 import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
+
 import iconShadow from 'leaflet/dist/images/marker-shadow.png'
 import '../../stylesheets/mapDisplay.css';
 import L from 'leaflet';
 import MarkerDisplay from "./MarkerDisplay";
+
 import LoginScreen from "../login/LoginScreen";
 import GetCurrentLoc from "../geolocation/GetCurrentLoc";
 
 import {getUser, isLogged} from "../util/app_cookies";
 import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
-import Feed from "../feed/Feed";
-import axios from "axios";
 import {getFollowersEvents, getUserEvents} from "../util/dataConverter";
 
 let DefaultIcon=L.icon({
@@ -57,6 +57,18 @@ class MapDisplay extends React.Component{
 
     render() {
         if (isLogged()) {
+            let LeafIcon = L.Icon.extend({
+                options: {
+                    shadowUrl: 'leaf-shadow.png',
+                    iconSize:     [30, 40],
+                    shadowSize:   [30, 40],
+                    iconAnchor:   [15, 40],
+                    shadowAnchor: [4, 62],
+                    popupAnchor:  [-3, -76]
+                }
+            });
+
+            let redIcon = new LeafIcon({iconUrl : 'https://ukauto.fr/wp-content/uploads/2017/11/map-marker-icon.png'});
 
             let lat, long = GetCurrentLoc();
             let tmp = [lat, long];
@@ -88,10 +100,10 @@ class MapDisplay extends React.Component{
                         // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
 
-                    <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici" col="#FF0000"/>
+                    <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici" icon={redIcon}/>
                     {
                         this.events.map( (event,index) =>
-                            <MarkerDisplay key={index} position={[event.location.latitude,event.location.longitude]} popupMessage={index} col="#0000FF"   />
+                            <MarkerDisplay key={index} position={[event.location.latitude,event.location.longitude]} popupMessage={index} icon={redIcon}   />
                         )
                     }
                     </Map>

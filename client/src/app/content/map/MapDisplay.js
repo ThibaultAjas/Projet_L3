@@ -42,8 +42,6 @@ class MapDisplay extends React.Component{
     };
 
     generateMarkerList (){
-
-
         getFollowersEvents().then((data )=> {
             this.state.events=data;
             this.events=this.state.events;

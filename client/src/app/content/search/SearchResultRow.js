@@ -4,7 +4,7 @@ const SearchResultRow = ({ content, isUser }) => {
 	if (isUser) {
 		return (
 			<div className='d-inline-flex align-items-center m-auto bg-white w-50 p-2'>
-				user: { content }
+				{console.log('coucou')} burp
 			</div>
 		)
 	}

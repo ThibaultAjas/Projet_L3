@@ -14,6 +14,8 @@ class MyActions extends React.Component {
 			.then( (data) => {
 				this.setState({ events: data });
 				this.events = this.state.events;
+
+				this.forceUpdate();
 			});
 	}
 

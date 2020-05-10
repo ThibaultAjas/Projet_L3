@@ -114,6 +114,21 @@ const getStats = async () =>{
 	return(bj);
 };
 
+const getAllUsers = async () => {
+	let users = [];
+	await axios.post( '/user/getAll' )
+		.then( ( response ) => {
+			const data = response.data;
+			users = data.data;
+
+		} )
+		.catch( ( error ) => {
+			console.log( `Error: ${ error }` );
+		} );
+
+	return(users);
+};
+
 export {
-	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents, getEventFromId,getStats
+	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents, getEventFromId,getStats, getAllUsers
 };

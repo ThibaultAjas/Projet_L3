@@ -102,17 +102,16 @@ const getEventFromId = async ( id ) => {
 
 const getStats = async () =>{
 
-
+	let bj = '';
 
 	await axios.post('/api/stats')
 		.then((response) =>{
-			console.log("stats",response);
+			bj=response.data.data;
 		})
 		.catch((error) => {
 			console.log(`Error: ${ error }`)
 		});
-
-
+	return(bj);
 };
 
 export {

@@ -3,6 +3,9 @@ import {Bar} from "react-chartjs-2";
 import axios from "axios";
 import {getStats} from "../util/dataConverter";
 
+
+
+
 const state = {
   labels:[ 'janvier','fevrier','mars','avril','mais'],
   datasets : [
@@ -21,11 +24,22 @@ const state = {
 
 export default class StatsDisplay extends React.Component{
 
+    state =  {
+        numberOfUsers : 0,
+        countries : [],
+        cities : [],
+        numberOfEventsByCountry : [],
+        numberOfEventsByCity : []
+    }
 
     componentDidMount() {
+
         getStats().then((data)=> {
-            console.log(data);
+            this.state=data.data;
+            console.log("pendant",this.state);
         })
+        console.log("après",this.state);
+
     }
 
 
@@ -36,7 +50,7 @@ export default class StatsDisplay extends React.Component{
 
 
         return(
-          <div>
+          <div className="w-75 mx-auto">
               <Bar
                   data={state}
                   options={{

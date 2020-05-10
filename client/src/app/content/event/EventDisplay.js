@@ -1,8 +1,11 @@
 import React from "react";
+import FeedLine from "../feed/FeedLine";
 
 const EventDisplay = ({ event }) => {
+
 	return(
-		<div> Coucou </div>
+		<div>ou</div>
+		// <FeedLine />
 	);
 };
 

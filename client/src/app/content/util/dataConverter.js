@@ -84,24 +84,23 @@ const getFriendsById = async ( idsList ) => {
 	return friends;
 };
 
-const getStats = async () =>{
+const getEventFromId = async ( id ) => {
+	let event = 'troll';
 
+	await axios({
+		url: 'event/getOne',
+		method: 'POST',
+		data: id
+	}).then( (response) => {
+		console.log('ma reponse est: ', response);
+	}).catch((error) => {
+		console.log(`Error: ${ error }`)
+	});
 
-
-	await axios.post('/api/stats')
-		.then((response) =>{
-			console.log("stats",response);
-		})
-		.catch((error) => {
-			console.log(`Error: ${ error }`)
-		});
-
-
+	return event;
 };
 
 
-
-
 export {
-	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents,getStats
+	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents, getEventFromId
 };

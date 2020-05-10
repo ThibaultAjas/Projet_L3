@@ -14,8 +14,8 @@
 
 .dotsPopup {
     position: absolute;
-    right: 0.5em;
-    top: -4.4em;
+    right: 0;
+    top: -2.2em;
 
     z-index: 2;
     filter: drop-shadow(0 0 0.3rem grey);
@@ -49,7 +49,14 @@
 }
 
 .dots-option { display: block; }
-
+.dots-option:first-child {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.dots-option:last-child {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
 .dots-option:hover {
     text-decoration: inherit;
     color: inherit;

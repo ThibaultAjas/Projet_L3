@@ -2,15 +2,15 @@ import React from "react";
 
 const ProfilePic = ({ userName, textColor, bgColor, size }) => {
 	const style = {
-		'height': size,
-		'width': size,
-		'background-color': bgColor,
-		'color': textColor
+		height: size,
+		width: size,
+		backgroundColor: bgColor,
+		color: textColor
 	};
 
 	const letterStyle = {
-		'font-size': '2em',
-		'font-family': "'Ubuntu', cursive"
+		fontSize: '2em',
+		fontFamily : "'Ubuntu', cursive"
 	};
 
 	return (

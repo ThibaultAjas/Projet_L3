@@ -84,13 +84,13 @@ router.post('/stats', asyncMiddleware(async (req, res, next) => {
 
     events.forEach(evt => {
         let index;
-        if ((index = dataOut.countries.findIndex((e) => e = evt.country)) === -1) { // On a pas trouvé
+        if ((index = dataOut.countries.findIndex((e) => e === evt.country)) === -1) { // On a pas trouvé$
             dataOut.countries.push(evt.country);
             dataOut.numberOfEventsByCountry.push(1);
         } else {
             dataOut.numberOfEventsByCountry[index]++;
         }
-        if ((index = dataOut.cities.findIndex((e) => e = evt.city)) === -1) { // On a pas trouvé
+        if ((index = dataOut.cities.findIndex((e) => e === evt.city)) === -1) { // On a pas trouvé
             dataOut.cities.push(evt.city);
             dataOut.numberOfEventsByCity.push(1);
         } else {

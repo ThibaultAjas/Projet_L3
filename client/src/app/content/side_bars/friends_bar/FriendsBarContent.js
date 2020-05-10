@@ -20,15 +20,18 @@ class FriendsBarContent extends React.Component {
 	render() {
 		return (
 			<div>
-				<div id='friendsBar-top-section' className='w-100 d-inline-flex align-items-center justify-content-center bg-secondary'>
-					<h3 className='mr-2'>Sort by</h3>
+				<div id='friendsBar-top-section' className='w-100 d-inline-flex align-items-center flex-column justify-content-center bg-secondary mb-2'>
+					<h3> You're following them </h3>
+					{/*<div className='d-inline-flex align-items-center'>*/}
+					{/*	<h5 className='mr-2'>Sort by</h5>*/}
 
-					<select name='friends-sort-picker' id='friends-sort-picker' className='my-3'>
-						<option value=''> -- </option>
-						<option value='firstName'> Firstname </option>
-						<option value='lastName'> Lastname </option>
-						<option value='userName'> Username </option>
-					</select>
+					{/*	<select name='friends-sort-picker' id='friends-sort-picker' className='my-3'>*/}
+					{/*		<option value=''> -- </option>*/}
+					{/*		<option value='firstName'> Firstname </option>*/}
+					{/*		<option value='lastName'> Lastname </option>*/}
+					{/*		<option value='userName'> Username </option>*/}
+					{/*	</select>*/}
+					{/*</div>*/}
 				</div>
 
 				<ul id='friendsBar-content' className='list-group'>

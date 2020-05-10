@@ -15,6 +15,7 @@ let userSchema = new Schema({
     following: [{type: mongoose.Schema.Types.ObjectID, ref: 'user'}],
     events: [{
         event: {type: mongoose.Schema.Types.ObjectID, ref: 'event'},
+        own: false,
         liked: false,
         disliked: false
     }]

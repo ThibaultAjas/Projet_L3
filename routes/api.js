@@ -8,6 +8,16 @@ const user = require('../models/userModel');
 const event = require('../models/eventModel');
 const comment = require('../models/commentModel');
 
+// Util
+
+const asyncMiddleware = fn =>
+    (req, res, next) => {
+        Promise.resolve(fn(req, res, next))
+            .catch(next);
+    };
+
+// Router methods
+
 router.post('/verify', (req, res) => {
     const sess = req.session;
 
@@ -32,7 +42,7 @@ router.post('/logout', (req, res) => {
     });
 });
 
-router.post('/stats', (req, res) => {
+router.post('/stats', asyncMiddleware(async (req, res, next) => {
     const dataIn = req.body;
 
     let dataOut = {};
@@ -41,7 +51,7 @@ router.post('/stats', (req, res) => {
     let users = [];
     let events = [];
 
-    comment.find({})
+    await comment.find({})
         .then((data) => {
             comments = data;
         })
@@ -49,7 +59,7 @@ router.post('/stats', (req, res) => {
             console.log(`Error: ${error}`);
         });
 
-    user.find({})
+    await user.find({})
         .then((data) => {
             users = data;
         })
@@ -57,7 +67,7 @@ router.post('/stats', (req, res) => {
             console.log(`Error: ${error}`);
         });
 
-    event.find({})
+    await event.find({})
         .then((data) => {
             events = data;
         })
@@ -94,7 +104,8 @@ router.post('/stats', (req, res) => {
 
     // TODO: Plus de stats
 
+    console.log(dataOut);
     return res.json({msg: 'Got some stats', data: dataOut});
-});
+}));
 
 module.exports = router;

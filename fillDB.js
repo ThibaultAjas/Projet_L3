@@ -293,7 +293,38 @@ const fillDB = async () => {
     await user.findByIdAndUpdate(userListFromBd[0]._id, {$set: {following: [userListFromBd[9], userListFromBd[1], userListFromBd[2], userListFromBd[3], userListFromBd[4], userListFromBd[5], userListFromBd[6], userListFromBd[7], userListFromBd[8]]}});
     console.log('Friends of Test added');
 
-    await user.findByIdAndUpdate(userListFromBd[0]._id, {$set: {events: [eventListFromBd[0], eventListFromBd[1], eventListFromBd[2], eventListFromBd[3], eventListFromBd[4], eventListFromBd[5], eventListFromBd[6], eventListFromBd[7], eventListFromBd[8], eventListFromBd[9]]}});
+    await user.findByIdAndUpdate(userListFromBd[0]._id, {$set:{events: [
+                {
+                    event: eventListFromBd[0]
+                },
+                {
+                    event: eventListFromBd[1]
+                },
+                {
+                    event: eventListFromBd[2]
+                },
+                {
+                    event: eventListFromBd[3]
+                },
+                {
+                    event: eventListFromBd[4]
+                },
+                {
+                    event: eventListFromBd[5]
+                },
+                {
+                    event: eventListFromBd[6]
+                },
+                {
+                    event: eventListFromBd[7]
+                },
+                {
+                    event: eventListFromBd[8]
+                },
+                {
+                    event: eventListFromBd[9]
+                }]
+    }});
     console.log('Events of Test added');
 
     console.log('Database successfully filled !');

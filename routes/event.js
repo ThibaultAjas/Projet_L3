@@ -14,17 +14,27 @@ const event = require('../models/eventModel');
         const data = req.body;
         const newEvent = new event(data.event);
 
+        console.log(data)
+        console.log(newEvent)
+
         newEvent.save()
             .then((evt) => {
-                user.findOneAndUpdate({mail: data.user.mail}, { $push: { events: {evt}}}, {new: true})
+                user.findOneAndUpdate({mail: data.user.mail}, {
+                    $push: {
+                        events: {event: evt, own: true}
+                    }
+                })
                     .then((oui) => {
+                        console.log(evt._id)
                         return res.json({ msg: 'Your data has been saved !', data: oui}); // status 200
                     })
                     .catch((error) => {
+                        console.log('ici', error)
                         return res.status(500).send(error);
                     });
             })
             .catch((error) => {
+                console.log('là')
                 return res.status(500).send(error);
             });
     });
@@ -91,7 +101,7 @@ const event = require('../models/eventModel');
                                     following.forEach((elemUser) => {
                                         if (elemUser.events.length !== 0) {
                                             elemUser.events.forEach((evt) => {
-                                                evtIDsFromFollowing.push(evt);
+                                                evtIDsFromFollowing.push(evt.event);
                                             });
                                         }
                                     });

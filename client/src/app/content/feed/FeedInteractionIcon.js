@@ -8,13 +8,18 @@ import {getUser} from "../util/app_cookies";
 class FeedInteractionIcon extends React.Component {
 
 	state = {
-		eventId: this.props.name.split("-")[2],
-		liked: getUser().events.find((evt) => evt.event = this.props.name.split("-")[2]).liked,
-		disliked: getUser().events.find((evt) => evt.event = this.props.name.split("-")[2]).disliked
+		eventId: '',
+		liked: false,
+		disliked: false
 	};
 
 	componentDidMount() {
 		console.log(getUser())
+		this.setState({
+			eventId: this.props.name.split("-")[2],
+			liked: getUser().events.find((evt) => evt.event = this.props.name.split("-")[2]).liked,
+			disliked: getUser().events.find((evt) => evt.event = this.props.name.split("-")[2]).disliked
+		});
 	};
 
 	makeAction = () => {

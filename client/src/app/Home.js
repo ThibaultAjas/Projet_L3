@@ -3,12 +3,10 @@ import React from "react";
 import Header from "./content/header/Header";
 import ProfileBar from "./content/side_bars/profile_bar/ProfileBar";
 import FriendsBar from "./content/side_bars/friends_bar/FriendsBar";
-import SwapFeedButtons from "./content/swap_feed_buttons/SwapFeedButtons";
-import {getUser, isLogged} from "./content/util/app_cookies";
+import {isLogged} from "./content/util/app_cookies";
 
 import './scripts/sideBars_script';
 import './scripts/feed_script';
-import SwapFeedButton from "./content/swap_feed_buttons/SwapFeedButton";
 
 
 const Home = ({ content }) => {

@@ -76,11 +76,9 @@ class RegisterForm extends React.Component {
                 <input type="text" className="form-control inputreg" placeholder="username" name="userName" onChange = { this.handleChange } />
                 <input type="tel" className="form-control inputreg" placeholder="0675488456" name="tel" onChange = { this.handleChange }  required/>
                 <input type="text" className="form-control inputreg" placeholder="addresse" name="address" onChange = { this.handleChange }  required/>
-                /* faut les implémenter dans la bdd parceque la c'est que de l'affichage*/
                 <input type="text" className="form-control inputreg" placeholder="code postal" name="code_postal" onChange = { this.handleChange }  required/>
                 <input type="text" className="form-control inputreg" placeholder="ville" name="ville" onChange = { this.handleChange }  required/>
                 <input type="text" className="form-control inputreg" placeholder="country" name="country" onChange = { this.handleChange }  required/>
-                /**/
 
                 <div className="checkbox mb-3">
                     <input type="checkbox" value="remember-me"/>

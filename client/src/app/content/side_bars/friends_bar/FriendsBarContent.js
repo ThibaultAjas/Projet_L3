@@ -2,7 +2,6 @@ import React from "react";
 import FriendsBarFriendRow from "./FriendBarFriendRow";
 import { getUser } from "../../util/app_cookies";
 import { getFriendsById } from "../../util/dataConverter";
-import SearchIcon from "../../search/SearchIcon";
 
 class FriendsBarContent extends React.Component {
 	state = {

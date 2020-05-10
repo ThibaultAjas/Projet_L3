@@ -1,0 +1,16 @@
+.friend-card {
+    border-radius: 30px;
+
+    width: 25%;
+    cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    .friend-card { width: 45%;}
+}
+
+@media (max-width: 750px) {
+    .friend-card { width: 100%;}
+}
+
+.friend-card:hover { color: inherit; text-decoration: inherit; }

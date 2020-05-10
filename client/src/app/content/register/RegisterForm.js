@@ -10,7 +10,9 @@ class RegisterForm extends React.Component {
         lastName: '',
         userName: '',
         tel: '',
-        address: ''
+        address: '',
+        country: '',
+        city:'',
     };
 
     handleChange = ({target}) => {
@@ -27,7 +29,9 @@ class RegisterForm extends React.Component {
             lastName: this.state.lastName,
             userName: this.state.userName,
             tel: this.state.tel,
-            address: this.state.address
+            address: this.state.address,
+            country: this.state.country,
+            city: this.state.city
         };
 
         console.log(payload)
@@ -77,7 +81,7 @@ class RegisterForm extends React.Component {
                 <input type="tel" className="form-control inputreg" placeholder="0675488456" name="tel" onChange = { this.handleChange }  required/>
                 <input type="text" className="form-control inputreg" placeholder="addresse" name="address" onChange = { this.handleChange }  required/>
                 <input type="text" className="form-control inputreg" placeholder="code postal" name="code_postal" onChange = { this.handleChange }  required/>
-                <input type="text" className="form-control inputreg" placeholder="ville" name="ville" onChange = { this.handleChange }  required/>
+                <input type="text" className="form-control inputreg" placeholder="ville" name="city" onChange = { this.handleChange }  required/>
                 <input type="text" className="form-control inputreg" placeholder="country" name="country" onChange = { this.handleChange }  required/>
 
                 <div className="checkbox mb-3">

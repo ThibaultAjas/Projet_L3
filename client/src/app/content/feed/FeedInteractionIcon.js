@@ -57,7 +57,7 @@ class FeedInteractionIcon extends React.Component {
 			.then((response) => {
 				setUser(response.data.data)
 
-				console.log(getUser().events[getUser().events.length - 1])
+				console.log("user",getUser().events[getUser().events.length - 1])
 				this.forceUpdate();
 			})
 			.catch((error) => {

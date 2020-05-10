@@ -84,6 +84,22 @@ const getFriendsById = async ( idsList ) => {
 	return friends;
 };
 
+const getEventFromId = async ( id ) => {
+	let event = 'troll';
+
+	await axios({
+		url: 'event/getOne',
+		method: 'POST',
+		data: id
+	}).then( (response) => {
+		console.log('ma reponse est: ', response);
+	}).catch((error) => {
+		console.log(`Error: ${ error }`)
+	});
+
+	return event;
+};
+
 export {
-	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents
+	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents, getEventFromId
 };

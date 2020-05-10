@@ -55,6 +55,7 @@ ul { list-style: none; }
 #friendsBar-top-section {
     position: sticky;
     top: 0;
+    min-height: 50px;
 }
 
 #friendsBar-top-section { cursor: default; }

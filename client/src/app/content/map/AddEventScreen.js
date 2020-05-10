@@ -1,7 +1,7 @@
 import React from "react";
 import '../../stylesheets/login.css';
 import axios from "axios";
-import {getUser} from "../util/app_cookies";
+import { getUser, setUser } from "../util/app_cookies";
 
 class AddEventScreen extends React.Component {
 
@@ -52,6 +52,7 @@ class AddEventScreen extends React.Component {
             data: {user: getUser(), event: tmp}
         })
             .then((response) => {
+                setUser(response.data.data);
                 window.location.href = '/map';
                 this.resetUserInputs();
             })

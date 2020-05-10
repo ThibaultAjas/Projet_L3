@@ -105,6 +105,12 @@ router.post('/stats', asyncMiddleware(async (req, res, next) => {
     // TODO: Plus de stats
 
     // TODO: user by countries and user by cities
+
+    users.forEach(usr => {
+
+    });
+
+
     console.log(dataOut);
     return res.json({msg: 'Got some stats', data: dataOut});
 }));

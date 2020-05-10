@@ -10,6 +10,8 @@ let userSchema = new Schema({
     userName: String,
     password: {type: String, required: true},
     address: String,
+    city: String,
+    country: String,
     phone: String,
     config: Array,
     following: [{type: mongoose.Schema.Types.ObjectID, ref: 'user'}],

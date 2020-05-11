@@ -33,13 +33,17 @@ class App extends React.Component {
         logged: false
     };
 
-    componentDidMount() { if (! isLogged()) setLogged( false ); }
+    componentDidMount() {
+        if (isLogged() === undefined || ! isLogged()) {
+            setLogged( false );
+        }
+    }
 
     render() {
         return (
                 <Router>
                 <Switch>
-                    <Route path='/profile/map'        > <Home content={<ProfileMap />} />                               </Route>
+                    <Route path='/profile/map'      > <Home content={<ProfileMap />} />                                 </Route>
                     <Route path='/event/:id'        > <Home content={<EventDisplay />} />                               </Route>
                     <Route path='/stats'            > <Home content={ <StatsDisplay/> } />                              </Route>
                     <Route path='/friends/search'   > <Home content={ <SearchScreen/> } />                              </Route>

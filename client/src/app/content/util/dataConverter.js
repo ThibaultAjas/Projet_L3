@@ -1,6 +1,5 @@
 import axios from "axios";
 import {getUser, setUser} from "./app_cookies";
-// import { setLogged, setSessionMail, setSessionPassword, setUser } from "./app_cookies";
 
 const getDateFrom = ( country, date) => {
 
@@ -153,7 +152,7 @@ const getUserById = async (id) => {
 		} )
 		.catch( ( error ) => {
 			console.log( `Error: ${ error }` );
-		} );
+		});
 	return tmp;
 };
 
@@ -170,10 +169,8 @@ const unFollow = async (unfoller) => {
 		data: payload
 	})
 		.then(response => {
-			console.log('Friend not followed anymore ', response.data.data);
-			console.log("avant unfollow",getUser());
+
 			setUser(response.data.data);
-			console.log("après unfollow",getUser());
 		})
 		.catch(error => {
 			console.log('Error: ', error);

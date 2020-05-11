@@ -18,7 +18,9 @@ class MyFriends extends React.Component {
 	}
 
 	render() {
+
 		return (
+
 			<>
 
 				<h1 className='text-center mt-5 font-weight-bold'> The people I follow </h1>

@@ -26,7 +26,7 @@ const SearchResultRow = ({ content, isUser, search }) => {
 					<p> {boldText(content.firstName, search)} {boldText(content.lastName, search)} </p>
 					<blockquote className='blockquote-footer ml-2'> {boldText(content.userName, search)}</blockquote>
 				</div>
-
+				{console.log("salope de tes mort",content._id)}
 				<a href={'/profile/' + content._id} className='btn btn-warning btn-sm'> See profile </a>
 			</div>
 		)

@@ -1,7 +1,5 @@
 import React from "react";
-import Feed from "../feed/Feed";
 import {Marker,Popup} from 'react-leaflet';
-import {map} from "leaflet/dist/leaflet-src.esm";
 
 const DisplayUserEvent = ({listEvent}) => {
 
@@ -23,12 +21,6 @@ const DisplayUserEvent = ({listEvent}) => {
 
         };
 
-
-        // return(
-        //
-        //
-        //
-        // );
 
 };
 

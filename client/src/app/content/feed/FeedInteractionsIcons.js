@@ -1,9 +1,7 @@
 import React from "react";
-import axios from "axios";
 
 import FeedInteractionIcon from "./FeedInteractionIcon";
 import { like, dislike, comment, share } from "../../scripts/feed_script";
-import {getUser} from "../util/app_cookies";
 
 // ({ id, dislikes, likes, comments })
 class FeedInteractionsIcons extends React.Component {

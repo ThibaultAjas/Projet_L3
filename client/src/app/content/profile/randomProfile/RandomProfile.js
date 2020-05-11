@@ -16,6 +16,7 @@ class RandomProfile extends React.Component {
 	events = [];
 
 	componentDidMount() {
+		console.log("bonjour",getUser());
 		let url =  new URL(window.location.href).pathname.substring(9);
 
 		if (url === getUser()._id) window.location.href = '/profile';

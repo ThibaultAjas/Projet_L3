@@ -53,7 +53,9 @@ class LoginForm extends React.Component {
 
                     setLogged(true);
                     window.location.href = '/';
-                }
+                }else{
+
+                };
                  this.resetUserInputs();
 
             })
@@ -64,10 +66,12 @@ class LoginForm extends React.Component {
     };
 
     resetUserInputs = () => {
+
         this.setState({
             mail: '',
             password: ''
         });
+
     };
 
     rememberMe = () => {
@@ -80,8 +84,8 @@ class LoginForm extends React.Component {
 
                 <h1 className="h3 mb-3 font-weight-normal "> Please sign in</h1>
 
-                <input type="email" className="form-control inputreg" placeholder="Email address" name="mail" required autoFocus value = { this.state.mail } onChange = { this.handleChange } />
-                <input type="password" className="form-control mb-1 inputreg" placeholder="Password" name="password" required value = { this.state.password } onChange = { this.handleChange }/>
+                <input type="email"     className="form-control inputreg"       placeholder="Email address" name="mail"     id="mail"       required autoFocus value = { this.state.mail }     onChange = { this.handleChange }/>
+                <input type="password"  className="form-control mb-1 inputreg"  placeholder="Password"      name="password" id="password"   required           value = { this.state.password } onChange = { this.handleChange }/>
 
                 <div className="checkbox mb-3">
                     <input type="checkbox" value="remember-me" onClick={ this.rememberMe }/> Remember me

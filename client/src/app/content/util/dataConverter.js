@@ -62,7 +62,7 @@ const getAllEvents = async () => {
 };
 
 let getUserEventList = async ( user ) => {
-	let events = [];
+	let events;
 
 	await axios({
 		url: '/event/getAllForUser',
@@ -71,6 +71,7 @@ let getUserEventList = async ( user ) => {
 	})
 		.then( (response) => {
 			events = response.data.data;
+			return(events);
 		})
 		.catch((error) => {
 			console.log(`Error: ${ error }`);

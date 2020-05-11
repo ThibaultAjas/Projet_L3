@@ -1,25 +1,32 @@
 import React from "react";
+import axios from "axios";
 
 import FeedInteractionIcon from "./FeedInteractionIcon";
 import { like, dislike, comment, share } from "../../scripts/feed_script";
+import {getUser} from "../util/app_cookies";
 
-const FeedInteractionsIcons = ({ id, dislikes, likes, comments }) => {
-	return (
-		<div className='d-flex flex-row align-items-baseline'>
+// ({ id, dislikes, likes, comments })
+class FeedInteractionsIcons extends React.Component {
 
-			<div id='feed-interactions-div'>
-				<FeedInteractionIcon name={'like-icon-' + id} icon='far fa-thumbs-up' call={ like } value={likes}/>
-				<FeedInteractionIcon name={'dislike-icon-' + id} icon='far fa-thumbs-down' call={ dislike } value={dislikes}/>
-				<FeedInteractionIcon name={'comment-icon-' + id} icon='far fa-comments' call={ comment } value={comments}/>
+	render() {
 
-				<span id = 'separator' className='mr-1'/>
+		return (
+			<div className='d-flex flex-row align-items-baseline'>
 
-				<FeedInteractionIcon name={'share-icon-' + id} icon='fas fa-share' call={ share }/>
+				<div id='feed-interactions-div'>
+					<FeedInteractionIcon name={'like-icon-' + this.props.id} icon='far fa-thumbs-up' call={ like } value={this.props.likes} isActioned={ this.props.isLiked }/>
+					<FeedInteractionIcon name={'dislike-icon-' + this.props.id} icon='far fa-thumbs-down' call={ dislike } value={this.props.dislikes} isActioned={ this.props.isDisliked }/>
+					<FeedInteractionIcon name={'comment-icon-' + this.props.id} icon='far fa-comments' call={ comment } value={this.props.comments}/>
+
+					<span id = 'separator' className='mr-1'/>
+
+					<FeedInteractionIcon name={'share-icon-' + this.props.id} icon='fas fa-share' call={ share }/>
+				</div>
+
+				<a className='btn btn-warning' href={'/event/' + this.props.id}> Plus..</a>
 			</div>
-
-			<a className='btn btn-warning' href={'/event/' + id}> Plus..</a>
-		</div>
-	);
+		);
+	}
 };
 
 export default FeedInteractionsIcons;

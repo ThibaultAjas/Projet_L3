@@ -17,8 +17,14 @@ const FeedLine = ({ element }) => {
     let city = element.city;
     let country = element.country;
     let eventDate = element.date;
+    let isLiked = element.usersWhoLiked.find(e => e.toString() === getUser()._id.toString()) !== undefined
+    let isDisliked = element.usersWhoDisliked.find(e => e.toString() === getUser()._id.toString()) !== undefined
     // TODO: change when it will be implemented
     let userId = getUser()._id;
+
+    console.log(title)
+    console.log('\tisLiked:    ', isLiked);
+    console.log('\tisDisliked: ', isDisliked);
 
 
     postDate = new Date( postDate );
@@ -63,7 +69,7 @@ const FeedLine = ({ element }) => {
                 </div>
 
                 <FeedLinePost description = { description } imageURL = { imageURL } postDate={eventDate}/>
-                <FeedInteractionsIcons id={ id } likes={ element.likes } dislikes={ element.dislikes } />
+                <FeedInteractionsIcons id={ id } likes={ element.usersWhoLiked.length } dislikes={ element.usersWhoDisliked.length } isLiked={ isLiked } isDisliked={ isDisliked }/>
             </div>
         </div>
     )

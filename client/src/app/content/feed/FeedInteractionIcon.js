@@ -13,27 +13,8 @@ class FeedInteractionIcon extends React.Component {
 	};
 
 	componentDidMount() {
-		const eventID = this.props.name.split("-")[2]
-		// const eventID = getUser().events.find((evt) => evt.event === this.props.name.split("-")[2]);
-
-		const payload = {
-			user: getUser(),
-			event: {_id: eventID},
-			action: this.props.name.split("-")[0]
-		}
-		axios({
-			url: '/event/is_dis_likedByUser',
-			method: 'POST',
-			data: payload
-		})
-			.then(response => {
-				console.log(response.data.data)
-				if (response.data.data) this.props.call(this.props.name);
-			})
-			.catch((error) => {
-				console.log('Error: ', error);
-			})
-	};
+		if(this.props.isActioned) this.props.call(this.props.name);
+	}
 
 	makeAction = () => {
 		

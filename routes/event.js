@@ -15,9 +15,6 @@ const event = require('../models/eventModel');
         const data = req.body;
         const newEvent = new event(data.event);
 
-        console.log(data)
-        console.log(newEvent)
-
         newEvent.save()
             .then((evt) => {
                 user.findOneAndUpdate({mail: data.user.mail}, {
@@ -54,8 +51,6 @@ const event = require('../models/eventModel');
     router.post('/getOne', (req, res) => {
         const data = req.body;
 
-        console.log('data: ', data)
-
         event.findOne(data)
             .then((data) => {
                 return res.json({msg: 'Got event', data: data});
@@ -75,15 +70,21 @@ const event = require('../models/eventModel');
                         case 'like':
                             return res.json({
                                 msg: '',
-                                data: evt.usersWhoLiked.find(e => e.toString() === data.user._id.toString()) !== undefined
+                                data: {
+                                    is_dis_likedByUser: evt.usersWhoLiked.find(e => e.toString() === data.user._id.toString()) !== undefined,
+                                    value: evt.usersWhoLiked.length
+                                }
                             });
                         case 'dislike':
                             return res.json({
                                 msg: '',
-                                data: evt.usersWhoDisliked.find(e => e.toString() === data.user._id.toString()) !== undefined
+                                data: {
+                                    is_dis_likedByUser: evt.usersWhoDisliked.find(e => e.toString() === data.user._id.toString()) !== undefined,
+                                    value: evt.usersWhoDisliked.length
+                                }
                             });
                         default:
-                            return res.json({msg: '', data: false});
+                            return res.json({msg: '', data: {is_dis_likedByUser: false, value: 0}});
                     }
                 })
                 .catch((error) => {
@@ -100,8 +101,7 @@ const event = require('../models/eventModel');
 
         let idEvtList = [];
         evts.forEach((e) => {
-            console.log(e)
-            idEvtList.push({_id: e.event});
+            idEvtList.push({_id: e});
         })
 
         event.find({ $or: idEvtList })

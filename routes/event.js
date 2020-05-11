@@ -52,7 +52,9 @@ const event = require('../models/eventModel');
     });
 
     router.post('/getOne', (req, res) => {
-        const data = event.body;
+        const data = req.body;
+
+        console.log('data: ', data)
 
         event.findOne(data)
             .then((data) => {
@@ -208,6 +210,7 @@ const event = require('../models/eventModel');
 
         event.findOne({usersWhoDisliked: usr})
             .then(evt => {
+                console.log(evt)
                 if (evt) {
                     event.findOneAndUpdate({_id: data.event._id}, {$pull: {usersWhoDisliked: usr._id}}, {new: true})
                         .then((evt) => {

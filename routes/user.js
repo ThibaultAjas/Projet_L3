@@ -108,7 +108,7 @@ const event = require('../models/eventModel');
     router.post('/follow', (req, res) => {
         const data = req.body;
 
-        user.findOneAndUpdate({mail: data.user1.mail}, { $push: {following: data.user2._id } })
+        user.findOneAndUpdate({mail: data.user1.mail}, { $addToSet: {following: data.user2 } }, {new: true})
             .then((usr) => {
                 return res.json({msg: 'User follows updated', data: usr});
             })
@@ -120,7 +120,7 @@ const event = require('../models/eventModel');
     router.post('/unfollow', (req, res) => {
         const data = req.body;
 
-        user.findOneAndUpdate({mail: data.user1.mail}, { $pull: {following: data.user2._id } })
+        user.findOneAndUpdate({mail: data.user1.mail}, { $pull: {following: data.user2._id } }, {new: true})
             .then((usr) => {
                 return res.json({msg: 'User follows updated', data: usr});
             })

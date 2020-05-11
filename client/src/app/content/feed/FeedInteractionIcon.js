@@ -52,16 +52,16 @@ class FeedInteractionIcon extends React.Component {
 				url = '/user/likeEvent';
 				break;
 		}
-		
 		axios({
 			url: url,
 			method: 'POST',
 			data: payload
 		})
 			.then((response) => {
-				setUser(response.data.data)
+				console.log("user",getUser().events[getUser().events.length - 1].disliked);
+				setUser(response.data.data);
 
-				console.log("user",getUser().events[getUser().events.length - 1])
+
 				this.forceUpdate();
 			})
 			.catch((error) => {

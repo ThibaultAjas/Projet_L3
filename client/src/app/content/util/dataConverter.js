@@ -1,5 +1,5 @@
 import axios from "axios";
-import {getUser, isLogged, setUser} from "./app_cookies";
+import { getUser } from "./app_cookies";
 // import { setLogged, setSessionMail, setSessionPassword, setUser } from "./app_cookies";
 
 const getDateFrom = ( country, date) => {
@@ -23,7 +23,6 @@ const getFollowersEvents = async () => {
 		.then((response) => {
 			const data = response.data;
 			tmp=data.data;
-			console.log("ntm",data);
 		})
 		.catch((error) => {
 			console.log(`Error: ${error}`);
@@ -88,7 +87,6 @@ const getFriendsById = async ( idsList ) => {
 		data: idsList
 	})
 		.then((response) => {
-			console.log(getUser());
 			friends = response.data.data;
 		})
 		.catch((error) => {
@@ -143,29 +141,23 @@ const getAllUsers = async () => {
 	return(users);
 };
 
-const unFollow = async (unfoller) => {
-	console.log("merde");
-	const payload = {
-		user1: getUser(),
-		user2: {_id: unfoller}
-	};
-	axios({
-		url: '/user/unfollow',
+const getUserById = async (id) => {
+	let tmp = {};
+	await axios({
+		url: '/user/getAllByIds',
 		method: 'POST',
-		data: payload
+		data: [id]
 	})
-		.then(response => {
-			console.log('Friend not followed anymore ', response.data.data);
-			console.log("avant unfollow",getUser());
-			setUser(response.data.data);
-			console.log("après unfollow",getUser());
-			this.forceUpdate();
-		})
-		.catch(error => {
-			console.log('Error: ', error);
-		})
+		.then( ( response ) => {
+			tmp = response.data.data[0];
+			return tmp;
+		} )
+		.catch( ( error ) => {
+			console.log( `Error: ${ error }` );
+		} );
+	return tmp;
 };
 
 export {
-	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents, getEventFromId,getStats, getAllUsers ,getAllEvents, unFollow
+	getDateFrom, getUserEvents, getFriendsById, getUserEventList, getFollowersEvents, getEventFromId, getStats, getAllUsers ,getAllEvents, getUserById
 };

@@ -22,11 +22,6 @@ const FeedLine = ({ element }) => {
     // TODO: change when it will be implemented
     let userId = getUser()._id;
 
-    console.log(title)
-    console.log('\tisLiked:    ', isLiked);
-    console.log('\tisDisliked: ', isDisliked);
-
-
     postDate = new Date( postDate );
 
     let date = getDateFrom('fr', postDate);

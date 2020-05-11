@@ -96,9 +96,6 @@ const event = require('../models/eventModel');
     router.post('/getAllForUser', (req, res) => {
        const data = req.body;
 
-        const evts = data.events;
-
-
         user.findOne({mail: data.mail})
             .then( usr => {
 
@@ -107,13 +104,15 @@ const event = require('../models/eventModel');
                     idEvtList.push({_id: e});
                 })
 
-                event.find({ $or: idEvtList })
-                    .then((evtList) => {
-                        return res.json({msg: 'Got all events from user', data:{user: usr, events:  evtList}});
-                    })
-                    .catch((error) => {
-                        return res.status(500).send(error);
-                    });
+                if (idEvtList.length > 0) {
+                    event.find({ $or: idEvtList })
+                        .then((evtList) => {
+                            return res.json({msg: 'Got all events from user', data:{user: usr, events:  evtList}});
+                        })
+                        .catch((error) => {
+                            return res.status(500).send(error);
+                        });
+                } return res.json({msg: 'Got all events from user', data:{user: usr, events:  []}});
             })
             .catch((error) => {
                 return res.status(500).send(error);

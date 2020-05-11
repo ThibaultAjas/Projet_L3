@@ -2,6 +2,7 @@ import React from "react";
 import RandomProfileHeader from "./RandomProfileHeader";
 import { getFriendsById, getUserEventList } from "../../util/dataConverter";
 import Feed from "../../feed/Feed";
+import { getUser } from "../../util/app_cookies";
 
 class RandomProfile extends React.Component {
 	state = {
@@ -15,9 +16,16 @@ class RandomProfile extends React.Component {
 	events = [];
 
 	componentDidMount() {
-		getFriendsById( [ new URL(window.location.href).pathname.substring(9) ] )
+		let url =  new URL(window.location.href).pathname.substring(9);
+
+		if (url === getUser()._id) window.location.href = '/profile';
+
+		getFriendsById( [ url ] )
 			.then( (data) => {
 				this.setState({ user: data[0] });
+
+				if (data[0] === undefined) window.location.href = '/';
+
 				this.userName = this.state.user.userName;
 				this.firstName = this.state.user.firstName;
 				this.lastName = this.state.user.lastName;

@@ -20,8 +20,9 @@ export default class StatsDisplay extends React.Component{
 
 
     render() {
+
         let eventByCities =  {
-            labels:this.state.data.cities,
+            labels:this.state.data.eventCities,
             datasets : [
                 {
                     label:'cities',
@@ -34,7 +35,7 @@ export default class StatsDisplay extends React.Component{
         };
 
         let eventByCountry =  {
-            labels:this.state.data.countries,
+            labels:this.state.data.eventCountries,
             datasets : [
                 {
                     label:'country',
@@ -46,6 +47,31 @@ export default class StatsDisplay extends React.Component{
             ]
         };
 
+        let userByCountries = {
+            labels:this.state.data.userCountries,
+            datasets : [
+                {
+                    label:'country',
+                    backgroundColor: 'rgba(75, 192, 192, 1)',
+                    borderColor:'rgba(0,0,0,1)',
+                    borderWidth:2,
+                    data:this.state.data.numberOfUsersByCountry
+                }
+            ]
+        };
+
+        let userByCities = {
+            labels:this.state.data.userCities,
+            datasets : [
+                {
+                    label:'country',
+                    backgroundColor: 'rgba(75, 192, 192, 1)',
+                    borderColor:'rgba(0,0,0,1)',
+                    borderWidth:2,
+                    data:this.state.data.numberOfUsersByCity
+                }
+            ]
+        };
         return(
             <>
                 <div className="w-75 mx-auto">
@@ -100,22 +126,57 @@ export default class StatsDisplay extends React.Component{
                     />
                 </div>
 
-                {/*<div className="w-75 mx-auto">*/}
-                {/*    <Bar*/}
-                {/*        data={eventByCities}*/}
-                {/*        options={{*/}
-                {/*            title:{*/}
-                {/*                display : true,*/}
-                {/*                text:'average rainfall per month',*/}
-                {/*                fontSize:20*/}
-                {/*            },*/}
-                {/*            legend:{*/}
-                {/*                display:true,*/}
-                {/*                position:'right'*/}
-                {/*            }*/}
-                {/*        }}*/}
-                {/*    />*/}
-                {/*</div>*/}
+                <div className="w-75 mx-auto">
+                    <Bar
+                        data={userByCountries}
+                        options={{
+                            title:{
+                                display : true,
+                                text:'user by country',
+                                fontSize:20
+                            },
+                            legend:{
+                                display:true,
+                                position:'right'
+                            },
+                            scales: {
+                                yAxes: [
+                                    {
+                                        ticks: {
+                                            min: 0
+                                        }
+                                    }
+                                ]
+                            }
+                        }}
+                    />
+                </div>
+
+                <div className="w-75 mx-auto">
+                    <Bar
+                        data={userByCities}
+                        options={{
+                            title:{
+                                display : true,
+                                text:'user by country',
+                                fontSize:20
+                            },
+                            legend:{
+                                display:true,
+                                position:'right'
+                            },
+                            scales: {
+                                yAxes: [
+                                    {
+                                        ticks: {
+                                            min: 0
+                                        }
+                                    }
+                                ]
+                            }
+                        }}
+                    />
+                </div>
             </>
         );
     }

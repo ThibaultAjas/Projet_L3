@@ -12,7 +12,7 @@ import L from 'leaflet';
 import GetCurrentLoc from "../../geolocation/GetCurrentLoc";
 
 import SwapFeedButtons from "../../swap_feed_buttons/SwapFeedButtons";
-import {getUserEventList, getUserEvents} from "../../util/dataConverter";
+import {getUserEventList} from "../../util/dataConverter";
 import {getUser, isLogged} from "../../util/app_cookies";
 import MarkerDisplay from "../../map/MarkerDisplay";
 import LoginScreen from "../../login/LoginScreen";

@@ -10,6 +10,7 @@ let userSchema = new Schema({
     userName: String,
     password: {type: String, required: true},
     address: String,
+    zipCode: String,
     city: String,
     country: String,
     phone: String,
@@ -19,4 +20,4 @@ let userSchema = new Schema({
 });
 
 // Export Mongoose model
-module.exports = mongoose.model('user', userSchema);;
+module.exports = mongoose.model('user', userSchema);

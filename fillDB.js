@@ -26,7 +26,7 @@ faker.toLocaleString = 'fr';
 
 const fillDB = async () => {
     await mongoose.connection.collection('users').drop((err) => console.log('User collection dropped'));
-    await mongoose.connection.collection('events').drop((err) => console.log('User event dropped'));
+    await mongoose.connection.collection('events').drop((err) => console.log('Event collection dropped'));
     // await mongoose.connection.collection('comments').drop((err) => console.log('User comment dropped'));
 
     let users = [];
@@ -53,6 +53,7 @@ const fillDB = async () => {
     for (let i = 0; i < MAX_EVENTS; i++) {
         const randomInt = Math.floor((Math.random() * MAX_USERS));
         const card = faker.helpers.createCard();
+        // console.log(card.accountHistory[0].date)
 
         let uwl_s = new Set();
         let uwl = [];
@@ -71,14 +72,19 @@ const fillDB = async () => {
             creator: users[randomInt],
             country: card.address.country,
             city: card.address.city,
-            date: card.accountHistory.date,
+            date: card.accountHistory[0].date,
             dateAdded: new Date(),
-            title: card.posts[0].words[0],
-            description: card.posts[0].words[0],
+            title: card.company.catchPhrase,
+            description: card.posts[0].paragraph,
             usersWhoLiked: uwl
         }));
     }
     console.log('List of events generated');
+
+    let tmp = []
+    for (let i = 0; i < MAX_EVENTS; i++) tmp.push(Math.floor(Math.random() * MAX_USERS));
+    for (let i = 0; i < MAX_EVENTS; i++) users[tmp[i]].events.push(events[i]);
+    console.log('Added events to users');
 
     for (const usr of users) await usr.save();
     console.log('Collection users saved');

@@ -41,7 +41,7 @@ class EventDisplay extends React.Component {
 						</div>
 					</div>
 
-					<FeedInteractionsIcons id={ this.state.event._id } likes={ this.state.event.likes } dislikes={ this.state.event.dislikes } />
+					<FeedInteractionsIcons id={ this.state.event._id } likes={ this.state.event.likes } dislikes={ this.state.event.dislikes } buttonTitle='Voir le profil utilisateur'/>
 				</div>
 			);
 		}

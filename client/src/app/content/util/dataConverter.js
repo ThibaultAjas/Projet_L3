@@ -23,7 +23,6 @@ const getFollowersEvents = async () => {
 		.then((response) => {
 			const data = response.data;
 			tmp=data.data;
-			console.log("ntm",data);
 		})
 		.catch((error) => {
 			console.log(`Error: ${error}`);
@@ -88,7 +87,6 @@ const getFriendsById = async ( idsList ) => {
 		data: idsList
 	})
 		.then((response) => {
-			console.log(getUser());
 			friends = response.data.data;
 		})
 		.catch((error) => {
@@ -143,6 +141,23 @@ const getAllUsers = async () => {
 	return(users);
 };
 
+const getUserById = async (id) => {
+	let tmp = {};
+	await axios({
+		url: '/user/getAllByIds',
+		method: 'POST',
+		data: [id]
+	})
+		.then( ( response ) => {
+			tmp = response.data.data[0];
+			return tmp;
+		} )
+		.catch( ( error ) => {
+			console.log( `Error: ${ error }` );
+		} );
+	return tmp;
+};
+
 export {
-	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents, getEventFromId,getStats, getAllUsers ,getAllEvents
+	getDateFrom, getUserEvents, getFriendsById, getUserEventList, getFollowersEvents, getEventFromId, getStats, getAllUsers ,getAllEvents, getUserById
 };

@@ -44,7 +44,7 @@ class FeedInteractionIcon extends React.Component {
 			.then((response) => {
 				// setUser(response.data.data)
 
-				console.log(response)
+				// console.log(response)
 				this.forceUpdate();
 			})
 			.catch((error) => {
@@ -53,12 +53,16 @@ class FeedInteractionIcon extends React.Component {
 	};
 
 	render() {
+
+
 		return (
 			<span className='d-inline-flex align-items-baseline'>
 			<p className='ml-1'> {} </p>
 
+			<div>{this.props.value}</div>
+
 			<button className='transparent-button p-0' onClick={() => {
-				this.makeAction()
+				this.makeAction();
 				this.props.call(this.props.name);
 			}}>
 				<i id={this.props.name} className={'feed-interactions-icons mr-1 ' + this.props.icon}/>

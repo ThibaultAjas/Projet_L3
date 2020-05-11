@@ -70,7 +70,7 @@ const FeedLine = ({ element }) => {
                 </div>
 
                 <FeedLinePost description = { description } imageURL = { imageURL } postDate={eventDate}/>
-                <FeedInteractionsIcons id={ id } likes={ element.usersWhoLiked.length } dislikes={ element.usersWhoDisliked.length } isLiked={ isLiked } isDisliked={ isDisliked }/>
+                <FeedInteractionsIcons event={element} id={ id } likes={ element.usersWhoLiked.length } dislikes={ element.usersWhoDisliked.length } isLiked={ isLiked } isDisliked={ isDisliked }/>
             </div>
         </div>
     )

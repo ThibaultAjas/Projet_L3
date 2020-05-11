@@ -9,12 +9,11 @@ import {getUser} from "../util/app_cookies";
 class FeedInteractionsIcons extends React.Component {
 
 	render() {
-
 		return (
 			<div className='d-flex flex-row align-items-baseline'>
 
 				<div id='feed-interactions-div'>
-					<FeedInteractionIcon name={'like-icon-' + this.props.id} icon='far fa-thumbs-up' call={ like } value={this.props.likes} isActioned={ this.props.isLiked }/>
+					<FeedInteractionIcon  event={this.props.event} name={'like-icon-' + this.props.id} icon='far fa-thumbs-up' call={ like } value={this.props.likes} isActioned={ this.props.isLiked }/>
 					<FeedInteractionIcon name={'dislike-icon-' + this.props.id} icon='far fa-thumbs-down' call={ dislike } value={this.props.dislikes} isActioned={ this.props.isDisliked }/>
 					<FeedInteractionIcon name={'comment-icon-' + this.props.id} icon='far fa-comments' call={ comment } value={this.props.comments}/>
 
@@ -23,7 +22,7 @@ class FeedInteractionsIcons extends React.Component {
 					<FeedInteractionIcon name={'share-icon-' + this.props.id} icon='fas fa-share' call={ share }/>
 				</div>
 
-				<a className='btn btn-warning' href={'/event/' + this.props.id}> Plus..</a>
+				<a className='btn btn-warning' href={'/event/' + this.props.id}>{ (this.props.buttonTitle) ? this.props.buttonTitle : 'Plus..' }</a>
 			</div>
 		);
 	}

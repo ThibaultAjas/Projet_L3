@@ -26,7 +26,7 @@ class MyFriends extends React.Component {
 
 					{
 						this.state.following.map(
-							(follower) => <MyFriendsCard key = {follower._id} friend={follower}/>
+							(follower) => <MyFriendsCard key={follower._id} userID={follower._id} friend={follower}/>
 						)
 					}
 				</div>

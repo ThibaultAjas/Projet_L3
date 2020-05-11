@@ -178,7 +178,7 @@ const event = require('../models/eventModel');
         const data = req.body;
         const usr = data.user;
 
-        event.findOne({usersWhoLiked: usr})
+        event.findOne({_id: data.event._id, usersWhoLiked: usr})
             .then(evt => {
                 if (evt) {
                     event.findOneAndUpdate({_id: data.event._id}, {$pull: {usersWhoLiked: usr._id}}, {new: true})
@@ -208,12 +208,13 @@ const event = require('../models/eventModel');
         const data = req.body;
         const usr = data.user;
 
-        event.findOne({usersWhoDisliked: usr})
+        event.findOne({_id: data.event._id, usersWhoDisliked: usr._id})
             .then(evt => {
                 console.log(evt)
                 if (evt) {
                     event.findOneAndUpdate({_id: data.event._id}, {$pull: {usersWhoDisliked: usr._id}}, {new: true})
                         .then((evt) => {
+                            console.log('1: ', evt)
                             return res.json({msg: '', data: evt})
                         })
                         .catch((error) => {

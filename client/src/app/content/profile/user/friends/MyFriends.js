@@ -11,7 +11,7 @@ class MyFriends extends React.Component {
 	};
 
 	componentDidMount() {
-		console.log(getUser());
+
 		getFriendsById( getUser().following )
 			.then( (data) => {
 				this.setState({ following: data} );

@@ -10,8 +10,7 @@ class MyActions extends React.Component {
 	events = [];
 
 	componentDidMount() {
-		console.log("utilisateur",getUser());
-		getUserEventList( getUser() )
+				getUserEventList( getUser() )
 			.then( (data) => {
 				this.setState({ events: data.events });
 				this.events = this.state.events;

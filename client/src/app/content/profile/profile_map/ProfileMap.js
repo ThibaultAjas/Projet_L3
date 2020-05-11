@@ -51,7 +51,7 @@ class ProfileMap extends React.Component{
     };
 
     render() {
-        console.log(this.events);
+
         if (isLogged()) {
             let IconRouge = L.Icon.extend({
                 options: {

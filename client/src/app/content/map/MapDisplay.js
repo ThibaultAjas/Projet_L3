@@ -52,8 +52,6 @@ class MapDisplay extends React.Component{
 
     render() {
 
-        console.log(getUser());
-        console.log("rendermap",new URL(window.location.href) );
         if (isLogged()) {
             let IconRouge = L.Icon.extend({
                 options: {

@@ -65,9 +65,10 @@ class RegisterForm extends React.Component {
                 data: payload
             })
                 .then((response) => {
+                    console.log("merde");
                     const pl = response.data[0];
 
-                    console.log(pl);
+
                     window.location.href = '/login';
                     this.resetUserInputs();
                 })

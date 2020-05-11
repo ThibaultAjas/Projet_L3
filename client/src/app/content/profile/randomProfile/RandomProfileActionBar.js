@@ -15,12 +15,12 @@ class RandomProfileActionBar extends React.Component {
 	action() {
 		getFriendsById( [this.props.id] )
 			.then( (data) => {
-				console.log(data[0]);
+
 				follow(getUser(), data[0]).then(()=> "");
 				follow(getUser(), data[0]).then(()=> "");
 			});
 
-		console.log(getUser());
+
 	}
 
 	render() {

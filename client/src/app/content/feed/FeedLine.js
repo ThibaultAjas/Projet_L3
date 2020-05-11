@@ -25,7 +25,7 @@ const FeedLine = ({ element }) => {
 
     let date = getDateFrom('fr', postDate);
 
-    console.log('creator: ', element.creator);
+
 
     const feedOptions =
         [

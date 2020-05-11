@@ -20,7 +20,7 @@ class MyFriendsCard extends React.Component {
 
 	render() {
 		if (this.state.visible){
-		console.log(getUser());
+
 		return (
 			<div className='friend-card px-5 py-2 bg-light m-2 text-center' id="vanish">
 			 <span className='d-inline-flex align-items-baseline flex-wrap'>

@@ -54,7 +54,7 @@ const event = require('../models/eventModel');
     router.post('/getOne', (req, res) => {
         const data = event.body;
 
-        event.findOne(data)
+        event.findOne({_id: data})
             .then((data) => {
                 return res.json({msg: 'Got event', data: data});
             })

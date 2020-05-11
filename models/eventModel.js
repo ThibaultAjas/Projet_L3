@@ -7,6 +7,7 @@ let eventSchema = new Schema({
         latitude: Number,
         longitude: Number
     },
+    creator: {type: mongoose.Schema.Types.ObjectID, ref: 'user'},
     country: String,
     city: String,
     date: Date,

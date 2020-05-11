@@ -1,22 +1,29 @@
 import React from "react";
 import { getEventFromId } from "../util/dataConverter";
-import FeedLine from "../feed/FeedLine";
 
 class EventDisplay extends React.Component {
 
-	event = undefined;
+	state = {
+		event: {}
+	};
 
 	componentDidMount() {
+		let url = new URL(window.location.href).pathname.substring(7);
 
-		getEventFromId(new URL(window.location.href).pathname.substring(7)).then((data) => {
-			this.event = data.data; /* ou juste data ? */
+		getEventFromId({_id: url }).then((data) => {
+			this.setState({ event: data.data }); /* ou juste data ? */
+
+			console.log(data);
+
+			this.forceUpdate();
 		})
 
 	}
 
 	render() {
 		return (
-			<FeedLine element={this.event}/>
+			<div>{ this.state.event.description }</div>
+			// <FeedLine element={this.state.event}/>
 		);
 	}
 };

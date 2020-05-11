@@ -102,11 +102,11 @@ const getEventFromId = async ( id ) => {
 	let event = 'troll';
 
 	await axios({
-		url: 'event/getOne',
+		url: '/event/getOne',
 		method: 'POST',
 		data: id
 	}).then( (response) => {
-		console.log('ma reponse est: ', response);
+		event = response.data;
 	}).catch((error) => {
 		console.log(`Error: ${ error }`)
 	});

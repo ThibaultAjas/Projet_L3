@@ -3,7 +3,7 @@ import ProfileBarTopSection from "./ProfileBarTopSection";
 import ProfileBarContent from "./ProfileBarContent";
 
 import '../../../stylesheets/side_bars.css';
-import { getUser } from "../../util/app_cookies";
+import {getUser, isLogged} from "../../util/app_cookies";
 
 const log_content = [
 	{ 	'name' : 'Accueil',
@@ -31,15 +31,15 @@ const log_content = [
 		'href' : '/logout'
 	}
 ];
-
-if (getUser().isAdmin) {
-	log_content.splice(4, 0, {
-		'name': 'Statistics',
-		'icon': 'far fa-chart-bar mr-3',
-		'href': '/stats'
-	})
-}
-
+if(isLogged()) {
+	if (getUser().isAdmin) {
+		log_content.splice(4, 0, {
+			'name': 'Statistics',
+			'icon': 'far fa-chart-bar mr-3',
+			'href': '/stats'
+		})
+	}
+};
 const ProfileBar = () => {
 
 	return (

@@ -33,8 +33,14 @@ const SearchResultRow = ({ content, isUser, search }) => {
 	}
 
 	return (
-		<div className='d-inline-flex align-items-center m-auto bg-white w-50 p-2'>
-			event: { content }
+		<div className='d-inline-flex justify-content-between border-bottom align-items-center w-50 m-auto bg-light px-2'>
+			<p className='pt-3 text-center'> { boldText(content.title, search) } </p>
+
+			<div className='d-inline-flex align-items-center overflow-auto pt-3 mx-3' >
+				<blockquote className='blockquote-footer ml-2 overflow-hidden' style={{maxHeight: '20px'}}> { content.description }  </blockquote>
+			</div>
+
+			<a href={'/profile/' + content._id} className='btn btn-warning btn-sm'> See event </a>
 		</div>
 	)
 };

@@ -1,3 +1,4 @@
+
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -97,9 +98,19 @@ const event = require('../models/eventModel');
 {
     router.post('/updateById', (req, res) => {
         const data = req.body;
+        for(let key in data.user){
+            if (data.user[key]===""){
+                delete data.user[key];
+            }
+        }
 
-        user.findByIdAndUpdate(data._id, { $set: data })
+        user.findOne({_id:data._id})
+            .then((data) =>{
+        })
+
+        user.findOneAndUpdate({_id:data._id}, { $set: data.user })
             .then((data) => {
+                console.log(data);
                 return res.json({msg: 'User updated', data: data});
             })
             .catch((error) => {

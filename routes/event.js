@@ -19,12 +19,12 @@ const event = require('../models/eventModel');
             .then((evt) => {
                 user.findOneAndUpdate({mail: data.user.mail}, {
                     $push: {
-                        events: {event: evt, own: true}
+                        events: evt
                     }
                 })
-                    .then((oui) => {
+                    .then((evt) => {
                         console.log(evt._id)
-                        return res.json({ msg: 'Your data has been saved !', data: oui}); // status 200
+                        return res.json({ msg: 'Your data has been saved !', data: evt}); // status 200
                     })
                     .catch((error) => {
                         return res.status(500).send(error);

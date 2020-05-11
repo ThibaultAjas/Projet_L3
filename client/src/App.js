@@ -52,7 +52,7 @@ class App extends React.Component {
                     <Route path="/login"            > <LoginScreen />                                                   </Route>
                     <Route path="/profile"          > <Home content = { <UserProfile /> } />                            </Route>
                     <Route path="/map"              > <Home content = { <MapDisplay /> }/>                              </Route>
-                    <Route path="/"                 > <Home content = { (isLogged()) ? <Feed /> : <LoginScreen /> }/>   </Route>
+                    <Route path="/"                 > {isLogged() ? <Home content={<Feed />} /> : <LoginScreen /> }     </Route>
                 </Switch>
             </Router>
         );

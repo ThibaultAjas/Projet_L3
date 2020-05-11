@@ -22,9 +22,8 @@ const event = require('../models/eventModel');
                         events: evt
                     }
                 })
-                    .then((evt) => {
-                        console.log(evt._id)
-                        return res.json({ msg: 'Your data has been saved !', data: evt}); // status 200
+                    .then((usr) => {
+                        return res.json({ msg: 'Your data has been saved !', data: usr}); // status 200
                     })
                     .catch((error) => {
                         return res.status(500).send(error);
@@ -99,14 +98,22 @@ const event = require('../models/eventModel');
 
         const evts = data.events;
 
-        let idEvtList = [];
-        evts.forEach((e) => {
-            idEvtList.push({_id: e});
-        })
 
-        event.find({ $or: idEvtList })
-            .then((evtList) => {
-                return res.json({msg: 'Got all events from user', data: evtList});
+        user.findOne({mail: data.mail})
+            .then( usr => {
+
+                let idEvtList = [];
+                usr.events.forEach((e) => {
+                    idEvtList.push({_id: e});
+                })
+
+                event.find({ $or: idEvtList })
+                    .then((evtList) => {
+                        return res.json({msg: 'Got all events from user', data:{user: usr, events:  evtList}});
+                    })
+                    .catch((error) => {
+                        return res.status(500).send(error);
+                    });
             })
             .catch((error) => {
                 return res.status(500).send(error);

@@ -15,9 +15,7 @@ let eventSchema = new Schema({
     description: String,
     comments: [{type: mongoose.Schema.Types.ObjectID, ref: 'comment'}],
     usersWhoLiked: [{type: mongoose.Schema.Types.ObjectID, ref: 'user'}],
-    usersWhoDisliked: [{type: mongoose.Schema.Types.ObjectID, ref: 'user'}],
-    likes: Number,
-    dislikes: Number
+    usersWhoDisliked: [{type: mongoose.Schema.Types.ObjectID, ref: 'user'}]
 });
 
 // Export Mongoose model

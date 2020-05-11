@@ -27,6 +27,7 @@ class AddEventScreen extends React.Component {
     submit = (event) => {
         event.preventDefault();
         const tmp = {
+            creator: getUser()._id,
             location: {
                 latitude: this.state.latitude,
                 longitude: this.state.longitude

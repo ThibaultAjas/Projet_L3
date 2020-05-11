@@ -1,25 +1,34 @@
-import { getAllUsers } from "./dataConverter";
+import { getAllEvents, getAllUsers } from "./dataConverter";
 
 const search_user = async ( name ) => {
-	let list = [];
-
-	await search_user_by_firstName( name ).then((data) => list = data);
-
-	return list;
-};
-
-const search_user_by_firstName = async ( name ) => {
-	let users = [];
+	let result = new Set();
 
 	await getAllUsers().then((response) => {
-		response.map( (user) => {
-			if (user.firstName.toLowerCase().includes(name.toLowerCase())) users.push(user);
+		 response.map( (user) => {
+		 	if (
+		    	user.firstName.toLowerCase().includes( name.toLowerCase() ) ||
+				user.lastName.toLowerCase().includes( name.toLowerCase() ) ||
+				user.userName.toLowerCase().includes(name.toLowerCase())
+			) result.add(user);
+		 });
+	});
+
+	return Array.from(result);
+};
+
+const search_event = async ( name ) => {
+	let result = new Set();
+
+	await getAllEvents().then((response) => {
+		response.map( ( event ) => {
+			if (
+				event.title.toLowerCase().includes(name.toLowerCase())) result.add(event);
 		});
 	});
 
-	return users;
-
+	return Array.from(result);
 };
 
-export { search_user };
+
+export { search_user, search_event };
 

@@ -20,7 +20,7 @@ const Header = () => {
 			}
 
 			<a id='h-title' href='/'>
-				<h1>
+				<h1 className='pl-3 ml-1'>
 					<span id='G'>G</span>
 					<span id='R'>R</span>
 					<span id='E'>E</span>

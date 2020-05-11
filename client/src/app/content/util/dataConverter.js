@@ -47,6 +47,20 @@ const getUserEvents = async () => {
 	return(tmp);
 };
 
+const getAllEvents = async () => {
+	let tmp = [];
+	await axios.post( '/event/getAll' )
+		.then( ( response ) => {
+			const data = response.data;
+			tmp = data.data;
+
+		} )
+		.catch( ( error ) => {
+			console.log( `Error: ${ error }` );
+		} );
+	return(tmp);
+};
+
 let getUserEventList = async ( user ) => {
 	let events = [];
 
@@ -130,5 +144,5 @@ const getAllUsers = async () => {
 };
 
 export {
-	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents, getEventFromId,getStats, getAllUsers
+	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents, getEventFromId,getStats, getAllUsers ,getAllEvents
 };

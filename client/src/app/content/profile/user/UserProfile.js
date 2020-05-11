@@ -5,7 +5,7 @@ import '../../../stylesheets/userProfile.css';
 
 
 class UserProfile extends React.Component {
-	USER = getUser();
+
 
 	state = {
 		firstName: '',
@@ -19,13 +19,14 @@ class UserProfile extends React.Component {
 	};
 
 	componentDidMount() {
+
 		this.setState({
-			firstName: this.USER.firstName,
-			lastName: this.USER.lastName,
-			mail: this.USER.mail,
-			address: this.USER.address,
-			phone: this.USER.phone,
-			userName: this.USER.userName,
+			firstName: getUser().firstName,
+			lastName: getUser().lastName,
+			mail: getUser().mail,
+			address: getUser().address,
+			phone: getUser().phone,
+			userName: getUser().userName,
 			newPassword: '',
 			confirmPassword: '',
 		});

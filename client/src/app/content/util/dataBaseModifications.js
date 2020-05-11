@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const follow = ( user ) => {
+const follow = ( user1, user2 ) => {
 	axios({
 		url: '/user/addFollow',
 		method: 'POST',
-		data: user
+		data: {user1, user2}
 	})
 		.then( (response) => {
 			console.log('User floowed')

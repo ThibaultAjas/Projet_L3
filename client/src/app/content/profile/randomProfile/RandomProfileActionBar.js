@@ -1,6 +1,5 @@
 import React from "react";
 import { getUser } from "../../util/app_cookies";
-import { follow } from "../../util/dataBaseModifications";
 import { getFriendsById } from "../../util/dataConverter";
 
 class RandomProfileActionBar extends React.Component {
@@ -9,18 +8,14 @@ class RandomProfileActionBar extends React.Component {
 	};
 
 	componentDidMount() {
-		getFriendsById( ['5eb70701ad9a4b05881d9a78'] )
-			.then( (data) => {
-				this.setState({ following: data} );
-			});
+
 	}
 
 	follow() {
-		console.log(this.props.id);
-
 		getFriendsById( ['5eb70701ad9a4b05881d9a78'] )
 			.then( (data) => {
-				follow(data[0]);
+				console.log(data[0])
+				// follow(data[0]);
 			});
 
 		console.log(getUser());

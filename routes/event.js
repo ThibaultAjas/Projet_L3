@@ -107,12 +107,13 @@ const event = require('../models/eventModel');
                 if (idEvtList.length > 0) {
                     event.find({ $or: idEvtList })
                         .then((evtList) => {
+                            console.log('nique: ', evtList);
                             return res.json({msg: 'Got all events from user', data:{user: usr, events:  evtList}});
                         })
                         .catch((error) => {
                             return res.status(500).send(error);
                         });
-                } return res.json({msg: 'Got all events from user', data:{user: usr, events:  []}});
+                } else return res.json({msg: 'Got all events from user', data:{user: usr, events:  []}});
             })
             .catch((error) => {
                 return res.status(500).send(error);

@@ -32,11 +32,11 @@ class RandomProfile extends React.Component {
 				this.id = this.state.user._id;
 
 				getUserEventList( this.state.user ).then( (data) => {
+					this.events = [];
 					this.setState({ events: data.events });
 					this.events = this.state.events;
 
-					console.log('in profile events: ', this.state.events);
-
+					console.log('in profile events: ', data);
 					this.forceUpdate();
 				});
 			});

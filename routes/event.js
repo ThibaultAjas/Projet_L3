@@ -14,6 +14,7 @@ const event = require('../models/eventModel');
     router.post('/addOne', (req, res) => {
         const data = req.body;
         const newEvent = new event(data.event);
+        newEvent.creator = data.user;
 
         newEvent.save()
             .then((evt) => {

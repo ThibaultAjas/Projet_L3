@@ -52,7 +52,6 @@ const getAllEvents = async () => {
 		.then( ( response ) => {
 			const data = response.data;
 			tmp = data.data;
-
 		} )
 		.catch( ( error ) => {
 			console.log( `Error: ${ error }` );
@@ -175,7 +174,6 @@ const unFollow = async (unfoller) => {
 			console.log("avant unfollow",getUser());
 			setUser(response.data.data);
 			console.log("après unfollow",getUser());
-			this.forceUpdate();
 		})
 		.catch(error => {
 			console.log('Error: ', error);

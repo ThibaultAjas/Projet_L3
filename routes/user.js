@@ -122,9 +122,13 @@ const event = require('../models/eventModel');
 
     router.post('/unfollow', (req, res) => {
         const data = req.body;
+        console.log(data)
 
-        user.findOneAndUpdate({mail: data.user1.mail}, { $pull: {following: data.user2._id } }, {new: true})
+        user.findOneAndUpdate({mail: data.user1.mail}, { $pull: {following: data.user2._id} }, {new: true})
             .then((usr) => {
+                console.log('1:  ', data.user1)
+                console.log('1b: ', data.user2)
+                console.log('2:  ', usr)
                 return res.json({msg: 'User follows updated', data: usr});
             })
             .catch((error) => {

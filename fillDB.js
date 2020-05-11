@@ -24,7 +24,7 @@ const fillDB = async () => {
     await mongoose.connection.collection('users').drop((err) => console.log('User collection dropped'));
     await mongoose.connection.collection('events').drop((err) => console.log('User event dropped'));
     await mongoose.connection.collection('comments').drop((err) => console.log('User comment dropped'));
-
+    /*
     const userList = [
         new user({
             mail: 'test@gmail.com',
@@ -314,4 +314,5 @@ const fillDB = async () => {
     console.log('Events of Matthieu added');
 
     console.log('Database successfully filled !');
+    */
 }

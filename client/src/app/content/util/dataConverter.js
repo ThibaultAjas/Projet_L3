@@ -70,7 +70,6 @@ let getUserEventList = async ( user ) => {
 		data: user
 	})
 		.then( (response) => {
-			console.log('teub: ', response);
 			events = response.data.data;
 		})
 		.catch((error) => {
@@ -106,7 +105,7 @@ const getEventFromId = async ( id ) => {
 		method: 'POST',
 		data: id
 	}).then( (response) => {
-		event = response.data;
+		event = response.data.data;
 	}).catch((error) => {
 		console.log(`Error: ${ error }`)
 	});

@@ -28,6 +28,7 @@ const FeedLine = ({ element }) => {
 
 
     postDate = new Date( postDate );
+
     let date = getDateFrom('fr', postDate);
 
     const feedOptions =

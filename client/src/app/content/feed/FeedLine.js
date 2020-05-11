@@ -20,17 +20,18 @@ const FeedLine = ({ element }) => {
     let isLiked = element.usersWhoLiked.find(e => e.toString() === getUser()._id.toString()) !== undefined
     let isDisliked = element.usersWhoDisliked.find(e => e.toString() === getUser()._id.toString()) !== undefined
     // TODO: change when it will be implemented
-    let userId = getUser()._id;
 
     postDate = new Date( postDate );
 
     let date = getDateFrom('fr', postDate);
 
+    console.log('creator: ', element.creator);
+
     const feedOptions =
         [
-            { text: "Report", href: '/report/' + userId },
+            { text: "Report", href: '/report/' + element.creator },
             // { text: "Delete event", href: '/' },
-            { text: "See profile", href: '/profile/' + userId }
+            { text: "See profile", href: '/profile/' + element.creator }
         ];
 
     const actionsOptions =
@@ -43,8 +44,8 @@ const FeedLine = ({ element }) => {
         <div className='feedLine'>
             {
                 (new URL(window.location.href).pathname === '/actions')
-                ? <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup userId={userId} options={actionsOptions}/> </div>
-                : <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup userId={userId} options={feedOptions}/> </div>
+                ? <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup userId={element.creator} options={actionsOptions}/> </div>
+                : <div id={'popup-' + id} style={{'display': 'none'}}> <FeedDotsPopup userId={element.creator} options={feedOptions}/> </div>
             }
 
             <div className='card p-2'>

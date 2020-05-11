@@ -15,7 +15,7 @@ class RandomProfileActionBar extends React.Component {
 	follow() {
 		getFriendsById( [this.props.id] )
 			.then( (data) => {
-				console.log(data[0])
+				console.log(data[0]);
 				follow(getUser(), data[0]);
 			});
 

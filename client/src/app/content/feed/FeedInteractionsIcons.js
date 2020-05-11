@@ -22,7 +22,10 @@ class FeedInteractionsIcons extends React.Component {
 					<FeedInteractionIcon name={'share-icon-' + this.props.id} icon='fas fa-share' call={ share }/>
 				</div>
 
-				<a className='btn btn-warning' href={'/event/' + this.props.id}>{ (this.props.buttonTitle) ? this.props.buttonTitle : 'Plus..' }</a>
+				<a className='btn btn-warning'
+				   href={ (this.props.buttonHref) ? this.props.buttonHref : ('/event/' + this.props.id)}>
+						{ (this.props.buttonTitle) ? this.props.buttonTitle : 'Plus..' }
+				</a>
 			</div>
 		);
 	}

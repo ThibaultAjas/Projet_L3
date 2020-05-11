@@ -22,7 +22,7 @@ class MyFriendsCard extends React.Component {
 
 				<div className='d-flex justify-content-center flex-wrap'>
 					<a className='btn btn-warning mr-2' href={'/profile/' + this.props.friend._id}> See profile </a>
-					<button className='btn btn-danger' onClick={unFollow}> Unfollow </button>
+					<button className='btn btn-danger' onClick={() => unFollow(this.props.friend._id)}> Unfollow </button>
 				</div>
 			</div>
 		);

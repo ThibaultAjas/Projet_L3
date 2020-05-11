@@ -43,7 +43,7 @@ class ProfileMap extends React.Component{
 
     generateMarkerList (){
         getUserEventList(getUser()).then((data )=> {
-            this.setState({ events: data });
+            this.setState({ events: data.events });
             this.events = this.state.events;
             this.forceUpdate();
         });
@@ -51,6 +51,7 @@ class ProfileMap extends React.Component{
     };
 
     render() {
+        console.log(this.events);
         if (isLogged()) {
             let IconRouge = L.Icon.extend({
                 options: {
@@ -101,6 +102,7 @@ class ProfileMap extends React.Component{
                     >
                         <TileLayer
                             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                            noWrap={true}
                         />
                         <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici" icon={redIcon}/>
                         {

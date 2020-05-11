@@ -1,28 +1,11 @@
 import React from "react";
 import axios from 'axios';
 import {getUser, setUser} from "../../../util/app_cookies";
+import {unFollow} from "../../../util/dataConverter";
 
 class MyFriendsCard extends React.Component {
 
-	unfollow = () => {
-		const payload = {
-			user1: getUser(),
-			user2: {_id: this.props.userID}
-		};
-		axios({
-			url: '/user/unfollow',
-			method: 'POST',
-			data: payload
-		})
-			.then(response => {
-				console.log('Friend not followed anymore ', response);
-				setUser(response.data.data);
-				this.forceUpdate();
-			})
-			.catch(error => {
-				console.log('Error: ', error);
-			})
-	}
+
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		console.log('oui')
@@ -39,7 +22,7 @@ class MyFriendsCard extends React.Component {
 
 				<div className='d-flex justify-content-center flex-wrap'>
 					<a className='btn btn-warning mr-2' href={'/profile/' + this.props.friend._id}> See profile </a>
-					<button className='btn btn-danger' onClick={this.unfollow}> Unfollow </button>
+					<button className='btn btn-danger' onClick={unFollow}> Unfollow </button>
 				</div>
 			</div>
 		);

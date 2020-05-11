@@ -24,6 +24,7 @@ import MyFriends from "./app/content/profile/user/friends/MyFriends";
 import SearchScreen from "./app/content/search/SearchScreen";
 import StatsDisplay from "./app/content/statistics/StatsDisplay";
 import EventDisplay from "./app/content/event/EventDisplay";
+import ProfileMap from "./app/content/profile/profile_map/ProfileMap";
 
 class App extends React.Component {
 
@@ -38,6 +39,7 @@ class App extends React.Component {
         return (
                 <Router>
                 <Switch>
+                    <Route path='/profile/map'        > <Home content={<ProfileMap />} />                                </Route>
                     <Route path='/event/:id'        > <Home content={<EventDisplay />} />                               </Route>
                     <Route path='/stats'            > <Home content={ <StatsDisplay/> } />                              </Route>
                     <Route path='/friends/search'   > <Home content={ <SearchScreen/> } />                              </Route>

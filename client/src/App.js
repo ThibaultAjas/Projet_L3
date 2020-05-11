@@ -39,7 +39,7 @@ class App extends React.Component {
         return (
                 <Router>
                 <Switch>
-                    <Route path='/profile/map'        > <Home content={<ProfileMap />} />                                </Route>
+                    <Route path='/profile/map'        > <Home content={<ProfileMap />} />                               </Route>
                     <Route path='/event/:id'        > <Home content={<EventDisplay />} />                               </Route>
                     <Route path='/stats'            > <Home content={ <StatsDisplay/> } />                              </Route>
                     <Route path='/friends/search'   > <Home content={ <SearchScreen/> } />                              </Route>

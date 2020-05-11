@@ -77,7 +77,6 @@ class MapDisplay extends React.Component{
             let redIcon = new IconRouge({iconUrl : 'https://ukauto.fr/wp-content/uploads/2017/11/map-marker-icon.png'});
             let blueIcon = new IncoBlue({iconUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/1200px-Map_marker.svg.png'});
             let lat, long = GetCurrentLoc();
-            let tmp = [lat, long];
 
             return (
                 <>

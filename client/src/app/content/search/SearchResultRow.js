@@ -40,7 +40,7 @@ const SearchResultRow = ({ content, isUser, search }) => {
 				<blockquote className='blockquote-footer ml-2 overflow-hidden' style={{maxHeight: '20px'}}> { content.description }  </blockquote>
 			</div>
 
-			<a href={'/profile/' + content._id} className='btn btn-warning btn-sm'> See event </a>
+			<a href={'/event/' + content._id} className='btn btn-warning btn-sm'> See event </a>
 		</div>
 	)
 };

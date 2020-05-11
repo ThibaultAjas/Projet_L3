@@ -105,10 +105,10 @@ const event = require('../models/eventModel');
             });
     })
 
-    router.post('/addFollow', (req, res) => {
+    router.post('/follow', (req, res) => {
         const data = req.body;
 
-        user.findOneAndUpdate({mail: data.mail}, { $push: {following: data.addFollow } })
+        user.findOneAndUpdate({mail: data.user1.mail}, { $push: {following: data.user2 } })
             .then((usr) => {
                 return res.json({msg: 'User follows updated', data: usr});
             })
@@ -116,6 +116,20 @@ const event = require('../models/eventModel');
                 return res.status(500).send(error);
             });
     })
+
+    router.post('/unfollow', (req, res) => {
+        const data = req.body;
+
+        user.findOneAndUpdate({mail: data.user1.mail}, { $pull: {following: data.user2 } })
+            .then((usr) => {
+                return res.json({msg: 'User follows updated', data: usr});
+            })
+            .catch((error) => {
+                return res.status(500).send(error);
+            });
+    })
+
+
 }
 
 module.exports = router;

@@ -29,6 +29,8 @@ class LoginForm extends React.Component {
         this.setState({ [name]: value });
     };
 
+
+
     submit = ( event ) => {
 
         event.preventDefault();
@@ -50,13 +52,15 @@ class LoginForm extends React.Component {
                         setSessionMail(this.state.mail);
                         setSessionPassword(this.state.password);
                     }
-
                     setLogged(true);
                     window.location.href = '/';
                 }else{
-
+                    document.getElementById("mail").value="";
+                    document.getElementById("password").value="";
+                    document.getElementById("mail").style.background="#db8491";
+                    document.getElementById("password").style.background="#db8491";
                 };
-                 this.resetUserInputs();
+                this.resetUserInputs();
 
             })
             .catch((error) => {

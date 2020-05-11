@@ -68,13 +68,15 @@ const event = require('../models/eventModel');
             params.push({ _id: data[i] })
         }
 
-        user.find({$or: params})
-            .then((data) => {
-                return res.json({msg: 'Got users', data: data});
-            })
-            .catch((error) => {
-                return res.status(500).send(error);
-            });
+        if (params.length > 0) {
+            user.find({$or: params})
+                .then((data) => {
+                    return res.json({msg: 'Got users', data: data});
+                })
+                .catch((error) => {
+                    return res.status(500).send(error);
+                });
+        } else return res.json({msg: 'Got users', data: []});
 
     });
 
@@ -110,6 +112,7 @@ const event = require('../models/eventModel');
 
         user.findOneAndUpdate({mail: data.user1.mail}, { $addToSet: {following: data.user2 } }, {new: true})
             .then((usr) => {
+                console.log(usr)
                 return res.json({msg: 'User follows updated', data: usr});
             })
             .catch((error) => {

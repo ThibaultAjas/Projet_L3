@@ -9,8 +9,11 @@ class FriendsBarContent extends React.Component {
 	};
 
 	componentDidMount() {
+
 		getFriendsById( getUser().following )
 			.then( (data) => {
+				console.log('nique toi', getUser());
+
 				this.setState({ following: data} );
 			});
 	}

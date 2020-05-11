@@ -1,6 +1,7 @@
 import React from "react";
 import { getUser } from "../../util/app_cookies";
 import { getFriendsById } from "../../util/dataConverter";
+import { follow } from "../../util/dataBaseModifications";
 
 class RandomProfileActionBar extends React.Component {
 	state = {
@@ -12,10 +13,10 @@ class RandomProfileActionBar extends React.Component {
 	}
 
 	follow() {
-		getFriendsById( ['5eb70701ad9a4b05881d9a78'] )
+		getFriendsById( [this.props.id] )
 			.then( (data) => {
 				console.log(data[0])
-				// follow(data[0]);
+				follow(getUser(), data[0]);
 			});
 
 		console.log(getUser());

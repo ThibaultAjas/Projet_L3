@@ -88,6 +88,7 @@ const getFriendsById = async ( idsList ) => {
 		data: idsList
 	})
 		.then((response) => {
+			console.log(getUser());
 			friends = response.data.data;
 		})
 		.catch((error) => {

@@ -1,13 +1,14 @@
 import axios from "axios";
+import { setUser } from "./app_cookies";
 
 const follow = ( user1, user2 ) => {
 	axios({
-		url: '/user/addFollow',
+		url: '/user/follow',
 		method: 'POST',
 		data: {user1, user2}
 	})
 		.then( (response) => {
-			console.log('User floowed')
+			setUser(response.data.data);
 		})
 		.catch((error) => {
 			console.log(`Error: ${ error }`)

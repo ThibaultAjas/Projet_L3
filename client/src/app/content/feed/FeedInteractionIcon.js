@@ -13,24 +13,26 @@ class FeedInteractionIcon extends React.Component {
 	};
 
 	componentDidMount() {
-		let prop = '';
-		const event = getUser().events.find((evt) => evt.event === this.props.name.split("-")[2]);
-		// console.log(this.props.name, ' => ', this.props.name.split("-")[2])
-		// console.log(getUser().events)
-		switch (this.state.action) {
-			case 'like':
-				prop = 'liked';
-				break;
-			case 'dislike':
-				prop = 'disliked';
-				break;
-			case 'comment':
-				prop = 'comment';
-				break;
+		const eventID = this.props.name.split("-")[2]
+		// const eventID = getUser().events.find((evt) => evt.event === this.props.name.split("-")[2]);
+
+		const payload = {
+			user: getUser(),
+			event: {_id: eventID},
+			action: this.props.name.split("-")[0]
 		}
-		console.log('evt: ', event)
-		const actioned = (event) ? event[prop] : false;
-		if (actioned) this.props.call(this.props.name);
+		axios({
+			url: '/event/is_dis_likedByUser',
+			method: 'POST',
+			data: payload
+		})
+			.then(response => {
+				console.log(response.data.data)
+				if (response.data.data) this.props.call(this.props.name);
+			})
+			.catch((error) => {
+				console.log('Error: ', error);
+			})
 	};
 
 	makeAction = () => {
@@ -40,16 +42,16 @@ class FeedInteractionIcon extends React.Component {
 			event: {_id: this.state.eventId}
 		};
 
-		let url = '';
+		let url = '/event/';
 		switch (this.state.action) {
 			case 'like':
-				url = '/user/likeEvent';
+				url += 'likeEvent';
 				break;
 			case 'dislike':
-				url = '/user/dislikeEvent';
+				url += 'dislikeEvent';
 				break;
 			case 'comment':
-				url = '/user/likeEvent';
+				url += 'likeEvent';
 				break;
 		}
 		
@@ -59,9 +61,9 @@ class FeedInteractionIcon extends React.Component {
 			data: payload
 		})
 			.then((response) => {
-				setUser(response.data.data)
+				// setUser(response.data.data)
 
-				console.log("user",getUser().events[getUser().events.length - 1])
+				console.log(response)
 				this.forceUpdate();
 			})
 			.catch((error) => {

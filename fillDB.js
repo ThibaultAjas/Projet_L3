@@ -307,56 +307,10 @@ const fillDB = async () => {
     await user.findByIdAndUpdate(userListFromBd[0]._id, {$set: {following: [userListFromBd[9], userListFromBd[1], userListFromBd[2], userListFromBd[3], userListFromBd[4], userListFromBd[5], userListFromBd[6], userListFromBd[7], userListFromBd[8]]}});
     console.log('Friends of Test added');
 
-    await user.findByIdAndUpdate(userListFromBd[0]._id, {$set:{events: [
-                {
-                    event: eventListFromBd[0],
-                    own: true
-                },
-                {
-                    event: eventListFromBd[1],
-                    own: true
-                },
-                {
-                    event: eventListFromBd[2],
-                    own: true
-                },
-                {
-                    event: eventListFromBd[3],
-                    own: true
-                },
-                {
-                    event: eventListFromBd[4],
-                    own: true
-                },
-                {
-                    event: eventListFromBd[5],
-                    own: true
-                },
-                {
-                    event: eventListFromBd[6],
-                    own: true
-                },
-                {
-                    event: eventListFromBd[7],
-                    own: true
-                },
-                {
-                    event: eventListFromBd[8],
-                    own: true
-                },
-                {
-                    event: eventListFromBd[9],
-                    own: true
-                }]
-    }});
+    await user.findByIdAndUpdate(userListFromBd[0]._id, {$set:{events: [eventListFromBd[0],eventListFromBd[1], eventListFromBd[2], eventListFromBd[3], eventListFromBd[4], eventListFromBd[5], eventListFromBd[6], eventListFromBd[7], eventListFromBd[8], eventListFromBd[9]]}});
     console.log('Events of Test added');
 
-    await user.findByIdAndUpdate(userListFromBd[userListFromBd.length - 1]._id, {$set: { events: [
-                {
-                    event: eventListFromBd[10],
-                    own: true
-                }]
-    }});
+    await user.findByIdAndUpdate(userListFromBd[userListFromBd.length - 1]._id, {$set: { events: [eventListFromBd[eventListFromBd.length - 1]]}});
     console.log('Events of Matthieu added');
 
     console.log('Database successfully filled !');

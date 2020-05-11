@@ -15,12 +15,7 @@ let userSchema = new Schema({
     phone: String,
     config: Array,
     following: [{type: mongoose.Schema.Types.ObjectID, ref: 'user'}],
-    events: [{
-        event: {type: mongoose.Schema.Types.ObjectID, ref: 'event'},
-        own: false,
-        liked: false,
-        disliked: false
-    }]
+    events: [{type: mongoose.Schema.Types.ObjectID, ref: 'event'}]
 });
 
 // Export Mongoose model

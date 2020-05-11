@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const router = express.Router();
 
@@ -62,6 +63,26 @@ const event = require('../models/eventModel');
             });
     });
 
+    router.post('/is_dis_likedByUser', (req, res) => {
+        const data = req.body;
+
+        event.findOne(data.event)
+            .then(evt => {
+                switch (data.action) {
+                    case 'like':
+                        return res.json({msg:'', data: evt.usersWhoLiked.find(e => e.toString() === data.user._id.toString()) !== undefined});
+                    case 'dislike':
+                        return res.json({msg:'', data: evt.usersWhoDisliked.find(e => e.toString() === data.user._id.toString()) !== undefined});
+                    default:
+                        return res.json({msg:'', data: false});
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+                return res.status(500).send(error);
+            });
+    })
+
     router.post('/getAllForUser', (req, res) => {
        const data = req.body;
 
@@ -96,10 +117,11 @@ const event = require('../models/eventModel');
                                     following.forEach((elemUser) => {
                                         if (elemUser.events.length !== 0) {
                                             elemUser.events.forEach((evt) => {
-                                                evtIDsFromFollowing.push(evt.event);
+                                                evtIDsFromFollowing.push(evt);
                                             });
                                         }
                                     });
+
                                     events.forEach((evt) => {
                                         const tmp = evtIDsFromFollowing.find((elem) => {
                                             return elem._id.toString() === evt._id.toString();
@@ -141,6 +163,67 @@ const event = require('../models/eventModel');
                 return res.status(500).send(error);
             });
         });
+
+    router.post('/likeEvent', (req, res) => {
+        const data = req.body;
+        const usr = data.user;
+
+        event.findOne({usersWhoLiked: usr})
+            .then(evt => {
+                if (evt) {
+                    event.findOneAndUpdate({_id: data.event._id}, {$pull: {usersWhoLiked: usr._id}}, {new: true})
+                        .then((evt) => {
+                            return res.json({msg: '', data: evt})
+                        })
+                        .catch((error) => {
+                            return res.status(500).send(error);
+                        });
+                }
+                else {
+                    event.findOneAndUpdate({_id: data.event._id}, {$addToSet: {usersWhoLiked: usr}}, {new: true})
+                        .then((evt) => {
+                            return res.json({msg: '', data: evt});
+                        })
+                        .catch((error) => {
+                            return res.status(500).send(error);
+                        });
+                }
+            })
+            .catch(error => {
+                console.log('Err: ', error)
+            })
+    });
+
+    router.post('/dislikeEvent', (req, res) => {
+        const data = req.body;
+        const usr = data.user;
+
+        event.findOne({usersWhoDisliked: usr})
+            .then(evt => {
+                if (evt) {
+                    event.findOneAndUpdate({_id: data.event._id}, {$pull: {usersWhoDisliked: usr._id}}, {new: true})
+                        .then((evt) => {
+                            return res.json({msg: '', data: evt})
+                        })
+                        .catch((error) => {
+                            return res.status(500).send(error);
+                        });
+                }
+                else {
+                    event.findOneAndUpdate({_id: data.event._id}, {$addToSet: {usersWhoDisliked: usr}}, {new: true})
+                        .then((evt) => {
+                            return res.json({msg: '', data: evt});
+                        })
+                        .catch((error) => {
+                            return res.status(500).send(error);
+                        });
+                }
+            })
+            .catch(error => {
+                console.log('Err: ', error)
+            })
+    });
+
 }
 
 // CRUD: Delete

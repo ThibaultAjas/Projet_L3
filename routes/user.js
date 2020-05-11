@@ -5,7 +5,7 @@ const session = require('express-session');
 const router = express.Router();
 
 const user = require('../models/userModel');
-// const event = require('../models/event');
+const event = require('../models/eventModel');
 // const comment = require('../models/comment');
 
 // [...]
@@ -22,7 +22,7 @@ const user = require('../models/userModel');
         usr.save((error) => {
 
             if (error) {
-                if (error.code = 11000) return res.status(500).json({
+                if (error.code === 11000) return res.status(500).json({
                     msg: 'Sorry, internal server error',
                     error: 'Mail already registered'
                 });
@@ -104,71 +104,6 @@ const user = require('../models/userModel');
                 return res.status(500).send(error);
             });
     })
-
-    router.post('/likeEvent', (req, res) => {
-       const data = req.body;
-       const event = data.event;
-
-       let liked = false;
-       if (data.user.events.length > 0) {
-           data.user.events.some((evt) => {
-               if (evt.event === event._id) {
-                   liked = evt.liked;
-               }
-           })
-       }
-
-       user.findOneAndUpdate({_id: data.user._id, 'events.event': event._id}, {$set: { 'events.$.liked': !liked }})
-           .then((usr) => {
-               if (usr) {
-                   return res.json({msg: 'User updated', data: usr});
-               }
-
-               user.findOneAndUpdate({_id: data.user._id}, {$push: { events: {event: data.event, own: false, liked: true, disliked: false} }})
-                   .then((usr) => {
-                       return res.json({msg: 'User updated', data: usr});
-                   })
-                   .catch((error) => {
-                       return res.status(500).send(error);
-                   });
-           })
-           .catch((error) => {
-               return res.status(500).send(error);
-           });
-    });
-
-    router.post('/dislikeEvent', (req, res) => {
-        const data = req.body;
-        const event = data.event;
-
-        let disliked = false;
-        if (data.user.events.length > 0) {
-            data.user.events.some((evt) => {
-                if (evt.event === event._id) {
-                    disliked = evt.disliked;
-                }
-            })
-        }
-
-        user.findOneAndUpdate({_id: data.user._id, 'events.event': event._id}, {$set: { 'events.$.disliked': !disliked }})
-            .then((usr) => {
-                if (usr) {
-                    return res.json({msg: 'User updated', data: usr});
-                }
-
-                user.findOneAndUpdate({_id: data.user._id}, {$push: { events: {event: data.event, own: false, liked: false, disliked: true} }})
-                    .then((usr) => {
-                        return res.json({msg: 'User updated', data: usr});
-                    })
-                    .catch((error) => {
-                        return res.status(500).send(error);
-                    });
-            })
-            .catch((error) => {
-                return res.status(500).send(error);
-            });
-    });
-
 
     router.post('/addFollow', (req, res) => {
         const data = req.body;

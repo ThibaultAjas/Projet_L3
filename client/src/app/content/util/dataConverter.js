@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getUser } from "./app_cookies";
+import {getUser, isLogged, setUser} from "./app_cookies";
 // import { setLogged, setSessionMail, setSessionPassword, setUser } from "./app_cookies";
 
 const getDateFrom = ( country, date) => {
@@ -143,6 +143,29 @@ const getAllUsers = async () => {
 	return(users);
 };
 
+const unFollow = async (unfoller) => {
+	console.log("merde");
+	const payload = {
+		user1: getUser(),
+		user2: {_id: unfoller}
+	};
+	axios({
+		url: '/user/unfollow',
+		method: 'POST',
+		data: payload
+	})
+		.then(response => {
+			console.log('Friend not followed anymore ', response.data.data);
+			console.log("avant unfollow",getUser());
+			setUser(response.data.data);
+			console.log("après unfollow",getUser());
+			this.forceUpdate();
+		})
+		.catch(error => {
+			console.log('Error: ', error);
+		})
+};
+
 export {
-	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents, getEventFromId,getStats, getAllUsers ,getAllEvents
+	getDateFrom, getUserEvents, getFriendsById, getUserEventList,getFollowersEvents, getEventFromId,getStats, getAllUsers ,getAllEvents, unFollow
 };

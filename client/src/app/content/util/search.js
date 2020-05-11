@@ -1,13 +1,17 @@
 import { getAllUsers } from "./dataConverter";
 
-const search_user = ( name ) => {
-	return search_user_by_firstName( name );
+const search_user = async ( name ) => {
+	let list = [];
+
+	await search_user_by_firstName( name ).then((data) => list = data);
+
+	return list;
 };
 
-const search_user_by_firstName = ( name ) => {
+const search_user_by_firstName = async ( name ) => {
 	let users = [];
 
-	getAllUsers().then((response) => {
+	await getAllUsers().then((response) => {
 		response.map( (user) => {
 			if (user.firstName.toLowerCase().includes(name.toLowerCase())) users.push(user);
 		});

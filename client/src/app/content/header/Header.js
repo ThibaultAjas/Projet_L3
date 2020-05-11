@@ -19,7 +19,22 @@ const Header = () => {
 								: <> </>
 			}
 
-			<a id='h-title' href='/'><h1> GREENSTAGRAM </h1></a>
+			<a id='h-title' href='/'>
+				<h1>
+					<span id='G'>G</span>
+					<span id='R'>R</span>
+					<span id='E'>E</span>
+					<span id='E2'>E</span>
+					<span id='N'>N</span>
+					<span id='S'>S</span>
+					<span id='T'>T</span>
+					<span id='A'>A</span>
+					<span id='G2'>G</span>
+					<span id='R2'>R</span>
+					<span id='A2'>A</span>
+					<span id='M'>M</span>
+				</h1>
+			</a>
 
 			{
 				(isLogged())	?

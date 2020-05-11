@@ -6,6 +6,7 @@ import FeedLine from "./FeedLine";
 import '../../stylesheets/feed.css';
 import { getUser, isLogged } from "../util/app_cookies";
 import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
+import { getFollowersEvents } from "../util/dataConverter";
 
 
 class Feed extends React.Component {
@@ -23,18 +24,20 @@ class Feed extends React.Component {
 
     getEvents = () => {
         // axios.post('/event/getAll')
-        axios({
-            url: '/event/getAllFromFollowing',
-            method: 'POST',
-            data: getUser()
-        })
-            .then((response) => {
-                const data = response.data;
-                this.setState({events: data.data});
-            })
-            .catch((error) => {
-                console.log('Error: ', error);
-            });
+        // axios({
+        //     url: '/event/getAllFromFollowing',
+        //     method: 'POST',
+        //     data: getUser()
+        // })
+        //     .then((response) => {
+        //         const data = response.data;
+        //         this.setState({events: data.data});
+        //     })
+        //     .catch((error) => {
+        //         console.log('Error: ', error);
+        //     });
+
+        getFollowersEvents().then((data) => this.setState({ events: data} ));
     };
 
     render() {

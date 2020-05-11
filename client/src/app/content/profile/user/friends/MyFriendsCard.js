@@ -4,7 +4,9 @@ import {unFollow} from "../../../util/dataConverter";
 
 class MyFriendsCard extends React.Component {
 
-
+	state = {
+		visible : true
+	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		console.log('oui')
@@ -13,10 +15,11 @@ class MyFriendsCard extends React.Component {
 
 	action() {
 		unFollow(this.props.friend._id).then(r => "");
-	document.getElementById("vanish").style.display="none";
-	}
+		this.setState({visible : false});
+		}
 
 	render() {
+		if (this.state.visible){
 		console.log(getUser());
 		return (
 			<div className='friend-card px-5 py-2 bg-light m-2 text-center' id="vanish">
@@ -32,6 +35,13 @@ class MyFriendsCard extends React.Component {
 				</div>
 			</div>
 		);
+		}else{
+			return(
+			<>
+			</>
+			);
+		}
+
 	}
 };
 

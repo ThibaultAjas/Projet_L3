@@ -1,5 +1,5 @@
 import React from "react";
-import { getUser } from "../../util/app_cookies";
+import {getUser, setUser} from "../../util/app_cookies";
 import {getFriendsById, unFollow} from "../../util/dataConverter";
 import { follow } from "../../util/dataBaseModifications";
 
@@ -12,11 +12,12 @@ class RandomProfileActionBar extends React.Component {
 
 	}
 
-	follow() {
+	action() {
 		getFriendsById( [this.props.id] )
 			.then( (data) => {
 				console.log(data[0]);
-				follow(getUser(), data[0]);
+				follow(getUser(), data[0]).then(()=> "");
+				follow(getUser(), data[0]).then(()=> "");
 			});
 
 		console.log(getUser());
@@ -30,7 +31,7 @@ class RandomProfileActionBar extends React.Component {
 					(getUser().following.includes( this.props.id ))
 						? <button id='random-unfollow-button' className='action-button mr-2' onClick={ () => unFollow(this.props.id) }> unfollow </button>
 
-						: <button id='random-follow-button' className='action-button mr-2' onClick={ () => this.follow() } > Follow </button>
+						: <button id='random-follow-button' className='action-button mr-2' onClick={ () => this.action() } > Follow </button>
 				}
 
 				<button className='action-button mr-2'> Report </button>

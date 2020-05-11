@@ -30,21 +30,6 @@ const getFollowersEvents = async () => {
 	return(tmp);
 };
 
-// TODO: change for getAllFromFollowing
-const getUserEvents = async () => {
-	let tmp = [];
-	await axios.post( '/event/getAll' )
-		.then( ( response ) => {
-			const data = response.data;
-			tmp = data.data;
-
-		} )
-		.catch( ( error ) => {
-			console.log( `Error: ${ error }` );
-		} );
-	return(tmp);
-};
-
 const getAllEvents = async () => {
 	let tmp = [];
 	await axios.post( '/event/getAll' )
@@ -139,24 +124,6 @@ const getAllUsers = async () => {
 	return(users);
 };
 
-const getUserById = async (id) => {
-	let tmp = {};
-	await axios({
-		url: '/user/getAllByIds',
-		method: 'POST',
-		data: [id]
-	})
-		.then( ( response ) => {
-			tmp = response.data.data[0];
-			return tmp;
-		} )
-		.catch( ( error ) => {
-			console.log( `Error: ${ error }` );
-		});
-	return tmp;
-};
-
-
 const unFollow = async (unfoller) => {
 	console.log("merde");
 	const payload = {
@@ -178,5 +145,5 @@ const unFollow = async (unfoller) => {
 };
 
 export {
-	getDateFrom, getUserEvents, getFriendsById, getUserEventList, getFollowersEvents, getEventFromId, getStats, getAllUsers ,getAllEvents, getUserById, unFollow
+	getDateFrom, getFriendsById, getUserEventList, getFollowersEvents, getEventFromId, getStats, getAllUsers ,getAllEvents, unFollow
 };

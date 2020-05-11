@@ -62,24 +62,6 @@ class App extends React.Component {
         );
     }
 
-    // verifyIsLogged = () => {
-        // return ( appCookies.get( 'isLogged' ) === 'true' );
-        // const payload = {mail: this.state.mail};
-        // axios({
-        //     url: '/api/verify',
-        //     method: 'POST',
-        //     data: payload
-        // })
-        //     .then((response) => {
-        //         const data = response.data;
-        //
-        //         this.setState({mail: data.mail, logged: data.logged});
-        //         this.forceUpdate();
-        //     })
-        //     .catch((error) => {
-        //         console.log('Internal server error');
-        //     });
-    // };
 }
 
 export default App;

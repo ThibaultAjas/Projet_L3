@@ -4,7 +4,7 @@ import axios from 'axios';
 import {
     setSessionMail, getSessionMail,
     setSessionPassword, getSessionPassword,
-    setLogged, setUser
+    setLogged, setUser, getUser
 } from "../util/app_cookies";
 
 class LoginForm extends React.Component {
@@ -45,7 +45,6 @@ class LoginForm extends React.Component {
                 const user = response.data.data;
                 if (user!==undefined) {
                     setUser(user);
-
                     // TODO: check if this does work
                     // note that if you logout, it won't connect you back on new window
                     if (this.doRemember) {

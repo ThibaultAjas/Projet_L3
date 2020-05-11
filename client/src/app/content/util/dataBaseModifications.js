@@ -1,8 +1,8 @@
 import axios from "axios";
-import { setUser } from "./app_cookies";
+import {getUser, setUser} from "./app_cookies";
 
-const follow = ( user1, user2 ) => {
-	axios({
+const follow = async ( user1, user2 ) => {
+	await axios({
 		url: '/user/follow',
 		method: 'POST',
 		data: {user1, user2}

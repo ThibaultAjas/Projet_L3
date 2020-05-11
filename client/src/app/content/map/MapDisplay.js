@@ -13,7 +13,7 @@ import MarkerDisplay from "./MarkerDisplay";
 import LoginScreen from "../login/LoginScreen";
 import GetCurrentLoc from "../geolocation/GetCurrentLoc";
 
-import { isLogged} from "../util/app_cookies";
+import {getUser, isLogged} from "../util/app_cookies";
 import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
 import {getFollowersEvents} from "../util/dataConverter";
 
@@ -51,6 +51,9 @@ class MapDisplay extends React.Component{
     };
 
     render() {
+
+        console.log(getUser());
+        console.log("rendermap",new URL(window.location.href) );
         if (isLogged()) {
             let IconRouge = L.Icon.extend({
                 options: {
@@ -104,7 +107,7 @@ class MapDisplay extends React.Component{
                     <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici" icon={redIcon}/>
                     {
                         this.events.map( (event,index) =>
-                            <MarkerDisplay key={index} position={[event.location.latitude,event.location.longitude]} popupMessage={index} icon={blueIcon}   />
+                            <MarkerDisplay key={index} position={[event.location.latitude,event.location.longitude]} popupMessage={event.title} icon={blueIcon}   />
                         )
                     }
                     </Map>

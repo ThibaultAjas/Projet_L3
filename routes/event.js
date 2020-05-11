@@ -54,7 +54,7 @@ const event = require('../models/eventModel');
     router.post('/getOne', (req, res) => {
         const data = event.body;
 
-        event.findOne({_id: data})
+        event.findOne(data)
             .then((data) => {
                 return res.json({msg: 'Got event', data: data});
             })
@@ -220,6 +220,7 @@ const event = require('../models/eventModel');
                 else {
                     event.findOneAndUpdate({_id: data.event._id}, {$addToSet: {usersWhoDisliked: usr}}, {new: true})
                         .then((evt) => {
+                            console.log(evt)
                             return res.json({msg: '', data: evt});
                         })
                         .catch((error) => {

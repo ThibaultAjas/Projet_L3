@@ -158,7 +158,7 @@ export default class StatsDisplay extends React.Component{
                         options={{
                             title:{
                                 display : true,
-                                text:'user by country',
+                                text:'user by city',
                                 fontSize:20
                             },
                             legend:{

@@ -7,28 +7,44 @@ import { getUser } from "../util/app_cookies";
 
 export default class StatsDisplay extends React.Component{
     tmp = {}
-    state =  {data:{}}
+    state =  {data:{}, stats:{}}
+
+
 
     componentDidMount() {
-        console.log("pd")
+        console.log("pd");
         getStats().then((data)=> {
             this.tmp=data;
             this.setState({data : this.tmp});
             console.log("merzrze",this.state);
+
+            let listeName=[];
+            let listeLike=[];
+            console.log(this.state.data.usersByNumberOfLikes);
+            this.state.data.usersByNumberOfLikes.map((tmp) => {
+                listeLike.push(tmp.nbLikes);
+                listeName.push(tmp.name);
+            });
+
+            this.setState({stats: {name:listeName,like: listeLike}});
+
             this.forceUpdate();
         })
+
+
+
     }
 
 
     render() {
-        console.log(this.state);
-        // if (! getUser().isAdmin) window.location.href = '/';
+
+        if (! getUser().isAdmin) window.location.href = '/';
 
         let eventByCities =  {
             labels:this.state.data.eventCities,
             datasets : [
                 {
-                    label:'cities',
+                    label:'Action(s)',
                     backgroundColor: 'rgba(75, 192, 192, 1)',
                     borderColor:'rgba(0,0,0,1)',
                     borderWidth:2,
@@ -41,7 +57,7 @@ export default class StatsDisplay extends React.Component{
             labels:this.state.data.eventCountries,
             datasets : [
                 {
-                    label:'country',
+                    label:'Action(s)',
                     backgroundColor: 'rgba(75, 192, 192, 1)',
                     borderColor:'rgba(0,0,0,1)',
                     borderWidth:2,
@@ -54,7 +70,7 @@ export default class StatsDisplay extends React.Component{
             labels:this.state.data.userCountries,
             datasets : [
                 {
-                    label:'country',
+                    label:'Utilisateur(s)',
                     backgroundColor: 'rgba(75, 192, 192, 1)',
                     borderColor:'rgba(0,0,0,1)',
                     borderWidth:2,
@@ -67,7 +83,7 @@ export default class StatsDisplay extends React.Component{
             labels:this.state.data.userCities,
             datasets : [
                 {
-                    label:'country',
+                    label:'Utilisateur(s)',
                     backgroundColor: 'rgba(75, 192, 192, 1)',
                     borderColor:'rgba(0,0,0,1)',
                     borderWidth:2,
@@ -78,14 +94,14 @@ export default class StatsDisplay extends React.Component{
 
 
         let userByLikes =  {
-            labels:this.state.data.usersByNumberOfLikes.name,
+            labels:this.state.stats.name,
             datasets : [
                 {
-                    label:'cities',
+                    label:'Like(s)',
                     backgroundColor: 'rgba(75, 192, 192, 1)',
                     borderColor:'rgba(0,0,0,1)',
                     borderWidth:2,
-                    data:this.state.data.usersByNumberOfLikes.nbLikes
+                    data:this.state.stats.like
                 }
             ]
         };
@@ -98,8 +114,9 @@ export default class StatsDisplay extends React.Component{
                         options={{
                             title:{
                                 display : true,
-                                text:'event by cities',
-                                fontSize:20
+                                text:"Nombre d'actions par ville",
+                                fontSize:20,
+                                fontColor:"black"
                             },
                             legend:{
                                 display:true,
@@ -124,8 +141,9 @@ export default class StatsDisplay extends React.Component{
                         options={{
                             title:{
                                 display : true,
-                                text:'event by country',
-                                fontSize:20
+                                text:"Nombre d'actions par pays",
+                                fontSize:20,
+                                fontColor:"black"
                             },
                             legend:{
                                 display:true,
@@ -150,8 +168,9 @@ export default class StatsDisplay extends React.Component{
                         options={{
                             title:{
                                 display : true,
-                                text:'user by country',
-                                fontSize:20
+                                text:"Nombre d'utilisateurs par pays",
+                                fontSize:20,
+                                fontColor:"black"
                             },
                             legend:{
                                 display:true,
@@ -176,8 +195,9 @@ export default class StatsDisplay extends React.Component{
                         options={{
                             title:{
                                 display : true,
-                                text:'user by city',
-                                fontSize:20
+                                text:"Nombre d'utilisateurs par ville",
+                                fontSize:20,
+                                fontColor:"black"
                             },
                             legend:{
                                 display:true,
@@ -202,7 +222,7 @@ export default class StatsDisplay extends React.Component{
                         options={{
                             title:{
                                 display : true,
-                                text:'user by likes',
+                                text:'Utilisateurs triés par nombre de likes',
                                 fontSize:20,
                                 fontColor:"black"
                             },

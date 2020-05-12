@@ -16,7 +16,6 @@ class RandomProfile extends React.Component {
 	events = [];
 
 	componentDidMount() {
-		console.log("bonjour",getUser());
 		let url =  new URL(window.location.href).pathname.substring(9);
 
 		if (url === getUser()._id) window.location.href = '/profile';
@@ -37,7 +36,6 @@ class RandomProfile extends React.Component {
 					this.setState({ events: data.events });
 					this.events = this.state.events;
 
-					console.log('in profile events: ', data);
 					this.forceUpdate();
 				});
 			});

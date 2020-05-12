@@ -1,8 +1,5 @@
 import React from "react";
 import { getDateFrom, getEventFromId } from "../util/dataConverter";
-import FeedLine from "../feed/FeedLine";
-import { toggleOptionsPopupDisplay } from "../../scripts/feed_script";
-import FeedLinePost from "../feed/FeedLinePost";
 import FeedInteractionsIcons from "../feed/FeedInteractionsIcons";
 
 class EventDisplay extends React.Component {

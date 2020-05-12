@@ -4,7 +4,7 @@ import axios from 'axios';
 import {
     setSessionMail, getSessionMail,
     setSessionPassword, getSessionPassword,
-    setLogged, setUser, getUser
+    setLogged, setUser
 } from "../util/app_cookies";
 
 class LoginForm extends React.Component {
@@ -28,8 +28,6 @@ class LoginForm extends React.Component {
         const { name, value } = target;
         this.setState({ [name]: value });
     };
-
-
 
     submit = ( event ) => {
 

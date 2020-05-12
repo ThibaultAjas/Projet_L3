@@ -17,11 +17,8 @@ class AddEventScreen extends React.Component {
 
 
     handleChange = ({target}) => {
-        // console.log(getUser());
-
         const {name, value} = target;
         this.setState({[name]: value});
-        // console.log("mon obj",this.state);
     };
 
     submit = (event) => {
@@ -44,8 +41,6 @@ class AddEventScreen extends React.Component {
             likes: 0,
             dislikes: 0
         };
-
-        // console.log("mon event",tmp);
 
         axios({
             url: '/event/addOne',

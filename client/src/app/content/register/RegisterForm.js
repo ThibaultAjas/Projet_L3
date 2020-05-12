@@ -74,7 +74,6 @@ class RegisterForm extends React.Component {
                 })
                 .catch((err) => {
                     console.log('Internal server error: ', err);
-                    // TODO: Afficher une popup, une div ... Pour signaler une erreur à l'utilisateur
                 });
         }else{
             if (this.state.password !== this.state.password_conf) {

@@ -26,20 +26,6 @@ class Feed extends React.Component {
     };
 
     getEvents = () => {
-        // axios.post('/event/getAll')
-        // axios({
-        //     url: '/event/getAllFromFollowing',
-        //     method: 'POST',
-        //     data: getUser()
-        // })
-        //     .then((response) => {
-        //         const data = response.data;
-        //         this.setState({events: data.data});
-        //     })
-        //     .catch((error) => {
-        //         console.log('Error: ', error);
-        //     });
-
         getFollowersEvents().then((data) => this.setState({ events: data} ));
     };
 

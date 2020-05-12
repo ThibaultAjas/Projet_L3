@@ -1,6 +1,6 @@
 import React from "react";
 
-import {getUser, setUser} from "../../util/app_cookies";
+import { getUser, setUser } from "../../util/app_cookies";
 import '../../../stylesheets/userProfile.css';
 import axios from "axios";
 
@@ -64,8 +64,6 @@ class UserProfile extends React.Component {
 			following: getUser().following,
 			events: getUser().events
 		};
-		console.log(getUser());
-		console.log(newUser);
 		axios({
 			url: '/user/updateById',
 			method: 'POST',
@@ -77,7 +75,6 @@ class UserProfile extends React.Component {
 			})
 			.catch((err) => {
 				console.log('Internal server error: ', err);
-				// TODO: Afficher une popup, une div ... Pour signaler une erreur à l'utilisateur
 			});
 		axios({
 			url: '/user/updateById',
@@ -90,7 +87,6 @@ class UserProfile extends React.Component {
 			})
 			.catch((err) => {
 				console.log('Internal server error: ', err);
-				// TODO: Afficher une popup, une div ... Pour signaler une erreur à l'utilisateur
 			});
 
 	};

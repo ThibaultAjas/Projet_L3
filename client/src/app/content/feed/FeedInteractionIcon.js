@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from 'axios';
 
-import {like} from "../../scripts/feed_script";
-import {getUser} from "../util/app_cookies";
+import { like } from "../../scripts/feed_script";
+import { getUser } from "../util/app_cookies";
 
 
 class FeedInteractionIcon extends React.Component {
@@ -42,9 +42,6 @@ class FeedInteractionIcon extends React.Component {
 			data: payload
 		})
 			.then((response) => {
-				// setUser(response.data.data)
-
-				// console.log(response)
 				this.forceUpdate();
 			})
 			.catch((error) => {

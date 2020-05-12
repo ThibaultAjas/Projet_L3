@@ -30,7 +30,6 @@ const FeedLine = ({ element }) => {
     const feedOptions =
         [
             { text: "Report", href: '/report/' + element.creator },
-            // { text: "Delete event", href: '/' },
             { text: "See profile", href: '/profile/' + element.creator }
         ];
 

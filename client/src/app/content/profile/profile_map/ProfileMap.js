@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Map, TileLayer} from "react-leaflet";
+import { Map, TileLayer } from "react-leaflet";
 
 import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -12,8 +12,8 @@ import L from 'leaflet';
 import GetCurrentLoc from "../../geolocation/GetCurrentLoc";
 
 import SwapFeedButtons from "../../swap_feed_buttons/SwapFeedButtons";
-import {getUserEventList} from "../../util/dataConverter";
-import {getUser, isLogged} from "../../util/app_cookies";
+import { getUserEventList } from "../../util/dataConverter";
+import { getUser, isLogged } from "../../util/app_cookies";
 import MarkerDisplay from "../../map/MarkerDisplay";
 import LoginScreen from "../../login/LoginScreen";
 
@@ -77,8 +77,8 @@ class ProfileMap extends React.Component{
 
             let redIcon = new IconRouge({iconUrl : 'https://ukauto.fr/wp-content/uploads/2017/11/map-marker-icon.png'});
             let blueIcon = new InconBlue({iconUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/1200px-Map_marker.svg.png'});
-            let lat, long = GetCurrentLoc();
-            let tmp = [lat, long];
+            // let lat, long = GetCurrentLoc();
+            // let tmp = [lat, long];
 
             return (
                 <>

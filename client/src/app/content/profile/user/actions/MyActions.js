@@ -14,11 +14,6 @@ class MyActions extends React.Component {
 			.then( (data) => {
 				this.setState({ events: data.events });
 				this.events = this.state.events;
-				// console.log("data",data.user);
-				// console.log("avant",getUser());
-				// setUser(data.user);
-				// console.log("après",getUser());
-				// console.log("user : ",this.events);
 				this.forceUpdate();
 			});
 	}

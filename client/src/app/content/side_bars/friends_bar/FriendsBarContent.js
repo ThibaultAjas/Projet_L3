@@ -20,7 +20,7 @@ class FriendsBarContent extends React.Component {
 	render() {
 		return (
 			<div>
-				<div id='friendsBar-top-section' className='w-100 d-inline-flex align-items-center flex-column justify-content-center bg-secondary mb-2'>
+				<div id='friendsBar-top-section' className='w-100 d-inline-flex align-items-center flex-column justify-content-center bg-dark mb-2'>
 					<h3> You're following them </h3>
 					{/*<div className='d-inline-flex align-items-center'>*/}
 					{/*	<h5 className='mr-2'>Sort by</h5>*/}

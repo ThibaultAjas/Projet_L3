@@ -1,12 +1,12 @@
 import React from "react";
-import axios from 'axios';
 
 import FeedLine from "./FeedLine";
 
 import '../../stylesheets/feed.css';
-import { getUser, isLogged } from "../util/app_cookies";
+import { isLogged } from "../util/app_cookies";
 import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
 import { getFollowersEvents } from "../util/dataConverter";
+import SwapFeedButton from "../swap_feed_buttons/SwapFeedButton";
 
 
 class Feed extends React.Component {
@@ -14,9 +14,12 @@ class Feed extends React.Component {
         events: []
     };
 
+    isUserProfile = false;
+
     componentDidMount = () => {
         if (this.props.content) {
             this.setState({ events: this.props.content });
+            if (window.location.href.includes('/actions')) this.isUserProfile = true;
         } else {
             this.getEvents();
         }
@@ -44,7 +47,12 @@ class Feed extends React.Component {
         if (this.props.content) {
             return (
                 <>
-                    { (isLogged) ? <SwapFeedButtons /> : <></> }
+                    { (isLogged && this.isUserProfile)
+                    ? <div id="buttons-container" className='d-flex flex-column'>
+                            <SwapFeedButton name="map" href='/profile/map'/>
+                            <SwapFeedButton name="feed" href="/"/>
+                        </div>
+                    : <></> }
 
                     {
                         <div className='p-5 mx-lg-5 mx-md-2 mx-sm-2 feed'>
@@ -61,7 +69,7 @@ class Feed extends React.Component {
 
         return (
             <>
-                { (isLogged) ? <SwapFeedButtons /> : <></> }
+                { (isLogged) ? <SwapFeedButtons userPfoile={this.isUserProfile}/> : <></> }
 
                 {
                      <div className='p-5 mx-lg-5 mx-md-2 mx-sm-2 feed'>

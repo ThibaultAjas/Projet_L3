@@ -13,11 +13,11 @@ class FeedInteractionsIcons extends React.Component {
 				<div id='feed-interactions-div'>
 					<FeedInteractionIcon  event={this.props.event} name={'like-icon-' + this.props.id} icon='far fa-thumbs-up' call={ like } value={this.props.likes} isActioned={ this.props.isLiked }/>
 					<FeedInteractionIcon name={'dislike-icon-' + this.props.id} icon='far fa-thumbs-down' call={ dislike } value={this.props.dislikes} isActioned={ this.props.isDisliked }/>
-					<FeedInteractionIcon name={'comment-icon-' + this.props.id} icon='far fa-comments' call={ comment } value={this.props.comments}/>
+					{/*<FeedInteractionIcon name={'comment-icon-' + this.props.id} icon='far fa-comments' call={ comment } value={this.props.comments}/>*/}
 
-					<span id = 'separator' className='mr-1'/>
+					{/*<span id = 'separator' className='mr-1'/>*/}
 
-					<FeedInteractionIcon name={'share-icon-' + this.props.id} icon='fas fa-share' call={ share }/>
+					{/*<FeedInteractionIcon name={'share-icon-' + this.props.id} icon='fas fa-share' call={ share }/>*/}
 				</div>
 
 				<a className='btn btn-warning'

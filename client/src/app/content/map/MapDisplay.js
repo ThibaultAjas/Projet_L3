@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Map, TileLayer} from "react-leaflet";
+import { Map, TileLayer } from "react-leaflet";
 
 import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -13,9 +13,9 @@ import MarkerDisplay from "./MarkerDisplay";
 import LoginScreen from "../login/LoginScreen";
 import GetCurrentLoc from "../geolocation/GetCurrentLoc";
 
-import {getUser, isLogged} from "../util/app_cookies";
+import { isLogged } from "../util/app_cookies";
 import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
-import {getFollowersEvents} from "../util/dataConverter";
+import { getFollowersEvents } from "../util/dataConverter";
 
 let DefaultIcon=L.icon({
     iconUrl:icon,

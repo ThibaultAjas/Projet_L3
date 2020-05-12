@@ -54,7 +54,7 @@ class AddEventScreen extends React.Component {
         })
             .then((response) => {
                 setUser(response.data.data);
-                window.location.href = '/map';
+                window.location.href = '/profile/map';
                 this.resetUserInputs();
             })
             .catch((err) => {

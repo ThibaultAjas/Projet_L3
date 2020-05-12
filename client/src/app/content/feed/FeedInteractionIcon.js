@@ -1,7 +1,6 @@
 import React from "react";
 import axios from 'axios';
 
-import { like } from "../../scripts/feed_script";
 import { getUser } from "../util/app_cookies";
 
 
@@ -34,6 +33,7 @@ class FeedInteractionIcon extends React.Component {
 			case 'comment':
 				url += 'likeEvent';
 				break;
+			default: break;
 		}
 		
 		axios({

@@ -9,8 +9,6 @@ import iconShadow from 'leaflet/dist/images/marker-shadow.png'
 import '../../../stylesheets/mapDisplay.css';
 import L from 'leaflet';
 
-import GetCurrentLoc from "../../geolocation/GetCurrentLoc";
-
 import SwapFeedButtons from "../../swap_feed_buttons/SwapFeedButtons";
 import { getUserEventList } from "../../util/dataConverter";
 import { getUser, isLogged } from "../../util/app_cookies";
@@ -35,8 +33,10 @@ class ProfileMap extends React.Component{
 
     componentDidMount() {
         navigator.geolocation.getCurrentPosition((position) => {
-            this.state.lat=position.coords.latitude;
-            this.state.long=position.coords.longitude;
+            this.setState({ lat: position.coords.latitude});
+            this.setState({ long: position.coords.longitude});
+            // this.state.lat=position.coords.latitude;
+            // this.state.long=position.coords.longitude;
             this.generateMarkerList();
         });
     };

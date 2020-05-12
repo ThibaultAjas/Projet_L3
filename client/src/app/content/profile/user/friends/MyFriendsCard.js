@@ -1,6 +1,5 @@
 import React from "react";
-import {getUser} from "../../../util/app_cookies";
-import {unFollow} from "../../../util/dataConverter";
+import { unFollow } from "../../../util/dataConverter";
 
 class MyFriendsCard extends React.Component {
 

@@ -17,8 +17,6 @@ class SearchScreen extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-
-
 	componentDidMount() {
 		search_user(this.search).then((data) => this.setState({ usersContent: data}));
 		search_event(this.search).then((data) => this.setState({ eventsContent: data}));
@@ -28,7 +26,7 @@ class SearchScreen extends React.Component {
 
 
 	handleChange({ target }) {
-		const { name, value} = target;
+		const { value} = target;
 
 		this.search = value;
 

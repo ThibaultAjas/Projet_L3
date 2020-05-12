@@ -8,7 +8,9 @@ class FeedInteractionIcon extends React.Component {
 
 	state = {
 		eventId: this.props.name.split("-")[2],
-		action: this.props.name.split("-")[0]
+		action: this.props.name.split("-")[0],
+		tempValue: this.props.value,
+		alreadyPressed: this.props.isActioned
 	};
 
 	componentDidMount() {
@@ -47,6 +49,11 @@ class FeedInteractionIcon extends React.Component {
 			.catch((error) => {
 				console.log('Error: ', error);
 			})
+
+		if (this.state.alreadyPressed) this.setState({ tempValue: this.state.tempValue-1});
+		else this.setState({ tempValue: this.state.tempValue+1});
+
+		this.setState({ alreadyPressed: ! this.state.alreadyPressed });
 	};
 
 	render() {
@@ -56,7 +63,7 @@ class FeedInteractionIcon extends React.Component {
 			<span className='d-inline-flex align-items-baseline'>
 			<p className='ml-1'> {} </p>
 
-			<div>{this.props.value}</div>
+			<div>{this.state.tempValue}</div>
 
 			<button className='transparent-button p-0' onClick={() => {
 				this.makeAction();

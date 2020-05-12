@@ -130,6 +130,7 @@ router.post('/stats', asyncMiddleware(async (req, res, next) => {
         }
     });
 
+    console.log(dataOut)
     return res.json({msg: 'Got some stats', data: dataOut});
 }));
 

@@ -101,7 +101,8 @@ router.post('/stats', asyncMiddleware(async (req, res, next) => {
         }
 
         if ((index = dataOut.usersByNumberOfLikes.findIndex(e => e.userId.toString() === evt.creator.toString())) === -1) {
-            dataOut.usersByNumberOfLikes.push({userId: evt.creator, nbLikes: evt.usersWhoLiked.length});
+            const u = users.find(e => e._id.toString() === evt.creator.toString() )
+            dataOut.usersByNumberOfLikes.push({userId: evt.creator, name: u.firstName + ' ' + u.lastName, nbLikes: evt.usersWhoLiked.length});
         } else {
             dataOut.usersByNumberOfLikes[index].nbLikes += evt.usersWhoLiked.length;
         }

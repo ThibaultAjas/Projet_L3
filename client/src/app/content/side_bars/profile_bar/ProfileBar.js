@@ -30,7 +30,7 @@ const log_content = [
 if(isLogged()) {
 	if (getUser().isAdmin) {
 		log_content.splice(4, 0, {
-			'name': 'Statistics',
+			'name': 'Statistiques',
 			'icon': 'far fa-chart-bar mr-3',
 			'href': '/stats'
 		})

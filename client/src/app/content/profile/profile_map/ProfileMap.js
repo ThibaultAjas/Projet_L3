@@ -14,6 +14,7 @@ import { getUserEventList } from "../../util/dataConverter";
 import { getUser, isLogged } from "../../util/app_cookies";
 import MarkerDisplay from "../../map/MarkerDisplay";
 import LoginScreen from "../../login/LoginScreen";
+import axios from "axios";
 
 let DefaultIcon=L.icon({
     iconUrl:icon,
@@ -49,6 +50,16 @@ class ProfileMap extends React.Component{
         });
 
     };
+
+    handleMapClick(e) {
+        axios({
+            url: '/map/infos',
+            method: 'POST',
+            data: {latlng: e.latlng}
+        }).then(response => {
+            window.location = '/addevent?lat='+e.latlng.lat+'&lng='+e.latlng.lng+'&country='+response.data.data;
+        })
+    }
 
     render() {
 
@@ -99,6 +110,7 @@ class ProfileMap extends React.Component{
                         dragging={true}
                         animate={true}
                         easeLinearity={0.35}
+                        onClick={this.handleMapClick}
                     >
                         <TileLayer
                             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'

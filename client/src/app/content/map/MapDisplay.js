@@ -60,7 +60,6 @@ class MapDisplay extends React.Component{
         }).then(response => {
             window.location = '/addevent?lat='+e.latlng.lat+'&lng='+e.latlng.lng+'&country='+response.data.data;
         })
-        // window.location = '/addevent?lat='+e.latlng.lat+'&lng='+e.latlng.lng;
     }
 
     render() {

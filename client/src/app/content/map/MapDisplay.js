@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 
 import { Map, TileLayer } from "react-leaflet";
 
@@ -49,8 +50,18 @@ class MapDisplay extends React.Component{
             this.events=this.state.events;
             this.forceUpdate();
         });
-
     };
+
+    handleMapClick(e) {
+        axios({
+            url: '/map/infos',
+            method: 'POST',
+            data: {latlng: e.latlng}
+        }).then(response => {
+            window.location = '/addevent?lat='+e.latlng.lat+'&lng='+e.latlng.lng+'&country='+response.data.data;
+        })
+        // window.location = '/addevent?lat='+e.latlng.lat+'&lng='+e.latlng.lng;
+    }
 
     render() {
 
@@ -100,6 +111,7 @@ class MapDisplay extends React.Component{
                         dragging={true}
                         animate={true}
                         easeLinearity={0.35}
+                        onClick={this.handleMapClick}
                     >
                         <TileLayer
                         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
@@ -109,7 +121,7 @@ class MapDisplay extends React.Component{
                     <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici" icon={redIcon}/>
                     {
                         this.events.map( (event,index) =>
-                            <MarkerDisplay key={index} position={[event.location.latitude,event.location.longitude]} popupMessage={event.title} icon={blueIcon}   />
+                            <MarkerDisplay key={index} position={[event.location.latitude,event.location.longitude]} popupMessage={event.title} icon={blueIcon}/>
                         )
                     }
                     </Map>

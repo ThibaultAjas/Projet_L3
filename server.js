@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 8080;
 const MONGODB_URI = 'mongodb+srv://website:ciP7w6ibT8ab3bZm@cluster-l3project-nyvoc.mongodb.net/website_test?retryWrites=true&w=majority';
 
 const apiRoute = require('./routes/api');
+const mapRoute = require('./routes/map');
 const userRoute = require('./routes/user');
 const eventRoute = require('./routes/event');
 const commentRoute = require('./routes/comment');
@@ -35,6 +36,7 @@ app.use(session({cookie: { path: '/', httpOnly: true, maxAge: null}, resave: tru
 // HTTP request logger
 app.use(morgan('tiny'));
 app.use('/api', apiRoute)
+    .use('/map', mapRoute)
     .use('/user', userRoute)
     .use('/event', eventRoute)
     .use('/comment', commentRoute);

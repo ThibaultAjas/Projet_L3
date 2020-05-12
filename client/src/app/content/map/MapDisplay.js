@@ -101,7 +101,9 @@ class MapDisplay extends React.Component{
                     >
                         <TileLayer
                         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                    />
+                        noWrap={true}
+
+                        />
                     <MarkerDisplay position={[this.state.lat,this.state.long]} popupMessage="vous êtes ici" icon={redIcon}/>
                     {
                         this.events.map( (event,index) =>

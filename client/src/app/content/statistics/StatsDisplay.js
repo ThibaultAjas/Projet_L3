@@ -97,7 +97,7 @@ export default class StatsDisplay extends React.Component{
             labels:this.state.stats.name,
             datasets : [
                 {
-                    label:'Ville(s)',
+                    label:'Like(s)',
                     backgroundColor: 'rgba(75, 192, 192, 1)',
                     borderColor:'rgba(0,0,0,1)',
                     borderWidth:2,
@@ -168,7 +168,7 @@ export default class StatsDisplay extends React.Component{
                         options={{
                             title:{
                                 display : true,
-                                text:"Nombre d'utilisateur par pays",
+                                text:"Nombre d'utilisateurs par pays",
                                 fontSize:20,
                                 fontColor:"black"
                             },

@@ -86,7 +86,7 @@ class AddEventScreen extends React.Component {
         return(
             <form className="form-login text-center" onSubmit={this.submit}>
                 <input className="form-control inputreg" type="digit" placeholder="51" value={this.state.latitude} name="latitude" onChange={this.handleChange} required/>
-                <input className="form-control inputreg" type="digit" placeholder="51" value={this.state.long} name="longitude" onChange={this.handleChange} required/>
+                <input className="form-control inputreg" type="digit" placeholder="51" value={this.state.longitude} name="longitude" onChange={this.handleChange} required/>
                 <input className="form-control inputreg" type="date"  name="date" onChange={this.handleChange} required/>
                 <input className="form-control inputreg" type="text" placeholder="je ramasse des chèvres" name="title" onChange={this.handleChange} required/>
                 <textarea className="form-control inputreg" name="description" placeholder="Description" onChange={this.handleChange} required></textarea>

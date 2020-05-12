@@ -83,6 +83,8 @@ router.post('/stats', asyncMiddleware(async (req, res, next) => {
     dataOut.numberOfEventsByCountry = [];
     dataOut.numberOfEventsByCity = [];
 
+    dataOut.usersByNumberOfLikes = [];
+
     events.forEach(evt => {
         let index;
         if ((index = dataOut.eventCountries.findIndex((e) => e === evt.country)) === -1) { // On a pas trouvé$
@@ -97,7 +99,14 @@ router.post('/stats', asyncMiddleware(async (req, res, next) => {
         } else {
             dataOut.numberOfEventsByCity[index]++;
         }
+
+        if ((index = dataOut.usersByNumberOfLikes.findIndex(e => e.userId.toString() === evt.creator.toString())) === -1) {
+            dataOut.usersByNumberOfLikes.push({userId: evt.creator, nbLikes: evt.usersWhoLiked.length});
+        } else {
+            dataOut.usersByNumberOfLikes[index].nbLikes += evt.usersWhoLiked.length;
+        }
     });
+    dataOut.usersByNumberOfLikes.sort((a, b) => b.nbLikes - a.nbLikes);
 
     dataOut.userCountries = [];
     dataOut.userCities = [];
@@ -108,20 +117,18 @@ router.post('/stats', asyncMiddleware(async (req, res, next) => {
         let index;
         if ((index = dataOut.userCountries.findIndex((e) => e === usr.country)) === -1) { // On a pas trouvé
             dataOut.userCountries.push(usr.country);
-            dataOut.numberOfEventsByCountry.push(1);
+            dataOut.numberOfUsersByCountry.push(1);
         } else {
-            dataOut.numberOfEventsByCountry[index]++;
+            dataOut.numberOfUsersByCountry[index]++;
         }
         if ((index = dataOut.userCities.findIndex((e) => e === usr.city)) === -1) { // On a pas trouvé
             dataOut.userCities.push(usr.city);
-            dataOut.numberOfEventsByCity.push(1);
+            dataOut.numberOfUsersByCity.push(1);
         } else {
-            dataOut.numberOfEventsByCity[index]++;
+            dataOut.numberOfUsersByCity[index]++;
         }
     });
 
-
-    console.log(dataOut);
     return res.json({msg: 'Got some stats', data: dataOut});
 }));
 

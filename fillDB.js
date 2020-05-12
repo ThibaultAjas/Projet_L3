@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const user = require('./models/userModel');
 const event = require('./models/eventModel');
 
-const [MAX_USERS, MAX_EVENTS] = [100, 1000];
+const [MAX_USERS, MAX_EVENTS] = [100, 500];
 const MONGODB_URI = 'mongodb+srv://website:ciP7w6ibT8ab3bZm@cluster-l3project-nyvoc.mongodb.net/website_test?retryWrites=true&w=majority';
 
 mongoose.set('useNewUrlParser', true);
@@ -69,7 +69,7 @@ const fillDB = async () => {
                 latitude: card.address.geo.lat,
                 longitude: card.address.geo.lng
             },
-            creator: users[randomInt],
+            // creator: users[randomInt],
             country: card.address.country,
             city: card.address.city,
             date: card.accountHistory[0].date,
@@ -82,8 +82,16 @@ const fillDB = async () => {
     console.log('List of events generated');
 
     let tmp = []
+    let tmp2 = new Set();
     for (let i = 0; i < MAX_EVENTS; i++) tmp.push(Math.floor(Math.random() * MAX_USERS));
-    for (let i = 0; i < MAX_EVENTS; i++) users[tmp[i]].events.push(events[i]);
+    console.log(tmp.sort((a, b) => b - a))
+    for (let i = 0; i < MAX_EVENTS; i++) {
+        users[tmp[i]].events.push(events[i]);
+        events[i].creator = users[tmp[i]];
+        tmp2.add(users.find(u => u._id === users[tmp[i]]._id).userName)
+    }
+    console.log(tmp2)
+    console.log(tmp2.size)
     console.log('Added events to users');
 
     for (const usr of users) await usr.save();

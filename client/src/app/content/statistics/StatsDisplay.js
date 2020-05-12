@@ -10,7 +10,7 @@ export default class StatsDisplay extends React.Component{
     state =  {data:{}}
 
     componentDidMount() {
-
+        console.log("pd")
         getStats().then((data)=> {
             this.tmp=data;
             this.setState({data : this.tmp});
@@ -21,7 +21,8 @@ export default class StatsDisplay extends React.Component{
 
 
     render() {
-        if (! getUser().isAdmin) window.location.href = '/';
+        console.log(this.state);
+        // if (! getUser().isAdmin) window.location.href = '/';
 
         let eventByCities =  {
             labels:this.state.data.eventCities,
@@ -74,6 +75,21 @@ export default class StatsDisplay extends React.Component{
                 }
             ]
         };
+
+
+        let userByLikes =  {
+            labels:this.state.data.usersByNumberOfLikes.name,
+            datasets : [
+                {
+                    label:'cities',
+                    backgroundColor: 'rgba(75, 192, 192, 1)',
+                    borderColor:'rgba(0,0,0,1)',
+                    borderWidth:2,
+                    data:this.state.data.usersByNumberOfLikes.nbLikes
+                }
+            ]
+        };
+
         return(
             <>
                 <div className="w-75 mx-auto">
@@ -162,6 +178,33 @@ export default class StatsDisplay extends React.Component{
                                 display : true,
                                 text:'user by city',
                                 fontSize:20
+                            },
+                            legend:{
+                                display:true,
+                                position:'right'
+                            },
+                            scales: {
+                                yAxes: [
+                                    {
+                                        ticks: {
+                                            min: 0
+                                        }
+                                    }
+                                ]
+                            }
+                        }}
+                    />
+                </div>
+
+                <div className="w-75 mx-auto">
+                    <Bar
+                        data={userByLikes}
+                        options={{
+                            title:{
+                                display : true,
+                                text:'user by likes',
+                                fontSize:20,
+                                fontColor:"black"
                             },
                             legend:{
                                 display:true,

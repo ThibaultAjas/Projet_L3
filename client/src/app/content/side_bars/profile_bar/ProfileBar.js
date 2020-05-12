@@ -18,13 +18,9 @@ const log_content = [
 		'icon' : 'fa fa-thumbs-up mr-3',
 		'href' : '/actions'
 	},
-	{ 	'name' : 'Mes amis',
+	{ 	'name' : 'Mes abonnements',
 		'icon' : 'fa fa-users mr-3',
 		'href' : '/friends'
-	},
-	{ 	'name' : 'Paramètres',
-		'icon' : 'fa fa-cog mr-3',
-		'href' : '/settings'
 	},
 	{ 	'name' : 'Se déconnecter',
 		'icon' : 'fa fa-sign-out-alt mr-3',

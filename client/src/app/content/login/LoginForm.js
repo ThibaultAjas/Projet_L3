@@ -4,7 +4,7 @@ import axios from 'axios';
 import {
     setSessionMail, getSessionMail,
     setSessionPassword, getSessionPassword,
-    setLogged, setUser, getUser
+    setLogged, setUser
 } from "../util/app_cookies";
 
 class LoginForm extends React.Component {
@@ -28,8 +28,6 @@ class LoginForm extends React.Component {
         const { name, value } = target;
         this.setState({ [name]: value });
     };
-
-
 
     submit = ( event ) => {
 
@@ -85,17 +83,17 @@ class LoginForm extends React.Component {
         return (
             <form className="form-login text-center" onSubmit={this.submit}>
 
-                <h1 className="h3 mb-3 font-weight-normal "> Please sign in</h1>
+                <h1 className="h3 mb-3 font-weight-normal "> Se connecter </h1>
 
-                <input type="email"     className="form-control inputreg"       placeholder="Email address" name="mail"     id="mail"       required autoFocus value = { this.state.mail }     onChange = { this.handleChange }/>
-                <input type="password"  className="form-control mb-1 inputreg"  placeholder="Password"      name="password" id="password"   required           value = { this.state.password } onChange = { this.handleChange }/>
+                <input type="email"     className="form-control inputreg"       placeholder="Adresse mail" name="mail"     id="mail"       required autoFocus value = { this.state.mail }     onChange = { this.handleChange }/>
+                <input type="password"  className="form-control mb-1 inputreg"  placeholder="Mot de passe"      name="password" id="password"   required           value = { this.state.password } onChange = { this.handleChange }/>
 
                 <div className="checkbox mb-3">
-                    <input type="checkbox" value="remember-me" onClick={ this.rememberMe }/> Remember me
+                    <input type="checkbox" value="remember-me" onClick={ this.rememberMe }/> Se souvenir de moi
                 </div>
 
-                <button className="btn btn-lg btn-primary btn-block" type="submit"> Sign in </button>
-                <a href="/register">Don't have an account? Create one</a>
+                <button className="btn btn-lg btn-primary btn-block" type="submit"> Se connecter </button>
+                <a href="/register"> Ou cliquez ici pour créer un compte </a>
             </form>
         );
     }

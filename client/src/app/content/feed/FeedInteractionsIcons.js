@@ -1,7 +1,7 @@
 import React from "react";
 
 import FeedInteractionIcon from "./FeedInteractionIcon";
-import { like, dislike, comment, share } from "../../scripts/feed_script";
+import { dislike, like } from "../../scripts/feed_script";
 
 // ({ id, dislikes, likes, comments })
 class FeedInteractionsIcons extends React.Component {

@@ -65,16 +65,11 @@ class RegisterForm extends React.Component {
                 data: payload
             })
                 .then((response) => {
-
-                    const pl = response.data[0];
-
-
                     window.location.href = '/login';
                     this.resetUserInputs();
                 })
                 .catch((err) => {
                     console.log('Internal server error: ', err);
-                    // TODO: Afficher une popup, une div ... Pour signaler une erreur à l'utilisateur
                 });
         }else{
             if (this.state.password !== this.state.password_conf) {
@@ -136,29 +131,25 @@ class RegisterForm extends React.Component {
         return (
             <form className="form-login text-center" onSubmit={this.submit}>
 
-                <h1 className="h3 mb-3 font-weight-normal "> Please sign in</h1>
+                <h1 className="h3 mb-3 font-weight-normal "> Créer un compte </h1>
 
-                <input type="email" className="form-control inputreg"    placeholder="Email address"    name="mail"          id="mail"              onChange = { this.handleChange }  required autoFocus/>
-                <input type="password" className="form-control inputreg" placeholder="Password"         name="password"      id="password"          onChange = { this.handleChange }  required/>
-                <input type="password" className="form-control inputreg" placeholder="confirm password" name="password_conf" id="confPassword"     onChange = { this.handleChange }  required/>
-                <input type="text" className="form-control inputreg"     placeholder="first name"       name="firstName"     id="firstName"         onChange = { this.handleChange }  required/>
-                <input type="text" className="form-control inputreg"     placeholder="last name"        name="lastName"      id="lastName"          onChange = { this.handleChange }  required/>
-                <input type="text" className="form-control inputreg"     placeholder="username"         name="userName"      id="userName"          onChange = { this.handleChange }  required/>
-                <input type="tel" className="form-control inputreg"      placeholder="0675488456"       name="tel"           id="tel"               onChange = { this.handleChange }  required/>
-                <input type="text" className="form-control inputreg"     placeholder="addresse"         name="address"       id="address"           onChange = { this.handleChange }  required/>
-                <input type="text" className="form-control inputreg"     placeholder="code postal"      name="code_postal"   id="code_postal"       onChange = { this.handleChange }  required/>
-                <input type="text" className="form-control inputreg"     placeholder="ville"            name="city"          id="city"              onChange = { this.handleChange }  required/>
-                <input type="text" className="form-control inputreg"     placeholder="country"          name="country"       id="country"           onChange = { this.handleChange }  required/>
+                <input type="email" className="form-control inputreg"    placeholder="Adresse mail"    name="mail"          id="mail"              onChange = { this.handleChange }  required autoFocus/>
+                <input type="password" className="form-control inputreg" placeholder="Mot de passe"         name="password"      id="password"          onChange = { this.handleChange }  required/>
+                <input type="password" className="form-control inputreg" placeholder="Confirmer le mot de passe" name="password_conf" id="confPassword"     onChange = { this.handleChange }  required/>
+                <input type="text" className="form-control inputreg"     placeholder="Prénom"       name="firstName"     id="firstName"         onChange = { this.handleChange }  required/>
+                <input type="text" className="form-control inputreg"     placeholder="Nom"        name="lastName"      id="lastName"          onChange = { this.handleChange }  required/>
+                <input type="text" className="form-control inputreg"     placeholder="Nom d'utilisateur"         name="userName"      id="userName"          onChange = { this.handleChange }  required/>
+                <input type="tel" className="form-control inputreg"      placeholder="0123456789"       name="tel"           id="tel"               onChange = { this.handleChange }  required/>
+                <input type="text" className="form-control inputreg"     placeholder="Adresse"         name="address"       id="address"           onChange = { this.handleChange }  required/>
+                <input type="text" className="form-control inputreg"     placeholder="Code postal"      name="code_postal"   id="code_postal"       onChange = { this.handleChange }  required/>
+                <input type="text" className="form-control inputreg"     placeholder="Ville"            name="city"          id="city"              onChange = { this.handleChange }  required/>
+                <input type="text" className="form-control inputreg"     placeholder="Pays"          name="country"       id="country"           onChange = { this.handleChange }  required/>
 
-                <div className="checkbox mb-3">
-                    <input type="checkbox" value="remember-me"/>
-                    Remember me
-                </div>
-                <button className="btn btn-lg btn-primary btn-block" type="submit">
-                    Register
+                <button className="btn btn-lg btn-primary btn-block mt-5" type="submit">
+                    Créer un compte
                 </button>
 
-                <a href="/login">or login</a>
+                <a href="/login"> ou cliquez ici pour vous connecter </a>
 
             </form>
         );

@@ -11,7 +11,6 @@ import L from 'leaflet';
 import MarkerDisplay from "./MarkerDisplay";
 
 import LoginScreen from "../login/LoginScreen";
-import GetCurrentLoc from "../geolocation/GetCurrentLoc";
 
 import { isLogged } from "../util/app_cookies";
 import SwapFeedButtons from "../swap_feed_buttons/SwapFeedButtons";
@@ -35,15 +34,18 @@ class MapDisplay extends React.Component{
 
     componentDidMount() {
         navigator.geolocation.getCurrentPosition((position) => {
-            this.state.lat=position.coords.latitude;
-            this.state.long=position.coords.longitude;
+            this.setState({ lat: position.coords.latitude});
+            this.setState({ long: position.coords.longitude});
+            // this.state.lat=position.coords.latitude;
+            // this.state.long=position.coords.longitude;
             this.generateMarkerList();
         });
     };
 
     generateMarkerList (){
         getFollowersEvents().then((data )=> {
-            this.state.events=data;
+            this.setState({ event: data });
+            // this.state.events=data;
             this.events=this.state.events;
             this.forceUpdate();
         });
@@ -77,7 +79,7 @@ class MapDisplay extends React.Component{
 
             let redIcon = new IconRouge({iconUrl : 'https://ukauto.fr/wp-content/uploads/2017/11/map-marker-icon.png'});
             let blueIcon = new IncoBlue({iconUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Map_marker.svg/1200px-Map_marker.svg.png'});
-            let lat, long = GetCurrentLoc();
+            // let lat, long = GetCurrentLoc();
 
             return (
                 <>

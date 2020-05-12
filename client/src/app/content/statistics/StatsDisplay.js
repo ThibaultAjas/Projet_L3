@@ -1,6 +1,7 @@
 import React from "react";
 import {Bar} from "react-chartjs-2";
 import {getStats} from "../util/dataConverter";
+import { getUser } from "../util/app_cookies";
 
 
 
@@ -20,6 +21,7 @@ export default class StatsDisplay extends React.Component{
 
 
     render() {
+        if (! getUser().isAdmin) window.location.href = '/';
 
         let eventByCities =  {
             labels:this.state.data.eventCities,
@@ -158,7 +160,7 @@ export default class StatsDisplay extends React.Component{
                         options={{
                             title:{
                                 display : true,
-                                text:'user by country',
+                                text:'user by city',
                                 fontSize:20
                             },
                             legend:{

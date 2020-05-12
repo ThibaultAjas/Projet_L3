@@ -21,8 +21,7 @@ const search_event = async ( name ) => {
 
 	await getAllEvents().then((response) => {
 		response.map( ( event ) => {
-			if (
-				event.title.toLowerCase().includes(name.toLowerCase())) result.add(event);
+			if ( event.title.toLowerCase().includes(name.toLowerCase())) result.add(event);
 		});
 	});
 

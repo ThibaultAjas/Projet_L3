@@ -1,6 +1,6 @@
 import React from "react";
 
-import {getUser, setUser} from "../../util/app_cookies";
+import { getUser, setUser } from "../../util/app_cookies";
 import '../../../stylesheets/userProfile.css';
 import axios from "axios";
 
@@ -64,8 +64,6 @@ class UserProfile extends React.Component {
 			following: getUser().following,
 			events: getUser().events
 		};
-		console.log(getUser());
-		console.log(newUser);
 		axios({
 			url: '/user/updateById',
 			method: 'POST',
@@ -77,7 +75,6 @@ class UserProfile extends React.Component {
 			})
 			.catch((err) => {
 				console.log('Internal server error: ', err);
-				// TODO: Afficher une popup, une div ... Pour signaler une erreur à l'utilisateur
 			});
 		axios({
 			url: '/user/updateById',
@@ -90,76 +87,73 @@ class UserProfile extends React.Component {
 			})
 			.catch((err) => {
 				console.log('Internal server error: ', err);
-				// TODO: Afficher une popup, une div ... Pour signaler une erreur à l'utilisateur
 			});
 
 	};
 
 	render() {
 		return (
-			<div className='m-auto w-75 card text-center p-5'>
-				<form className="form-login text-center" onSubmit={this.submit}>
-					<h1 className='text-center font-weight-bold'> Mon profil </h1>
+				<form className="form-login text-center bg-light mx-auto mt-5" style={{borderRadius: '10px', minWidth: '50%'}} onSubmit={this.submit}>
+					<h1 className='text-center font-weight-bold px-5'> Mon profil </h1>
 
 					<div id='user-profile-form' className='form-group mt-5 align-items-start d-flex flex-column align-items-center'>
 						<label>
-							<span><p> Firstname: </p></span>
+							<span><p> Prénom: </p></span>
 							<input type='text' className='form-control' name='firstName' value={this.state.firstName} onChange={this.handleChange}/>
 						</label>
 
 						<label>
-							<span><p> Lastname: </p></span>
+							<span><p> Nom: </p></span>
 							<input type='text' className='form-control' name='lastName' value={this.state.lastName} onChange={this.handleChange}/>
 						</label>
 
 						<label>
-							<span><p> UserName: </p></span>
+							<span><p> Nom d'utilisateur: </p></span>
 							<input type='text' className='form-control' name='userName' value={this.state.userName} onChange={this.handleChange}/>
 						</label>
 
 						<label>
-							<span><p> Address: </p></span>
+							<span><p> Adresse: </p></span>
 							<input type='text' className='form-control' name='address' value={this.state.address} onChange={this.handleChange}/>
 						</label>
 
 						<label>
-							<span><p> Country: </p></span>
+							<span><p> Pays: </p></span>
 							<input type='text' className='form-control' name='country' value={this.state.country} onChange={this.handleChange}/>
 						</label>
 
 						<label>
-							<span><p> City: </p></span>
+							<span><p> Ville: </p></span>
 							<input type='text' className='form-control' name='city' value={this.state.city} onChange={this.handleChange}/>
 						</label>
 
 						<label>
-							<span><p> Mail: </p></span>
+							<span><p> Adresse mail: </p></span>
 							<input type='email' className='form-control' name='mail' value={this.state.mail} onChange={this.handleChange}/>
 						</label>
 
 						<label>
-							<span><p> Phone number </p></span>
+							<span><p> Numéro de telephone: </p></span>
 							<input type='tel' className='form-control' name='phone' value={this.state.phone} onChange={this.handleChange}
 									pattern="[0-9]{10}"/>
 						</label>
 
 						<label>
-							<span><p> New Password: </p></span>
+							<span><p> Nouveau mot de passe: </p></span>
 							<input type='password' className='form-control' name='newPassword' value={this.state.newPassword} onChange={this.handleChange}/>
 						</label>
 
 						<label>
-							<span><p> Confirm Password: </p></span>
+							<span><p> Confirmer le mot de passe: </p></span>
 							<input type='password' className='form-control' name='confirmPassword' value={this.state.confirmPassword} onChange={this.handleChange}/>
 						</label>
 
 						<button className="btn btn-lg btn-primary btn-block" type="submit">
-							Register
+							Sauvegarder
 						</button>
 					</div>
 
 				</form>
-			</div>
 		)
 	}
 }

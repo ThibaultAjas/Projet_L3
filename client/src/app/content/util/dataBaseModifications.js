@@ -1,5 +1,5 @@
 import axios from "axios";
-import {getUser, setUser} from "./app_cookies";
+import { setUser } from "./app_cookies";
 
 const follow = async ( user1, user2 ) => {
 	await axios({

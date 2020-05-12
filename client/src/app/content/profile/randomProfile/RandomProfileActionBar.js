@@ -1,6 +1,6 @@
 import React from "react";
-import {getUser, setUser} from "../../util/app_cookies";
-import {getFriendsById, unFollow} from "../../util/dataConverter";
+import { getUser } from "../../util/app_cookies";
+import { getFriendsById, unFollow } from "../../util/dataConverter";
 import { follow } from "../../util/dataBaseModifications";
 
 class RandomProfileActionBar extends React.Component {

@@ -3,7 +3,6 @@ import ProfileBarElementRow from "./ProfileBarElementRow";
 
 const ProfileBarContent = ({ content }) => {
 
-
 	return (
 		<ul className='list-group overflow-auto'>
 			{

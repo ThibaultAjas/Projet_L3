@@ -22,7 +22,11 @@ class MyActions extends React.Component {
 		if (! isLogged()) return ( <LoginScreen/> );
 
 		return (
-			<Feed content={ this.events }/>
+			<>
+				<h1 className='text-center mt-5 font-weight-bold'> Mes actions </h1>
+
+				<Feed content={ this.events }/>
+			</>
 		);
 	}
 

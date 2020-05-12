@@ -23,8 +23,7 @@ class MyFriends extends React.Component {
 		return (
 
 			<>
-
-				<h1 className='text-center mt-5 font-weight-bold'> The people I follow </h1>
+				<h1 className='text-center mt-5 font-weight-bold'> Mes abonnements </h1>
 				<div className='d-flex flex-wrap justify-content-center mt-5'>
 
 					{

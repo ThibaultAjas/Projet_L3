@@ -5,15 +5,24 @@ import { getUser, setUser } from "../util/app_cookies";
 
 class AddEventScreen extends React.Component {
 
-    state={
-        latitude: '',
-        longitude: '',
-        date: '',
-        title: '',
-        description: '',
-        city : '',
-        country : ''
-    };
+    constructor(props) {
+        super(props);
+
+        this.lat = this.getURLParameter('lat');
+        this.lng = this.getURLParameter('lng');
+        this.ctry = this.getURLParameter('country');
+
+        this.state = {
+            latitude: (this.lat) ? this.lat : '',
+            longitude: (this.lng) ? this.lng : '',
+            date: '',
+            title: '',
+            description: '',
+            city : '',
+            country : (this.ctry && this.ctry !== 'undefined') ? this.ctry : ''
+        };
+
+    }
 
     getURLParameter = (name) => {
         return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(window.location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
@@ -74,19 +83,16 @@ class AddEventScreen extends React.Component {
     };
 
     render() {
-        const lat = this.getURLParameter('lat');
-        const lng = this.getURLParameter('lng');
-        const ctry = this.getURLParameter('country');
         return(
             <form className="form-login text-center" onSubmit={this.submit}>
-                <input className="form-control inputreg" type="digit" placeholder="51" value={(lat) ? lat : ''} name="latitude" onChange={this.handleChange} required/>
-                <input className="form-control inputreg" type="digit" placeholder="51" value={(lng) ? lng : ''} name="longitude" onChange={this.handleChange} required/>
+                <input className="form-control inputreg" type="digit" placeholder="51" value={this.state.latitude} name="latitude" onChange={this.handleChange} required/>
+                <input className="form-control inputreg" type="digit" placeholder="51" value={this.state.long} name="longitude" onChange={this.handleChange} required/>
                 <input className="form-control inputreg" type="date"  name="date" onChange={this.handleChange} required/>
                 <input className="form-control inputreg" type="text" placeholder="je ramasse des chèvres" name="title" onChange={this.handleChange} required/>
                 <textarea className="form-control inputreg" name="description" placeholder="Description" onChange={this.handleChange} required></textarea>
                 {/*<input className="form-control inputreg" type="textarea" placeholder="votre description" name="description" onChange={this.handleChange} required/>*/}
                 <input className="form-control inputreg" type="text" placeholder="city" name="city" onChange={this.handleChange} required/>
-                <input className="form-control inputreg" type="text" placeholder="country" value={(ctry && ctry !== 'undefined') ? ctry : ''} name="country" onChange={this.handleChange} required/>
+                <input className="form-control inputreg" type="text" placeholder="country" value={this.state.country} name="country" onChange={this.handleChange} required/>
 
                 <button className="btn btn-lg btn-primary btn-block" type="submit">
                     AddEvent

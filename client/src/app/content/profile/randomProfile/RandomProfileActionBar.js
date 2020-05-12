@@ -18,6 +18,8 @@ class RandomProfileActionBar extends React.Component {
 
 				follow(getUser(), data[0]).then(()=> "");
 				follow(getUser(), data[0]).then(()=> "");
+
+				window.location.href = '/friends/search';
 			});
 
 
@@ -29,9 +31,9 @@ class RandomProfileActionBar extends React.Component {
 
 				{
 					(getUser().following.includes( this.props.id ))
-						? <button id='random-unfollow-button' className='action-button mr-2' onClick={ () => unFollow(this.props.id) }> unfollow </button>
+						? <button id='random-unfollow-button' className='action-button mr-2' onClick={ () => unFollow(this.props.id) }> Se désabonner </button>
 
-						: <button id='random-follow-button' className='action-button mr-2' onClick={ () => this.action() } > Follow </button>
+						: <button id='random-follow-button' className='action-button mr-2' onClick={ () => this.action() } > S'abonner </button>
 				}
 
 				<button className='action-button mr-2'> Report </button>

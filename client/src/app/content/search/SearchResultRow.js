@@ -26,8 +26,7 @@ const SearchResultRow = ({ content, isUser, search }) => {
 					<p> {boldText(content.firstName, search)} {boldText(content.lastName, search)} </p>
 					<blockquote className='blockquote-footer ml-2'> {boldText(content.userName, search)}</blockquote>
 				</div>
-				{console.log("salope de tes mort",content._id)}
-				<a href={'/profile/' + content._id} className='btn btn-warning btn-sm'> See profile </a>
+				<a href={'/profile/' + content._id} className='btn btn-warning btn-sm'> Consulter le profil utilisateur </a>
 			</div>
 		)
 	}
@@ -40,7 +39,7 @@ const SearchResultRow = ({ content, isUser, search }) => {
 				<blockquote className='blockquote-footer ml-2 overflow-hidden' style={{maxHeight: '20px'}}> { content.description }  </blockquote>
 			</div>
 
-			<a href={'/event/' + content._id} className='btn btn-warning btn-sm'> See event </a>
+			<a href={'/event/' + content._id} className='btn btn-warning btn-sm'> Plus.. </a>
 		</div>
 	)
 };
